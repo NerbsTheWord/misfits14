@@ -1,66 +1,96 @@
-# Nuclear 14 / Corvax Forge Nuclear
- 
-**Corvax Forge Nuclear** — это первая русскоязычная адаптация оригинального форка **Nuclear 14**, созданного Peptide90 в 2022 году при участии сообщества. Проект сочетает в себе лучшие наработки Fallout-тематики с возможностями движка Space Station 14.
+Here is the translation with the original Markdown formatting preserved:
 
-## О проекте
+# Nuclear 14 / Misfits: Nuclear Wasteland
 
-Nuclear 14 — первый Fallout-форк для Space Station 14, использующий:
-- Ассеты из различных Fallout13 (F13/SS13) сборок
-- Уникальные материалы, созданные сообществом
-- Высокомодульную систему от вышестоящего репозитория Einstein Engines
+**Misfits: Nuclear Wasteland** is a english fork of the first Russian-language adaptation of the original **Nuclear 14** fork, created by Peptide90 in 2022 with contributions from the community. The project combines the best Fallout-themed developments with the capabilities of the Space Station 14 engine.
 
-Тематика и локации отличаются от классического F13, предлагая игрокам новый опыт. Кодовая база лицензирована под AGPLv3, что позволяет свободно использовать и развивать проект.
+## About the Project
 
-## Особенности русской версии
-Corvax Forge Nuclear добавляет:
-- Полную локализацию интерфейса и контента
-- Оптимизации для русскоязычного комьюнити
-- Уникальные механики и баланс
-- Регулярные обновления и поддержку
+Nuclear 14 is the first Fallout fork for Space Station 14, utilizing:
 
-Для участия в разработке присоединяйтесь к нашему [Discord](https://discord.gg/7wDwSPde58).
+* Assets from various Fallout13 (F13/SS13) builds
+* Unique materials created by the community
+* A highly modular system from the upstream Einstein Engines repository
 
-## Ссылки
-- [Discord](https://discord.gg/4gGSWyNbQF) (официальное сообщество)
-- Игровые серверы: через лаунчер (`ss14://game.nuclear14.com:1212`) или в Discord
+The theme and locations differ from classic F13, offering players a new experience. The codebase is licensed under AGPLv3, which allows for free use and development of the project.
 
-## Сборка
+## Features of the Russian Version
 
-### Требования
-- Git
-- .NET SDK 9.0.101
+Misfits: Nuclear Wasteland adds:
+
+* Full interface and content localization
+* Optimizations for the Russian-speaking community
+* Unique mechanics and balance
+* Regular updates and support
+
+To participate in development, join our [Discord](https://discord.gg/yXsJnq3FbU).
+
+## Links
+
+* [Discord](https://discord.gg/yXsJnq3FbU) (official community)
+* Game servers: via launcher (`tbd`) or in Discord
+
+## Building
+
+### Requirements
+
+* Git
+* .NET SDK 9.0.101
 
 ### Windows
-1. Клонируйте репозиторий:
-   ```sh
-   git clone https://github.com/Forge-Station/nuclear-14.git
-   ```
-2. Инициализируйте подмодули:
-   ```sh
-   git submodule update --init --recursive
-   ```
-3. Соберите проект:
-   ```sh
-   Scripts/bat/buildAllDebug.bat
-   ```
-4. Запустите клиент и сервер:
-   ```sh
-   Scripts/bat/runQuickAll.bat
-   ```
-5. Подключитесь к localhost через клиент
+
+1. Clone the repository:
+```sh
+git clone https://github.com/Misfit-Sanctuary/nuclear-14.git
+
+```
+
+
+2. Initialize submodules:
+```sh
+git submodule update --init --recursive
+
+```
+
+
+3. Build the project:
+```sh
+Scripts/bat/buildAllDebug.bat
+
+```
+
+
+4. Run client and server:
+```sh
+Scripts/bat/runQuickAll.bat
+
+```
+
+
+5. Connect to localhost via the client
 
 ### Linux
-Аналогично Windows, но используйте скрипты `.sh`:
+
+Similar to Windows, but use the `.sh` scripts:
+
 ```sh
 Scripts/sh/buildAllDebug.sh
 Scripts/sh/runQuickAll.sh
+
 ```
 
 ### MacOS
-Теоретически аналогично Linux, но не тестировалось
 
-## Лицензия
-Подробная информация о лицензировании кода и ассетов доступна в [LEGAL.md](./LEGAL.md). Основные положения:
-- Код: AGPLv3
-- Ассеты: индивидуальные лицензии (проверяйте meta.json)
-- Обязательно соблюдение авторских прав
+Theoretically similar to Linux, but has not been tested
+
+## License
+
+Detailed information about code and asset licensing is available in [LEGAL.md](https://www.google.com/search?q=./LEGAL.md). Key provisions:
+
+* Code: AGPLv3
+* Assets: individual licenses (check meta.json)
+* Copyright compliance is mandatory
+
+---
+
+**Would you like me to make any adjustments to the tone, or proceed with translating other files in the repository?**
