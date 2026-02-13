@@ -35,7 +35,7 @@ To participate in development, join our [Discord](https://discord.gg/yXsJnq3FbU)
 ### Requirements
 
 * Git
-* .NET SDK 9.0.101
+* .NET SDK 10.0.101
 
 ### Windows
 
