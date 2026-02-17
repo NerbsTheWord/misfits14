@@ -15,7 +15,7 @@ RELEASE_DIR = "release"
 # Forks should change these to publish to their own infrastructure.
 #
 ROBUST_CDN_URL = os.environ["ROBUST_CDN_URL"]
-FORK_ID = "master"
+FORK_ID = "MisfitsNuclearWasteland"
 
 def main():
     session = requests.Session()
