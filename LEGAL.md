@@ -25,15 +25,3 @@ Commit [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70
 Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. License and copyright are listed in metadata files. [Example](./Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
 Note that some assets are under non-commercial licenses ([CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar) and must be removed for commercial use of the project.
-
-## Special Requirements for Corvax Forge Nuclear
-
-1. **Assets with full rights reserved (All Rights Reserved)**:
-   - Strictly forbidden for use in derivative works
-   - Must be removed before any use of the code
-   - Violations carry legal liability
-
-2. **Commercial use**:
-   - Requires a license review of all assets
-   - All content marked "All Rights Reserved" must be removed
-   - Legal consultation is recommended before release
