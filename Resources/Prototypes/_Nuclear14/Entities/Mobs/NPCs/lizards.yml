@@ -423,6 +423,10 @@
         true
       NavPry: !type:Bool
         true
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: Fixtures
     fixtures:
       fix1:

@@ -10,6 +10,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: Sprite
     drawdepth: Mobs
     layers:

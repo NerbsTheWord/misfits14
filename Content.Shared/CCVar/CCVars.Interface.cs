@@ -23,5 +23,5 @@ public sealed partial class CCVars
         CVarDef.Create("ui.separated_chat_size", "0.6,0", CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> OutlineEnabled =
-        CVarDef.Create("outline.enabled", true, CVar.CLIENTONLY);
+        CVarDef.Create("outline.enabled", false, CVar.CLIENTONLY);
 }

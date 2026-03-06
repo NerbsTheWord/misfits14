@@ -100,6 +100,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: Sprite
     drawdepth: Mobs
   - type: MobState
@@ -127,7 +132,7 @@
   - type: MeleeWeapon
     hidden: true
     attackRate: 2
-    range: 1
+    range: 1.5
     soundHit:
         path: /Audio/Effects/bite.ogg
     angle: 60
@@ -242,6 +247,10 @@
     blackboard:
       NavClimb: !type:Bool
         true
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -304,6 +313,8 @@
         true
       VisionRadius: !type:Single
         1000.0
+      MeleeRange: !type:Single
+        1.5
   - type: WaveMob
     difficulty: 1
   - type: GhostTakeoverAvailable

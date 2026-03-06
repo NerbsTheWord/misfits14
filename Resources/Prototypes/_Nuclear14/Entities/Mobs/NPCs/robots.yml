@@ -15,6 +15,11 @@
   - type: HTN
     rootTask:
       task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: Sprite
     drawdepth: Mobs
   - type: Physics
@@ -72,6 +77,26 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14ScrapElectronic1:
+            min: 1
+            max: 3
+          N14Scrap1:
+            min: 1
+            max: 3
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
 # TODO: Make them shout things at people using advertise.
 
 - type: entity
@@ -85,6 +110,7 @@
         path: /Audio/Effects/metal_thud1.ogg
     angle: 0
     animation: WeaponArcPunch
+    range: 1.5
     damage:
       groups:
         Brute: 5
@@ -101,10 +127,34 @@
     blackboard:
       NavClimb: !type:Bool
         true
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: MobThresholds
     thresholds:
       0: Alive
       200: Dead # Corvax-Change
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14ScrapElectronic1:
+            min: 1
+            max: 3
+          N14Scrap1:
+            min: 1
+            max: 3
+    - trigger:
+        !type:DamageTrigger
+        damage: 220
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 6
@@ -181,6 +231,11 @@
   - type: HTN
     rootTask:
       task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
 
 - type: entity
   parent: N14MobRobotProtectronHostile
@@ -264,6 +319,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
 
 - type: entity
   parent: N14MobRobotHostileMelee
@@ -281,6 +341,7 @@
       path: /Audio/Effects/metal_thud1.ogg
     angle: 0
     animation: WeaponArcPunch
+    range: 1.5
     damage:
       types:
         Pierce: 5
@@ -328,6 +389,7 @@
       path: /Audio/Weapons/chainsaw.ogg
     angle: 0
     animation: WeaponArcPunch
+    range: 1.5
     damage:
       types:
         Slash: 3
@@ -401,6 +463,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
 
 - type: entity
   parent: N14MobRobotHostile
@@ -454,6 +521,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
 
 - type: entity
   parent: N14MobRobotHostile
@@ -507,6 +579,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
 
 - type: entity
   parent: N14MobRobotHostile
@@ -552,6 +629,11 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
   - type: AmbientSound
     range: 6
     volume: -3

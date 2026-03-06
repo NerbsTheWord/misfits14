@@ -20,6 +20,14 @@ public sealed partial class NPCJukeComponent : Component
 
     [DataField]
     public Vector2i? TargetTile;
+
+    /// <summary>
+    /// Distance at which a ranged NPC will try to back away from an approaching target.
+    /// Only used when <see cref="JukeType"/> is <see cref="JukeType.Away"/> and the NPC has
+    /// an active <see cref="NPCRangedCombatComponent"/>.
+    /// </summary>
+    [DataField]
+    public float RetreatDistance = 2.5f;
 }
 
 public enum JukeType : byte

@@ -24,6 +24,13 @@ public sealed partial class JukeOperator : HTNOperator, IHtnConditionalShutdown
     [DataField]
     public float JukeCooldown = 3f;
 
+    /// <summary>
+    ///     Distance at which a ranged NPC will retreat from an approaching target.
+    ///     Only applies when <see cref="JukeType"/> is <see cref="JukeType.Away"/>.
+    /// </summary>
+    [DataField]
+    public float RetreatDistance = 2.5f;
+
     public override void Startup(NPCBlackboard blackboard)
     {
         base.Startup(blackboard);
@@ -31,6 +38,7 @@ public sealed partial class JukeOperator : HTNOperator, IHtnConditionalShutdown
         juke.JukeType = JukeType;
         juke.JukeDuration = JukeDuration;
         juke.JukeCooldown = JukeCooldown;
+        juke.RetreatDistance = RetreatDistance;
     }
 
     public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)

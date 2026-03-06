@@ -27,6 +27,11 @@
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
+        MeleeRange: !type:Single
+          1.5
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day

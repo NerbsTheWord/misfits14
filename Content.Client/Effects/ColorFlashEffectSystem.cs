@@ -16,7 +16,7 @@ public sealed class ColorFlashEffectSystem : SharedColorFlashEffectSystem
     /// <summary>
     /// It's a little on the long side but given we use multiple colours denoting what happened it makes it easier to register.
     /// </summary>
-    private const float AnimationLength = 0.30f;
+    private const float AnimationLength = 0.10f;
     private const string AnimationKey = "color-flash-effect";
 
     public override void Initialize()
