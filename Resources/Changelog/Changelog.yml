@@ -100,3 +100,43 @@ Entries:
   id: 5611
   time: '2026-03-06T17:56:37.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/30
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Super Mutant species- full body, organs, parts, species prototype,
+        displacement RSI, and custom sprite textures. Current non-mutie sprites
+        do not width stretch to arms, but only length. Weird headplacement for
+        now. Will just copy and edit 32x32 sprites into 32x48 for SM future. Or
+        something else.
+    - type: Add
+      message: >-
+        Super Mutant job role, department, faction, localization (job name,
+        description, supervisor).
+    - type: Add
+      message: >-
+        ClothingScale field on SlotDisplacementData for per-species clothing
+        size scaling.
+    - type: Add
+      message: >-
+        Client-side clothing scale application from displacement data in
+        ClientClothingSystem.
+    - type: Add
+      message: >-
+        BorgHands component & system (replaces HandsFill workaround for borg
+        chassis).
+    - type: Tweak
+      message: >-
+        Late-join and profile editor department labels no longer append "jobs"
+        suffix.
+    - type: Tweak
+      message: >-
+        HandsFillSystem no longer skips spawning items with empty/tilde IDs —
+        simplified null check.
+    - type: Fix
+      message: >-
+        Replaced deprecated HandsFill empty-hand hack on base borg chassis with
+        proper BorgHands component.
+  id: 5612
+  time: '2026-03-06T22:44:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/31
