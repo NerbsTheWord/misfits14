@@ -1,0 +1,15 @@
+# N14-specific borg modules for playable synthetic robots.
+
+- type: entity
+  id: N14BorgModulePlasma
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: plasma caster cyborg module
+  description: A plasma projector module. Provides a plasma rifle for ranged combat.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-radiation
+  - type: ItemBorgModule
+    items:
+    - N14WeaponPlasmaRifle

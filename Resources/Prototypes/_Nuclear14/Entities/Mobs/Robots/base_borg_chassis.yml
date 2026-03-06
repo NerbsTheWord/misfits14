@@ -17,6 +17,16 @@
     soundHit:
       collection: MetalThud
   - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/metal_thud1.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    range: 1.5
+    damage:
+      groups:
+        Brute: 10
   - type: NoSlip
   - type: Fixtures
     fixtures:
@@ -83,6 +93,11 @@
   - type: Hands
     showInHands: false
     # disableExplosionRecursion: true # not in our version of the game yet 16/07/2024
+  - type: HandsFill
+    hands:
+      right: ~
+      left: ~
+  - type: ComplexInteraction
   - type: IntrinsicRadioReceiver
   # - type: IntrinsicRadioTransmitter
     # channels:
@@ -94,6 +109,8 @@
   - type: Repairable
     doAfterDelay: 10
     allowSelfRepair: false
+  - type: ItemToggle
+    onUse: false
   - type: BorgChassis
     maxModules: 10
     moduleWhitelist:

@@ -313,3 +313,4 @@ package-lock.json
 /Resources/Prototypes/Guidebook
 /Resources/Prototypes/Loadouts
 /Resources/Prototypes/Catalog
+.claude/rules/copilotinst.instructions.md

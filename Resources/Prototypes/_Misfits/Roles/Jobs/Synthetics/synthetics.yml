@@ -1,0 +1,74 @@
+# Synthetics jobs: playable Mr. Handy, Protectron, Mr. Gutsy, and Assaultron robot roles.
+# Players spawn directly into the robot body via jobEntity.
+
+- type: job
+  id: SyntheticMrHandy
+  name: job-name-synthetic-mr-handy
+  description: job-description-synthetic-mr-handy
+  playTimeTracker: SyntheticMrHandy
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  nameDataset: NamesAI
+  spawnLoadout: false
+  applyTraits: false
+  jobEntity: N14PlayerSyntheticMrHandy
+
+- type: job
+  id: SyntheticProtectron
+  name: job-name-synthetic-protectron
+  description: job-description-synthetic-protectron
+  playTimeTracker: SyntheticProtectron
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  nameDataset: NamesAI
+  spawnLoadout: false
+  applyTraits: false
+  jobEntity: N14PlayerSyntheticProtectron
+
+- type: job
+  id: SyntheticMrGutsy
+  name: job-name-synthetic-mr-gutsy
+  description: job-description-synthetic-mr-gutsy
+  playTimeTracker: SyntheticMrGutsy
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  nameDataset: NamesAI
+  spawnLoadout: false
+  applyTraits: false
+  jobEntity: N14PlayerSyntheticMrGutsy
+
+- type: job
+  id: SyntheticAssaultron
+  name: job-name-synthetic-assaultron
+  description: job-description-synthetic-assaultron
+  playTimeTracker: SyntheticAssaultron
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  nameDataset: NamesAI
+  spawnLoadout: false
+  applyTraits: false
+  jobEntity: N14PlayerSyntheticAssaultron
+
+- type: playTimeTracker
+  id: SyntheticMrHandy
+
+- type: playTimeTracker
+  id: SyntheticProtectron
+
+- type: playTimeTracker
+  id: SyntheticMrGutsy
+
+- type: playTimeTracker
+  id: SyntheticAssaultron

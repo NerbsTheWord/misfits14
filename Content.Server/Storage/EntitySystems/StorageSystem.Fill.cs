@@ -19,6 +19,11 @@ public sealed partial class StorageSystem
 
         if (TryComp<StorageComponent>(uid, out var storageComp))
         {
+            // #Misfits Change - Skip fill if the container already has items (e.g., loaded from a map save).
+            // This prevents StorageFill from spawning duplicate items into pre-filled containers.
+            if (storageComp.StoredItems.Count > 0)
+                return;
+
             FillStorage((uid, component, storageComp));
         }
         else if (TryComp<EntityStorageComponent>(uid, out var entityStorageComp))

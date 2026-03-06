@@ -1,0 +1,197 @@
+# Player-controlled Synthetic robots for the Misfits server.
+# These inherit directly from N14BaseRobotChassis so they do NOT have the
+# GhostRole component that pre-placed map robots carry.
+
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14PlayerSyntheticMrHandy
+  name: mr. handy
+  suffix: player, synthetic
+  description: A General Atomics Mr. Handy domestic servant robot, now guided by a living mind.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Inventory
+    templateId: borgShort
+  - type: StepTriggerImmune
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleDiagnosis
+        - BorgModuleTreatment
+        - BorgModuleSurgery
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14PlayerSyntheticProtectron
+  name: protectron
+  suffix: player, synthetic
+  description: A RobCo Industries Protectron security robot, now guided by a living mind.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Inventory
+    templateId: borgShort
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.0
+    baseSprintSpeed: 3.5
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14PlayerSyntheticMrGutsy
+  name: mr. gutsy
+  suffix: player, synthetic
+  description: A General Atomics Mr. Gutsy military combat robot, now guided by a living mind. Equipped with a plasma caster and aggressive military programming.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Inventory
+    templateId: borgShort
+  - type: StepTriggerImmune
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - N14BorgModulePlasma
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14PlayerSyntheticAssaultron
+  name: assaultron
+  suffix: player, synthetic
+  description: A RobCo Industries Assaultron combat robot, now guided by a living mind. Fast, deadly, and built for warfare.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Inventory
+    templateId: borgShort
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 6.0
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper

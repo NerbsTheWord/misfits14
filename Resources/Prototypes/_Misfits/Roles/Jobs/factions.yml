@@ -1,0 +1,9 @@
+- type: department
+  id: Synthetics
+  description: department-Synthetics-description
+  color: "#607d8b"
+  roles:
+  - SyntheticMrHandy
+  - SyntheticMrGutsy
+  - SyntheticProtectron
+  - SyntheticAssaultron
