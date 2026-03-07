@@ -1,8 +1,8 @@
 ---
 name: Request a feature
-about: "Please outline your request in Discord first if you aren't a maintainer."
+about: Please outline your request in Discord first if you aren't a maintainer.
 title: ''
-labels: ["Type: Feature"]
+labels: ''
 assignees: ''
 
 ---
