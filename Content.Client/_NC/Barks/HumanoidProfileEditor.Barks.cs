@@ -37,7 +37,7 @@ public sealed partial class HumanoidProfileEditor
         {
             var voice = _barkVoiceList[i];
 
-            var name = Loc.GetString(voice.Name);
+            var name = voice.Name; // #Misfits Change - Name is already display text, not a loc key
             BarkVoiceButton.AddItem(name, i);
 
             if (firstVoiceChoiceId == 1)
