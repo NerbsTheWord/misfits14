@@ -815,3 +815,35 @@ Entries:
   id: 5625
   time: '2026-03-09T16:50:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/85
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Switched MHelp access and mentor categorization to ViewNotes, deprecated
+        Mentorhelp without breaking stored flag values, and made Host imply all
+        permissions for server-side checks.
+    - type: Fix
+      message: >-
+        Cleaned up admin permissions and admin-list wording to match the new
+        access model, including changing the connected admin list label.
+    - type: Add
+      message: >-
+        Added a persistent currency HUD button and wallet UI flow, including
+        quick deposit of held currency directly into the wallet.
+    - type: Add
+      message: >-
+        Added Enclave tactical map support through new feed/tag wiring and
+        updated PDA, helmet, and armor prototypes.
+    - type: Add
+      message: Added CREDITS.md for upstream and asset acknowledgements.
+    - type: Tweak
+      message: >-
+        Moved the wasteland map HUD action requirement from outer clothing to
+        the head slot for power armor support consistency.
+    - type: Tweak
+      message: >-
+        Renamed the project preset/gamemode branding from N14 to M14 and updated
+        related config and locale text to Misfits: Nuclear Wasteland.
+  id: 5626
+  time: '2026-03-09T19:29:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/86
