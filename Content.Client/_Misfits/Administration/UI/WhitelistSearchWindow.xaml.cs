@@ -27,12 +27,6 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
     public Action<ProtoId<JobPrototype>, int>? OnAdjustJobSlots;
 
     private CancellationTokenSource? _searchDebounce;
-    private WhitelistSearchMode _mode;
-    private HashSet<ProtoId<JobPrototype>>? _whitelists;
-    private List<WhitelistJobAdminInfo>? _jobAdminInfo;
-    private bool _canManagePlaytime;
-    private bool _canManageSlots;
-    private bool _hasStation;
 
     // #Misfits Change - Only show Fallout-relevant factions/departments in the whitelist GUI
     private static readonly HashSet<string> AllowedDepartments = new()
@@ -56,7 +50,6 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
         SearchBox.OnTextChanged += OnSearchTextChanged;
         SearchBox.OnTextEntered += OnSearchTextEntered;
         SearchButton.OnPressed += OnSearchButtonPressed;
-        RoleFilterBox.OnTextChanged += _ => RefreshDepartments();
     }
 
     private void OnSearchButtonPressed(BaseButton.ButtonEventArgs args)
@@ -95,36 +88,7 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
 
     public void HandleState(WhitelistSearchEuiState state)
     {
-        _mode = state.Mode;
-        Title = state.Mode == WhitelistSearchMode.JobSlots
-            ? Loc.GetString("misfits-whitelist-search-title-slots")
-            : Loc.GetString("misfits-whitelist-search-title-role-whitelists");
-
-        var isSlotMode = state.Mode == WhitelistSearchMode.JobSlots;
-        PlayerSearchArea.Visible = !isSlotMode;
-
-        if (isSlotMode)
-        {
-            // Job Slots mode: no player selection needed — show slot panel immediately.
-            _whitelists = state.Whitelists ?? new HashSet<ProtoId<JobPrototype>>();
-            _jobAdminInfo = state.JobAdminInfo;
-            _canManagePlaytime = state.CanManagePlaytime;
-            _canManageSlots = state.CanManageSlots;
-            _hasStation = state.SelectedStationName != null;
-
-            SelectedPlayerLabel.Text = Loc.GetString("misfits-whitelist-search-slots-server-wide");
-            SelectedStationLabel.Text = state.SelectedStationName
-                ?? Loc.GetString("misfits-whitelist-search-station-none");
-
-            if (_jobAdminInfo != null)
-                RefreshDepartments();
-            else
-                Departments.RemoveAllChildren();
-
-            return;
-        }
-
-        // Role Whitelists mode: player search required.
+        // Update search results
         SearchResults.RemoveAllChildren();
         foreach (var playerInfo in state.SearchResults)
         {
@@ -138,64 +102,38 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
             SearchResults.AddChild(button);
         }
 
+        // Update selected player info
         if (state.SelectedPlayerName != null && state.Whitelists != null)
         {
-            _whitelists = state.Whitelists;
-            _jobAdminInfo = state.JobAdminInfo;
-            _canManagePlaytime = state.CanManagePlaytime;
-            _canManageSlots = state.CanManageSlots;
-            _hasStation = state.SelectedStationName != null;
-
-            SelectedPlayerLabel.Text = Loc.GetString("misfits-whitelist-search-selected-player-whitelists", ("player", state.SelectedPlayerName));
+            SelectedPlayerLabel.Text = $"Whitelists for: {state.SelectedPlayerName}";
             SelectedStationLabel.Text = state.SelectedStationName == null
                 ? Loc.GetString("misfits-whitelist-search-station-none")
                 : Loc.GetString("misfits-whitelist-search-station", ("station", state.SelectedStationName));
 
-            RefreshDepartments();
+            UpdateDepartments(
+                state.Whitelists,
+                state.JobAdminInfo,
+                state.CanManagePlaytime,
+                state.CanManageSlots,
+                state.SelectedStationName != null);
         }
         else
         {
-            _whitelists = null;
-            _jobAdminInfo = null;
-            _canManagePlaytime = false;
-            _canManageSlots = false;
-            _hasStation = false;
-            SelectedPlayerLabel.Text = Loc.GetString("misfits-whitelist-search-no-player-selected");
+            SelectedPlayerLabel.Text = "No player selected";
             SelectedStationLabel.Text = Loc.GetString("misfits-whitelist-search-station-none");
             Departments.RemoveAllChildren();
         }
     }
 
-    private void RefreshDepartments()
-    {
-        if (_whitelists == null)
-        {
-            Departments.RemoveAllChildren();
-            return;
-        }
-
-        UpdateDepartments(
-            _mode,
-            _whitelists,
-            _jobAdminInfo,
-            _canManagePlaytime,
-            _canManageSlots,
-            _hasStation,
-            RoleFilterBox.Text.Trim());
-    }
-
     private void UpdateDepartments(
-        WhitelistSearchMode mode,
         HashSet<ProtoId<JobPrototype>> whitelists,
         List<WhitelistJobAdminInfo>? jobAdminInfo,
         bool canManagePlaytime,
         bool canManageSlots,
-        bool hasStation,
-        string roleFilter)
+        bool hasStation)
     {
         var infoLookup = jobAdminInfo?
             .ToDictionary(x => x.Job, x => x) ?? new Dictionary<ProtoId<JobPrototype>, WhitelistJobAdminInfo>();
-        var normalizedFilter = roleFilter.Trim();
 
         Departments.RemoveAllChildren();
         foreach (var proto in _proto.EnumeratePrototypes<DepartmentPrototype>().OrderByDescending(x => x.Weight).ThenBy(x => x.ID))
@@ -203,17 +141,7 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
             if (!AllowedDepartments.Contains(proto.ID))
                 continue;
 
-            var visibleRoles = proto.Roles
-                .Where(id => _proto.TryIndex(id, out JobPrototype? job)
-                    && (string.IsNullOrWhiteSpace(normalizedFilter)
-                        || job.LocalizedName.Contains(normalizedFilter, StringComparison.OrdinalIgnoreCase)
-                        || job.ID.Contains(normalizedFilter, StringComparison.OrdinalIgnoreCase)))
-                .ToList();
-
-            if (visibleRoles.Count == 0)
-                continue;
-
-            var panel = new WhitelistDepartmentPanel(proto, _proto, mode, visibleRoles, whitelists, infoLookup, canManagePlaytime, canManageSlots, hasStation);
+            var panel = new WhitelistDepartmentPanel(proto, _proto, whitelists, infoLookup, canManagePlaytime, canManageSlots, hasStation);
             panel.OnSetJob += (id, whitelisting) => OnSetJob?.Invoke(id, whitelisting);
             panel.OnAddRoleTime += (id, timeString) => OnAddRoleTime?.Invoke(id, timeString);
             panel.OnAdjustJobSlots += (id, delta) => OnAdjustJobSlots?.Invoke(id, delta);

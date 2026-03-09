@@ -1,5 +1,4 @@
 // #Misfits Change - Enriched job row with whitelist, role time, and slot controls
-using System.Globalization;
 using Content.Shared.Roles;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
@@ -16,7 +15,6 @@ public sealed class WhitelistJobRow : PanelContainer
     public WhitelistJobRow(
         Robust.Shared.Prototypes.ProtoId<JobPrototype> jobId,
         JobPrototype job,
-        Content.Shared._Misfits.Administration.WhitelistSearchMode mode,
         bool whitelisted,
         TimeSpan roleTime,
         int? slots,
@@ -33,10 +31,6 @@ public sealed class WhitelistJobRow : PanelContainer
             SeparationOverride = 8,
             HorizontalExpand = true,
         };
-
-        var showWhitelistControls = mode == Content.Shared._Misfits.Administration.WhitelistSearchMode.RoleWhitelists;
-        var showRoleTimeControls = mode == Content.Shared._Misfits.Administration.WhitelistSearchMode.RoleWhitelists;
-        var showSlotControls = mode == Content.Shared._Misfits.Administration.WhitelistSearchMode.JobSlots;
 
         var whitelistBox = new CheckBox
         {
@@ -120,24 +114,14 @@ public sealed class WhitelistJobRow : PanelContainer
         if (!job.Whitelisted)
             whitelistBox.Modulate = Color.FromHex("#cccccc");
 
-        if (showWhitelistControls)
-            root.AddChild(whitelistBox);
-
+        root.AddChild(whitelistBox);
         root.AddChild(jobLabel);
-
-        if (showRoleTimeControls)
-        {
-            root.AddChild(roleTimeLabel);
-            root.AddChild(addTimeInput);
-            root.AddChild(addTimeButton);
-        }
-
-        if (showSlotControls)
-        {
-            root.AddChild(slotLabel);
-            root.AddChild(minusButton);
-            root.AddChild(plusButton);
-        }
+        root.AddChild(roleTimeLabel);
+        root.AddChild(addTimeInput);
+        root.AddChild(addTimeButton);
+        root.AddChild(slotLabel);
+        root.AddChild(minusButton);
+        root.AddChild(plusButton);
 
         AddChild(root);
     }
@@ -145,12 +129,12 @@ public sealed class WhitelistJobRow : PanelContainer
     private static string FormatTime(TimeSpan time)
     {
         if (time.TotalHours < 1)
-            return Math.Round(time.TotalMinutes).ToString("0", CultureInfo.InvariantCulture) + "m";
+            return FormattableString.Invariant($"{Math.Round(time.TotalMinutes):0}m");
 
         if (time.TotalDays < 1)
-            return time.TotalHours.ToString("0.#", CultureInfo.InvariantCulture) + "h";
+            return FormattableString.Invariant($"{time.TotalHours:0.#}h");
 
-        return time.TotalDays.ToString("0.#", CultureInfo.InvariantCulture) + "d";
+        return FormattableString.Invariant($"{time.TotalDays:0.#}d");
     }
 
     private static string FormatSlotText(int? slots, bool hasSlotConfiguration)

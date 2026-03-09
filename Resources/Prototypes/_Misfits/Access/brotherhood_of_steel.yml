@@ -74,6 +74,7 @@
   - BOS
   - BOSInitiate
   - BOSScribe
+  - BOSSeniorScribe  # #Misfits Change - unified faction: scribes open all scribe-wing doors
 
 - type: accessGroup
   id: BOSKnight
@@ -81,6 +82,7 @@
   - BOS
   - BOSInitiate
   - BOSKnight
+  - BOSSeniorKnight  # #Misfits Change - unified faction: knights open all knight-wing doors
 
 - type: accessGroup
   id: BOSPaladin
@@ -88,8 +90,11 @@
   - BOS
   - BOSInitiate
   - BOSScribe
+  - BOSSeniorScribe  # #Misfits Change - unified faction
   - BOSKnight
+  - BOSSeniorKnight  # #Misfits Change - unified faction
   - BOSPaladin
+  - BOSSeniorPaladin  # #Misfits Change - unified faction: paladins open all paladin-wing doors
 
 - type: accessGroup
   id: BOSSeniorScribe
@@ -124,9 +129,16 @@
   tags:
   - BOS
   - BOSInitiate
+  - BOSSquire
   - BOSScribe
   - BOSSeniorScribe
   - BOSHeadScribe
+  - BOSKnight        # #Misfits Change - Head Scribe is command-level, full base access
+  - BOSSeniorKnight
+  - BOSHeadKnight
+  - BOSPaladin
+  - BOSSeniorPaladin
+  - BOSHeadPaladin
 
 - type: accessGroup
   id: BOSHeadKnight
@@ -134,9 +146,15 @@
   - BOS
   - BOSInitiate
   - BOSSquire
+  - BOSScribe        # #Misfits Change - Head Knight is command-level, full base access
+  - BOSSeniorScribe
+  - BOSHeadScribe
   - BOSKnight
   - BOSSeniorKnight
   - BOSHeadKnight
+  - BOSPaladin
+  - BOSSeniorPaladin
+  - BOSHeadPaladin
 
 - type: accessGroup
   id: BOSHeadPaladin

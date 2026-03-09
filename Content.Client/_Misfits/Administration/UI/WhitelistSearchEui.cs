@@ -9,7 +9,7 @@ namespace Content.Client._Misfits.Administration.UI;
 public sealed class WhitelistSearchEui : BaseEui
 {
     private readonly ISawmill _sawmill;
-    private readonly WhitelistSearchWindow _window;
+    private WhitelistSearchWindow _window;
 
     public WhitelistSearchEui()
     {
@@ -47,5 +47,6 @@ public sealed class WhitelistSearchEui : BaseEui
     {
         base.Closed();
         _window.Close();
+        _window.Dispose();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Content.Client._Misfits.Administration.UI; // #Misfits Change
-using Content.Client.Administration.Managers;
+﻿using Content.Client.Administration.Managers;
 using Content.Client.Administration.Systems;
 using Content.Client.Administration.UI;
 using Content.Client.Administration.UI.Tabs.ObjectsTab;
@@ -215,12 +214,9 @@ public sealed class AdminUIController : UIController,
 
         var function = args.Function;
 
-        // #Misfits Change — left-click opens quick-action popup, right-click opens verb menu
+        // #Misfits Change — left-click opens Player Panel, right-click opens verb menu
         if (function == EngineKeyFunctions.UIClick)
-        {
-            var popup = new PlayerActionPopup(info);
-            popup.OpenCentered();
-        }
+            _conHost.ExecuteCommand($"playerpanel \"{info.Username}\"");
         else if (function == EngineKeyFunctions.UIRightClick && info.NetEntity != null)
             _verb.OpenVerbMenu(info.NetEntity.Value, true);
         else

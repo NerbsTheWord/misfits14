@@ -25,7 +25,7 @@ public sealed class WhitelistSearchCommand : LocalizedCommands
             return;
         }
 
-        var ui = new WhitelistSearchEui(WhitelistSearchMode.RoleWhitelists);
+        var ui = new WhitelistSearchEui();
         _eui.OpenEui(ui, player);
     }
 }

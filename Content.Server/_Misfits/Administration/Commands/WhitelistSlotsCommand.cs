@@ -25,7 +25,7 @@ public sealed class WhitelistSlotsCommand : LocalizedCommands
             return;
         }
 
-        var ui = new WhitelistSearchEui(WhitelistSearchMode.JobSlots);
+        var ui = new WhitelistSearchEui();
         _eui.OpenEui(ui, player);
     }
 }

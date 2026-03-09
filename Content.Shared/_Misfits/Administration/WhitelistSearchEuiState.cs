@@ -7,13 +7,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Misfits.Administration;
 
-[Serializable, NetSerializable]
-public enum WhitelistSearchMode : byte
-{
-    RoleWhitelists,
-    JobSlots,
-}
-
 /// <summary>
 /// State sent from server to client for the whitelist search EUI.
 /// Contains search results and the currently selected player's whitelists.
@@ -21,7 +14,6 @@ public enum WhitelistSearchMode : byte
 [Serializable, NetSerializable]
 public sealed class WhitelistSearchEuiState : EuiStateBase
 {
-    public WhitelistSearchMode Mode;
     public bool CanManagePlaytime;
     public bool CanManageSlots;
 
@@ -56,7 +48,6 @@ public sealed class WhitelistSearchEuiState : EuiStateBase
     public string? SelectedStationName;
 
     public WhitelistSearchEuiState(
-        WhitelistSearchMode mode,
         bool canManagePlaytime,
         bool canManageSlots,
         List<WhitelistPlayerInfo> searchResults,
@@ -66,7 +57,6 @@ public sealed class WhitelistSearchEuiState : EuiStateBase
         List<WhitelistJobAdminInfo>? jobAdminInfo,
         string? selectedStationName)
     {
-        Mode = mode;
         CanManagePlaytime = canManagePlaytime;
         CanManageSlots = canManageSlots;
         SearchResults = searchResults;

@@ -103,9 +103,10 @@ binds:
 - function: FocusChatInputWindow
   type: State
   key: T
-- function: FocusLocalChatWindow
-  type: State
-  key: Period
+# #Misfits Change - Removed Period key from FocusLocalChatWindow so "..." can be typed in chat
+# - function: FocusLocalChatWindow
+#   type: State
+#   key: Period
 - function: FocusEmote
   type: State
   mod1: Shift
