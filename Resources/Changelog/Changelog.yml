@@ -806,3 +806,12 @@ Entries:
   id: 5624
   time: '2026-03-09T16:31:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/84
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        As title states, had 'baseThrowingSpear' name that players saw, fixed it
+        to just show 'throwing spear'. Was supposed to put this in the last PR.
+  id: 5625
+  time: '2026-03-09T16:50:10.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/85
