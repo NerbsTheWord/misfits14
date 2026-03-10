@@ -1,4 +1,5 @@
 // #Misfits Add - Integration test: verifies a dug grave can close over a nearby body and reopen it later.
+#nullable enable
 
 using Content.IntegrationTests.Pair;
 using Content.Server.Storage.EntitySystems;

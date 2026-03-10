@@ -68,6 +68,14 @@ undecided-loadout-category-veteran-berserker-description =
     1 fire axe, 3 throwing knives, 2 dirty stimpaks, 2 K-rations,
     1 bottle of water, 1 mustard.
 
+# Misfits Change - Legion veteran powerfist kit.
+undecided-loadout-category-veteran-goliath-name = Veteran Legionary Goliath Kit
+undecided-loadout-category-veteran-goliath-description =
+    A box with everything needed to smash through the line.
+    Contains: 1 veteran legion armor, 1 rope belt, 1 goliath power fist,
+    3 throwing knives, 2 healing powder, 2 K-rations,
+    1 bottle of water, 1 mustard.
+
 undecided-loadout-category-veteran-kebab-name = Veteran Legionary "Kebab" Kit
 undecided-loadout-category-veteran-kebab-description =
     A box with everything needed to leave a mark on your enemies' wounds.

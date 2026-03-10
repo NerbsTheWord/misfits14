@@ -169,6 +169,7 @@
     possibleSets:
     - VeteranRiflemanSet
     - VeteranBerserkerSet
+    - VeteranGoliathSet # #Misfits Change /Add/: Legion veterans get a dedicated powerfist option.
     - VeteranShieldbearerSet
 
 - type: entity
@@ -720,6 +721,16 @@
     state: base
   content:
   - KitVeteranBerserker
+
+- type: UndecidedLoadoutBackpackSet
+  id: VeteranGoliathSet
+  name: Veteran Goliath
+  description: Experienced legionary shock gauntlet kit built around a captive power fist.
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVeteranGoliath
 
 - type: UndecidedLoadoutBackpackSet
   id: VeteranShieldbearerSet
