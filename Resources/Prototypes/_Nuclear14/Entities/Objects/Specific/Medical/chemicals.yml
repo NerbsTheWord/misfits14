@@ -661,46 +661,66 @@
           Quantity: 20
 
 - type: entity
-  parent: DrinkBottleGlassBaseFull
+  parent: DrinkBase
+  id: N14AntidoteBottleBase
+  abstract: true
+  name: antidote bottle
+  description: A glass bottle for storing wasteland antidotes.
+  components:
+  - type: Tag
+    tags:
+    - Bottle
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
+    state: antidote
+  - type: Item
+    size: Tiny
+    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
+
+- type: entity
+  parent: N14AntidoteBottleBase
+  id: N14AntidoteEmpty
+  suffix: empty
+  name: antidote bottle
+  description: An empty glass bottle sized for antidote batches.
+
+- type: entity
+  parent: N14AntidoteBottleBase
   id: N14Antidote
   name: antidote
-  description: A toxin antidote made from radscorpion tail and ethanol.
+  description: A toxin antidote made from radscorpion tail, ethanol, and tarberries.
   components:
   - type: SolutionContainerManager
     solutions:
       drink:
+        maxVol: 100
         reagents:
-        - ReagentId: AntidoteMixture
+        - ReagentId: Antidote
           Quantity: 100
-  - type: Sprite
-    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
-    state: antidote
 
 - type: entity
-  parent: N14ChemicalSyringe
+  # #Misfits Change /Tweak/ - Smelling salts use a long resuscitation interaction instead of injecting a reagent.
+  parent: BaseItem
   id: N14SmellingSalts
   name: smelling salts
   description: A small glass ampoule containing smelling salts. Their smell is said to wake up even a dead ghoul.
   components:
+  - type: Item
+    size: Tiny
+    sprite: _Nuclear14/Objects/Specific/Medical/ms13_medical.rsi
   - type: Sprite
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_medical.rsi
-    layers:
-    - state: powder1
-      map: ["enum.SolutionContainerLayers.Fill"]
-  - type: SolutionContainerVisuals
-    maxFillLevels: 1
-    changeColor: false
-    emptySpriteName: powder1
-  - type: Hypospray
-    solutionName: pen
-    transferAmount: 15
-  - type: SolutionContainerManager
-    solutions:
-      pen:
-        maxVol: 15
-        reagents:
-        - ReagentId: SmellingSalts
-          Quantity: 15
+    state: powder1
+  - type: SmellingSalts
+    doAfterDuration: 6
+    reviveHeal:
+      types:
+        Asphyxiation: -40
+  - type: DoAfter
 
 - type: entity
   parent: N14HealingPowder
@@ -722,7 +742,35 @@
           Quantity: 20
 
 - type: entity
-  parent: DrinkBottleGlassBaseFull
+  parent: DrinkBase
+  id: N14BitterdrinkBottleBase
+  abstract: true
+  name: bitterdrink bottle
+  description: A bottle for storing brewed tribal remedies.
+  components:
+  - type: Tag
+    tags:
+    - Bottle
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: bitterdrink
+  - type: Item
+    size: Tiny
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+
+- type: entity
+  parent: N14BitterdrinkBottleBase
+  id: N14BitterdrinkEmpty
+  suffix: empty
+  name: bitterdrink bottle
+  description: An empty bottle meant for bitterdrink and similar herbal brews.
+
+- type: entity
+  parent: N14BitterdrinkBottleBase
   id: N14Bitterdrink
   name: Bitterdrink
   description: A bottle containing a mixture of plants to aid against poisons and radiation.
@@ -730,12 +778,10 @@
   - type: SolutionContainerManager
     solutions:
       drink:
+        maxVol: 50
         reagents:
         - ReagentId: Bitterdrink
           Quantity: 50
-  - type: Sprite
-    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
-    state: bitterdrink
 
 - type: entity
   parent: N14HealingPowder
