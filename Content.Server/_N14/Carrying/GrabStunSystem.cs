@@ -1,5 +1,4 @@
 using Content.Server.Carrying;
-using Content.Shared.Carrying;
 using Content.Shared.Stunnable;
 
 namespace Content.Server._N14.Carrying;
@@ -15,20 +14,13 @@ public sealed class GrabStunSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CarriableComponent, CarryDoAfterEvent>(OnCarryDoAfter);
+        SubscribeLocalEvent<BeingCarriedComponent, CarrySuccessEvent>(OnCarrySuccess);
     }
 
-    private void OnCarryDoAfter(EntityUid uid, CarriableComponent _, CarryDoAfterEvent args)
+    private void OnCarrySuccess(EntityUid uid, BeingCarriedComponent _, CarrySuccessEvent args)
     {
-        if (args.Cancelled)
-            return;
-
-        // Confirm the carry actually completed (BeingCarriedComponent is added by CarryingSystem).
-        if (!HasComp<BeingCarriedComponent>(uid))
-            return;
-
         // Only stun if the carrier has GrabStunComponent.
-        if (!TryComp<GrabStunComponent>(args.Args.User, out var grabStun))
+        if (!TryComp<GrabStunComponent>(args.Carrier, out var grabStun))
             return;
 
         _stun.TryStun(uid, grabStun.StunTime, refresh: true);
