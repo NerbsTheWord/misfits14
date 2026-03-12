@@ -186,6 +186,9 @@
   name: Nuka-Cola bottle
   description: The leading cola since 2044.
   components:
+  - type: Tag
+    tags:
+    - N14EmptyNukaBottle
   - type: Sprite
     sprite: _Nuclear14/Objects/Consumable/Drinks/nuka_cola_new.rsi
     state: empty

@@ -27,7 +27,7 @@ misfits-chat-terminal-use = uses the {$terminal} terminal
 
 ## PersistentCurrencySystem
 # Private feedback (only to the player) for deposit/withdraw actions.
-misfits-currency-no-currency = You're not holding any currency!
+misfits-currency-no-currency = You are not holding any currency to deposit.
 misfits-currency-deposited = Deposited {$amount} {$type}. Total: {$total}
 misfits-currency-insufficient = Not enough currency!
 misfits-currency-withdrew = Withdrew {$amount} {$type}.
@@ -36,4 +36,21 @@ misfits-currency-withdrew = Withdrew {$amount} {$type}.
 # Emote sent from the defender describing the block — "* Jane deflects John's spear... *"
 spear-block-embedded-emote = deflects {$thrower}'s {$spear}, embedding it in their {$shield}
 spear-block-deflected-emote = deflects {$thrower}'s {$spear}, sending it to the ground
+
+## GrabChatSystem
+# Emote broadcast from the puller when they start dragging another mob.
+misfits-chat-grab-start = grabs {$grabbed}
+
+## DoubleGrabSystem
+# Carrier locks the victim into an active carry hold.
+misfits-chat-double-grab-cinch = pins {$victim} in a firm grip
+# Emote from the victim when they are picked up.
+misfits-chat-double-grab-victim = is forcibly picked up by {$carrier}
+# Victim breaks free during the pending-grab phase.
+misfits-chat-double-grab-resist = breaks free from {$carrier}'s grip
+# Victim gasps while being choked during an active carry.
+misfits-chat-double-grab-gasp = gasps for air
+
+## PersistentCurrencySystem — new keys
+misfits-currency-unsupported-type = Only Bottlecaps can be deposited.
 

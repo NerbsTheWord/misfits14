@@ -13,12 +13,8 @@ addiction-effect-9 = Your stomach churns violently.
 addiction-effect-10 = You feel weak and irritable.
 
 # Misfits Change /Add:/ Drug-specific addiction chat messages
-# These replace the generic popup with a named-drug message sent to the player's chat.
-# Severity tiers are based on DoseCount: new (first), grows (2-3), deepens (4-7), severe (8+).
+# Only the first-addiction message is sent; grows/deepens/severe were removed to prevent per-dose spam.
 addiction-drug-first = You feel your body beginning to crave { $drug }.
-addiction-drug-grows = Your addiction to { $drug } grows.
-addiction-drug-deepens = Your need for { $drug } is deepening.
-addiction-drug-severe = { $drug } has a powerful grip on you.
 
 # Misfits Change /Add:/ Fading messages — sent once each time the remaining addiction tier drops.
 # Tier 3 (severe) > 120s, tier 2 (moderate) 60-120s, tier 1 (mild) 15-60s, tier 0 (nearly gone) <15s.

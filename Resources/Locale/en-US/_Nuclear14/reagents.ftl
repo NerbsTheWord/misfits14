@@ -242,7 +242,7 @@ reagent-name-ultra-robust-healing-mixture = ultra stimpak
 reagent-desc-ultra-robust-healing-mixture = A mixture of reagents that make you heal faster than you can feel it, however it comes with hefty side effects.
 
 reagent-name-hydra = hydra
-reagent-desc-hydra = A mixture of fungi, scorpion tail and nightstalker blood which provides moderate healing, but is quite painful and can be addictive.
+reagent-desc-hydra = A mixture of fungi, scorpion tail and nightstalker blood that works like a wasteland Med-X, dulling incoming damage at the cost of addiction.
 
 reagent-name-damage-resist-mixture = damage resistant mixture
 reagent-desc-damage-resist-mixture = A mixture of reagents that makes you resistant to damage.

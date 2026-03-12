@@ -143,7 +143,7 @@
   startNode: start
   targetNode: hydra
   category: construction-category-medical
-  description: A hydra inhaler assembled from an empty hydra rig, Jet, and Turbo.
+  description: Fill an empty hydra inhaler with 15u of Hydra after mixing the chem from radscorpion tail, cave fungus, and nightstalker blood.
   hide: false
   icon:
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi

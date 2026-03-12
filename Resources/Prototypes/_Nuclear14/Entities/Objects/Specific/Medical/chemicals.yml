@@ -87,6 +87,7 @@
   - type: Tag
     tags:
     - Syringe # Forge-Change
+    - N14EmptySyringe
     - Trash
 
 - type: entity
@@ -333,7 +334,7 @@
   id: N14HydraInhaler
   suffix: empty
   name: hydra inhaler
-  description: A bottle of Supa Yum soda with several vials attached to it. Contains a mildly potent healing chemical that comes with addictive side effects.
+  description: A bottle of Supa Yum soda with several vials attached to it. Contains an addictive painkiller cocktail that functions like a wasteland Med-X.
   components:
   - type: Sprite
     scale: 0.75, 0.75
@@ -348,6 +349,10 @@
   - type: Hypospray
     solutionName: pen
     transferAmount: 15
+  - type: Construction
+    graph: N14Hydra
+    node: start
+    defaultTarget: hydra
   - type: Tag
     tags:
     - HydraInhaler
@@ -358,7 +363,7 @@
   id: N14Hydra
   suffix: filled
   name: hydra
-  description: A bottle of Supa Yum soda with several vials attached to it. Contains a mildly potent healing chemical that comes with addictive side effects.
+  description: A bottle of Supa Yum soda with several vials attached to it. Contains an addictive painkiller cocktail that functions like a wasteland Med-X.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -367,6 +372,9 @@
         reagents:
         - ReagentId: Hydra
           Quantity: 15
+  - type: Construction
+    graph: N14Hydra
+    node: hydra
 
 - type: entity
   parent: N14ChemicalSyringe

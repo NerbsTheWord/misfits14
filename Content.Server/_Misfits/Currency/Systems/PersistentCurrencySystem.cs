@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.Json;
 using Content.Server.Chat.Managers;
+using Content.Server.Database;
 using Content.Server.Mind;
 using Content.Shared._Misfits.Currency;
 using Content.Shared._Misfits.Currency.Components;
@@ -20,6 +21,7 @@ namespace Content.Server._Misfits.Currency.Systems;
 /// </summary>
 public sealed class PersistentCurrencySystem : EntitySystem
 {
+    [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
@@ -29,19 +31,13 @@ public sealed class PersistentCurrencySystem : EntitySystem
     // #Misfits Change - Sawmill for wallet logging
     private ISawmill _log = default!;
 
-    private const string CurrencyDataPath = "/currency_data.json";
-    private readonly Dictionary<string, CharacterCurrency> _currencyData = new();
-    private string _saveFilePath = string.Empty;
-
     /// <summary>
     /// Maps CurrencyType to the entity prototype ID to spawn when withdrawing.
     /// </summary>
     private static readonly Dictionary<CurrencyType, string> CurrencyPrototypes = new()
     {
         { CurrencyType.Bottlecaps, "N14CurrencyCap" },
-        { CurrencyType.NCRDollars, "N14CurrencyNCRDollar" },
-        { CurrencyType.LegionDenarii, "N14CurrencyLegionDenarius" },
-        { CurrencyType.PrewarMoney, "N14CurrencyPrewar" },
+        // #Misfits Change - NCRDollars, LegionDenarii, PrewarMoney removed from persistent tracking
     };
 
     public override void Initialize()
@@ -60,12 +56,8 @@ public sealed class PersistentCurrencySystem : EntitySystem
         SubscribeNetworkEvent<OpenWalletHudMessage>(OnHudOpenWallet); // #Misfits Change - HUD button support
         SubscribeNetworkEvent<DepositHeldCurrencyRequest>(OnDepositHeldRequest); // #Misfits Change - wallet Deposit In Hand button
 
-        // Set up save file path
-        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
-        _saveFilePath = Path.Combine(userDataPath, "currency_data.json");
-
-        // Load existing data
-        LoadCurrencyData();
+        // One-time migration from legacy JSON file to database
+        MigrateJsonToDatabase();
     }
 
     // #Misfits Change - Z key now silently deposits held currency and posts a private chat confirmation
@@ -98,7 +90,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         if (heldItem == null)
         {
             // Nothing to deposit — inform the player privately
-            var nothingMsg = "You are not holding any currency to deposit.";
+            var nothingMsg = Loc.GetString("misfits-currency-no-currency");
             _chatManager.ChatMessageToOne(ChatChannel.Server, nothingMsg, nothingMsg, EntityUid.Invalid, false, session.Channel);
             return;
         }
@@ -111,24 +103,16 @@ public sealed class PersistentCurrencySystem : EntitySystem
         if (TryComp<StackComponent>(heldItem.Value, out var stackComp))
             amount *= stackComp.Count;
 
-        // Determine display name for the currency type
-        var typeName = currency.CurrencyType switch
+        // #Misfits Change - only Bottlecaps are tracked persistently; reject other types
+        if (currency.CurrencyType != CurrencyType.Bottlecaps)
         {
-            CurrencyType.Bottlecaps    => "Bottlecaps",
-            CurrencyType.NCRDollars    => "NCR Dollars",
-            CurrencyType.LegionDenarii => "Denarii",
-            CurrencyType.PrewarMoney   => "Pre-War Money",
-            _                          => "Currency"
-        };
-
-        // Credit the balance
-        switch (currency.CurrencyType)
-        {
-            case CurrencyType.Bottlecaps:    comp.Bottlecaps    += amount; break;
-            case CurrencyType.NCRDollars:    comp.NCRDollars    += amount; break;
-            case CurrencyType.LegionDenarii: comp.LegionDenarii += amount; break;
-            case CurrencyType.PrewarMoney:   comp.PrewarMoney   += amount; break;
+            var unsupportedMsg = Loc.GetString("misfits-currency-unsupported-type");
+            _chatManager.ChatMessageToOne(ChatChannel.Server, unsupportedMsg, unsupportedMsg, EntityUid.Invalid, false, session.Channel);
+            return;
         }
+
+        var typeName = "Bottlecaps";
+        comp.Bottlecaps += amount;
 
         var total = GetBalance(comp, currency.CurrencyType);
 
@@ -141,7 +125,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         QueueDel(heldItem.Value);
 
         // Send a private chat message only the player can see
-        var depositMsg = $"You have deposited {amount} {typeName} into your bank account. You now have {total} {typeName}.";
+        var depositMsg = Loc.GetString("misfits-currency-deposited", ("amount", amount), ("type", typeName), ("total", total));
         _chatManager.ChatMessageToOne(ChatChannel.Server, depositMsg, depositMsg, EntityUid.Invalid, false, session.Channel);
     }
 
@@ -152,8 +136,8 @@ public sealed class PersistentCurrencySystem : EntitySystem
         if (player.AttachedEntity is not { } uid)
             return;
 
-        if (!TryComp<PersistentCurrencyComponent>(uid, out var comp))
-            return;
+        // #Misfits Change - ensure the component exists so new players can open the wallet before touching any currency
+        var comp = EnsureComp<PersistentCurrencyComponent>(uid);
 
         if (!TryComp<ActorComponent>(uid, out var actor))
             return;
@@ -161,9 +145,6 @@ public sealed class PersistentCurrencySystem : EntitySystem
         var stateMsg = new CurrencyWalletStateMessage
         {
             Bottlecaps = comp.Bottlecaps,
-            NCRDollars = comp.NCRDollars,
-            LegionDenarii = comp.LegionDenarii,
-            PrewarMoney = comp.PrewarMoney,
         };
 
         RaiseNetworkEvent(stateMsg, actor.PlayerSession.Channel);
@@ -192,7 +173,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
         if (heldItem == null)
         {
-            var noCurrencyMsg = "You're not holding any currency!";
+            var noCurrencyMsg = Loc.GetString("misfits-currency-no-currency");
             _chatManager.ChatMessageToOne(ChatChannel.Server, noCurrencyMsg, noCurrencyMsg, EntityUid.Invalid, false, player.Channel);
             return;
         }
@@ -205,26 +186,18 @@ public sealed class PersistentCurrencySystem : EntitySystem
         if (TryComp<StackComponent>(heldItem.Value, out var stack))
             amount *= stack.Count;
 
-        // Credit the balance
-        var typeName = currency.CurrencyType switch
+        // #Misfits Change - only Bottlecaps are tracked persistently
+        if (currency.CurrencyType != CurrencyType.Bottlecaps)
         {
-            CurrencyType.Bottlecaps => "bottlecaps",
-            CurrencyType.NCRDollars => "NCR dollars",
-            CurrencyType.LegionDenarii => "denarii",
-            CurrencyType.PrewarMoney => "pre-war money",
-            _ => "currency"
-        };
-
-        switch (currency.CurrencyType)
-        {
-            case CurrencyType.Bottlecaps:    comp.Bottlecaps    += amount; break;
-            case CurrencyType.NCRDollars:    comp.NCRDollars    += amount; break;
-            case CurrencyType.LegionDenarii: comp.LegionDenarii += amount; break;
-            case CurrencyType.PrewarMoney:   comp.PrewarMoney   += amount; break;
+            var unsupportedMsg = Loc.GetString("misfits-currency-unsupported-type");
+            _chatManager.ChatMessageToOne(ChatChannel.Server, unsupportedMsg, unsupportedMsg, EntityUid.Invalid, false, player.Channel);
+            return;
         }
 
+        comp.Bottlecaps += amount;
+
         var total = GetBalance(comp, currency.CurrencyType);
-        var depositMsg = $"Deposited {amount} {typeName}. Total: {total}";
+        var depositMsg = Loc.GetString("misfits-currency-deposited", ("amount", amount), ("type", "Bottlecaps"), ("total", total));
         _chatManager.ChatMessageToOne(ChatChannel.Server, depositMsg, depositMsg, EntityUid.Invalid, false, player.Channel);
 
         Dirty(uid, comp);
@@ -241,10 +214,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
         RaiseNetworkEvent(new CurrencyWalletStateMessage
         {
-            Bottlecaps    = comp.Bottlecaps,
-            NCRDollars    = comp.NCRDollars,
-            LegionDenarii = comp.LegionDenarii,
-            PrewarMoney   = comp.PrewarMoney,
+            Bottlecaps = comp.Bottlecaps,
         }, actor.PlayerSession.Channel);
     }
 
@@ -264,7 +234,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         var balance = GetBalance(comp, msg.CurrencyType);
         if (balance < msg.Amount)
         {
-            var insufficientMsg = "Not enough currency!";
+            var insufficientMsg = Loc.GetString("misfits-currency-insufficient");
             _chatManager.ChatMessageToOne(ChatChannel.Server, insufficientMsg, insufficientMsg, EntityUid.Invalid, false, player.Channel);
             return;
         }
@@ -290,25 +260,13 @@ public sealed class PersistentCurrencySystem : EntitySystem
         // Try to put in hand
         _hands.TryPickupAnyHand(uid, spawned);
 
-        var typeName = msg.CurrencyType switch
-        {
-            CurrencyType.Bottlecaps => "bottlecaps",
-            CurrencyType.NCRDollars => "NCR dollars",
-            CurrencyType.LegionDenarii => "denarii",
-            CurrencyType.PrewarMoney => "pre-war money",
-            _ => "currency"
-        };
-
-        var withdrawMsg = $"Withdrew {msg.Amount} {typeName}.";
+        var withdrawMsg = Loc.GetString("misfits-currency-withdrew", ("amount", msg.Amount), ("type", "Bottlecaps"));
         _chatManager.ChatMessageToOne(ChatChannel.Server, withdrawMsg, withdrawMsg, EntityUid.Invalid, false, player.Channel);
 
         // Send updated state to client
         var stateMsg = new CurrencyWalletStateMessage
         {
             Bottlecaps = comp.Bottlecaps,
-            NCRDollars = comp.NCRDollars,
-            LegionDenarii = comp.LegionDenarii,
-            PrewarMoney = comp.PrewarMoney,
         };
 
         RaiseNetworkEvent(stateMsg, player.Channel);
@@ -316,33 +274,15 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
     private int GetBalance(PersistentCurrencyComponent comp, CurrencyType type)
     {
-        return type switch
-        {
-            CurrencyType.Bottlecaps => comp.Bottlecaps,
-            CurrencyType.NCRDollars => comp.NCRDollars,
-            CurrencyType.LegionDenarii => comp.LegionDenarii,
-            CurrencyType.PrewarMoney => comp.PrewarMoney,
-            _ => 0
-        };
+        // #Misfits Change - only Bottlecaps are tracked persistently
+        return type == CurrencyType.Bottlecaps ? comp.Bottlecaps : 0;
     }
 
     private void SetBalance(PersistentCurrencyComponent comp, CurrencyType type, int value)
     {
-        switch (type)
-        {
-            case CurrencyType.Bottlecaps:
-                comp.Bottlecaps = value;
-                break;
-            case CurrencyType.NCRDollars:
-                comp.NCRDollars = value;
-                break;
-            case CurrencyType.LegionDenarii:
-                comp.LegionDenarii = value;
-                break;
-            case CurrencyType.PrewarMoney:
-                comp.PrewarMoney = value;
-                break;
-        }
+        // #Misfits Change - only Bottlecaps are tracked persistently
+        if (type == CurrencyType.Bottlecaps)
+            comp.Bottlecaps = value;
     }
 
     private void OnUseCurrency(Entity<ConsumableCurrencyComponent> ent, ref UseInHandEvent args)
@@ -362,32 +302,17 @@ public sealed class PersistentCurrencySystem : EntitySystem
             amount *= stack.Count;
         }
 
-        // Add to the appropriate currency type
-        var typeName = "";
-        switch (ent.Comp.CurrencyType)
-        {
-            case CurrencyType.Bottlecaps:
-                currencyComp.Bottlecaps += amount;
-                typeName = "bottlecaps";
-                break;
-            case CurrencyType.NCRDollars:
-                currencyComp.NCRDollars += amount;
-                typeName = "NCR dollars";
-                break;
-            case CurrencyType.LegionDenarii:
-                currencyComp.LegionDenarii += amount;
-                typeName = "denarii";
-                break;
-            case CurrencyType.PrewarMoney:
-                currencyComp.PrewarMoney += amount;
-                typeName = "pre-war money";
-                break;
-        }
+        // #Misfits Change - only Bottlecaps are tracked persistently; leave non-Bottlecap items alone
+        if (ent.Comp.CurrencyType != CurrencyType.Bottlecaps)
+            return;
+
+        currencyComp.Bottlecaps += amount;
+        var typeName = "bottlecaps";
 
         var total = GetBalance(currencyComp, ent.Comp.CurrencyType);
         if (TryComp<ActorComponent>(user, out var actorComp))
         {
-            var depositMsg = $"Deposited {amount} {typeName}. Total: {total}";
+            var depositMsg = Loc.GetString("misfits-currency-deposited", ("amount", amount), ("type", typeName), ("total", total));
             _chatManager.ChatMessageToOne(ChatChannel.Server, depositMsg, depositMsg, EntityUid.Invalid, false, actorComp.PlayerSession.Channel);
         }
 
@@ -407,10 +332,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         {
             RaiseNetworkEvent(new CurrencyWalletStateMessage
             {
-                Bottlecaps    = currencyComp.Bottlecaps,
-                NCRDollars    = currencyComp.NCRDollars,
-                LegionDenarii = currencyComp.LegionDenarii,
-                PrewarMoney   = currencyComp.PrewarMoney,
+                Bottlecaps = currencyComp.Bottlecaps,
             }, actor.PlayerSession.Channel);
         }
 
@@ -424,7 +346,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         // Load currency from file when component starts up
         if (TryComp<ActorComponent>(ent, out var actor))
         {
-            LoadCurrency(ent, ent.Comp, actor.PlayerSession);
+            LoadCurrencyAsync(ent, ent.Comp, actor.PlayerSession);
         }
     }
 
@@ -436,16 +358,15 @@ public sealed class PersistentCurrencySystem : EntitySystem
     private void OnPlayerAttached(Entity<PersistentCurrencyComponent> ent, ref PlayerAttachedEvent args)
     {
         // Load currency when a player is attached to their character
-        LoadCurrency(ent, ent.Comp, args.Player);
+        LoadCurrencyAsync(ent, ent.Comp, args.Player);
     }
 
-    private void LoadCurrency(EntityUid uid, PersistentCurrencyComponent comp, ICommonSession session)
+    private async void LoadCurrencyAsync(EntityUid uid, PersistentCurrencyComponent comp, ICommonSession session)
     {
         if (comp.Loaded)
             return;
 
-        // Get character name from mind
-        if (!_mind.TryGetMind(uid, out var mindId, out var mind))
+        if (!_mind.TryGetMind(uid, out _, out var mind))
             return;
 
         var characterName = mind.CharacterName;
@@ -455,14 +376,15 @@ public sealed class PersistentCurrencySystem : EntitySystem
         comp.UserId = session.UserId.ToString();
         comp.CharacterName = characterName;
 
-        // Load from saved data
-        var key = GetCurrencyKey(comp.UserId, characterName);
-        if (_currencyData.TryGetValue(key, out var currency))
+        var playerId = session.UserId.UserId;
+
+        try
         {
-            comp.Bottlecaps = currency.Bottlecaps;
-            comp.NCRDollars = currency.NCRDollars;
-            comp.LegionDenarii = currency.LegionDenarii;
-            comp.PrewarMoney = currency.PrewarMoney;
+            comp.Bottlecaps = await _db.GetCharacterCurrencyAsync(playerId, characterName);
+        }
+        catch (Exception ex)
+        {
+            _log.Error($"Failed to load currency for {characterName}: {ex}");
         }
 
         comp.Loaded = true;
@@ -471,76 +393,59 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
     private void SaveCurrency(string userId, string characterName, PersistentCurrencyComponent comp)
     {
-        var key = GetCurrencyKey(userId, characterName);
-        _currencyData[key] = new CharacterCurrency
-        {
-            UserId = userId,
-            CharacterName = characterName,
-            Bottlecaps = comp.Bottlecaps,
-            NCRDollars = comp.NCRDollars,
-            LegionDenarii = comp.LegionDenarii,
-            PrewarMoney = comp.PrewarMoney,
-        };
+        if (!Guid.TryParse(userId, out var playerId))
+            return;
 
-        SaveCurrencyData();
+        _db.UpsertCharacterCurrencyAsync(playerId, characterName, comp.Bottlecaps);
     }
 
-    private string GetCurrencyKey(string userId, string characterName)
-    {
-        return $"{userId}:{characterName}";
-    }
+    // ── One-time JSON → database migration ─────────────────────────────────────
 
-    private void LoadCurrencyData()
+    private async void MigrateJsonToDatabase()
     {
+        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
+        var jsonPath = Path.Combine(userDataPath, "currency_data.json");
+
+        if (!File.Exists(jsonPath))
+            return;
+
         try
         {
-            if (!File.Exists(_saveFilePath))
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyCurrencyData>>(json);
+
+            if (data == null || data.Count == 0)
+            {
+                File.Move(jsonPath, jsonPath + ".migrated");
                 return;
-
-            var json = File.ReadAllText(_saveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, CharacterCurrency>>(json);
-
-            if (data != null)
-            {
-                foreach (var kvp in data)
-                {
-                    _currencyData[kvp.Key] = kvp.Value;
-                }
             }
-        }
-        catch (Exception ex)
-        {
-            _log.Error($"Failed to load currency data: {ex}");
-        }
-    }
 
-    private void SaveCurrencyData()
-    {
-        try
-        {
-            var json = JsonSerializer.Serialize(_currencyData, new JsonSerializerOptions
+            _log.Info($"Migrating {data.Count} currency records from JSON to database...");
+
+            foreach (var (_, record) in data)
             {
-                WriteIndented = true
-            });
+                if (string.IsNullOrEmpty(record.UserId) || !Guid.TryParse(record.UserId, out var pid))
+                    continue;
 
-            File.WriteAllText(_saveFilePath, json);
+                await _db.UpsertCharacterCurrencyAsync(pid, record.CharacterName, record.Bottlecaps);
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("Currency JSON migration complete.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to save currency data: {ex}");
+            _log.Error($"Failed to migrate currency_data.json to database: {ex}");
         }
     }
 }
 
 /// <summary>
-/// Data structure for storing character currency
+/// Legacy JSON data model for one-time migration from currency_data.json.
 /// </summary>
-public sealed class CharacterCurrency
+internal sealed class LegacyCurrencyData
 {
     public string UserId { get; set; } = string.Empty;
     public string CharacterName { get; set; } = string.Empty;
     public int Bottlecaps { get; set; }
-    public int NCRDollars { get; set; }
-    public int LegionDenarii { get; set; }
-    public int PrewarMoney { get; set; }
 }

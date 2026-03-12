@@ -60,6 +60,12 @@
 - type: Tag
   id: N14CleanGauze
 
+- type: Tag
+  id: N14EmptySyringe
+
+- type: Tag
+  id: N14EmptyNukaBottle
+
 #MARK: Crafts
 - type: Tag
   id: Abraxo

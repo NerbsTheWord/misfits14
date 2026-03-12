@@ -41,8 +41,8 @@ public sealed class AddictionSystem : SharedAddictionSystem
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
 
-    private const float MinEffectInterval = 10f;
-    private const float MaxEffectInterval = 41f;
+    private const float MinEffectInterval = 120f;
+    private const float MaxEffectInterval = 300f;
     private const float SuppressionDuration = 10f;
 
     // Remaining-time thresholds (seconds) for fading tier detection.
@@ -186,9 +186,15 @@ public sealed class AddictionSystem : SharedAddictionSystem
         addicted.SuppressionEndTime = curTime + TimeSpan.FromSeconds(SuppressionDuration);
     }
 
-    // #Misfits Change /Add:/ Drug-specific chat messages when addiction is applied or deepens.
+    // #Misfits Change /Add:/ Drug-specific chat messages when addiction is first applied.
+    // Grows/deepens/severe messages are intentionally suppressed — they fire on every
+    // metabolism tick and flood chat. The fading messages (CheckAddictionFading) already
+    // tell the player when the addiction state is changing.
     protected override void OnAddictionApplied(EntityUid uid, bool isNew)
     {
+        if (!isNew)
+            return; // only report the very first time to avoid per-dose spam
+
         if (!TryComp<AddictedComponent>(uid, out var addicted))
             return;
 
@@ -198,10 +204,9 @@ public sealed class AddictionSystem : SharedAddictionSystem
         if (!TryGetSession(uid, out var session))
             return;
 
-        var locKey = GetAddictionMessageKey(isNew, addicted.DoseCount);
-        SendAddictionChat(session, locKey, addicted.DrugName);
+        SendAddictionChat(session, "addiction-drug-first", addicted.DrugName);
 
-        // Keep LastReportedTier current so fading messages fire correctly after re-dosing
+        // Keep LastReportedTier current so fading messages fire correctly
         if (_statusEffects.TryGetTime(uid, StatusEffectKey, out var times))
         {
             var remaining = times.Value.Item2 - _timing.CurTime;
@@ -268,19 +273,6 @@ public sealed class AddictionSystem : SharedAddictionSystem
             return;
 
         SendAddictionChat(session, "addiction-drug-clean", component.DrugName);
-    }
-
-    private static string GetAddictionMessageKey(bool isNew, int doseCount)
-    {
-        if (isNew)
-            return "addiction-drug-first";
-
-        return doseCount switch
-        {
-            >= 8 => "addiction-drug-severe",
-            >= 4 => "addiction-drug-deepens",
-            _    => "addiction-drug-grows",
-        };
     }
 
     private static int GetAddictionTier(double remainingSeconds)

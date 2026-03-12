@@ -419,6 +419,12 @@
         messageKeys:
         - drug-ambience-damage-resist-mixture-1
         - drug-ambience-damage-resist-mixture-2
+      - !type:GenericStatusEffect
+        key: MedXProtection
+        component: MedXProtection
+        type: Add
+        time: 7
+        refresh: true
       - !type:Jitter #Placeholder for when we get Special working again.
 
 - type: reagent
@@ -439,34 +445,21 @@
         - drug-ambience-hydra-1
         - drug-ambience-hydra-2
         - drug-ambience-hydra-3
+      - !type:GenericStatusEffect
+        key: MedXProtection
+        component: MedXProtection
+        type: Add
+        time: 7
+        refresh: true
       - !type:Addicting #Misfits Change
         time: 6
-        # Hydra withdrawal: body becomes raw as its accelerated healing fades; wounds reopen slowly.
+        # Hydra withdrawal: the painkilling protection fades hard and leaves the body craving more.
         withdrawalMoodEffect: HydraWithdrawal
         withdrawalDamage:
           types:
             Poison: 0.3
         withdrawalStaminaDrain: 3.0
-      - !type:GenericStatusEffect
-        key: HydraTint
-        component: HydraTint
-        type: Add
-        time: 7
-        refresh: false
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: ScrambledAccent
-      - !type:GenericStatusEffect
-        key: SlurredSpeech
-        component: TelepathicRepeater
       - !type:Jitter
-      - !type:HealthChange
-        damage:
-          groups:
-            Brute: -1
-            Burn: -1
-      - !type:ModifyBleedAmount
-        amount: -0.5
 
 #MARK: Tribal Chems
 - type: reagent

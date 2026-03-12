@@ -118,6 +118,18 @@
     Asphyxiation: 0.1
     Bloodloss: 0.8
 
+# Misfits Add - Temporary Med-X style protection shared by Med-X and Hydra.
+- type: damageModifierSet
+  id: N14MedXProtection
+  coefficients:
+    Blunt: 0.75
+    Slash: 0.75
+    Piercing: 0.75
+    Heat: 0.75
+    Cold: 0.75
+    Shock: 0.75
+    Caustic: 0.75
+
 - type: damageModifierSet
   id: N14LightRobot # Machines like Mr Handy or Protectron models.
   coefficients:

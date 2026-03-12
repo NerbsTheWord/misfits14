@@ -56,8 +56,8 @@
           steps:
           - material: BrocFlower
           - material: XanderRoot
-          - tag: Syringe
-            name: an syringe
+          - tag: N14EmptySyringe
+            name: empty syringe
             icon:
               sprite: _Nuclear14/Objects/Specific/Medical/ms13_stimpak.rsi
               state: stimpak-empty # Forge-Change
@@ -79,7 +79,7 @@
           steps:
             - material: BrocFlower
             - material: XanderRoot
-            - tag: DrinkBottle
+            - tag: N14EmptyNukaBottle
               name: empty Nuka-Cola bottle
               icon:
                 sprite: _Nuclear14/Objects/Consumable/Drinks/nuka_cola_new.rsi
@@ -198,25 +198,15 @@
     - node: start
       edges:
         - to: hydra
+          conditions:
+            - !type:MinSolution
+              solution: pen
+              reagent:
+                ReagentId: Hydra
+              quantity: 15
           steps:
-            #Misfits Change /Fix:/ construction graph steps do not support prototype mappings here; use tagged item steps.
-            - tag: HydraInhaler
-              name: hydra inhaler
-              icon:
-                sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
-                state: hydra
-              doAfter: 1
-            - tag: Jet
-              name: jet inhaler
-              icon:
-                sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
-                state: jet
-              doAfter: 1
-            - tag: Turbo
-              name: turbo inhaler
-              icon:
-                sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
-                state: turbo
+            #Misfits Change /Tweak/: Refill the empty hydra rig after mixing Hydra in chemistry.
+            - tool: Screwing
               doAfter: 1
 
     - node: hydra

@@ -55,27 +55,30 @@
 
 - type: reaction
   id: Hydra
-#Misfits Change /Tweak/: Craft Hydra from existing Fallout stimulant chemistry instead of creature-only drops.
+#Misfits Change /Tweak/: Hydra is now mixed from wasteland creature parts and cave fungus.
   reactants:
-    MovespeedMixture:
+    ScorpionTail:
       amount: 1
-    RobustMovespeedMixture:
+    ExtractFungus:
+      amount: 1
+    NightstalkerBlood:
       amount: 1
   products:
     Hydra: 2
 
-- type: reaction
-  id: HydraConversion
-  reactants:
-    Hydra:
-      amount: 15
-    Oil:
-      amount: 5
-    Phosphorus:
-      amount: 5
-  effects:
-    - !type:CreateEntityReactionEffect
-      entity: N14Hydra
+#Misfits Change /Tweak/: Hydra inhalers are now filled through the construction menu from an empty rig.
+# - type: reaction
+#   id: HydraConversion
+#   reactants:
+#     Hydra:
+#       amount: 15
+#     Oil:
+#       amount: 5
+#     Phosphorus:
+#       amount: 5
+#   effects:
+#     - !type:CreateEntityReactionEffect
+#       entity: N14Hydra
 
 - type: reaction
   id: Psycho
