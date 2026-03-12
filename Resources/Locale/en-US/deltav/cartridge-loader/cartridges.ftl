@@ -163,7 +163,7 @@ stock-trading-price-history = Price History
 ## NanoChat (Misfits Rename → Private Messenger)
 
 # General
-nano-chat-program-name = Private Messenger
+nano-chat-program-name = Pip-Boy Messenger
 nano-chat-title = Instant Messenger
 nano-chat-new-chat = New Chat
 nano-chat-contacts = CONTACTS

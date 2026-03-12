@@ -3,7 +3,8 @@
                     xmlns="https://spacestation14.io">
     <PanelContainer Name="Panel"/>
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
-        <BoxContainer Orientation="Vertical" VerticalExpand="True" MinWidth="60">
+        <!-- #Misfits Tweak — hide pipboy sprite icon, programs list is text-only now -->
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" MinWidth="60" Visible="False">
             <AnimatedTextureRect HorizontalAlignment="Center" VerticalAlignment="Center" VerticalExpand="True" Name="Icon" Access="Public"/>
         </BoxContainer>
         <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">

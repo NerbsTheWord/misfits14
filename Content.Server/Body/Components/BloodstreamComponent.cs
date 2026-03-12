@@ -1,4 +1,5 @@
 // #Misfits Change Tweak: Add a post-death bleed multiplier so corpses make fewer blood puddles without lowering blood capacity.
+// #Misfits Tweak: Reduce BleedReductionAmount, MaxBleedAmount, and BleedPuddleThreshold to prevent blood lakes from forming.
 using Content.Server.Body.Systems;
 using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Traits;
@@ -51,13 +52,13 @@ namespace Content.Server.Body.Components
         ///     How much should bleeding be reduced every update interval?
         /// </summary>
         [DataField]
-        public float BleedReductionAmount = 0.33f;
+        public float BleedReductionAmount = 0.75f; // #Misfits Tweak: was 0.33f; faster wound closure reduces total blood spilled
 
         /// <summary>
         ///     How high can <see cref="BleedAmount"/> go?
         /// </summary>
         [DataField]
-        public float MaxBleedAmount = 10.0f;
+        public float MaxBleedAmount = 6.0f; // #Misfits Tweak: was 10.0f; lower cap reduces blood lost per tick
 
         /// <summary>
         ///     What percentage of current blood is necessary to avoid dealing blood loss damage?
@@ -98,7 +99,7 @@ namespace Content.Server.Body.Components
         ///     How much blood needs to be in the temporary solution in order to create a puddle?
         /// </summary>
         [DataField]
-        public FixedPoint2 BleedPuddleThreshold = 1.0f;
+        public FixedPoint2 BleedPuddleThreshold = 3.0f; // #Misfits Tweak: was 1.0f; higher threshold means small bleeds don't instantly create puddles
 
         /// <summary>
         ///     Multiplier applied to current bleed amount when the mob first dies.

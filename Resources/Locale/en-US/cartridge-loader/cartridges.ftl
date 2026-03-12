@@ -1,7 +1,7 @@
 device-pda-slot-component-slot-name-cartridge = Cartridge
 
 default-program-name = Program
-notekeeper-program-name = Notekeeper
+notekeeper-program-name = Pip-Boy Notes
 news-read-program-name = RobCo News
 
 crew-manifest-program-name = Crew manifest
