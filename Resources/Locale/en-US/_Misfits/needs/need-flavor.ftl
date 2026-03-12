@@ -29,3 +29,6 @@ need-flavor-thirst-dead-1 = Severe dehydration leaves you dizzy and unsteady.
 need-flavor-thirst-dead-2 = Your body aches for water with a dangerous urgency.
 need-flavor-thirst-dead-3 = Dehydration is hitting hard. Your legs feel unreliable.
 need-flavor-thirst-dead-4 = Your mouth, throat, and muscles all feel painfully dry.
+
+# Near-death warning sent once when hunger or thirst first crosses into the Dead threshold.
+need-flavor-near-death = You feel as if you are about to die.

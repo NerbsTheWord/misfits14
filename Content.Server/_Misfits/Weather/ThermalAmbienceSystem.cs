@@ -51,6 +51,9 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     // ── Per-player outdoor exposure cooldowns (prevents door-jitter spam) ──
     private readonly Dictionary<EntityUid, TimeSpan> _nextOutdoorFlavorAt = new();
 
+    // ── Per-player outdoor dwell timers (must stay outside before severe flavor can fire) ──
+    private readonly Dictionary<EntityUid, TimeSpan> _outdoorEligibleAt = new();
+
     // ── Per-player body-state tracking (sweating / shivering) ──
     private readonly Dictionary<EntityUid, BodyThermalState> _lastBodyState = new();
 
@@ -176,6 +179,7 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     {
         _nextAmbientAt.Remove(uid);
         _nextOutdoorFlavorAt.Remove(uid);
+        _outdoorEligibleAt.Remove(uid);
         _lastBodyState.Remove(uid);
         _lastOutdoorFlavorTier.Remove(uid);
         _outdoorExposed.Remove(uid);
@@ -322,7 +326,7 @@ public sealed class ThermalAmbienceSystem : EntitySystem
 
     /// <summary>
     /// For every player on a map that has a tracked temperature tier,
-    /// periodically send a private ambient message describing the felt environment.
+    /// send a sparse private ambient message only after sustained exposure to severe outdoor heat or cold.
     /// </summary>
     private void UpdatePlayerOutdoorFlavor()
     {
@@ -338,34 +342,43 @@ public sealed class ThermalAmbienceSystem : EntitySystem
             // Look up which temperature tier the map this player is on is currently in.
             if (xform.MapUid is not { } mapUid)
             {
-                _outdoorExposed.Remove(uid);
+                ClearOutdoorExposure(uid);
                 continue;
             }
             if (!_lastMapTier.TryGetValue(mapUid, out var tier))
             {
-                _outdoorExposed.Remove(uid);
+                ClearOutdoorExposure(uid);
                 continue;
             }
             if (xform.GridUid is not { } gridUid)
             {
-                _outdoorExposed.Remove(uid);
+                ClearOutdoorExposure(uid);
                 continue;
             }
             if (!TryComp<MapGridComponent>(gridUid, out var grid) ||
                 !grid.TryGetTileRef(xform.Coordinates, out var tileRef) ||
                 !IsWeatherExposed(gridUid, grid, tileRef))
             {
-                _outdoorExposed.Remove(uid);
+                ClearOutdoorExposure(uid);
                 continue;
             }
 
             var wasOutdoors = _outdoorExposed.Contains(uid);
             _outdoorExposed.Add(uid);
 
+            if (!wasOutdoors)
+            {
+                _outdoorEligibleAt[uid] = _timing.CurTime + TimeSpan.FromMinutes(2);
+                continue;
+            }
+
+            if (_outdoorEligibleAt.TryGetValue(uid, out var eligibleAt) && _timing.CurTime < eligibleAt)
+                continue;
+
             var tierChanged = !_lastOutdoorFlavorTier.TryGetValue(uid, out var previousTier) || previousTier != tier;
             _lastOutdoorFlavorTier[uid] = tier;
 
-            if (wasOutdoors && !tierChanged)
+            if (!tierChanged || !ShouldSendOutdoorAmbient(tier))
                 continue;
 
             var messages = GetOutdoorAmbientMessages(tier);
@@ -386,6 +399,12 @@ public sealed class ThermalAmbienceSystem : EntitySystem
         return _weather.CanWeatherAffect(gridUid, grid, tileRef, roofComp);
     }
 
+    private void ClearOutdoorExposure(EntityUid uid)
+    {
+        _outdoorExposed.Remove(uid);
+        _outdoorEligibleAt.Remove(uid);
+    }
+
     private bool CanSendOutdoorFlavor(EntityUid uid)
     {
         return !_nextOutdoorFlavorAt.TryGetValue(uid, out var next) || _timing.CurTime >= next;
@@ -393,31 +412,30 @@ public sealed class ThermalAmbienceSystem : EntitySystem
 
     /// <summary>
     /// Returns the flavor message key array for a given temperature tier.
-    /// Returns empty for Warm (comfortable) — no ambient spam at pleasant temperatures.
+    /// Mild outdoor tiers stay silent to keep ambient narration rare.
     /// </summary>
     private static string[] GetOutdoorAmbientMessages(TemperatureTier tier)
     {
         return tier switch
         {
             TemperatureTier.VeryHot  => VeryHotMessages,
-            TemperatureTier.Hot      => HotMessages,
-            TemperatureTier.Cool     => CoolMessages,
-            TemperatureTier.Cold     => ColdMessages,
             TemperatureTier.VeryCold => VeryColdMessages,
-            _                        => Array.Empty<string>(), // Warm — no ambient at comfortable temps
+            _                        => Array.Empty<string>(),
         };
+    }
+
+    private static bool ShouldSendOutdoorAmbient(TemperatureTier tier)
+    {
+        return tier is TemperatureTier.VeryHot or TemperatureTier.VeryCold;
     }
 
     private static TimeSpan GetOutdoorAmbientCooldown(TemperatureTier tier)
     {
         return tier switch
         {
-            TemperatureTier.VeryHot  => TimeSpan.FromMinutes(4),
-            TemperatureTier.VeryCold => TimeSpan.FromMinutes(4),
-            TemperatureTier.Hot      => TimeSpan.FromMinutes(5),
-            TemperatureTier.Cold     => TimeSpan.FromMinutes(5),
-            TemperatureTier.Cool     => TimeSpan.FromMinutes(6),
-            _                        => TimeSpan.FromMinutes(5),
+            TemperatureTier.VeryHot  => TimeSpan.FromMinutes(10),
+            TemperatureTier.VeryCold => TimeSpan.FromMinutes(10),
+            _                        => TimeSpan.FromMinutes(10),
         };
     }
 
@@ -433,8 +451,8 @@ public sealed class ThermalAmbienceSystem : EntitySystem
         // so we don't flood right after a state change.
         var cooldown = state switch
         {
-            BodyThermalState.Sweating  => TimeSpan.FromMinutes(immediate ? 3 : 4),
-            BodyThermalState.Shivering => TimeSpan.FromMinutes(immediate ? 3 : 4),
+            BodyThermalState.Sweating  => TimeSpan.FromMinutes(immediate ? 5 : 6),
+            BodyThermalState.Shivering => TimeSpan.FromMinutes(immediate ? 5 : 6),
             _                          => TimeSpan.FromSeconds(120),
         };
         _nextAmbientAt[uid] = _timing.CurTime + cooldown;

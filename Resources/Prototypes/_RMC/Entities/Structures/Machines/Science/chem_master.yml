@@ -86,7 +86,7 @@
   - type: UserInterface
     interfaces:
       enum.RMCChemMasterUI.Key:
-        type: RMCChemMasterBui
+        type: ChemMasterBoundUserInterface
   - type: SolutionContainerManager
     solutions:
       buffer:

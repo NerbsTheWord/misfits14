@@ -11,7 +11,7 @@
     sprite: _RMC/Structures/Doors/Airlocks/personal_door.rsi
   - type: Occluder
   - type: PaintableAirlock
-    department: CMSquad
+    department: Security
 
 - type: entity
   parent: CMAirlock

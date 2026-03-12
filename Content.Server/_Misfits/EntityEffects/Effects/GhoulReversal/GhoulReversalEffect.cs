@@ -1,12 +1,15 @@
 // #Misfits Change
 using Content.Server._Misfits.GhoulReversal;
+using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
 using Content.Server.Humanoid;
+using Content.Shared.Chat;
 using Content.Shared.EntityEffects;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Popups;
 using JetBrains.Annotations;
-using Robust.Shared.Player;
+using Robust.Server.Player;
+using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Content.Server.Ghoul;
 
@@ -46,23 +49,34 @@ public sealed partial class GhoulReversalEffect : EntityEffect
         if (!GhoulSpecies.Contains(appearance.Species))
             return;
 
-        var popupSys = args.EntityManager.EntitySysManager.GetEntitySystem<SharedPopupSystem>();
+        var playerManager = IoCManager.Resolve<IPlayerManager>();
+        var chatManager = IoCManager.Resolve<IChatManager>();
 
         // Round-start ghouls have no timer — permanently blocked
         if (!entityManager.TryGetComponent<GhoulificationTimeComponent>(uid, out var timeComp))
         {
-            popupSys.PopupEntity(
-                Loc.GetString("ghoul-reversal-reagent-too-old"),
-                uid, uid, PopupType.MediumCaution);
+            // Private message to the target only — they are not reversible.
+            if (playerManager.TryGetSessionByEntity(uid, out var session1)
+                && session1.Status == SessionStatus.InGame)
+            {
+                var tooOldMsg = Loc.GetString("ghoul-reversal-reagent-too-old");
+                chatManager.ChatMessageToOne(ChatChannel.Local, tooOldMsg, tooOldMsg,
+                    EntityUid.Invalid, false, session1.Channel);
+            }
             return;
         }
 
         var elapsed = DateTime.UtcNow - timeComp.GhoulifiedAtUtc;
         if (elapsed.TotalHours > timeComp.ReversibleWindowHours)
         {
-            popupSys.PopupEntity(
-                Loc.GetString("ghoul-reversal-reagent-too-old"),
-                uid, uid, PopupType.MediumCaution);
+            // Private message to target — reversal window has expired.
+            if (playerManager.TryGetSessionByEntity(uid, out var session2)
+                && session2.Status == SessionStatus.InGame)
+            {
+                var tooOldMsg = Loc.GetString("ghoul-reversal-reagent-too-old");
+                chatManager.ChatMessageToOne(ChatChannel.Local, tooOldMsg, tooOldMsg,
+                    EntityUid.Invalid, false, session2.Channel);
+            }
             return;
         }
 
@@ -77,11 +91,19 @@ public sealed partial class GhoulReversalEffect : EntityEffect
         entityManager.RemoveComponentDeferred<FeralGhoulifyComponent>(uid);
         entityManager.RemoveComponent<GhoulificationTimeComponent>(uid);
 
-        popupSys.PopupEntity(
-            Loc.GetString("ghoul-reversal-reagent-self"),
-            uid, uid, PopupType.LargeCaution);
-        popupSys.PopupEntity(
-            Loc.GetString("ghoul-reversal-reagent-others", ("target", uid)),
-            uid, Filter.PvsExcept(uid), true, PopupType.MediumCaution);
+        // Private transformation message to the target only.
+        if (playerManager.TryGetSessionByEntity(uid, out var session)
+            && session.Status == SessionStatus.InGame)
+        {
+            var selfMsg = Loc.GetString("ghoul-reversal-reagent-self");
+            chatManager.ChatMessageToOne(ChatChannel.Local, selfMsg, selfMsg,
+                EntityUid.Invalid, false, session.Channel);
+        }
+
+        // Emote visible to nearby bystanders — emote system prefixes the entity name.
+        var chatSys = args.EntityManager.EntitySysManager.GetEntitySystem<ChatSystem>();
+        chatSys.TrySendInGameICMessage(uid,
+            Loc.GetString("ghoul-reversal-reagent-others"),
+            InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
     }
 }

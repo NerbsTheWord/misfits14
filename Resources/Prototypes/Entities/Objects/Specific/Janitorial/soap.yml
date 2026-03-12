@@ -72,6 +72,10 @@
     solution: soap
   - type: BadFood
   - type: CleansForensics
+  - type: SurgeryCleansDirt # #Misfits Change - soap can sanitize contaminated surgical tools
+    dirtAmount: 10
+    dnaAmount: 1
+    cleanDelay: 3.5
   - type: Residue
     residueAdjective: residue-slippery
     residueColor: residue-green

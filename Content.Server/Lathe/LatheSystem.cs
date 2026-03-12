@@ -13,12 +13,15 @@ using Content.Shared.Atmos;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Crafting.Prototypes;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
 using Content.Shared.Examine;
 using Content.Shared.Lathe;
 using Content.Shared.Materials;
+using Content.Shared.Storage;
+using Content.Shared._NC.Crafting.Components;
 using Content.Shared.Power;
 using Content.Shared.ReagentSpeed;
 using Content.Shared.Research.Components;
@@ -26,6 +29,7 @@ using Content.Shared.Research.Prototypes;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -72,6 +76,8 @@ namespace Content.Server.Lathe
 
             SubscribeLocalEvent<LatheComponent, BeforeActivatableUIOpenEvent>((u, c, _) => UpdateUserInterfaceState(u, c));
             SubscribeLocalEvent<LatheComponent, MaterialAmountChangedEvent>(OnMaterialAmountChanged);
+            SubscribeLocalEvent<LatheComponent, EntInsertedIntoContainerMessage>(OnStorageContainerModified);
+            SubscribeLocalEvent<LatheComponent, EntRemovedFromContainerMessage>(OnStorageContainerModified);
             SubscribeLocalEvent<TechnologyDatabaseComponent, LatheGetRecipesEvent>(OnGetRecipes);
             SubscribeLocalEvent<EmagLatheRecipesComponent, LatheGetRecipesEvent>(GetEmagLatheRecipes);
             SubscribeLocalEvent<LatheHeatProducingComponent, LatheStartPrintingEvent>(OnHeatStartPrinting);
@@ -161,7 +167,37 @@ namespace Content.Server.Lathe
                 Recipes = new List<ProtoId<LatheRecipePrototype>>(component.StaticRecipes)
             };
             RaiseLocalEvent(uid, ev);
+
+            AddStorageBlueprintRecipes(uid, ev.Recipes);
+
             return ev.Recipes;
+        }
+
+        private void AddStorageBlueprintRecipes(EntityUid uid, List<ProtoId<LatheRecipePrototype>> recipes)
+        {
+            if (!TryComp<StorageComponent>(uid, out var storage))
+                return;
+
+            foreach (var stored in storage.Container.ContainedEntities)
+            {
+                if (!TryComp<STBlueprintComponent>(stored, out var blueprint) || string.IsNullOrWhiteSpace(blueprint.BlueprintId))
+                    continue;
+
+                if (!_proto.TryIndex<CraftingPrototype>(blueprint.BlueprintId, out var craftingProto))
+                    continue;
+
+                foreach (var resultProto in craftingProto.ResultProtos)
+                {
+                    if (!TryGetRecipesFromEntity(resultProto, out var latheRecipes))
+                        continue;
+
+                    foreach (var latheRecipe in latheRecipes)
+                    {
+                        if (!recipes.Contains(latheRecipe.ID))
+                            recipes.Add(latheRecipe.ID);
+                    }
+                }
+            }
         }
 
         public static List<ProtoId<LatheRecipePrototype>> GetAllBaseRecipes(LatheComponent component)
@@ -316,6 +352,22 @@ namespace Content.Server.Lathe
 
         private void OnMaterialAmountChanged(EntityUid uid, LatheComponent component, ref MaterialAmountChangedEvent args)
         {
+            UpdateUserInterfaceState(uid, component);
+        }
+
+        private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntInsertedIntoContainerMessage args)
+        {
+            if (!HasComp<STBlueprintComponent>(args.Entity))
+                return;
+
+            UpdateUserInterfaceState(uid, component);
+        }
+
+        private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntRemovedFromContainerMessage args)
+        {
+            if (!HasComp<STBlueprintComponent>(args.Entity))
+                return;
+
             UpdateUserInterfaceState(uid, component);
         }
 

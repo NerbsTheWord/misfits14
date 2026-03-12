@@ -1,13 +1,15 @@
 // #Misfits Add - Server system for the Persistent Entity Spawn, Tile Spawn, and Decal Spawn features.
 // Entities, tiles, and decals placed through the Persistent Spawn Menus are saved to
-// JSON files and automatically re-spawned/replaced every round start.
-// Erasing a persistent entity (from either spawn panel) removes its JSON entry.
+// the database and automatically re-spawned/replaced every round start.
+// Erasing a persistent entity (from either spawn panel) removes its database entry.
 using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
+using Content.Server.Database;
 using Content.Server.Decals;
 using Content.Server.GameTicking;
 using Content.Shared._Misfits.PersistentSpawn;
@@ -25,11 +27,12 @@ namespace Content.Server._Misfits.PersistentSpawn;
 
 /// <summary>
 /// Manages the lifecycle of persistent entities and tiles:
-/// spawn on admin request, persist to JSON, re-spawn on round start, remove on erase.
+/// spawn on admin request, persist to database, re-spawn on round start, remove on erase.
 /// </summary>
 public sealed class MisfitsPersistentSpawnSystem : EntitySystem
 {
     [Dependency] private readonly IAdminManager _adminManager = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
@@ -41,22 +44,14 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
 
     private ISawmill _log = default!;
 
-    private const string EntityDataFileName = "persistent_entities.json";
-    private const string TileDataFileName = "persistent_tiles.json";
-    // #Misfits Add - decal persistence file
-    private const string DecalDataFileName = "persistent_decals.json";
-    private string _entitySaveFilePath = string.Empty;
-    private string _tileSaveFilePath = string.Empty;
-    private string _decalSaveFilePath = string.Empty;
-
     /// <summary>All persistent entity records, keyed by unique persistence ID.</summary>
-    private readonly Dictionary<string, PersistentEntityRecord> _entityRecords = new();
+    private readonly Dictionary<string, PersistentEntity> _entityRecords = new();
 
     /// <summary>All persistent tile records, keyed by unique persistence ID.</summary>
-    private readonly Dictionary<string, PersistentTileRecord> _tileRecords = new();
+    private readonly Dictionary<string, PersistentTile> _tileRecords = new();
 
     // #Misfits Add - all persistent decal records, keyed by unique persistence ID
-    private readonly Dictionary<string, PersistentDecalRecord> _decalRecords = new();
+    private readonly Dictionary<string, PersistentDecal> _decalRecords = new();
 
     /// <summary>
     /// Reverse lookup: spawned EntityUid → persistence ID.
@@ -70,16 +65,13 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
 
         _log = Logger.GetSawmill("persistent_spawn");
 
-        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
-        _entitySaveFilePath = Path.Combine(userDataPath, EntityDataFileName);
-        _tileSaveFilePath = Path.Combine(userDataPath, TileDataFileName);
-        // #Misfits Add - decal persistence file path
-        _decalSaveFilePath = Path.Combine(userDataPath, DecalDataFileName);
+        // Load records from database into in-memory dictionaries
+        LoadEntityRecordsAsync();
+        LoadTileRecordsAsync();
+        LoadDecalRecordsAsync();
 
-        LoadEntityRecords();
-        LoadTileRecords();
-        // #Misfits Add - load persistent decal records
-        LoadDecalRecords();
+        // One-time JSON → database migration
+        MigrateJsonToDatabase();
 
         // Listen for round start to re-spawn all persistent entities, tiles, and decals
         SubscribeLocalEvent<RoundStartedEvent>(OnRoundStarted);
@@ -101,8 +93,12 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
     private void OnRoundStarted(RoundStartedEvent args)
     {
         _uidToPersistenceId.Clear();
-        LoadEntityRecords();
-        LoadTileRecords();
+        // NOTE: Do NOT reload records from DB here.
+        // LoadEntityRecordsAsync / LoadTileRecordsAsync are async void — they
+        // clear the dictionaries synchronously then await the DB, so the spawn
+        // loops below would iterate over empty collections (race condition).
+        // In-memory dictionaries are always kept in sync by spawn/erase handlers,
+        // and Initialize() loads from DB on server startup.
 
         // Find the first non-nullspace map (the game map that was loaded).
         MapId? targetMap = null;
@@ -143,7 +139,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             spawned++;
         }
 
-        _log.Info($"Respawned {spawned} persistent entities from {EntityDataFileName}.");
+        _log.Info($"Respawned {spawned} persistent entities.");
 
         // ── Respawn persistent tiles ───────────────────────────────────────────
         var tilesPlaced = 0;
@@ -160,11 +156,11 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
                 continue;
 
             var tilePos = _mapSystem.WorldToTile(gridUid, grid, mapCoords.Position);
-            _mapSystem.SetTile(gridUid, grid, tilePos, new Tile(tileDef.TileId, rotationMirroring: tileRec.RotationMirroring));
+            _mapSystem.SetTile(gridUid, grid, tilePos, new Tile(tileDef.TileId, rotationMirroring: (byte) tileRec.RotationMirroring));
             tilesPlaced++;
         }
 
-        _log.Info($"Restored {tilesPlaced} persistent tiles from {TileDataFileName}.");
+        _log.Info($"Restored {tilesPlaced} persistent tiles.");
 
         // ── Restore persistent decals ──────────────────────────────────────────
         var decalsPlaced = 0;
@@ -197,7 +193,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             decalsPlaced++;
         }
 
-        _log.Info($"Restored {decalsPlaced} persistent decals from {DecalDataFileName}.");
+        _log.Info($"Restored {decalsPlaced} persistent decals.");
     }
 
     // ── Spawn request from Persistent Entity Spawn Menu ────────────────────────
@@ -237,8 +233,9 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
         _uidToPersistenceId[uid] = persistenceId;
 
         // Save the record
-        _entityRecords[persistenceId] = new PersistentEntityRecord
+        _entityRecords[persistenceId] = new PersistentEntity
         {
+            PersistenceId = persistenceId,
             PrototypeId = msg.PrototypeId,
             X = msg.X,
             Y = msg.Y,
@@ -246,7 +243,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             SpawnedBy = session.Name,
         };
 
-        PersistEntityRecords();
+        _db.UpsertPersistentEntityAsync(_entityRecords[persistenceId]);
         _log.Info($"Persistent entity '{msg.PrototypeId}' spawned by {session.Name} at ({msg.X:F1}, {msg.Y:F1}). ID: {persistenceId}");
     }
 
@@ -305,15 +302,16 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
         {
             if (toRemove.Count > 0)
             {
-                PersistTileRecords();
+                _db.RemovePersistentTilesAsync(toRemove);
                 _log.Info($"Erased {toRemove.Count} persistent tile record(s) at ({msg.X:F1}, {msg.Y:F1}) by {session.Name}.");
             }
             return;
         }
 
         var persistenceId = Guid.NewGuid().ToString();
-        _tileRecords[persistenceId] = new PersistentTileRecord
+        _tileRecords[persistenceId] = new PersistentTile
         {
+            PersistenceId = persistenceId,
             TileDefName = msg.TileDefName,
             X = msg.X,
             Y = msg.Y,
@@ -321,7 +319,10 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             SpawnedBy = session.Name,
         };
 
-        PersistTileRecords();
+        // Remove old records from DB and upsert the new tile
+        if (toRemove.Count > 0)
+            _db.RemovePersistentTilesAsync(toRemove);
+        _db.UpsertPersistentTileAsync(_tileRecords[persistenceId]);
         _log.Info($"Persistent tile '{msg.TileDefName}' placed by {session.Name} at ({msg.X:F1}, {msg.Y:F1}). ID: {persistenceId}");
     }
 
@@ -376,8 +377,9 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
 
         // Save record
         var persistenceId = Guid.NewGuid().ToString();
-        _decalRecords[persistenceId] = new PersistentDecalRecord
+        _decalRecords[persistenceId] = new PersistentDecal
         {
+            PersistenceId = persistenceId,
             DecalId = msg.DecalId,
             X = msg.X,
             Y = msg.Y,
@@ -388,7 +390,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             SpawnedBy = session.Name,
         };
 
-        PersistDecalRecords();
+        _db.UpsertPersistentDecalAsync(_decalRecords[persistenceId]);
         _log.Info($"Persistent decal '{msg.DecalId}' placed by {session.Name} at ({msg.X:F1}, {msg.Y:F1}). ID: {persistenceId}");
     }
 
@@ -430,7 +432,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
 
         if (toRemove.Count > 0)
         {
-            PersistDecalRecords();
+            _db.RemovePersistentDecalsAsync(toRemove);
             _log.Info($"Erased {toRemove.Count} persistent decal record(s) near ({msg.X:F1}, {msg.Y:F1}) by {session.Name}.");
         }
     }
@@ -473,7 +475,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             if (_entityRecords.Remove(comp.PersistenceId))
             {
                 _uidToPersistenceId.Remove(uid);
-                PersistEntityRecords();
+                _db.RemovePersistentEntityAsync(comp.PersistenceId);
                 _log.Info($"Removed persistent entity record '{comp.PersistenceId}'.");
             }
             return;
@@ -484,139 +486,209 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
         {
             _entityRecords.Remove(id);
             _uidToPersistenceId.Remove(uid);
-            PersistEntityRecords();
+            _db.RemovePersistentEntityAsync(id);
             _log.Info($"Removed persistent entity record '{id}' (fallback lookup).");
         }
     }
 
-    // ── JSON persistence — entities ────────────────────────────────────────────
+    // ── Database persistence — entities ────────────────────────────────────────────
 
-    private void LoadEntityRecords()
+    private async void LoadEntityRecordsAsync()
     {
         _entityRecords.Clear();
 
         try
         {
-            if (!File.Exists(_entitySaveFilePath))
-                return;
+            var entities = await _db.GetAllPersistentEntitiesAsync();
+            foreach (var e in entities)
+                _entityRecords[e.PersistenceId] = e;
 
-            var json = File.ReadAllText(_entitySaveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, PersistentEntityRecord>>(json);
-
-            if (data == null)
-                return;
-
-            foreach (var kvp in data)
-                _entityRecords[kvp.Key] = kvp.Value;
-
-            _log.Debug($"Loaded {_entityRecords.Count} persistent entity records from {EntityDataFileName}.");
+            _log.Debug($"Loaded {_entityRecords.Count} persistent entity records from database.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to load {EntityDataFileName}: {ex}");
+            _log.Error($"Failed to load persistent entity records: {ex}");
         }
     }
 
-    private void PersistEntityRecords()
-    {
-        try
-        {
-            var json = JsonSerializer.Serialize(_entityRecords, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_entitySaveFilePath, json);
-        }
-        catch (Exception ex)
-        {
-            _log.Error($"Failed to save {EntityDataFileName}: {ex}");
-        }
-    }
+    // ── Database persistence — tiles ───────────────────────────────────────────────
 
-    // ── JSON persistence — tiles ───────────────────────────────────────────────
-
-    private void LoadTileRecords()
+    private async void LoadTileRecordsAsync()
     {
         _tileRecords.Clear();
 
         try
         {
-            if (!File.Exists(_tileSaveFilePath))
-                return;
+            var tiles = await _db.GetAllPersistentTilesAsync();
+            foreach (var t in tiles)
+                _tileRecords[t.PersistenceId] = t;
 
-            var json = File.ReadAllText(_tileSaveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, PersistentTileRecord>>(json);
-
-            if (data == null)
-                return;
-
-            foreach (var kvp in data)
-                _tileRecords[kvp.Key] = kvp.Value;
-
-            _log.Debug($"Loaded {_tileRecords.Count} persistent tile records from {TileDataFileName}.");
+            _log.Debug($"Loaded {_tileRecords.Count} persistent tile records from database.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to load {TileDataFileName}: {ex}");
+            _log.Error($"Failed to load persistent tile records: {ex}");
         }
     }
 
-    private void PersistTileRecords()
-    {
-        try
-        {
-            var json = JsonSerializer.Serialize(_tileRecords, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_tileSaveFilePath, json);
-        }
-        catch (Exception ex)
-        {
-            _log.Error($"Failed to save {TileDataFileName}: {ex}");
-        }
-    }
+    // ── Database persistence — decals ──────────────────────────────────────────────
 
-    // ── JSON persistence — decals ──────────────────────────────────────────────
-
-    private void LoadDecalRecords()
+    private async void LoadDecalRecordsAsync()
     {
         _decalRecords.Clear();
 
         try
         {
-            if (!File.Exists(_decalSaveFilePath))
-                return;
+            var decals = await _db.GetAllPersistentDecalsAsync();
+            foreach (var d in decals)
+                _decalRecords[d.PersistenceId] = d;
 
-            var json = File.ReadAllText(_decalSaveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, PersistentDecalRecord>>(json);
-
-            if (data == null)
-                return;
-
-            foreach (var kvp in data)
-                _decalRecords[kvp.Key] = kvp.Value;
-
-            _log.Debug($"Loaded {_decalRecords.Count} persistent decal records from {DecalDataFileName}.");
+            _log.Debug($"Loaded {_decalRecords.Count} persistent decal records from database.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to load {DecalDataFileName}: {ex}");
+            _log.Error($"Failed to load persistent decal records: {ex}");
         }
     }
 
-    private void PersistDecalRecords()
+    // ── One-time JSON → database migration ─────────────────────────────────────
+
+    private async void MigrateJsonToDatabase()
     {
+        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
+
+        await MigrateEntitiesJson(Path.Combine(userDataPath, "persistent_entities.json"));
+        await MigrateTilesJson(Path.Combine(userDataPath, "persistent_tiles.json"));
+        await MigrateDecalsJson(Path.Combine(userDataPath, "persistent_decals.json"));
+    }
+
+    private async Task MigrateEntitiesJson(string jsonPath)
+    {
+        if (!File.Exists(jsonPath))
+            return;
+
         try
         {
-            var json = JsonSerializer.Serialize(_decalRecords, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_decalSaveFilePath, json);
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyPersistentEntityRecord>>(json);
+
+            if (data != null && data.Count > 0)
+            {
+                _log.Info($"Migrating {data.Count} persistent entity records from JSON to database...");
+
+                foreach (var (id, record) in data)
+                {
+                    var dbEntity = new PersistentEntity
+                    {
+                        PersistenceId = id,
+                        PrototypeId = record.PrototypeId,
+                        X = record.X,
+                        Y = record.Y,
+                        RotationDegrees = record.RotationDegrees,
+                        SpawnedBy = record.SpawnedBy,
+                    };
+
+                    await _db.UpsertPersistentEntityAsync(dbEntity);
+                    _entityRecords[id] = dbEntity;
+                }
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("Persistent entity JSON migration complete.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to save {DecalDataFileName}: {ex}");
+            _log.Error($"Failed to migrate persistent_entities.json to database: {ex}");
+        }
+    }
+
+    private async Task MigrateTilesJson(string jsonPath)
+    {
+        if (!File.Exists(jsonPath))
+            return;
+
+        try
+        {
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyPersistentTileRecord>>(json);
+
+            if (data != null && data.Count > 0)
+            {
+                _log.Info($"Migrating {data.Count} persistent tile records from JSON to database...");
+
+                foreach (var (id, record) in data)
+                {
+                    var dbTile = new PersistentTile
+                    {
+                        PersistenceId = id,
+                        TileDefName = record.TileDefName,
+                        X = record.X,
+                        Y = record.Y,
+                        RotationMirroring = record.RotationMirroring,
+                        SpawnedBy = record.SpawnedBy,
+                    };
+
+                    await _db.UpsertPersistentTileAsync(dbTile);
+                    _tileRecords[id] = dbTile;
+                }
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("Persistent tile JSON migration complete.");
+        }
+        catch (Exception ex)
+        {
+            _log.Error($"Failed to migrate persistent_tiles.json to database: {ex}");
+        }
+    }
+
+    private async Task MigrateDecalsJson(string jsonPath)
+    {
+        if (!File.Exists(jsonPath))
+            return;
+
+        try
+        {
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyPersistentDecalRecord>>(json);
+
+            if (data != null && data.Count > 0)
+            {
+                _log.Info($"Migrating {data.Count} persistent decal records from JSON to database...");
+
+                foreach (var (id, record) in data)
+                {
+                    var dbDecal = new PersistentDecal
+                    {
+                        PersistenceId = id,
+                        DecalId = record.DecalId,
+                        X = record.X,
+                        Y = record.Y,
+                        Rotation = record.Rotation,
+                        ColorArgb = record.ColorArgb,
+                        ZIndex = record.ZIndex,
+                        Cleanable = record.Cleanable,
+                        SpawnedBy = record.SpawnedBy,
+                    };
+
+                    await _db.UpsertPersistentDecalAsync(dbDecal);
+                    _decalRecords[id] = dbDecal;
+                }
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("Persistent decal JSON migration complete.");
+        }
+        catch (Exception ex)
+        {
+            _log.Error($"Failed to migrate persistent_decals.json to database: {ex}");
         }
     }
 }
 
-/// <summary>
-/// A single persistent entity entry stored in the JSON file.
-/// </summary>
-public sealed class PersistentEntityRecord
+// ── Legacy JSON data models for one-time migration ──────────────────────────────
+
+internal sealed class LegacyPersistentEntityRecord
 {
     [JsonPropertyName("prototypeId")]
     public string PrototypeId { get; set; } = string.Empty;
@@ -634,10 +706,7 @@ public sealed class PersistentEntityRecord
     public string SpawnedBy { get; set; } = string.Empty;
 }
 
-/// <summary>
-/// A single persistent tile entry stored in the JSON file.
-/// </summary>
-public sealed class PersistentTileRecord
+internal sealed class LegacyPersistentTileRecord
 {
     [JsonPropertyName("tileDefName")]
     public string TileDefName { get; set; } = string.Empty;
@@ -655,11 +724,7 @@ public sealed class PersistentTileRecord
     public string SpawnedBy { get; set; } = string.Empty;
 }
 
-// #Misfits Add - Persistent decal record stored in JSON.
-/// <summary>
-/// A single persistent decal entry stored in the JSON file.
-/// </summary>
-public sealed class PersistentDecalRecord
+internal sealed class LegacyPersistentDecalRecord
 {
     [JsonPropertyName("decalId")]
     public string DecalId { get; set; } = string.Empty;
@@ -670,11 +735,9 @@ public sealed class PersistentDecalRecord
     [JsonPropertyName("y")]
     public float Y { get; set; }
 
-    /// <summary>Rotation in degrees.</summary>
     [JsonPropertyName("rotation")]
     public float Rotation { get; set; }
 
-    /// <summary>ARGB color packed as int (matches Color.ToArgb() output).</summary>
     [JsonPropertyName("colorArgb")]
     public int ColorArgb { get; set; }
 

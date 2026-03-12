@@ -38,8 +38,9 @@
     jumpsuit: N14ClothingUniformJumpsuitBOSRed
     back: N14ClothingBackpackMilitaryFilled
     shoes: N14ClothingBootsLeatherFilled
-    id: N14IDBrotherhoodWashingtonHolotagInitiate
-    outerClothing: N14ClothingOuterWBoSInitiateArmor
+    id: N14IDBrotherhoodOfSteelHolotagInitiate
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
+    outerClothing: N14ClothingOuterCombatArmorBOS
     belt: ClothingBeltBoSWebbing
     pocket1: BoSBrotherhoodInitiateKits
 

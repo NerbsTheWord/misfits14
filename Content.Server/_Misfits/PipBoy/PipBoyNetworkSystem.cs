@@ -35,6 +35,22 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
     public uint CreateGroup(string name, uint creatorNumber)
     {
         var id = _nextGroupId++;
+        return CreateGroupWithId(id, name, creatorNumber);
+    }
+
+    /// <summary>
+    /// #Misfits Add - Create a group with a user-chosen ID.
+    /// Returns 0 if the ID is already in use; otherwise returns the group ID.
+    /// </summary>
+    public uint CreateGroupWithId(uint id, string name, uint creatorNumber)
+    {
+        if (_groups.ContainsKey(id))
+            return 0; // ID already taken
+
+        // Keep _nextGroupId ahead of any manually assigned IDs
+        if (id >= _nextGroupId)
+            _nextGroupId = id + 1;
+
         var group = new PipBoyGroupData
         {
             GroupId = id,
@@ -229,7 +245,7 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
 
     #region Directory
 
-    /// <summary>Get all visible PipBoy directory entries.</summary>
+    /// <summary>Get all visible PipBoy directory entries, filtering out Unknown/unnamed entries.</summary>
     public List<PipBoyDirectoryEntry> GetDirectory(uint excludeNumber)
     {
         var result = new List<PipBoyDirectoryEntry>();
@@ -239,7 +255,18 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
             if (card.Number == null || card.Number == excludeNumber || !net.IsVisible)
                 continue;
 
+            // #Misfits Add - Only show cards actually inserted into a Pip-Boy PDA.
+            // When a card is removed from its Pip-Boy, PdaUid is cleared and it disappears from the directory.
+            if (card.PdaUid == null)
+                continue;
+
             var info = GetCardDisplayInfo(uid);
+
+            // #Misfits Add - Skip entries with "Unknown" name or no proper owner name.
+            // Only show player-operated PipBoys with actual ID card names.
+            if (string.IsNullOrEmpty(info.Name) || info.Name == "Unknown")
+                continue;
+
             result.Add(new PipBoyDirectoryEntry(card.Number.Value, info.Name, info.JobTitle,
                 net.PresenceStatus, net.StatusMessage));
         }

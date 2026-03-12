@@ -33,12 +33,12 @@
   id: BoSWestScribeGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitBOSWestScribe
-    outerClothing: NCClothingOuterRobeScribeWesternBoS
+    outerClothing: N14ClothingOuterBosScribe
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeather
     pocket1: BoSBrotherhoodHeadScribeKits
-    id: N14IDBrotherhoodWestHolotag
-    ears: N14ClothingHeadsetBOSWest
+    id: N14IDBrotherhoodOfSteelHolotagHeadScribe
+    ears: N14ClothingHeadsetBrotherhoodOfSteelScribe
   storage:
     back:
     - N14BoxPlasticFilledMilitary

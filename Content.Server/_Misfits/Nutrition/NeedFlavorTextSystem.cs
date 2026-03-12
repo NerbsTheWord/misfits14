@@ -142,7 +142,11 @@ public sealed class NeedFlavorTextSystem : EntitySystem
             _lastHungerThresholds[uid] = threshold;
 
             if (threshold == HungerThreshold.Dead)
+            {
                 TryCauseCollapse(uid);
+                // Misfits Add - Fixed near-death self-emote fires once when hunger enters the Dead threshold.
+                SendNearDeathMessage(session);
+            }
 
             if (IsInterestingHungerThreshold(threshold))
                 SendAmbientNeedMessage(session, GetHungerMessages(threshold));
@@ -171,7 +175,11 @@ public sealed class NeedFlavorTextSystem : EntitySystem
             _lastThirstThresholds[uid] = threshold;
 
             if (threshold == ThirstThreshold.Dead)
+            {
                 TryCauseCollapse(uid);
+                // Misfits Add - Fixed near-death self-emote fires once when thirst enters the Dead threshold.
+                SendNearDeathMessage(session);
+            }
 
             if (IsInterestingThirstThreshold(threshold))
                 SendAmbientNeedMessage(session, GetThirstMessages(threshold));
@@ -197,6 +205,16 @@ public sealed class NeedFlavorTextSystem : EntitySystem
     private void SendAmbientNeedMessage(ICommonSession session, string[] messageKeys)
     {
         var text = Loc.GetString(_random.Pick(messageKeys));
+        _chat.SendPrivateDoMessage(session, text);
+    }
+
+    /// <summary>
+    /// Misfits Add - Sends the fixed near-death self-emote to the player only.
+    /// Fires once when hunger or thirst first crosses into the Dead threshold.
+    /// </summary>
+    private void SendNearDeathMessage(ICommonSession session)
+    {
+        var text = Loc.GetString("need-flavor-near-death");
         _chat.SendPrivateDoMessage(session, text);
     }
 

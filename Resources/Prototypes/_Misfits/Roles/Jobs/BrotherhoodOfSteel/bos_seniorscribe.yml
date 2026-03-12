@@ -37,9 +37,10 @@
     jumpsuit: N14ClothingUniformJumpsuitBOSScribe
     back: N14ClothingBackpackSatchelMilitary # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
+    outerClothing: N14ClothingOuterBosScribe
     pocket1: BoSBrotherhoodSeniorScribeKits
-    id: N14IDBrotherhoodHolotag
-    ears: N14ClothingHeadsetBOSMidwestLightScribe
+    id: N14IDBrotherhoodOfSteelHolotagSeniorScribe
+    ears: N14ClothingHeadsetBrotherhoodOfSteelScribe
   storage: # Corvax-Change
     back:
     - N14BoxPlasticFilledMilitary

@@ -68,6 +68,14 @@ public sealed partial class ThirstComponent : Component
     [DataField("dehydrationDamage")]
     public DamageSpecifier? DehydrationDamage;
 
+    // Misfits Add - Separate, harsher slowdown at Dead threshold so the player crawls rather than outright dies.
+    /// <summary>
+    /// The amount of slowdown applied when an entity is at Dead thirst threshold (more severe than Parched).
+    /// </summary>
+    [DataField("deadThirstSlowdownModifier"), ViewVariables(VVAccess.ReadWrite)]
+    [AutoNetworkedField]
+    public float DeadThirstSlowdownModifier = 0.40f;
+
     public static readonly Dictionary<ThirstThreshold, ProtoId<AlertPrototype>> ThirstThresholdAlertTypes = new()
     {
         {ThirstThreshold.Thirsty, "Thirsty"},

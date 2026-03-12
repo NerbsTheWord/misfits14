@@ -7,7 +7,6 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Dataset;
 using Content.Shared.Mood;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Popups;
 using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
@@ -30,7 +29,6 @@ public sealed class AddictionSystem : SharedAddictionSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     // Chat messages for addiction growing/fading
     [Dependency] private readonly IChatManager _chat = default!;
@@ -332,9 +330,10 @@ public sealed class AddictionSystem : SharedAddictionSystem
 
     private void DoAddictionEffect(EntityUid uid)
     {
+        // Private withdrawal flavour text — only the addicted player sees it.
         var msg = GetRandomPopup();
-        if (msg != null)
-            _popup.PopupEntity(msg, uid, uid);
+        if (msg != null && TryGetSession(uid, out var session) && session != null)
+            _chat.ChatMessageToOne(ChatChannel.Local, msg, msg, EntityUid.Invalid, false, session.Channel);
     }
 
     private string? GetRandomPopup()

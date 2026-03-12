@@ -1,7 +1,7 @@
 <Document>
   # Construction
 
-  By pressing [color=#a4885c][keybind="OpenCraftingMenu"][/color], one can open the construction menu, which allows you to craft and build a variety of objects.
+  By pressing [color=#a4885c][keybind="OpenCraftingMenu"][/color], one can open the crafting menu, which allows you to craft and build a variety of objects.
 
   When placing objects that "snap" to the grid, you can hold [color=#a4885c]Shift[/color] to place an entire line at a time, and [color=#a4885c]Ctrl[/color] to place an entire grid at a time.
 

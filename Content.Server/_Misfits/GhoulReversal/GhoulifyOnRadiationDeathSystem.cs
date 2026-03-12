@@ -1,7 +1,10 @@
 // #Misfits Change
 using Content.Server._Misfits.GhoulReversal;
+using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
 using Content.Server.Ghoul;
 using Content.Server.Humanoid;
+using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -9,8 +12,8 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Popups;
-using Robust.Shared.Player;
+using Robust.Server.Player;
+using Robust.Shared.Enums;
 
 namespace Content.Server._Misfits.GhoulReversal;
 
@@ -25,7 +28,9 @@ public sealed class GhoulifyOnRadiationDeathSystem : EntitySystem
     [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -78,11 +83,18 @@ public sealed class GhoulifyOnRadiationDeathSystem : EntitySystem
         // Add feral tracker — further radiation can still push them to feral
         EnsureComp<FeralGhoulifyComponent>(uid);
 
-        _popup.PopupEntity(
-            Loc.GetString("ghoulify-on-death-self"),
-            uid, uid, PopupType.LargeCaution);
-        _popup.PopupEntity(
-            Loc.GetString("ghoulify-on-death-others", ("target", uid)),
-            uid, Filter.PvsExcept(uid), true, PopupType.MediumCaution);
+        // Private message to the transforming player only.
+        if (_playerManager.TryGetSessionByEntity(uid, out var session)
+            && session.Status == SessionStatus.InGame)
+        {
+            var selfMsg = Loc.GetString("ghoulify-on-death-self");
+            _chatManager.ChatMessageToOne(ChatChannel.Local, selfMsg, selfMsg,
+                EntityUid.Invalid, false, session.Channel);
+        }
+
+        // Emote broadcast to nearby bystanders — emote system prefixes the entity name.
+        _chat.TrySendInGameICMessage(uid,
+            Loc.GetString("ghoulify-on-death-others"),
+            InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Mind;
-using Content.Server.Popups;
 using Content.Server.Roles.Jobs;
 using Content.Shared._Misfits.Administration;
 using Content.Shared.Administration;
@@ -13,7 +12,6 @@ using Content.Shared.Chat;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems; // #Misfits Change /Fix/ - RA0002
 using Content.Shared.Objectives.Systems;
-using Content.Shared.Popups;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Localization;
@@ -35,7 +33,6 @@ public sealed class LoreMasterSystem : EntitySystem
     [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly JobSystem _jobs = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!; // #Misfits Change /Fix/ - RA0002
-    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
 
     // Faction display names and chat-markup colours used when formatting notifications.
@@ -208,13 +205,6 @@ public sealed class LoreMasterSystem : EntitySystem
         var (displayName, color) = FactionConfig.TryGetValue(factionId, out var cfg)
             ? cfg
             : ("Command", "#ffffff");
-
-        // Large popup gives the receiving player an immediate heads-up
-        _popup.PopupEntity(
-            $"[{displayName}] New orders received.",
-            session.AttachedEntity.Value,
-            session,
-            PopupType.Large);
 
         // Chat message is formatted to match how the C menu shows objectives:
         // coloured faction issuer header, bold title, italic description body.

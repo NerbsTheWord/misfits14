@@ -34,13 +34,10 @@ using Content.Shared.Nyanotrasen.Item.PseudoItem;
 using Content.Shared.Storage;
 using Content.Shared.Inventory; // #Misfits Change Add: needed for IsWearingPowerArmor check
 using Content.Shared._Misfits.PowerArmor; // #Misfits Change Add: N14PowerArmorComponent for power armor carry restriction
-using Content.Server._Misfits.Grabbing.Components; // #Misfits Change Add: double grab choke state overrides carry slowdown
+using Content.Server._Misfits.Grabbing.Components; // #Misfits Change Add: BeingDoubleGrabbedComponent for choke-carry throw emote
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
-using Content.Server._N14.Carrying;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Carrying
 {
@@ -58,13 +55,9 @@ namespace Content.Server.Carrying
         [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
         [Dependency] private readonly PseudoItemSystem _pseudoItem = default!;
         [Dependency] private readonly ContestsSystem _contests = default!;
-        [Dependency] private readonly SharedStunSystem _stun = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!; // #Misfits Change Add: for power armor carry restriction
         [Dependency] private readonly ChatSystem _chat = default!; // #Misfits Add: broadcast carry as chat emote
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-
-        private static readonly SoundSpecifier CarryThrowSound = new SoundPathSpecifier("/Audio/Items/Handling/cloth_pickup.ogg");
 
         public override void Initialize()
         {
@@ -154,10 +147,9 @@ namespace Content.Server.Carrying
 
             args.ItemUid = virtItem.BlockingEntity;
 
-            _audio.PlayPvs(CarryThrowSound, uid);
-
+            // #Misfits Change Add: broadcast the throw as a chat emote; use a different string for choke-carry throws.
             var thrownName = Identity.Entity(args.ItemUid, EntityManager);
-            var throwKey = HasComp<DoubleGrabVictimComponent>(args.ItemUid)
+            var throwKey = HasComp<BeingDoubleGrabbedComponent>(args.ItemUid)
                 ? "misfits-chat-double-grab-throw"
                 : "misfits-chat-carry-throw";
             _chat.TrySendInGameICMessage(uid,
@@ -299,7 +291,7 @@ namespace Content.Server.Carrying
             _virtualItemSystem.TrySpawnVirtualItemInHand(carried, carrier);
             _virtualItemSystem.TrySpawnVirtualItemInHand(carried, carrier);
             var carryingComp = EnsureComp<CarryingComponent>(carrier);
-            RecalculateCarrySlowdown(carrier, carried);
+            ApplyCarrySlowdown(carrier, carried);
             var carriedComp = EnsureComp<BeingCarriedComponent>(carried);
             EnsureComp<KnockedDownComponent>(carried);
 
@@ -312,10 +304,6 @@ namespace Content.Server.Carrying
                 InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
             _actionBlockerSystem.UpdateCanMove(carried);
-
-            // If the carrier has GrabStunComponent, stun the carried entity.
-            if (TryComp<GrabStunComponent>(carrier, out var grabStun))
-                _stun.TryStun(carried, grabStun.StunTime, refresh: true);
         }
 
         public bool TryCarry(EntityUid carrier, EntityUid toCarry, CarriableComponent? carriedComp = null)
@@ -356,25 +344,23 @@ namespace Content.Server.Carrying
             _movementSpeed.RefreshMovementSpeedModifiers(carrier);
         }
 
-        public void RecalculateCarrySlowdown(EntityUid carrier, EntityUid carried)
+        private void ApplyCarrySlowdown(EntityUid carrier, EntityUid carried)
         {
-            float modifier;
-
-            if (TryComp<DoubleGrabCarrierComponent>(carrier, out var doubleGrab) && doubleGrab.Victim == carried)
-            {
-                modifier = doubleGrab.CarrySpeedModifier;
-            }
-            else
-            {
-                var massRatio = _contests.MassContest(carrier, carried, true);
-                var massRatioSq = MathF.Pow(massRatio, 2);
-                modifier = 1 - 0.15f / massRatioSq;
-                modifier = Math.Max(0.1f, modifier);
-            }
+            var massRatio = _contests.MassContest(carrier, carried, true);
+            var massRatioSq = MathF.Pow(massRatio, 2);
+            var modifier = 1 - 0.15f / massRatioSq;
+            modifier = Math.Max(0.1f, modifier);
 
             var slowdownComp = EnsureComp<CarryingSlowdownComponent>(carrier);
             _slowdown.SetModifier(carrier, modifier, modifier, slowdownComp);
         }
+
+        /// <summary>
+        /// Resets the carry slowdown to the standard mass-based value.
+        /// Called by <see cref="DoubleGrabSystem"/> when transitioning out of the choke-carry speed override.
+        /// </summary>
+        public void RecalculateCarrySlowdown(EntityUid carrier, EntityUid carried) =>
+            ApplyCarrySlowdown(carrier, carried);
 
         public bool CanCarry(EntityUid carrier, EntityUid carried, CarriableComponent? carriedComp = null)
         {

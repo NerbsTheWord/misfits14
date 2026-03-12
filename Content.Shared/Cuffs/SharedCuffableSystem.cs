@@ -344,12 +344,10 @@ namespace Content.Shared.Cuffs
                 component.Used = true;
                 _audio.PlayPredicted(component.EndCuffSound, uid, user);
 
-                // #Misfits Change /Tweak: Observer sprite popup replaced by CuffingChatSystem emote chat.
-                // Commented out to prevent double-message (popup over sprite AND chat emote for bystanders).
-                // _popup.PopupEntity(Loc.GetString("handcuff-component-cuff-observer-success-message",
-                //         ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
-                //     target, Filter.Pvs(target, entityManager: EntityManager)
-                //         .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
+                _popup.PopupEntity(Loc.GetString("handcuff-component-cuff-observer-success-message",
+                        ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
+                    target, Filter.Pvs(target, entityManager: EntityManager)
+                        .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
 
                 if (target == user)
                 {
@@ -534,16 +532,10 @@ namespace Content.Shared.Cuffs
             if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
                 return true;
 
-            // #Misfits Change /Tweak: Observer sprite popup replaced by CuffingChatSystem emote chat.
-            // Commented out to prevent double-message (popup over sprite AND chat emote for bystanders).
-            // _popup.PopupEntity(Loc.GetString("handcuff-component-start-cuffing-observer",
-            //         ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
-            //     target, Filter.Pvs(target, entityManager: EntityManager)
-            //         .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
-
-            // #Misfits Add: raise event so CuffingChatSystem can broadcast start-cuffing to emote chat.
-            var startEv = new CuffStartedEvent(user, target);
-            RaiseLocalEvent(target, ref startEv);
+            _popup.PopupEntity(Loc.GetString("handcuff-component-start-cuffing-observer",
+                    ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
+                target, Filter.Pvs(target, entityManager: EntityManager)
+                    .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
 
             if (target == user)
             {
@@ -658,16 +650,10 @@ namespace Content.Shared.Cuffs
 
             _adminLog.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(user)} is trying to uncuff {ToPrettyString(target)}");
 
-            // #Misfits Change /Tweak: Observer sprite popup replaced by CuffingChatSystem emote chat.
-            // Commented out to prevent double-message (popup over sprite AND chat emote for bystanders).
-            // _popup.PopupEntity(Loc.GetString("cuffable-component-start-uncuffing-observer",
-            //         ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
-            //     target, Filter.Pvs(target, entityManager: EntityManager)
-            //         .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
-
-            // #Misfits Add: raise event so CuffingChatSystem can broadcast start-uncuffing to emote chat.
-            var uncuffStartEv = new UncuffStartedEvent(user, target);
-            RaiseLocalEvent(target, ref uncuffStartEv);
+            _popup.PopupEntity(Loc.GetString("cuffable-component-start-uncuffing-observer",
+                    ("user", Identity.Name(user, EntityManager)), ("target", Identity.Name(target, EntityManager))),
+                target, Filter.Pvs(target, entityManager: EntityManager)
+                    .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user), true);
 
             if (target == user)
             {

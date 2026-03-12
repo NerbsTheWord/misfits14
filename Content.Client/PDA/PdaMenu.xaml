@@ -31,6 +31,8 @@
             <ContainerButton Name="PdaOwnerButton">
                 <RichTextLabel Name="PdaOwnerLabel" Access="Public"/>
             </ContainerButton>
+            <!-- #Misfits Add - PipBoy number displayed on home screen -->
+            <RichTextLabel Name="PipBoyNumberLabel" Access="Public" Margin="0 2 0 0"/>
             <ContainerButton Name="IdInfoButton">
                 <RichTextLabel Name="IdInfoLabel" Access="Public"/>
             </ContainerButton>

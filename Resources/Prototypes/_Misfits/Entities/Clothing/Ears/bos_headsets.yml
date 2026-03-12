@@ -1,0 +1,27 @@
+# #Misfits Change - Unified Brotherhood headset prototypes for live consolidated BOS jobs.
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetBrotherhoodOfSteel
+  name: Brotherhood radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyBrotherhoodOfSteel
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/command.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/command.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetLightScribe
+  id: N14ClothingHeadsetBrotherhoodOfSteelScribe
+  name: Brotherhood scribe headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyBrotherhoodOfSteel
+      - EncryptionKeyWastelandGlobal

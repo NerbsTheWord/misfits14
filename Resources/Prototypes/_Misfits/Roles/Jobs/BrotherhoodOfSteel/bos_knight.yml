@@ -38,8 +38,9 @@
     shoes: N14ClothingBootsLeatherFilled
     hands: N14ClothingHandsGlovesCombat
     head: N14ClothingHeadHatBrotherhoodHelmet
-    outerClothing: N14ClothingOuterWBoSKnightArmor
-    id: N14IDBrotherhoodWashingtonHolotagKnight
+    outerClothing: N14ClothingOuterCombatArmorBOS
+    id: N14IDBrotherhoodOfSteelHolotagKnight
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: ClothingBeltBoSWebbing
     pocket1: BoSBrotherhoodKnightKits
 

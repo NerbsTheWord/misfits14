@@ -1,16 +1,17 @@
 <Document>
-# Farming / Botany
-The role of a farmer is to grow food for your community or for sale through merchants. Plant materials can be ground or squeezed to obtain various extracts used in cooking, eaten whole, or used in various crafting recipes.
+# Botany
 
-# Tools
-There are many tools that can be used to maintain the health and growth of your crops. Most wasteland inhabitants will use soil beds or hydroponic setups to grow their crops.
+Botany in Nuclear 14 is about growing food, medicinal plants, and useful extracts for your settlement. Plant products can be eaten raw, cooked, ground into extracts, or turned into ingredients for medicine and other crafting recipes.
 
-## Soil
+## Growing Basics
+
+Most growers use either simple soil beds or proper hydroponic planters. Soil is cheap and reliable, while hydroponics gives clearer visual feedback about plant health.
+
+## Soil Beds
 <Box>
 <GuideEntityEmbed Entity="N14Soil"/>
 </Box>
-Soil can be made in the crafting menu using <GuideEntityEmbed Entity="N14CompostRotted"/>
-Soil is the most basic form of farming, and it won't give you any visual indicators like flags or highlights to show the status of your plants, so you need to inspect them to see their status.
+Soil can be made in the crafting menu from compost. It is the simplest way to farm, but it does not provide the flag indicators that hydroponic trays do, so you need to inspect plants directly to judge their condition.
 
 The plant life cycle is as follows:
 - [color=lightgreen]Empty[/color]: no water, seeds, or nutrients
@@ -24,23 +25,24 @@ The plant life cycle is as follows:
 - [color=lightgreen]Old / Withered[/color]: the plant has matured and will soon die. It will still be harvestable, and you can extract seeds, but only for a short period of time. Extract the seed, then pull it up / chop it down.
 - [color=lightgreen]Dead[/color]: the plant has been harvested and has stopped growing. It should be pulled up / chopped down. Seeds cannot be extracted.
 
-## Hydroponic Setups
+## Hydroponic Planters
 <Box>
 <GuideEntityEmbed Entity="N14HydroponicsPlanter"/>
 </Box>
-Hydroponic setups are a more advanced way of farming because they introduce visual flags that indicate the status of plants growing in them. Everything is the same as with soil, except now you get the following flags for plant status:
+Hydroponic setups are a more advanced way of farming because they add visual flags that indicate plant status at a glance. The underlying growth process is the same as soil, but maintenance is easier because warning signs are visible on the tray.
+
+Hydroponic flag indicators:
 - [color=red]Red flag, bottom right[/color]: Dead plant that needs replanting. Use a shovel to remove the plant.
 - [color=orange]Weeds[/color]: The environment is suboptimal. Check what's affecting the plant by clicking it with Shift held. It's likely weeds, but it could be unwanted pressure or lack of oxygen. If it's weeds, use a mini-hoe or spray once with herbicide. However, be aware that overuse of herbicides can result in unhealthy plants, possibly even death.
 - [color=#0336ff]Blue flag, bottom left[/color]: Water needed. Use a bucket on the water reservoir and fill the tray.
 - [color=green]Green flag, top left[/color]: Ready to harvest. Left-click to harvest.
 - [color=yellow]Yellow flag, top right[/color]: Nutrients needed. Use any fruit and place it in the soil or get fertilizer from animal manure or by mining.
 
-
-# Plant Genetics
-Like all other forms of life, plants pass traits to their offspring in their genes. By manipulating plant genetics, botanists can create varieties of plants with desirable mutations that increase plant health and yield.
+## Plant Genetics
+Plants pass traits to their offspring through seeds and cuttings. By observing good strains, preserving seed stock, and occasionally mutating crops, you can produce hardier and more productive harvests.
 
 ## Traits
-The phenotype, or set of observable characteristics and traits of a plant, can be determined through careful observation and study. Here are some common traits:
+The phenotype, or visible set of traits a plant expresses, can be identified by growing it and paying attention to how it behaves.
 
 - [color=lightgreen]Bioluminescence[/color]: plants with this trait glow in the dark
 - [color=lightgreen]High Yield[/color]: plants with this trait produce more fruit per harvest
@@ -71,13 +73,15 @@ You can use a [color=cyan]sterile mouth swab[/color] to transfer pollen from one
 <GuideEntityEmbed Entity="DiseaseSwab"/>
 </Box>
 
-## Chemicals
-Some chemicals have special effects on plants.
+## Useful Chemicals
+Several chemicals directly affect plant growth and soil quality.
 
+<Box>
 <GuideReagentEmbed Reagent="Fertilizer"/>
-Compost is also a source of fertilizer and is obtained by the decomposition of animal manure, which takes about 5 minutes. Compost will also dissolve after 2 minutes.
+</Box>
+Compost is also a source of fertilizer and is obtained by decomposing animal manure. It is useful for keeping beds productive and for basic farming recipes.
 
-# Available Plants
+## Available Plants
 
 Below is a list of plants that can be grown in Nuclear 14. Seeds can be found while exploring the Wasteland, traded from merchants, or harvested from wild plants.
 
@@ -122,6 +126,4 @@ These plants have healing, toxic, or crafting-related uses. Handle with care.
 <GuideEntityEmbed Entity="N14FloraDaturaClippingSeed" Caption="Datura"/>
 <GuideEntityEmbed Entity="N14FloraWildWhiteHorsenettleClippingSeed" Caption="White Horsenettle"/>
 </Box>
-
-
 </Document>

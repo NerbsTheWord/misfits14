@@ -134,6 +134,146 @@
   - type: PresetIdCard
     job: BoSMidPaladinCommander
 
+##MARK: Brotherhood Unified Live Jobs
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDBrotherhoodOfSteelHolotagBase
+  name: Brotherhood holotags
+  description: An ID holotag worn by the Brotherhood of Steel.
+  suffix: Brotherhood
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bos_holotag
+  - type: IdCard
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
+  - type: ClothingAddFaction
+    faction: BrotherhoodOfSteel
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagInitiate
+  name: initiate's holotags
+  description: An ID holotag worn by a Brotherhood initiate.
+  suffix: Initiate
+  components:
+  - type: PresetIdCard
+    job: BoSWashingtonInitiate
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSquire
+  name: squire's holotags
+  description: An ID holotag worn by a Brotherhood squire.
+  suffix: Squire
+  components:
+  - type: PresetIdCard
+    job: BoSMidSquire
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagScribe
+  name: scribe's holotags
+  description: An ID holotag worn by a Brotherhood scribe.
+  suffix: Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSWashingtonScribe
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorScribe
+  name: senior scribe's holotags
+  description: An ID holotag worn by a Brotherhood senior scribe.
+  suffix: Senior Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSMidScribe
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadScribe
+  name: head scribe's holotags
+  description: An ID holotag worn by the Head Scribe of the Brotherhood of Steel.
+  suffix: Head Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSWestScribe
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagKnight
+  name: knight's holotags
+  description: An ID holotag worn by a Brotherhood knight.
+  suffix: Knight
+  components:
+  - type: PresetIdCard
+    job: BoSWashingtonKnight
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorKnight
+  name: senior knight's holotags
+  description: An ID holotag worn by a Brotherhood senior knight.
+  suffix: Senior Knight
+  components:
+  - type: PresetIdCard
+    job: BoSMidKnight
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadKnight
+  name: head knight's holotags
+  description: An ID holotag worn by the Head Knight of the Brotherhood of Steel.
+  suffix: Head Knight
+  components:
+  - type: PresetIdCard
+    job: BoSWashingtonCommander
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagPaladin
+  name: paladin's holotags
+  description: An ID holotag worn by a Brotherhood paladin.
+  suffix: Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSWashingtonPaladin
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorPaladin
+  name: senior paladin's holotags
+  description: An ID holotag worn by a Brotherhood senior paladin.
+  suffix: Senior Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladin
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadPaladin
+  name: head paladin's holotags
+  description: An ID holotag worn by the Head Paladin of the Brotherhood of Steel.
+  suffix: Head Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladinCommander
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagElder
+  name: elder's holotags
+  description: An ID holotag worn by the Elder of the Brotherhood of Steel.
+  suffix: Elder
+  components:
+  - type: PresetIdCard
+    job: BoSWestElderCommander
+
 ##MARK: NCR WS Dogtag
 - type: entity
   parent: N14IDNCRDogtag

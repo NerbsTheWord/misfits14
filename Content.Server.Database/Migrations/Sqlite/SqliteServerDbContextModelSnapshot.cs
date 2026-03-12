@@ -1362,6 +1362,260 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("character_currency", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CharacterPlayerData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("character_player_data_id");
+
+                    b.Property<int>("Agility")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("agility");
+
+                    b.Property<int>("Charisma")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("charisma");
+
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("character_name");
+
+                    b.Property<int>("Deaths")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("deaths");
+
+                    b.Property<int>("Endurance")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("endurance");
+
+                    b.Property<string>("HistoryLog")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("history_log");
+
+                    b.Property<int>("Intelligence")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("intelligence");
+
+                    b.Property<int>("Luck")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("luck");
+
+                    b.Property<int>("MobKills")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("mob_kills");
+
+                    b.Property<int>("Perception")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("perception");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_id");
+
+                    b.Property<int>("RoundsPlayed")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("rounds_played");
+
+                    b.Property<bool>("StatsConfirmed")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("stats_confirmed");
+
+                    b.Property<int>("Strength")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("strength");
+
+                    b.HasKey("Id")
+                        .HasName("PK_character_player_data");
+
+                    b.HasIndex("PlayerId", "CharacterName")
+                        .IsUnique();
+
+                    b.ToTable("character_player_data", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("persistent_entity_id");
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<string>("PrototypeId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("prototype_id");
+
+                    b.Property<double>("RotationDegrees")
+                        .HasColumnType("REAL")
+                        .HasColumnName("rotation_degrees");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<float>("X")
+                        .HasColumnType("REAL")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("REAL")
+                        .HasColumnName("y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_entity");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_entity", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentTile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("persistent_tile_id");
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<int>("RotationMirroring")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("rotation_mirroring");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<string>("TileDefName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("tile_def_name");
+
+                    b.Property<float>("X")
+                        .HasColumnType("REAL")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("REAL")
+                        .HasColumnName("y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_tile");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_tile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentDecal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("persistent_decal_id");
+
+                    b.Property<bool>("Cleanable")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("cleanable");
+
+                    b.Property<int>("ColorArgb")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("color_argb");
+
+                    b.Property<string>("DecalId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("decal_id");
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<float>("Rotation")
+                        .HasColumnType("REAL")
+                        .HasColumnName("rotation");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<float>("X")
+                        .HasColumnType("REAL")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("REAL")
+                        .HasColumnName("y");
+
+                    b.Property<int>("ZIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("z_index");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_decal");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_decal", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.AtmPlacement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("atm_placement_id");
+
+                    b.Property<string>("MapName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("map_name");
+
+                    b.Property<string>("PlacementKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("placement_key");
+
+                    b.Property<string>("PrototypeId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("prototype_id");
+
+                    b.Property<int>("TileX")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("tile_x");
+
+                    b.Property<int>("TileY")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("tile_y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_atm_placement");
+
+                    b.HasIndex("PlacementKey")
+                        .IsUnique();
+
+                    b.ToTable("atm_placement", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
                     b.HasOne("Content.Server.Database.AdminRank", "AdminRank")

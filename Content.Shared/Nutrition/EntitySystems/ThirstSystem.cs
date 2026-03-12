@@ -83,7 +83,14 @@ public sealed class ThirstSystem : EntitySystem
             || _jetpack.IsUserFlying(uid))
             return;
 
-        var mod = component.CurrentThirstThreshold <= ThirstThreshold.Parched ? 0.75f : 1.0f;
+        // Misfits Add - Apply a harsher slowdown at Dead threshold so the player moves at a crawl rather than dying outright.
+        float mod;
+        if (component.CurrentThirstThreshold == ThirstThreshold.Dead)
+            mod = component.DeadThirstSlowdownModifier;
+        else if (component.CurrentThirstThreshold <= ThirstThreshold.Parched)
+            mod = 0.75f;
+        else
+            mod = 1.0f;
         args.ModifySpeed(mod, mod);
     }
 

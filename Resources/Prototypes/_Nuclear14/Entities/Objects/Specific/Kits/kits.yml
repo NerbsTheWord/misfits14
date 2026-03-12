@@ -352,6 +352,7 @@
       - id: SawElectric
       - id: Bonesetter
       - id: BoneGel
+      - id: SurgicalSterilanSpray # #Misfits Change - sterile spray to sanitize instruments between patients
       - id: N14WeaponSMG9mm
       - id: N14MagazineSMG9mm
         amount: 3
@@ -387,6 +388,8 @@
       - id: N14ClothingBeltMedicalFilled
       - id: N14ClothingHandsGlovesNitrile
       - id: N14ClothingHeadHatNCRBeretMedic
+      - id: SurgicalSterileWipe # #Misfits Change - antiseptic wipe to prevent contamination
+        amount: 3
       - id: N14WeaponSMG9mm
       - id: N14MagazineSMG9mm
         amount: 3
@@ -421,6 +424,8 @@
     items:
       - id: N14ClothingBeltMedicalFilled
       - id: N14ClothingHeadHatNCRHelmetMetalMedic
+      - id: SurgicalSterileWipe # #Misfits Change - antiseptic wipe to prevent contamination
+        amount: 2
       - id: N14WeaponShotgun
       - id: MagazineBox12gauge
       - id: N14WeaponPistol9mm
@@ -1251,7 +1256,7 @@
       - id: N14BoxCardboardMREBoxKFilled
 
 - type: entity
-  name: BoS Paladin Plasma Kit
+  name: BoS Paladin Advanced Laser Kit
   parent: KitBase
   id: KitMBoS_PalPla
   description: A crate containing everything a member of the Brotherhood might need.
@@ -1262,8 +1267,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaRifleUrban
-      - id: N14PlasmaCartridge
+      - id: N14WeaponLaserRiflePrototypeAER14
+      - id: N14PowerCellAdvanced
         amount: 3
       - id: N14WeaponPistol12mm
       - id: N14MagazinePistol12mm
@@ -1276,7 +1281,7 @@
 # Brotherhood Washington Chapter Kits
 # WBoS Initiate & Squire Kits
 - type: entity
-  name: BoS Initiate Plasma Kit
+  name: BoS Initiate Laser Kit
   parent: KitBase
   id: KitWBoS_IniPla
   description: A crate containing everything a member of the Brotherhood might need.
@@ -1287,8 +1292,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaRifleCrude
-      - id: N14PlasmaCartridge
+      - id: N14WeaponLaserRifleCrude
+      - id: N14PowerCellHigh
         amount: 3
       - id: N14WeaponPistolWebley
       - id: N14MagazinePistol9mm
@@ -1311,8 +1316,8 @@
       - id: N14WeaponRifle556CarbineOld
       - id: Magazine556Rifle
         amount: 3
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14BoxCardboardMREBoxKFilled
@@ -1330,8 +1335,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaRifle
-      - id: N14PlasmaCartridge
+      - id: N14WeaponLaserRifle
+      - id: N14PowerCellHigh
         amount: 3
       - id: N14WeaponPistolWebley
       - id: N14MagazinePistol9mm
@@ -1354,8 +1359,8 @@
       - id: N14WeaponRifle556Carbine
       - id: LongMagazine556Rifle
         amount: 3
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14BoxCardboardMREBoxKFilled
@@ -1373,8 +1378,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Ointment10
@@ -1398,8 +1403,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Ointment10
@@ -1421,8 +1426,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Ointment10
@@ -1434,7 +1439,7 @@
 
 # WBoS Paladin Kits
 - type: entity
-  name: BoS Paladin Plasma Kit
+  name: BoS Paladin Automatic Laser Kit
   parent: KitBase
   id: KitWBoS_PalPla
   description: A crate containing everything a member of the Brotherhood might need.
@@ -1445,8 +1450,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaRifleAuto
-      - id: N14PlasmaCartridge
+      - id: N14WeaponLaserRifleAuto
+      - id: N14PowerCellHigh
         amount: 3
       - id: N14WeaponPistolWebley
       - id: N14MagazinePistol9mm
@@ -1470,8 +1475,8 @@
       - id: N14WeaponRifle762MarksmanCanadian
       - id: Magazine762AmmoShort
         amount: 3
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
@@ -1492,8 +1497,8 @@
       - id: N14WeaponRifle556Carbine
       - id: LongMagazine556Rifle
         amount: 3
-      - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
@@ -1514,8 +1519,8 @@
       - id: N14WeaponLaserRifle
       - id: N14PowerCellHigh
         amount: 3
-      - id: N14WeaponPistolWebley
-      - id: N14MagazinePistol9mm
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak

@@ -37,8 +37,9 @@
     jumpsuit: N14ClothingUniformJumpsuitBOSBlack
     back: N14ClothingBackpackSatchelMilitaryFilled
     shoes: N14ClothingBootsLeatherFilled
-    id: N14IDBrotherhoodWashingtonHolotagScribe
-    ears: N14ClothingHeadsetBOSWashingtonLightScribe
+    outerClothing: N14ClothingOuterBosScribe
+    id: N14IDBrotherhoodOfSteelHolotagScribe
+    ears: N14ClothingHeadsetBrotherhoodOfSteelScribe
     pocket1: BoSBrotherhoodScribeKits
 
 - type: playTimeTracker

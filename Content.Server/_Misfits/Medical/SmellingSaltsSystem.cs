@@ -1,16 +1,21 @@
 // #Misfits Change /Add/ - Smelling salts now perform a long resuscitation interaction instead of injecting a reagent.
+using Content.Server.Chat.Managers;
 using Content.Server.DoAfter;
-using Content.Server.Popups;
+using Content.Shared.Chat;
 using Content.Shared.DoAfter;
 using Content.Shared._Misfits.Medical;
+using Robust.Server.GameObjects;
+using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Enums;
 
 namespace Content.Server._Misfits.Medical;
 
 public sealed class SmellingSaltsSystem : EntitySystem
 {
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ResuscitationSystem _resuscitation = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
@@ -72,13 +77,18 @@ public sealed class SmellingSaltsSystem : EntitySystem
             component.ReviveHeal,
             "smelling-salts-revive-do");
 
-        if (result.Rotten)
+        if (result.Rotten || !result.HasMindSession)
         {
-            _popup.PopupEntity(Loc.GetString("smelling-salts-rotten"), uid, args.User);
-        }
-        else if (!result.HasMindSession)
-        {
-            _popup.PopupEntity(Loc.GetString("smelling-salts-no-mind"), uid, args.User);
+            // Private feedback message to the user only.
+            if (_playerManager.TryGetSessionByEntity(args.User, out var session)
+                && session.Status == SessionStatus.InGame)
+            {
+                var feedbackMsg = result.Rotten
+                    ? Loc.GetString("smelling-salts-rotten")
+                    : Loc.GetString("smelling-salts-no-mind");
+                _chatManager.ChatMessageToOne(ChatChannel.Local, feedbackMsg, feedbackMsg,
+                    EntityUid.Invalid, false, session.Channel);
+            }
         }
 
         QueueDel(uid);

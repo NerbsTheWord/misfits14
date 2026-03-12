@@ -77,7 +77,11 @@ public sealed class HungerSystem : EntitySystem
             || _jetpack.IsUserFlying(uid))
             return;
 
-        args.ModifySpeed(component.StarvingSlowdownModifier, component.StarvingSlowdownModifier);
+        // Misfits Add - Apply a harsher slowdown at Dead threshold so the player moves at a crawl rather than dying outright.
+        var mod = component.CurrentThreshold == HungerThreshold.Dead
+            ? component.DeadHungerSlowdownModifier
+            : component.StarvingSlowdownModifier;
+        args.ModifySpeed(mod, mod);
     }
 
     private void OnRejuvenate(EntityUid uid, HungerComponent component, RejuvenateEvent args)

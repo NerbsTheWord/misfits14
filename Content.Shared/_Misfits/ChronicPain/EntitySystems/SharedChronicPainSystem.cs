@@ -101,6 +101,8 @@ public abstract partial class SharedChronicPainSystem : EntitySystem
             return;
 
         var effect = RobustRandom.Pick(effects);
+        // #Misfits TODO: Convert to private chat message — requires server-side event handler
+        // since PopupPredicted is shared/client-predicted and IChatManager is server-only.
         Popup.PopupPredicted(Loc.GetString(effect), entity, entity);
 
         var delaySeconds = RobustRandom.NextDouble()

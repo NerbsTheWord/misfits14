@@ -12,6 +12,14 @@
     sprite: Structures/Decoration/bonfire.rsi
     layers:
       - state: bonfire_extinguished
+        map: [ "base" ]
+        color: "#666666" # Misfits Change /Add/ Start dark/unlit; brightened by GenericVisualizer when on fire.
+  - type: GenericVisualizer
+    visuals:
+      enum.FireVisuals.OnFire:
+        base:
+          True: { color: "#FFFFFF" }
+          False: { color: "#666666" }
   - type: Appearance
   - type: Reactive
     groups:

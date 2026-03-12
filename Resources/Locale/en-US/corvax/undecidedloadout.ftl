@@ -155,14 +155,14 @@ undecided-loadout-category-recruit-healer-description =
 undecided-loadout-category-washington-base-name = Standard BoS Kit
 undecided-loadout-category-washington-base-description =
     A box with everything needed for a Brotherhood of Steel member.
-    Contains: 1 automatic plasma rifle, 1 laser pistol, 3 rifle batteries,
-    2 pistol batteries, a stimulator, and a dry ration.
+    Contains: 1 automatic laser rifle, 1 laser pistol, 3 high-capacity power cells,
+    2 small power cells, a stimulator, and a dry ration.
 
-undecided-loadout-category-washington-wattz-name = Plasma BoS Kit
+undecided-loadout-category-washington-wattz-name = Wattz BoS Kit
 undecided-loadout-category-washington-wattz-description =
     A box with everything needed for a Brotherhood of Steel member.
-    Contains: 1 "Wattz 2000" laser rifle, 1 laser pistol, 2 rifle batteries,
-    2 pistol batteries, a stimulator, and a dry ration.
+    Contains: 1 "Wattz 2000" laser rifle, 1 laser pistol, 2 focused power cells,
+    2 small power cells, a stimulator, and a dry ration.
 
 undecided-loadout-category-washington-auto-name = Automatic BoS Kit
 undecided-loadout-category-washington-auto-description =
@@ -182,16 +182,16 @@ undecided-loadout-category-washington-command-base-description =
     Contains: 1 automatic laser rifle, 1 laser pistol, 3 high-capacity power cells,
     2 small power cells, 1 stimpak, and 1 dry ration.
 
-undecided-loadout-category-washington-command-multi-name = Multiplasma BoS Command Kit
+undecided-loadout-category-washington-command-multi-name = Focused BoS Command Kit
 undecided-loadout-category-washington-command-multi-description =
     A box with everything needed to command the Brotherhood of Steel.
-    Contains: 1 multiplasma rifle, 1 laser pistol, 3 rifle batteries,
-    2 pistol batteries, a stimulator, and a dry ration.
+    Contains: 1 YK42B laser rifle, 1 laser pistol, 3 focused YK42B power cells,
+    2 small power cells, 1 stimpak, and 1 dry ration.
 
 undecided-loadout-category-washington-command-caster-name = Strike BoS Command Kit
 undecided-loadout-category-washington-command-caster-description =
     A box with everything needed to command the Brotherhood of Steel.
-    Contains: 1 plasma caster, 1 laser pistol, 3 plasma shells,
+    Contains: 1 charging laser rifle, 1 laser pistol,
     2 small power cells, 1 stimpak, and 1 dry ration.
 
 undecided-loadout-category-washington-command-wattz-name = Wattz BoS Command Kit
@@ -239,7 +239,7 @@ undecided-loadout-category-scribe-laser-description =
 undecided-loadout-category-scribe-plasma-name = Scribe Engineer Kit
 undecided-loadout-category-scribe-plasma-description =
     A box with hazardous-environment engineering gear.
-    Contains: 1 plasma pistol, 2 plasma cells, 1 radiation suit,
+    Contains: 1 laser pistol, 2 small power cells, 1 radiation suit,
     1 hazmat helmet, 1 filled utility belt, 1 steel sheet,
     1 glass sheet, and 1 stimpak.
 
@@ -256,10 +256,10 @@ undecided-loadout-category-squire-laser-description =
     Contains: 1 crude laser rifle, 3 high-capacity power cells,
     1 roll of gauze, 1 stimpak, and 1 pair of goggles.
 
-undecided-loadout-category-squire-plasma-name = Squire Plasma Kit
+undecided-loadout-category-squire-plasma-name = Squire Laser Sidearm Kit
 undecided-loadout-category-squire-plasma-description =
-    A box with a light plasma loadout for a Brotherhood squire.
-    Contains: 1 plasma pistol, 2 plasma cells, 1 roll of gauze,
+    A box with a light laser sidearm loadout for a Brotherhood squire.
+    Contains: 1 laser pistol, 2 small power cells, 1 roll of gauze,
     1 stimpak, 1 Nuka grenade, and 1 gas mask.
 
 undecided-loadout-category-knight-rifle-name = Knight Rifle Kit
@@ -276,10 +276,10 @@ undecided-loadout-category-knight-laser-description =
     2 small power cells, 1 roll of gauze, 1 stimpak,
     1 knight beret, 1 pair of goggles, and 1 gas mask.
 
-undecided-loadout-category-knight-plasma-name = Knight Plasma Kit
+undecided-loadout-category-knight-plasma-name = Knight Crude Laser Kit
 undecided-loadout-category-knight-plasma-description =
-    A box with a standard plasma loadout for a Brotherhood knight.
-    Contains: 1 crude plasma rifle, 3 plasma cartridges, 1 12mm pistol,
+    A box with a standard laser loadout for a Brotherhood knight.
+    Contains: 1 crude laser rifle, 3 high-capacity power cells, 1 12mm pistol,
     2 12mm magazines, 1 roll of gauze, 1 stimpak,
     1 Nuka grenade, 1 knight cap, 1 pair of goggles, and 1 gas mask.
 
@@ -296,10 +296,10 @@ undecided-loadout-category-paladin-laser-description =
     3 high-capacity power cells, 2 small power cells,
     1 roll of gauze, and 1 stimpak.
 
-undecided-loadout-category-paladin-plasma-name = Paladin Plasma Kit
+undecided-loadout-category-paladin-plasma-name = Paladin Prototype Laser Kit
 undecided-loadout-category-paladin-plasma-description =
-    A box with a veteran plasma loadout for a Brotherhood paladin.
-    Contains: 1 plasma rifle, 3 plasma cartridges,
+    A box with a veteran prototype laser loadout for a Brotherhood paladin.
+    Contains: 1 prototype AER-14 laser rifle, 3 advanced power cells,
     1 magneto laser pistol, 2 small magneto cells,
     1 roll of gauze, 1 stimpak, and 1 welding fuel cigarette.
 
@@ -315,7 +315,7 @@ undecided-loadout-category-elder-laser-description =
     A box with a command-grade laser loadout for a Brotherhood elder.
     Contains: 1 YK42B laser rifle, 1 magneto laser pistol,
     3 focused YK42B power cells, 2 small magneto cells,
-    1 roll of gauze, 1 stimpak, and 1 plasma grenade.
+    1 roll of gauze, 1 stimpak, and 1 shrapnel grenade.
 
 # Midwest Brotherhood Inquisitors
 undecided-loadout-category-inquisitorinspector-name = Inquisitor Inspector Kit
@@ -332,10 +332,10 @@ undecided-loadout-category-inquisitorcrusader-description =
     1 Brotherhood webbing, 2 stimpaks, 1 K-ration box,
     and 1 roll of gauze.
 
-undecided-loadout-category-inquisitorplasma-name = Inquisitor Plasma Kit
+undecided-loadout-category-inquisitorplasma-name = Inquisitor Laser Kit
 undecided-loadout-category-inquisitorplasma-description =
-    A box with heavy energy gear for a Brotherhood inquisitor.
-    Contains: 1 automatic plasma rifle, 3 plasma cartridges,
+    A box with heavy laser gear for a Brotherhood inquisitor.
+    Contains: 1 Wattz 3000 laser rifle, 3 focused power cells,
     1 Brotherhood webbing, 2 stimpaks, 1 super stimpak,
     1 K-ration box, 1 roll of gauze, and 1 ointment pack.
 

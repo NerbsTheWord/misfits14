@@ -234,11 +234,33 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         if (string.IsNullOrWhiteSpace(msg.Content))
             return;
 
-        var name = msg.Content.Trim();
+        // #Misfits Change - Support custom group ID: content format is "name\0customId"
+        var content = msg.Content;
+        uint customId = 0;
+        var separatorIdx = content.IndexOf('\0');
+        if (separatorIdx >= 0)
+        {
+            var idPart = content[(separatorIdx + 1)..];
+            uint.TryParse(idPart, out customId);
+            content = content[..separatorIdx];
+        }
+
+        var name = content.Trim();
         if (name.Length > MaxNameLength)
             name = name[..MaxNameLength];
 
-        var groupId = _network.CreateGroup(name, ownNumber);
+        uint groupId;
+        if (customId > 0)
+        {
+            groupId = _network.CreateGroupWithId(customId, name, ownNumber);
+            if (groupId == 0)
+                return; // ID already taken, silently fail
+        }
+        else
+        {
+            groupId = _network.CreateGroup(name, ownNumber);
+        }
+
         netComp.Groups[groupId] = new PipBoyGroupMembership(groupId, name);
         Dirty(cardUid, netComp);
     }

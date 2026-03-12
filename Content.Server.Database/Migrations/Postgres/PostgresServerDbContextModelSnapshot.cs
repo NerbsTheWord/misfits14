@@ -1437,6 +1437,270 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("character_currency", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CharacterPlayerData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("character_player_data_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Agility")
+                        .HasColumnType("integer")
+                        .HasColumnName("agility");
+
+                    b.Property<int>("Charisma")
+                        .HasColumnType("integer")
+                        .HasColumnName("charisma");
+
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("character_name");
+
+                    b.Property<int>("Deaths")
+                        .HasColumnType("integer")
+                        .HasColumnName("deaths");
+
+                    b.Property<int>("Endurance")
+                        .HasColumnType("integer")
+                        .HasColumnName("endurance");
+
+                    b.Property<string>("HistoryLog")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("history_log");
+
+                    b.Property<int>("Intelligence")
+                        .HasColumnType("integer")
+                        .HasColumnName("intelligence");
+
+                    b.Property<int>("Luck")
+                        .HasColumnType("integer")
+                        .HasColumnName("luck");
+
+                    b.Property<int>("MobKills")
+                        .HasColumnType("integer")
+                        .HasColumnName("mob_kills");
+
+                    b.Property<int>("Perception")
+                        .HasColumnType("integer")
+                        .HasColumnName("perception");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_id");
+
+                    b.Property<int>("RoundsPlayed")
+                        .HasColumnType("integer")
+                        .HasColumnName("rounds_played");
+
+                    b.Property<bool>("StatsConfirmed")
+                        .HasColumnType("boolean")
+                        .HasColumnName("stats_confirmed");
+
+                    b.Property<int>("Strength")
+                        .HasColumnType("integer")
+                        .HasColumnName("strength");
+
+                    b.HasKey("Id")
+                        .HasName("PK_character_player_data");
+
+                    b.HasIndex("PlayerId", "CharacterName")
+                        .IsUnique();
+
+                    b.ToTable("character_player_data", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("persistent_entity_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<string>("PrototypeId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("prototype_id");
+
+                    b.Property<double>("RotationDegrees")
+                        .HasColumnType("double precision")
+                        .HasColumnName("rotation_degrees");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<float>("X")
+                        .HasColumnType("real")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("real")
+                        .HasColumnName("y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_entity");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_entity", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentTile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("persistent_tile_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<int>("RotationMirroring")
+                        .HasColumnType("integer")
+                        .HasColumnName("rotation_mirroring");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<string>("TileDefName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("tile_def_name");
+
+                    b.Property<float>("X")
+                        .HasColumnType("real")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("real")
+                        .HasColumnName("y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_tile");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_tile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.PersistentDecal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("persistent_decal_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Cleanable")
+                        .HasColumnType("boolean")
+                        .HasColumnName("cleanable");
+
+                    b.Property<int>("ColorArgb")
+                        .HasColumnType("integer")
+                        .HasColumnName("color_argb");
+
+                    b.Property<string>("DecalId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("decal_id");
+
+                    b.Property<string>("PersistenceId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("persistence_id");
+
+                    b.Property<float>("Rotation")
+                        .HasColumnType("real")
+                        .HasColumnName("rotation");
+
+                    b.Property<string>("SpawnedBy")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("spawned_by");
+
+                    b.Property<float>("X")
+                        .HasColumnType("real")
+                        .HasColumnName("x");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("real")
+                        .HasColumnName("y");
+
+                    b.Property<int>("ZIndex")
+                        .HasColumnType("integer")
+                        .HasColumnName("z_index");
+
+                    b.HasKey("Id")
+                        .HasName("PK_persistent_decal");
+
+                    b.HasIndex("PersistenceId")
+                        .IsUnique();
+
+                    b.ToTable("persistent_decal", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.AtmPlacement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("atm_placement_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MapName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("map_name");
+
+                    b.Property<string>("PlacementKey")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("placement_key");
+
+                    b.Property<string>("PrototypeId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("prototype_id");
+
+                    b.Property<int>("TileX")
+                        .HasColumnType("integer")
+                        .HasColumnName("tile_x");
+
+                    b.Property<int>("TileY")
+                        .HasColumnType("integer")
+                        .HasColumnName("tile_y");
+
+                    b.HasKey("Id")
+                        .HasName("PK_atm_placement");
+
+                    b.HasIndex("PlacementKey")
+                        .IsUnique();
+
+                    b.ToTable("atm_placement", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
                     b.HasOne("Content.Server.Database.AdminRank", "AdminRank")

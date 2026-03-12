@@ -47,11 +47,11 @@
     back: N14ClothingBackpackMilitary # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
     head:  N14ClothingHeadHatBrotherhoodFieldCap
-    outerClothing: N14ClothingOuterMBoSPaladinArmor
+    outerClothing: N14ClothingOuterPowerArmorT51
     hands: N14ClothingHandsGlovesCombat
     pocket1: BoSBrotherhoodHeadPaladinKits
-    id: N14IDBrotherhoodHolotagCommander
-    ears: N14ClothingHeadsetBOSMidwest
+    id: N14IDBrotherhoodOfSteelHolotagHeadPaladin
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: ClothingBeltMilitary
   storage: # Corvax-Change
     back:

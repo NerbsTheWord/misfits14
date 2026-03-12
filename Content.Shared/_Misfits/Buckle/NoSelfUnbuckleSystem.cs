@@ -23,6 +23,10 @@ public sealed class NoSelfUnbuckleSystem : EntitySystem
         args.Cancelled = true;
 
         if (args.Popup)
+        {
+            // #Misfits TODO: Convert to private chat message — requires server-side event handler
+            // since PopupClient is shared/client-predicted and IChatManager is server-only.
             _popup.PopupClient(Loc.GetString(ent.Comp.Popup), ent, args.User.Value);
+        }
     }
 }

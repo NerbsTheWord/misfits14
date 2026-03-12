@@ -12,6 +12,7 @@
     tags:
     - SurgeryTool
   - type: SurgeryTool
+  - type: SurgeryDirtiness # #Misfits Change - pre-populate so HUD cleanliness bar is visible before first use
 
 # Cautery
 

@@ -1,8 +1,9 @@
 // #Misfits Add - Server system managing persistent player SPECIAL stats, kill/death/round counters,
-// and character history log. Data persists across rounds via a flat player_data.json file.
+// and character history log. Data persists across rounds via the database.
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._Misfits.PlayerData;
@@ -15,21 +16,18 @@ using Robust.Shared.Player;
 namespace Content.Server._Misfits.PlayerData;
 
 /// <summary>
-/// Loads/saves player data (SPECIAL, statistics, history) from <c>player_data.json</c>.
+/// Loads/saves player data (SPECIAL, statistics, history) from the database.
 /// Tracks mob kills via <see cref="MobStateChangedEvent"/> origin attribution.
 /// Tracks player deaths via the same event on entities that own the component.
 /// </summary>
 public sealed class PersistentPlayerDataSystem : EntitySystem
 {
+    [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly MindSystem _mind = default!;
 
     // #Misfits Add - Sawmill for data system logging
     private ISawmill _log = default!;
-
-    private const string DataFileName = "player_data.json";
-    private readonly Dictionary<string, CharacterPlayerData> _playerData = new();
-    private string _saveFilePath = string.Empty;
 
     public override void Initialize()
     {
@@ -51,11 +49,8 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         // #Misfits Add - Handle SPECIAL allocation confirmation from client
         SubscribeNetworkEvent<ConfirmSpecialAllocationEvent>(OnConfirmSpecialAllocation);
 
-        // Determine save path from user-data directory
-        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
-        _saveFilePath = Path.Combine(userDataPath, DataFileName);
-
-        LoadAllData();
+        // One-time migration from legacy JSON to database
+        MigrateJsonToDatabase();
     }
 
     // ── Public API ─────────────────────────────────────────────────────────────
@@ -82,13 +77,13 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
 
         // Load immediately if the player is already attached (they will be for normal spawns)
         if (args.Player.AttachedEntity == args.Mob)
-            LoadPlayer(args.Mob, comp, args.Player);
+            LoadPlayerAsync(args.Mob, comp, args.Player);
     }
 
     private void OnPlayerAttached(Entity<PersistentPlayerDataComponent> ent, ref PlayerAttachedEvent args)
     {
-        // Handles reconnects and late-attachment; LoadPlayer is idempotent
-        LoadPlayer(ent, ent.Comp, args.Player);
+        // Handles reconnects and late-attachment; LoadPlayerAsync is idempotent
+        LoadPlayerAsync(ent, ent.Comp, args.Player);
     }
 
     // ── Shutdown / Save ────────────────────────────────────────────────────────
@@ -181,7 +176,7 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
 
     // ── Data load/save helpers ─────────────────────────────────────────────────
 
-    private void LoadPlayer(EntityUid uid, PersistentPlayerDataComponent comp, ICommonSession session)
+    private async void LoadPlayerAsync(EntityUid uid, PersistentPlayerDataComponent comp, ICommonSession session)
     {
         if (comp.Loaded)
             return;
@@ -197,27 +192,37 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         comp.UserId = session.UserId.ToString();
         comp.CharacterName = characterName;
 
-        var key = BuildKey(comp.UserId, characterName);
-        if (_playerData.TryGetValue(key, out var saved))
-        {
-            comp.Strength = saved.Strength;
-            comp.Perception = saved.Perception;
-            comp.Endurance = saved.Endurance;
-            comp.Charisma = saved.Charisma;
-            comp.Agility = saved.Agility;
-            comp.Intelligence = saved.Intelligence;
-            comp.Luck = saved.Luck;
+        var playerId = session.UserId.UserId;
 
-            comp.MobKills = saved.MobKills;
-            comp.Deaths = saved.Deaths;
-            comp.RoundsPlayed = saved.RoundsPlayed;
-            comp.HistoryLog = new List<string>(saved.HistoryLog);
-            comp.StatsConfirmed = saved.StatsConfirmed; // #Misfits Fix - only lock if the player explicitly confirmed previously
-        }
-        else
+        try
         {
-            // First-time character — welcome entry
-            AppendHistory(comp, "Arrived in the Wasteland for the first time.");
+            var saved = await _db.GetCharacterPlayerDataAsync(playerId, characterName);
+
+            if (saved != null)
+            {
+                comp.Strength = saved.Strength;
+                comp.Perception = saved.Perception;
+                comp.Endurance = saved.Endurance;
+                comp.Charisma = saved.Charisma;
+                comp.Agility = saved.Agility;
+                comp.Intelligence = saved.Intelligence;
+                comp.Luck = saved.Luck;
+
+                comp.MobKills = saved.MobKills;
+                comp.Deaths = saved.Deaths;
+                comp.RoundsPlayed = saved.RoundsPlayed;
+                comp.HistoryLog = DeserializeHistoryLog(saved.HistoryLog);
+                comp.StatsConfirmed = saved.StatsConfirmed; // #Misfits Fix - only lock if the player explicitly confirmed previously
+            }
+            else
+            {
+                // First-time character — welcome entry
+                AppendHistory(comp, "Arrived in the Wasteland for the first time.");
+            }
+        }
+        catch (Exception ex)
+        {
+            _log.Error($"Failed to load player data for {characterName}: {ex}");
         }
 
         // Increment round counter exactly once per spawn
@@ -240,12 +245,13 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         if (string.IsNullOrEmpty(comp.UserId) || string.IsNullOrEmpty(comp.CharacterName))
             return;
 
-        var key = BuildKey(comp.UserId, comp.CharacterName);
-        _playerData[key] = new CharacterPlayerData
-        {
-            UserId = comp.UserId,
-            CharacterName = comp.CharacterName,
+        if (!Guid.TryParse(comp.UserId, out var playerId))
+            return;
 
+        var data = new Content.Server.Database.CharacterPlayerData
+        {
+            PlayerId = playerId,
+            CharacterName = comp.CharacterName,
             Strength = comp.Strength,
             Perception = comp.Perception,
             Endurance = comp.Endurance,
@@ -253,16 +259,14 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
             Agility = comp.Agility,
             Intelligence = comp.Intelligence,
             Luck = comp.Luck,
-
             MobKills = comp.MobKills,
             Deaths = comp.Deaths,
             RoundsPlayed = comp.RoundsPlayed,
-
             StatsConfirmed = comp.StatsConfirmed,
-            HistoryLog = new List<string>(comp.HistoryLog),
+            HistoryLog = SerializeHistoryLog(comp.HistoryLog),
         };
 
-        PersistAllData();
+        _db.UpsertCharacterPlayerDataAsync(data);
     }
 
     private static void AppendHistory(PersistentPlayerDataComponent comp, string entry)
@@ -273,56 +277,87 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
             comp.HistoryLog.RemoveAt(0);
     }
 
-    private static string BuildKey(string userId, string characterName) => $"{userId}:{characterName}";
+    private static string SerializeHistoryLog(List<string> log) =>
+        JsonSerializer.Serialize(log);
 
-    private void LoadAllData()
+    private static List<string> DeserializeHistoryLog(string json)
     {
         try
         {
-            if (!File.Exists(_saveFilePath))
-                return;
-
-            var json = File.ReadAllText(_saveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, CharacterPlayerData>>(json);
-
-            if (data == null)
-                return;
-
-            foreach (var kvp in data)
-                _playerData[kvp.Key] = kvp.Value;
-
-            _log.Debug($"Loaded {_playerData.Count} character records from {DataFileName}.");
+            return JsonSerializer.Deserialize<List<string>>(json) ?? new List<string>();
         }
-        catch (Exception ex)
+        catch
         {
-            _log.Error($"Failed to load {DataFileName}: {ex}");
+            return new List<string>();
         }
     }
 
-    private void PersistAllData()
+    // ── One-time JSON → database migration ─────────────────────────────────────
+
+    private async void MigrateJsonToDatabase()
     {
+        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
+        var jsonPath = Path.Combine(userDataPath, "player_data.json");
+
+        if (!File.Exists(jsonPath))
+            return;
+
         try
         {
-            var json = JsonSerializer.Serialize(_playerData, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_saveFilePath, json);
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyCharacterPlayerData>>(json);
+
+            if (data == null || data.Count == 0)
+            {
+                File.Move(jsonPath, jsonPath + ".migrated");
+                return;
+            }
+
+            _log.Info($"Migrating {data.Count} player data records from JSON to database...");
+
+            foreach (var (_, record) in data)
+            {
+                if (string.IsNullOrEmpty(record.UserId) || !Guid.TryParse(record.UserId, out var playerId))
+                    continue;
+
+                var dbData = new Content.Server.Database.CharacterPlayerData
+                {
+                    PlayerId = playerId,
+                    CharacterName = record.CharacterName,
+                    Strength = record.Strength,
+                    Perception = record.Perception,
+                    Endurance = record.Endurance,
+                    Charisma = record.Charisma,
+                    Intelligence = record.Intelligence,
+                    Agility = record.Agility,
+                    Luck = record.Luck,
+                    MobKills = record.MobKills,
+                    Deaths = record.Deaths,
+                    RoundsPlayed = record.RoundsPlayed,
+                    StatsConfirmed = record.StatsConfirmed,
+                    HistoryLog = SerializeHistoryLog(record.HistoryLog),
+                };
+
+                await _db.UpsertCharacterPlayerDataAsync(dbData);
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("Player data JSON migration complete.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to save {DataFileName}: {ex}");
+            _log.Error($"Failed to migrate player_data.json to database: {ex}");
         }
     }
 }
 
 /// <summary>
-/// JSON-serializable data model for one character's persistent record.
-/// New fields default gracefully when reading older save files.
+/// Legacy JSON data model for one-time migration from player_data.json.
 /// </summary>
-public sealed class CharacterPlayerData
+internal sealed class LegacyCharacterPlayerData
 {
     public string UserId { get; set; } = string.Empty;
     public string CharacterName { get; set; } = string.Empty;
-
-    // SPECIAL defaults to 1; old saves have explicit stored values so this only affects missing fields
     public int Strength { get; set; } = 1;
     public int Perception { get; set; } = 1;
     public int Endurance { get; set; } = 1;
@@ -330,11 +365,9 @@ public sealed class CharacterPlayerData
     public int Agility { get; set; } = 1;
     public int Intelligence { get; set; } = 1;
     public int Luck { get; set; } = 1;
-
     public int MobKills { get; set; }
     public int Deaths { get; set; }
     public int RoundsPlayed { get; set; }
-
     public bool StatsConfirmed { get; set; } = false;
     public List<string> HistoryLog { get; set; } = new();
 }

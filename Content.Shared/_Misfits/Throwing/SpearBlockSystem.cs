@@ -4,12 +4,11 @@
 // Mirrors ReflectSystem's ReflectUserComponent propagation pattern.
 // When a hit triggers, the spear embeds into the blocking item (shield/PA) instead of the mob.
 // If no blocking item is found as an entity, the spear falls to the ground instead.
+// Chat narration is handled server-side by SpearBlockChatSystem via SpearBlockedEvent.
 using Content.Shared._Misfits.Throwing.Components;
 using Content.Shared.Hands;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
-using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
@@ -24,7 +23,6 @@ public sealed class SpearBlockSystem : EntitySystem
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
 
     public override void Initialize()
@@ -140,29 +138,8 @@ public sealed class SpearBlockSystem : EntitySystem
         if (!_netManager.IsServer)
             return;
 
-        // Show narrative popup visible to all nearby players.
-        var spearName = Name(args.Thrown);
-        var targetName = Identity.Name(uid, EntityManager);
-        var throwerName = args.User is { } throwerId
-            ? Identity.Name(throwerId, EntityManager)
-            : Loc.GetString("spear-block-unknown-thrower");
-
-        if (blockEntity.HasValue)
-        {
-            var shieldName = Name(blockEntity.Value);
-            _popup.PopupEntity(
-                Loc.GetString("spear-block-embedded",
-                    ("thrower", throwerName), ("spear", spearName), ("target", targetName), ("shield", shieldName)),
-                uid,
-                PopupType.Medium);
-        }
-        else
-        {
-            _popup.PopupEntity(
-                Loc.GetString("spear-block-deflected",
-                    ("thrower", throwerName), ("spear", spearName), ("target", targetName)),
-                uid,
-                PopupType.Medium);
-        }
+        // Raise server-side event — SpearBlockChatSystem sends the bystander emote.
+        var ev = new SpearBlockedEvent(uid, args.Thrown, args.User, blockEntity);
+        RaiseLocalEvent(uid, ref ev);
     }
 }

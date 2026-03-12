@@ -1,65 +1,58 @@
 <Document>
-# Crafting System Guide
+# Blueprints &amp; Crafting
 
-Welcome to the crafting system guide! This guide will help you understand how to create items using blueprints, workbenches, and various tools. Crafting is an important part of survival in the Wasteland.
-
-Let's dive into the details!
+Blueprint crafting is the workbench-based side of the Wasteland crafting system. If you have the right blueprint, bench, resources, and tools, you can turn scrap and rare parts into faction gear, armor, and weapons.
 
 ## Crafting Basics
 
-Crafting is the process of creating items using blueprints, resources, and tools. Each blueprint specifies the required materials, tools, and type of workbench. Here's how it works:
+Blueprints define what you can make and what each recipe needs.
 
-1. Blueprints: Blueprints are instructions for crafting. They specify the required resources, tools, and type of workbench.
 <Box>
 <GuideEntityEmbed Entity="N14ClothingOuterPowerArmorT45Blueprint"/>
 <GuideEntityEmbed Entity="N14WeaponSniper556TribalBlueprint"/>
 </Box>
 
-2. Workbenches: Different items require different workbenches. For example, crafting power armor may require a power armor workbench.
+Workbenches determine where a recipe can be completed.
+
 <Box>
 <GuideEntityEmbed Entity="N14WorkbenchStation"/>
 </Box>
 
-3. Resources: Crafting requires specific resources. These can be raw materials, scrap components, or even other crafted items.
+Resources can be raw materials, scrap parts, or intermediate crafted components.
+
 <Box>
 <GuideEntityEmbed Entity="N14ScrapElectronic"/>
 <GuideEntityEmbed Entity="N14JunkGunpartsAdvancedFrame"/>
 </Box>
 
-4. Tools: Some recipes require tools such as screwdrivers, wrenches, or welding equipment. These tools are not consumed but are necessary to complete the process.
+Tools are required by many recipes, but they are not consumed during crafting.
+
 <Box>
 <GuideEntityEmbed Entity="N14Screwdriver"/>
 <GuideEntityEmbed Entity="N14Welder"/>
 <GuideEntityEmbed Entity="N14Wrench"/>
 </Box>
 
-5. Faction Restrictions: Some blueprints are only available to certain factions. Make sure your faction affiliation allows you to use the required recipes.
+Some blueprints are faction-locked, so access can depend on who you are and which bench you can use.
+
 <Box>
 <GuideEntityEmbed Entity="N14DecorationFlagNCR"/>
 <GuideEntityEmbed Entity="N14FlagWallWesternBrotherhood"/>
 </Box>
 
-## Crafting Process
+## How to Craft
 
-Step-by-step guide to creating an item:
+Find or buy a blueprint, gather the listed resources, then take everything to the correct workbench. Open the crafting interface, select the blueprint, and confirm the recipe.
 
-1. Find a Blueprint: Blueprints can be found in the world, purchased from traders, or obtained as rewards. Each blueprint specifies the item being created and crafting requirements.
+If the recipe is available and you meet the requirements, the crafted item will appear in your inventory or next to the bench.
 
-2. Gather Resources: Check what resources are needed for the blueprint and collect them in the exact quantity.
+## Blueprint Categories
 
-3. Find an Appropriate Workbench: Find a workbench that matches the recipe. For example, crafting power armor will require a power armor workbench.
-
-4. Start Crafting: Approach the workbench, open the crafting interface, select the needed blueprint, and confirm item creation.
-
-5. Done!: If everything is done correctly, you will receive a new item. It will now be in your inventory or appear next to the workbench.
-
-## Available Blueprints
-
-Blueprints are found by exploring the Wasteland, looting enemies, or trading with faction vendors. Click any blueprint entry to see its full crafting requirements.
+Blueprints are found by exploring the Wasteland, looting enemies, or trading with faction vendors. Click an entry to see its full recipe and workbench requirements.
 
 ### Brotherhood of Steel
 
-Power armor restoration and Brotherhood gear blueprints. Typically found in BoS patrols and bunkers.
+Power armor restoration and Brotherhood field gear, usually recovered from patrols, bunkers, and chapter stockpiles.
 
 <Box>
 <GuideEntityEmbed Entity="N14ClothingOuterPowerArmorT45Blueprint" Caption="T-45 Power Armor"/>
@@ -73,7 +66,7 @@ Power armor restoration and Brotherhood gear blueprints. Typically found in BoS 
 
 ### NCR
 
-New California Republic military armor and power armor restoration blueprints. Found in NCR camps and quartermaster caches.
+NCR armor patterns and restored military equipment, most commonly found in camps, depots, and quartermaster caches.
 
 <Box>
 <GuideEntityEmbed Entity="N14ClothingOuterPowerArmorT45NCRBlueprint" Caption="T-45 NCR Armor"/>
@@ -90,7 +83,7 @@ New California Republic military armor and power armor restoration blueprints. F
 
 ### Legion
 
-Caesar's Legion armor blueprints. Recovered from Legion outposts and veteran centurions.
+Legion armor blueprints recovered from outposts, patrol leaders, and veteran warriors.
 
 <Box>
 <GuideEntityEmbed Entity="N14ClothingOuterLegionnaireBaseArmorBlueprint" Caption="Legionnaire Armor"/>
@@ -99,7 +92,7 @@ Caesar's Legion armor blueprints. Recovered from Legion outposts and veteran cen
 
 ### Tribal
 
-Handcrafted tribal weapons and armor blueprints. Traded by tribal communities or found in Wasteland camps.
+Handcrafted tribal weapons and armor, usually traded by tribal groups or found in remote camps.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponRevolver45-70HandcannonBlueprint" Caption="Handcannon"/>
@@ -115,7 +108,7 @@ Handcrafted tribal weapons and armor blueprints. Traded by tribal communities or
 
 ### Miscellaneous
 
-Faction-neutral or independently produced blueprints available to any skilled crafter.
+Faction-neutral blueprints available to any capable crafter with the right bench and parts.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponLaserRevolverBlueprint" Caption="Laser Revolver"/>
@@ -126,6 +119,4 @@ Faction-neutral or independently produced blueprints available to any skilled cr
 <GuideEntityEmbed Entity="N14ClothingOuterCombatArmorBlueprint" Caption="Combat Armor"/>
 <GuideEntityEmbed Entity="N14ClothingOuterCombatArmorMK2Blueprint" Caption="Combat Armor MK2"/>
 </Box>
-
-Good luck with your crafting. With the right blueprints, tools, and resources, you will be able to create items that will help you survive and thrive in this harsh world.
 </Document>

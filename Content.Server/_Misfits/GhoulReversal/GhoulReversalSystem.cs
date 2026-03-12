@@ -1,20 +1,23 @@
 // #Misfits Change
 using System.Threading.Tasks;
 using Content.Server._Misfits.GhoulReversal;
+using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
 using Content.Shared.Preferences;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -32,7 +35,9 @@ public sealed class GhoulReversalSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
@@ -69,7 +74,13 @@ public sealed class GhoulReversalSystem : EntitySystem
         // Only work on ghoul species
         if (!component.GhoulSpecies.Contains(appearance.Species))
         {
-            _popup.PopupEntity(Loc.GetString(component.NotGhoulMessage), target, user);
+            // Private message to the injector only — target is not a ghoul.
+            if (TryComp<ActorComponent>(user, out var injectorActor))
+            {
+                var notGhoulMsg = Loc.GetString(component.NotGhoulMessage);
+                _chatManager.ChatMessageToOne(ChatChannel.Local, notGhoulMsg, notGhoulMsg,
+                    EntityUid.Invalid, false, injectorActor.PlayerSession.Channel);
+            }
             return;
         }
 
@@ -80,10 +91,19 @@ public sealed class GhoulReversalSystem : EntitySystem
             return;
         }
 
-        _popup.PopupEntity(Loc.GetString(component.TransformationMessage), target, target, PopupType.LargeCaution);
-        _popup.PopupEntity(
-            Loc.GetString(component.TransformationOthersMessage, ("target", target)),
-            target, Filter.PvsExcept(target), true, PopupType.MediumCaution);
+        // Private transformation message to the target only.
+        if (_playerManager.TryGetSessionByEntity(target, out var targetSession)
+            && targetSession.Status == SessionStatus.InGame)
+        {
+            var transformMsg = Loc.GetString(component.TransformationMessage);
+            _chatManager.ChatMessageToOne(ChatChannel.Local, transformMsg, transformMsg,
+                EntityUid.Invalid, false, targetSession.Channel);
+        }
+
+        // Emote visible to nearby bystanders — emote system prefixes the entity name.
+        _chat.TrySendInGameICMessage(target,
+            Loc.GetString(component.TransformationOthersMessage),
+            InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
         // Revert species in-game
         _humanoid.SetSpecies(target, component.TargetSpecies);

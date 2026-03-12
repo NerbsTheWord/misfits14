@@ -40,7 +40,6 @@
         - to: cleansingpowder
           steps:
             - material: CaveFungusRad
-              amount: 2
             - material: XanderRoot
 
     - node: cleansingpowder
@@ -104,9 +103,6 @@
           icon:
             sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
             state: jet
-        - material: Glass
-          amount: 1
-          doAfter: 3
   - node: empty
     entity: N14RadAwayInhalerTrash
     edges:

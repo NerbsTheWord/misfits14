@@ -1,11 +1,11 @@
 <Document>
 # Big Guns
 
-Big Guns are heavy weapons that deal devastating damage. They are difficult to carry and expensive on ammunition, but nothing compares to their raw stopping power.
+Big Guns are heavy weapons that deal devastating damage. They are difficult to carry and expensive to feed, but nothing matches their raw stopping power once a fight turns serious.
 
 ## Miniguns
 
-Miniguns deliver an overwhelming volume of fire and are most effective when suppressing groups of enemies. They consume ammunition extremely quickly.
+Miniguns deliver overwhelming volume of fire and are best used for suppression, defense, and faction-level fire superiority.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponMinigun"/>
@@ -14,7 +14,7 @@ Miniguns deliver an overwhelming volume of fire and are most effective when supp
 
 ## Launchers
 
-Grenade and missile launchers are area-denial weapons that can destroy fortified positions and bunker through armor.
+Grenade and missile launchers are area-denial weapons that break fortified positions and punish clustered enemies.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponLauncherGrenade"/>
@@ -24,7 +24,7 @@ Grenade and missile launchers are area-denial weapons that can destroy fortified
 
 ## Light Machine Guns
 
-LMGs provide sustained automatic fire. They are effective at long range and excel at suppressing enemies.
+LMGs provide sustained automatic fire and excel in prepared positions or coordinated squad fights.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponLMG"/>
@@ -33,11 +33,11 @@ LMGs provide sustained automatic fire. They are effective at long range and exce
 
 ## Flamers
 
-The flamer projects a stream of burning fuel, dealing fire damage over a wide area. Extremely effective against unarmored targets and creatures.
+The flamer projects burning fuel across a wide area and is especially effective against creatures and lightly armored targets.
 
 <Box>
 <GuideEntityEmbed Entity="N14WeaponFlamer"/>
 </Box>
 
-> [color=red]Warning:[/color] Big Guns are typically restricted to military-grade factions. Carrying them openly may attract unwanted attention.
+[color=red]Warning:[/color] Big Guns are usually restricted to military-grade factions. Carrying one openly is enough to attract attention almost anywhere in the Wasteland.
 </Document>

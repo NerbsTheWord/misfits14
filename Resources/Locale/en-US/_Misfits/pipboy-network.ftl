@@ -51,7 +51,9 @@ pipboy-hub-note-save = Save
 # ── Groups ──
 pipboy-hub-group-name-placeholder = New group name
 pipboy-hub-group-create = Create
+pipboy-hub-group-custom-id-placeholder = ID #
 pipboy-hub-group-id-placeholder = Group ID to join
+pipboy-hub-group-join-id-placeholder = Group ID
 pipboy-hub-group-password-placeholder = Password (if any)
 pipboy-hub-group-join = Join
 pipboy-hub-no-groups = No groups joined

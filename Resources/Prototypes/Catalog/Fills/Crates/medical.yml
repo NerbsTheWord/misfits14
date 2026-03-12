@@ -71,6 +71,10 @@
       - id: BoneGel
       - id: BoxLatexGloves
       - id: BoxSterileMask
+      - id: SurgicalSterilanSpray # #Misfits Change - sterile spray for sanitation between patients
+        amount: 2
+      - id: SurgicalSterileWipe # #Misfits Change - field-grade antiseptic wipes
+        amount: 4
 
 - type: entity
   id: CrateMedicalScrubs

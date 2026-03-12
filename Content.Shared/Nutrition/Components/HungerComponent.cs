@@ -99,6 +99,14 @@ public sealed partial class HungerComponent : Component
     [AutoNetworkedField]
     public float StarvingSlowdownModifier = 0.75f;
 
+    // Misfits Add - Separate, harsher slowdown at Dead threshold so the player crawls rather than outright dies.
+    /// <summary>
+    /// The amount of slowdown applied when an entity is at Dead hunger threshold (more severe than Starving).
+    /// </summary>
+    [DataField("deadHungerSlowdownModifier"), ViewVariables(VVAccess.ReadWrite)]
+    [AutoNetworkedField]
+    public float DeadHungerSlowdownModifier = 0.40f;
+
     /// <summary>
     /// Damage dealt when your current threshold is at HungerThreshold.Dead
     /// </summary>

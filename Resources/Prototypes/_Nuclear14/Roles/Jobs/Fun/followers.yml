@@ -38,6 +38,7 @@
     id: N14IDDoctorFollower
     outerClothing: N14ClothingOuterCoatFollowerLab # Forge-Change
     belt: N14ClothingBeltMedicalFilled
+    pocket1: SurgicalSterilanSpray # #Misfits Change - Followers are surgeons; sterile spray prevents cross-contamination
   innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
   satchel: N14ClothingBackpackSatchelWastelanderFilled
   duffelbag: N14ClothingBackpackDuffelFilled  # N14TODO: Doctors Bag

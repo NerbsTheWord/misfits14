@@ -81,10 +81,13 @@ public sealed class SurgeryCleanSystem : EntitySystem
     {
         if (!RequiresCleaning(target))
         {
+            // #Misfits TODO: Convert to private chat message — requires server-side event handler
+            // since PopupClient is shared/client-predicted and IChatManager is server-only.
             _popup.PopupClient(Loc.GetString("sanitization-cannot-clean", ("target", target)), user, user);
             return false;
         }
 
+        // #Misfits TODO: Same as above — convert progress feedback to private chat message.
         _popup.PopupClient(Loc.GetString("sanitization-cleaning", ("target", target)), user, user);
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, ent.Comp.CleanDelay, new SurgeryCleanDirtDoAfterEvent(), ent, target: target)

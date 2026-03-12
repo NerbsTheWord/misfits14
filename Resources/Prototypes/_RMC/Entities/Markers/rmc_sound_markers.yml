@@ -62,7 +62,7 @@
   components:
   - type: RMCEmitSoundOnSpawn
     sound:
-      path: /Audio/_RMC/Machines/buzz_two.ogg
+      path: /Audio/Effects/Buzzes/buzz2.ogg
 
 - type: entity
   parent: RMCMarkerSoundSingleBase

@@ -36,10 +36,10 @@
     jumpsuit: N14ClothingUniformJumpsuitBOSRed
     back: N14ClothingBackpackSatchelMilitaryFilled
     shoes: N14ClothingBootsLeatherFilled
-    outerClothing: N14ClothingOuterWBoSPaladinArmor
+    outerClothing: N14ClothingOuterCombatArmorBOSMK2
     head: N14ClothingHeadHatBrotherhoodFieldCap
-    id: N14IDBrotherhoodWashingtonHolotagPaladin
-    ears: N14ClothingHeadsetBOSWashington
+    id: N14IDBrotherhoodOfSteelHolotagPaladin
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: ClothingBeltBoSWebbing
     pocket1: BoSBrotherhoodPaladinKits
 

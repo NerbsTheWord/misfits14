@@ -1,22 +1,35 @@
 <Document>
 # Ranged Weapons
 
-Here you can find information about the ranged weapons available in the Wasteland.
+Ranged weapons dominate most fights in the Wasteland. They cover everything from scavenged pipe guns and revolvers to laser rifles, plasma weapons, and heavy support guns.
 
-Ranged weapons are divided into the following categories:
+## Categories
 
-- [color=#a4885c]Small Guns[/color] — Pistols, revolvers, rifles, shotguns, and submachine guns that use conventional ammunition.
-- [color=#a4885c]Big Guns[/color] — Heavy weapons such as miniguns, grenade launchers, and missile launchers.
-- [color=#a4885c]Energy Weapons[/color] — Laser-based weapons that use energy cells and microfusion cells.
-- [color=#a4885c]Plasma Weapons[/color] — Weapons that fire superheated plasma.
+Ranged weapons are grouped by their role and ammunition type.
 
-## Ammunition
+- [color=#a4885c]Small Guns[/color]: pistols, revolvers, rifles, shotguns, and SMGs using conventional ammo.
+- [color=#a4885c]Big Guns[/color]: heavy support weapons such as miniguns, flamers, and launchers.
+- [color=#a4885c]Energy Weapons[/color]: laser weapons powered by energy cells and related power cells.
+- [color=#a4885c]Plasma Weapons[/color]: high-damage plasma arms using advanced energy ammunition.
 
-Every ranged weapon requires ammunition. Running out in combat is lethal. Always carry spare magazines or cartridges, and know what caliber your weapon uses before heading into the Wasteland.
+## Common Ammunition
 
-Common calibers include [color=#a4885c]9mm[/color], [color=#a4885c]10mm[/color], [color=#a4885c].45[/color], [color=#a4885c]5.56[/color], [color=#a4885c].308[/color], and [color=#a4885c]7.62[/color]. Energy weapons use [color=#a4885c]energy cells[/color] or [color=#a4885c]microfusion cells[/color] instead of conventional rounds.
+Carry more ammunition than you think you need, and always know which weapon uses which feed type.
 
-## Weapon Condition
+<Box>
+<GuideEntityEmbed Entity="N14MagazinePistol9mm" Caption="9mm Magazine"/>
+<GuideEntityEmbed Entity="N14MagazinePistol10mm" Caption="10mm Magazine"/>
+<GuideEntityEmbed Entity="N14MagazinePistol45" Caption=".45 Magazine"/>
+<GuideEntityEmbed Entity="Magazine556Rifle" Caption="5.56 Magazine"/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="Magazine762Rifle" Caption="7.62 Magazine"/>
+<GuideEntityEmbed Entity="Magazine308Rifle" Caption=".308 Magazine"/>
+<GuideEntityEmbed Entity="N14PowerCellSmall" Caption="Energy Cell"/>
+<GuideEntityEmbed Entity="N14PlasmaCell" Caption="Plasma Cell"/>
+</Box>
 
-Weapons degrade with use. A weapon in poor condition is less accurate and may malfunction. Keep your weapons maintained and repair them when possible.
+## Field Maintenance
+
+Weapons degrade with use, poor storage, and abuse. A badly maintained gun is less accurate, more likely to malfunction, and much more dangerous to rely on in a long fight.
 </Document>

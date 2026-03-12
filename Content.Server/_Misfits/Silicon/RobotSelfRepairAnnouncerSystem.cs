@@ -1,10 +1,11 @@
 // #Misfits Change - Server system for robot self-repair announcer popups.
+using Content.Server.Chat.Systems;
 using Content.Shared._Misfits.Silicon;
+using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.Silicon;
@@ -16,7 +17,7 @@ public sealed class RobotSelfRepairAnnouncerSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -42,7 +43,10 @@ public sealed class RobotSelfRepairAnnouncerSystem : EntitySystem
                 return;
 
             component.NextHullWarningTime = curTime + component.HullWarningCooldown;
-            _popup.PopupEntity(Loc.GetString("robot-self-repair-hull-warning"), uid, PopupType.LargeCaution);
+            // Emote broadcast — nearby players hear the hull warning aloud from the robot.
+            _chat.TrySendInGameICMessage(uid,
+                Loc.GetString("robot-self-repair-hull-warning"),
+                InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
         }
         else if (!args.DamageIncreased)
         {
@@ -54,7 +58,10 @@ public sealed class RobotSelfRepairAnnouncerSystem : EntitySystem
                 return;
 
             component.NextRepairAnnounceTime = curTime + component.RepairAnnounceCooldown;
-            _popup.PopupEntity(Loc.GetString("robot-self-repair-initiating"), uid, PopupType.Medium);
+            // Emote broadcast — nearby players hear the self-repair announcement from the robot.
+            _chat.TrySendInGameICMessage(uid,
+                Loc.GetString("robot-self-repair-initiating"),
+                InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
         }
     }
 }

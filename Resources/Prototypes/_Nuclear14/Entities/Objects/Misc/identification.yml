@@ -286,6 +286,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: enclave_trooper
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   # - type: PresetIdCard
   #   job: EnclaveTrooper
   # #Misfits Change - enables Enclave shared map (tactical helmet HUDs, Pip-Boy)
@@ -304,6 +307,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: enclave_officer
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   # - type: PresetIdCard
   #   job: EnclaveOfficer
 
@@ -318,6 +324,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: enclave_noncombat
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   # - type: PresetIdCard
   #   job: EnclaveScientist
 

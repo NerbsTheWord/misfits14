@@ -87,7 +87,7 @@ public sealed class EscapeInventorySystem : EntitySystem
             return;
 
         var doAfterTime = component.BaseResistTime * multiplier;
-        if (TryComp<DoubleGrabVictimComponent>(user, out var chokeVictim) && chokeVictim.Carrier == container)
+        if (TryComp<BeingDoubleGrabbedComponent>(user, out var chokeVictim) && chokeVictim.Carrier == container)
             doAfterTime = (float) chokeVictim.EscapeTime.TotalSeconds;
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterTime, new EscapeInventoryEvent(), user, target: container)

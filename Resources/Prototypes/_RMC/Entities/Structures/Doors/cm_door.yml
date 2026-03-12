@@ -84,7 +84,7 @@
     mode: NoSprite
   - type: PaintableAirlock
     group: Standard
-    department: CMSquad
+    department: Security
   - type: AccessReader
   - type: StaticPrice
     price: 150
@@ -144,8 +144,8 @@
           "/Audio/Weapons/smash.ogg"
   - type: AirlockReceiverXenoClaws
   - type: Damageable
-    damageContainer: StructuralMarine
-    damageModifierSet: StructuralMarine
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:

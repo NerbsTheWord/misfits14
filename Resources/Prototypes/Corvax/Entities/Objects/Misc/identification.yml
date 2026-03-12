@@ -8,6 +8,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-gold
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionLegate
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -24,6 +27,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionAuxilia
   #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
@@ -40,6 +46,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionRecruit
   #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
@@ -56,6 +65,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionLegionnaireWarrior
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -73,6 +85,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionRecruit
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -89,6 +104,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionLegionnaireRecruit
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -105,6 +123,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionHoundmaster
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -122,6 +143,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionAuxilia
   #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
@@ -139,6 +163,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionSlave
   #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
@@ -155,6 +182,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-2
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionLegionnaireVeteran
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -171,6 +201,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-2
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionVexillarius
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -187,6 +220,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionDean
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -203,6 +239,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionExplorer
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -219,6 +258,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionOrator
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -235,6 +277,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionFrumentarii
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -251,6 +296,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionDean
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -267,6 +315,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionVeteranDecanus
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -283,6 +334,9 @@
   - type: Sprite
     sprite: Corvax/Objects/Misc/identification.rsi
     state: medal-gold
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
   - type: PresetIdCard
     job: CaesarLegionCenturion
   #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
@@ -315,6 +369,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: ncrdogtag
+  - type: IdCard # #Misfits Add - display "dogtags" instead of default "ID card"
+    nameLocId: n14-id-dogtag-name
+    fullNameLocId: n14-id-dogtag-full-name
   - type: PresetIdCard
     job: NCRSoldier
 
@@ -328,6 +385,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSMidSquire
 
@@ -341,6 +401,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonInitiate
 
@@ -356,6 +419,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonInitiate
 
@@ -369,6 +435,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonKnight
 
@@ -382,6 +451,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonScribe
 
@@ -395,6 +467,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonPaladin
 
@@ -408,6 +483,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonCommander
 
@@ -433,6 +511,9 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWestScribe
   # #Misfits Change - enables BOS shared map (tactical table, Pip-Boy, armor HUDs)

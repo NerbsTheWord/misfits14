@@ -17,6 +17,7 @@ using Content.Shared.Mobs; // #Misfits Add - for MobState enum
 using Content.Shared.Dataset; // #Misfits Add - for DatasetPrototype
 using Content.Shared._Shitmed.Targeting; // #Misfits Add - for body part status
 using Robust.Client.GameObjects; // #Misfits Add - for SpriteSystem
+using Content.Shared.DeltaV.NanoChat; // #Misfits Add - for NanoChatCardComponent (PipBoy number)
 
 namespace Content.Client.PDA
 {
@@ -37,6 +38,8 @@ namespace Content.Client.PDA
         private string _randomTip = string.Empty;
         // #Misfits Add - Track the PDA entity for health lookups
         private EntityUid? _pdaEntity;
+        // #Misfits Add - Track whether an ID card is inserted (for Programs tab gating)
+        private bool _hasIdCard;
         // #Misfits Add - Body part TextureRects for health doll
         private Dictionary<TargetBodyPart, TextureRect>? _bodyPartControls;
 
@@ -230,6 +233,8 @@ namespace Content.Client.PDA
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 
             EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
+            // #Misfits Add - Track ID card state for Programs tab gating
+            _hasIdCard = EjectIdButton.IsActive;
             EjectPenButton.IsActive = state.HasPen;
             EjectPaiButton.IsActive = state.HasPai;
             ActivateMusicButton.Visible = state.CanPlayMusic;
@@ -240,10 +245,25 @@ namespace Content.Client.PDA
             UpdateHealthStatus();
         }
 
-        // #Misfits Add - Set the PDA entity UID for health lookups
+        // #Misfits Add - Set the PDA entity UID for health lookups and show PipBoy number
         public void SetPdaEntity(EntityUid pdaUid)
         {
             _pdaEntity = pdaUid;
+
+            // #Misfits Add - Look up the NanoChat number from the contained ID card and show on home screen
+            var entMan = IoCManager.Resolve<IEntityManager>();
+            if (entMan.TryGetComponent<PdaComponent>(pdaUid, out var pda) &&
+                pda.ContainedId != null &&
+                entMan.TryGetComponent<NanoChatCardComponent>(pda.ContainedId, out var chatCard) &&
+                chatCard.Number != null)
+            {
+                PipBoyNumberLabel.SetMarkup(Loc.GetString("comp-pda-ui-pipboy-number",
+                    ("number", chatCard.Number.Value)));
+            }
+            else
+            {
+                PipBoyNumberLabel.SetMarkup(Loc.GetString("comp-pda-ui-pipboy-number-none"));
+            }
         }
 
         // #Misfits Add - Update health status from the PDA holder's components
@@ -273,7 +293,8 @@ namespace Content.Client.PDA
 
             if (holder == null || !entMan.TryGetComponent<MobStateComponent>(holder.Value, out var mobState))
             {
-                HealthStatusLabel.SetMarkup(Loc.GetString("pipboy-health-header") + " " + Loc.GetString("pipboy-health-state-unknown"));
+                // #Misfits Change - Show re-attach message when PipBoy is not on a mob
+                HealthStatusLabel.SetMarkup(Loc.GetString("pipboy-health-reattach"));
                 ConditionsLabel.SetMarkup("");
                 return;
             }
@@ -370,6 +391,20 @@ namespace Content.Client.PDA
         public void UpdateAvailablePrograms(List<(EntityUid, CartridgeComponent)> programs)
         {
             ProgramList.RemoveAllChildren();
+
+            // #Misfits Add - If no ID card is inserted, show insert-ID message instead of programs
+            if (!_hasIdCard)
+            {
+                ProgramList.AddChild(new Label()
+                {
+                    Text = Loc.GetString("comp-pda-ui-insert-id-card"),
+                    HorizontalAlignment = HAlignment.Center,
+                    VerticalAlignment = VAlignment.Center,
+                    VerticalExpand = true
+                });
+
+                return;
+            }
 
             if (programs.Count == 0)
             {

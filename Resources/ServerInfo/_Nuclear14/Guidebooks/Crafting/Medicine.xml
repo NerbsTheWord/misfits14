@@ -1,5 +1,5 @@
 <Document>
-# Medicines
+# Medicine
 
 Medicine and chems are essential for surviving the Wasteland. Knowing what to use and when can mean the difference between life and death. Most medical supplies can be found in first aid kits, looted from enemies, or purchased from traveling doctors and merchants — but the craftable ones can mean the difference between life and death when you're far from civilization.
 
@@ -7,7 +7,9 @@ Medicine and chems are essential for surviving the Wasteland. Knowing what to us
 
 A mortar and pestle is required to process ingredients for many medical recipes. Craft one from two wooden planks.
 
+<Box>
 <GuideEntityEmbed Entity="N14MortarpestleGrinder" Caption="Mortar and Pestle"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -45,7 +47,9 @@ Ointment reagents:
 
 A tribal remedy that accelerates natural healing. Nauseating but effective. Craft it from broc flower and xander root — no workbench required, just crush them together.
 
+<Box>
 <GuideEntityEmbed Entity="N14HealingPowder" Caption="Healing Powder"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -55,9 +59,11 @@ Ingredients:
 
 ## Cleansing Powder
 
-A field remedy used by tribal and Legion healers to purge radiation. Craft it from irradiated cave fungus and xander root in the medical tab of the crafting menu.
+A field remedy used by tribal and Legion healers to purge radiation. Craft it from one irradiated cave fungus and one xander root in the medical tab of the crafting menu.
 
+<Box>
 <GuideEntityEmbed Entity="N14CleansingPowder" Caption="Cleansing Powder"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -69,7 +75,9 @@ Ingredients:
 
 A more advanced natural remedy combining multiple plant extracts. Heals common ailments slowly but surpasses healing powder for sustained recovery.
 
+<Box>
 <GuideEntityEmbed Entity="N14HealingPoultice" Caption="Healing Poultice"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -83,7 +91,9 @@ Ingredients:
 
 [color=#a4885c]Stimpaks[/color] are the backbone of Wasteland medicine — injectable serums that rapidly accelerate the body's healing. Craft a standard stimpak by combining broc flower and xander root with a syringe and a bloodpack. If you are working from loose reagents, the herbal base is first mixed into healing mixture and then stabilized with oil and phosphorus to finish the syringe.
 
+<Box>
 <GuideEntityEmbed Entity="N14Stimpak" Caption="Stimpak"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -105,7 +115,9 @@ Chemistry intermediates and improvised variants:
 
 A bottled tribal remedy for poison and radiation exposure. In practice, it is brewed from broc flower and xander root and poured into an empty soda bottle.
 
+<Box>
 <GuideEntityEmbed Entity="N14Bitterdrink" Caption="Bitterdrink"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -123,9 +135,11 @@ Chemistry station note: if you are working in a proper lab, you can print an emp
 
 ## Jet Inhaler
 
-A Jet inhaler is a crafting component used to make a RadAway inhaler. On its own it only delivers the Jet chem. Craft the empty inhaler body from a sheet of plastic.
+A Jet inhaler is a crafting component used to make a RadAway inhaler. The crafting recipe makes the empty inhaler body from a sheet of plastic.
 
+<Box>
 <GuideEntityEmbed Entity="N14JetInhaler" Caption="Jet Inhaler"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -136,7 +150,9 @@ Ingredients:
 
 Hydra can be assembled in the crafting menu once you have the right wasteland chems. Build or acquire an empty hydra inhaler shell, then combine it with one Jet inhaler and one Turbo inhaler in the medical tab.
 
+<Box>
 <GuideEntityEmbed Entity="N14Hydra" Caption="Hydra"/>
+</Box>
 
 Ingredients:
 <Box>
@@ -147,9 +163,11 @@ Ingredients:
 
 ## RadAway Inhaler
 
-Flushes radiation from the bloodstream. Assemble the inhaler body first (see Jet Inhaler above), then attach a glass phial loaded with RadAway reagent.
+Flushes radiation from the bloodstream. Assemble the inhaler body first (see Jet Inhaler above), then attach a RadAway phial loaded with RadAway reagent.
 
+<Box>
 <GuideEntityEmbed Entity="N14RadAwayInhaler" Caption="RadAway Inhaler"/>
+</Box>
 
 Assembly steps:
 <Box>

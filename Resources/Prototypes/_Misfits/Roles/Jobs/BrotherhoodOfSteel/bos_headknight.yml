@@ -38,10 +38,10 @@
     back: N14ClothingBackpackSatchelMilitaryFilled
     shoes: N14ClothingBootsLeatherFilled
     neck: N14ClothingNeckCloakBrotherhoodWashington
-    outerClothing: N14ClothingOuterWBoSPaladinArmor
+    outerClothing: N14ClothingOuterCombatArmorCaptainBOS
     head: N14ClothingHeadHatBrotherhoodFieldCap
-    id: N14IDBrotherhoodWashingtonHolotagCommander
-    ears: N14ClothingHeadsetBOSWashington
+    id: N14IDBrotherhoodOfSteelHolotagHeadKnight
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: ClothingBeltBoSWebbing
     pocket1: BoSBrotherhoodHeadKnightKits
 

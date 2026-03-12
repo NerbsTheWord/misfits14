@@ -1763,6 +1763,264 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        // #Misfits Change - Persistent player data
+
+        #region PlayerData
+
+        public async Task<CharacterPlayerData?> GetCharacterPlayerDataAsync(
+            Guid playerId, string characterName, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            return await db.DbContext.CharacterPlayerData
+                .Where(c => c.PlayerId == playerId && c.CharacterName == characterName)
+                .SingleOrDefaultAsync(cancel);
+        }
+
+        public async Task UpsertCharacterPlayerDataAsync(CharacterPlayerData data)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.CharacterPlayerData
+                .Where(c => c.PlayerId == data.PlayerId && c.CharacterName == data.CharacterName)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.Strength = data.Strength;
+                existing.Perception = data.Perception;
+                existing.Endurance = data.Endurance;
+                existing.Charisma = data.Charisma;
+                existing.Intelligence = data.Intelligence;
+                existing.Agility = data.Agility;
+                existing.Luck = data.Luck;
+                existing.MobKills = data.MobKills;
+                existing.Deaths = data.Deaths;
+                existing.RoundsPlayed = data.RoundsPlayed;
+                existing.StatsConfirmed = data.StatsConfirmed;
+                existing.HistoryLog = data.HistoryLog;
+            }
+            else
+            {
+                db.DbContext.CharacterPlayerData.Add(data);
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent entities, tiles, decals
+
+        #region PersistentSpawn
+
+        public async Task<List<PersistentEntity>> GetAllPersistentEntitiesAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.PersistentEntity.ToListAsync(cancel);
+        }
+
+        public async Task UpsertPersistentEntityAsync(PersistentEntity entity)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PersistentEntity
+                .Where(e => e.PersistenceId == entity.PersistenceId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.PrototypeId = entity.PrototypeId;
+                existing.X = entity.X;
+                existing.Y = entity.Y;
+                existing.RotationDegrees = entity.RotationDegrees;
+                existing.SpawnedBy = entity.SpawnedBy;
+            }
+            else
+            {
+                db.DbContext.PersistentEntity.Add(entity);
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemovePersistentEntityAsync(string persistenceId)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PersistentEntity
+                .Where(e => e.PersistenceId == persistenceId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                db.DbContext.PersistentEntity.Remove(existing);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<PersistentTile>> GetAllPersistentTilesAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.PersistentTile.ToListAsync(cancel);
+        }
+
+        public async Task UpsertPersistentTileAsync(PersistentTile tile)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PersistentTile
+                .Where(t => t.PersistenceId == tile.PersistenceId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.TileDefName = tile.TileDefName;
+                existing.X = tile.X;
+                existing.Y = tile.Y;
+                existing.RotationMirroring = tile.RotationMirroring;
+                existing.SpawnedBy = tile.SpawnedBy;
+            }
+            else
+            {
+                db.DbContext.PersistentTile.Add(tile);
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemovePersistentTileAsync(string persistenceId)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PersistentTile
+                .Where(t => t.PersistenceId == persistenceId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                db.DbContext.PersistentTile.Remove(existing);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemovePersistentTilesAsync(IEnumerable<string> persistenceIds)
+        {
+            await using var db = await GetDb();
+            var idList = persistenceIds.ToList();
+
+            var toRemove = await db.DbContext.PersistentTile
+                .Where(t => idList.Contains(t.PersistenceId))
+                .ToListAsync();
+
+            if (toRemove.Count > 0)
+            {
+                db.DbContext.PersistentTile.RemoveRange(toRemove);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<PersistentDecal>> GetAllPersistentDecalsAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.PersistentDecal.ToListAsync(cancel);
+        }
+
+        public async Task UpsertPersistentDecalAsync(PersistentDecal decal)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PersistentDecal
+                .Where(d => d.PersistenceId == decal.PersistenceId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.DecalId = decal.DecalId;
+                existing.X = decal.X;
+                existing.Y = decal.Y;
+                existing.Rotation = decal.Rotation;
+                existing.ColorArgb = decal.ColorArgb;
+                existing.ZIndex = decal.ZIndex;
+                existing.Cleanable = decal.Cleanable;
+                existing.SpawnedBy = decal.SpawnedBy;
+            }
+            else
+            {
+                db.DbContext.PersistentDecal.Add(decal);
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemovePersistentDecalsAsync(IEnumerable<string> persistenceIds)
+        {
+            await using var db = await GetDb();
+            var idList = persistenceIds.ToList();
+
+            var toRemove = await db.DbContext.PersistentDecal
+                .Where(d => idList.Contains(d.PersistenceId))
+                .ToListAsync();
+
+            if (toRemove.Count > 0)
+            {
+                db.DbContext.PersistentDecal.RemoveRange(toRemove);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent ATM placements
+
+        #region AtmPlacements
+
+        public async Task<List<AtmPlacement>> GetAllAtmPlacementsAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.AtmPlacement.ToListAsync(cancel);
+        }
+
+        public async Task UpsertAtmPlacementAsync(AtmPlacement placement)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.AtmPlacement
+                .Where(a => a.PlacementKey == placement.PlacementKey)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.PrototypeId = placement.PrototypeId;
+                existing.MapName = placement.MapName;
+                existing.TileX = placement.TileX;
+                existing.TileY = placement.TileY;
+            }
+            else
+            {
+                db.DbContext.AtmPlacement.Add(placement);
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveAtmPlacementAsync(string placementKey)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.AtmPlacement
+                .Where(a => a.PlacementKey == placementKey)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                db.DbContext.AtmPlacement.Remove(existing);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        #endregion
+
         protected void NotificationReceived(DatabaseNotification notification) =>
             OnNotificationReceived?.Invoke(notification);
 

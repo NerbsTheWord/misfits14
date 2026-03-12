@@ -48,6 +48,11 @@ namespace Content.Server.Database
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<CharacterCurrency> CharacterCurrency { get; set; } = default!; // #Misfits Change - Persistent currency
+        public DbSet<CharacterPlayerData> CharacterPlayerData { get; set; } = default!; // #Misfits Change - Persistent player data
+        public DbSet<PersistentEntity> PersistentEntity { get; set; } = default!; // #Misfits Change - Persistent entity spawn
+        public DbSet<PersistentTile> PersistentTile { get; set; } = default!; // #Misfits Change - Persistent tile spawn
+        public DbSet<PersistentDecal> PersistentDecal { get; set; } = default!; // #Misfits Change - Persistent decal spawn
+        public DbSet<AtmPlacement> AtmPlacement { get; set; } = default!; // #Misfits Change - Persistent ATM placements
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -121,6 +126,28 @@ namespace Content.Server.Database
             // #Misfits Change - One row per player-character pair for persistent currency
             modelBuilder.Entity<CharacterCurrency>()
                 .HasIndex(c => new { c.PlayerId, c.CharacterName })
+                .IsUnique();
+
+            // #Misfits Change - One row per player-character pair for persistent player data
+            modelBuilder.Entity<CharacterPlayerData>()
+                .HasIndex(c => new { c.PlayerId, c.CharacterName })
+                .IsUnique();
+
+            // #Misfits Change - Unique persistence IDs for world objects
+            modelBuilder.Entity<PersistentEntity>()
+                .HasIndex(e => e.PersistenceId)
+                .IsUnique();
+
+            modelBuilder.Entity<PersistentTile>()
+                .HasIndex(t => t.PersistenceId)
+                .IsUnique();
+
+            modelBuilder.Entity<PersistentDecal>()
+                .HasIndex(d => d.PersistenceId)
+                .IsUnique();
+
+            modelBuilder.Entity<AtmPlacement>()
+                .HasIndex(a => a.PlacementKey)
                 .IsUnique();
 
             modelBuilder.Entity<AdminLogPlayer>()
@@ -1008,6 +1035,115 @@ namespace Content.Server.Database
         /// Persistent Bottle Caps balance.
         /// </summary>
         public int Bottlecaps { get; set; }
+    }
+
+    // #Misfits Change - Persistent SPECIAL stats, kill/death/round counters, and history per character.
+    [Table("character_player_data")]
+    public sealed class CharacterPlayerData
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public Guid PlayerId { get; set; }
+
+        [Required]
+        public string CharacterName { get; set; } = null!;
+
+        public int Strength { get; set; } = 1;
+        public int Perception { get; set; } = 1;
+        public int Endurance { get; set; } = 1;
+        public int Charisma { get; set; } = 1;
+        public int Intelligence { get; set; } = 1;
+        public int Agility { get; set; } = 1;
+        public int Luck { get; set; } = 1;
+
+        public int MobKills { get; set; }
+        public int Deaths { get; set; }
+        public int RoundsPlayed { get; set; }
+        public bool StatsConfirmed { get; set; }
+
+        /// <summary>JSON-serialised List&lt;string&gt; of history entries.</summary>
+        public string HistoryLog { get; set; } = "[]";
+    }
+
+    // #Misfits Change - Admin-placed persistent entity that respawns every round.
+    [Table("persistent_entity")]
+    public sealed class PersistentEntity
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public string PersistenceId { get; set; } = null!;
+
+        [Required]
+        public string PrototypeId { get; set; } = null!;
+
+        public float X { get; set; }
+        public float Y { get; set; }
+        public double RotationDegrees { get; set; }
+        public string SpawnedBy { get; set; } = string.Empty;
+    }
+
+    // #Misfits Change - Admin-placed persistent tile that is restored every round.
+    [Table("persistent_tile")]
+    public sealed class PersistentTile
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public string PersistenceId { get; set; } = null!;
+
+        [Required]
+        public string TileDefName { get; set; } = null!;
+
+        public float X { get; set; }
+        public float Y { get; set; }
+        public int RotationMirroring { get; set; }
+        public string SpawnedBy { get; set; } = string.Empty;
+    }
+
+    // #Misfits Change - Admin-placed persistent decal that is restored every round.
+    [Table("persistent_decal")]
+    public sealed class PersistentDecal
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public string PersistenceId { get; set; } = null!;
+
+        [Required]
+        public string DecalId { get; set; } = null!;
+
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Rotation { get; set; }
+        public int ColorArgb { get; set; }
+        public int ZIndex { get; set; }
+        public bool Cleanable { get; set; }
+        public string SpawnedBy { get; set; } = string.Empty;
+    }
+
+    // #Misfits Change - Admin-placed ATM terminal position that respawns every round.
+    [Table("atm_placement")]
+    public sealed class AtmPlacement
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        /// <summary>Unique key in format "MapName:TileX:TileY".</summary>
+        [Required]
+        public string PlacementKey { get; set; } = null!;
+
+        [Required]
+        public string PrototypeId { get; set; } = null!;
+
+        public string MapName { get; set; } = string.Empty;
+        public int TileX { get; set; }
+        public int TileY { get; set; }
     }
 
     [Table("uploaded_resource_log")]

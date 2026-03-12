@@ -3,7 +3,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: SurgeryStep
-  - type: SurgeryStepDirtiness # #Misfits Change - Contamination system
+  - type: SurgeryStepDirtiness # #Misfits Change - Contamination system: 5.0 x 0.1 = 0.5 effective per step; ~100 steps same-patient hits threshold; any foreign DNA (60) crosses it immediately
+    toolDirtiness: 5.0
+    gloveDirtiness: 5.0
 
 - type: entity
   parent: SurgeryStepBase

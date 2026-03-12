@@ -4,23 +4,28 @@
 //
 // Admin workflow:
 //   1. Open Entity Spawn Panel → type ID → click to place on floor
-//   2. Position saved to atm_placements.json immediately
+//   2. Position saved to database immediately
 //   3. Every round start re-spawns all recorded terminals at their saved tile
-//   4. To remove: admin deletes the entity in-game → record purged from JSON
+//   4. To remove: admin deletes the entity in-game → record purged from database
 //
 // Prototype IDs:
 //   MisfitsATMNCR | MisfitsATMLegion | MisfitsATMBoS | MisfitsATMVault | MisfitsATMTown | MisfitsATMWasteland
 using System.IO;
 using System.Text.Json;
+using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
+using Content.Server.Database;
 using Content.Shared._Misfits.Currency;
 using Content.Shared._Misfits.Currency.Components;
 using Content.Shared._Misfits.FactionTerminal.Components;
+using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
-using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
+using Robust.Server.Player;
 using Robust.Shared.ContentPack;
+using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
@@ -29,18 +34,18 @@ namespace Content.Server._Misfits.FactionTerminal;
 
 public sealed class FactionBankTerminalSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ActorSystem _actor = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
 
     private ISawmill _log = default!;
 
-    private const string PlacementDataFile = "atm_placements.json";
-    private string _saveFilePath = string.Empty;
-
     // All recorded placements keyed by "MapName:TileX:TileY".
-    private readonly Dictionary<string, AtmPlacementRecord> _placements = new();
+    private readonly Dictionary<string, AtmPlacement> _placements = new();
 
     // Prevents re-recording terminals that we just spawned during round init.
     private bool _isSelfSpawning;
@@ -69,12 +74,11 @@ public sealed class FactionBankTerminalSystem : EntitySystem
         // Re-spawn saved terminals when the map grid initialises each round.
         SubscribeLocalEvent<MapGridComponent, MapInitEvent>(OnGridMapInit);
 
-        // Flag round restart so shutdown events don't purge JSON records.
+        // Flag round restart so shutdown events don't purge database records.
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
-        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
-        _saveFilePath = Path.Combine(userDataPath, PlacementDataFile);
-        LoadPlacements();
+        LoadPlacementsAsync();
+        MigrateJsonToDatabase();
     }
 
     // ── Placement recording ───────────────────────────────────────────────────
@@ -112,15 +116,16 @@ public sealed class FactionBankTerminalSystem : EntitySystem
         if (string.IsNullOrEmpty(protoId))
             return;
 
-        _placements[key] = new AtmPlacementRecord
+        _placements[key] = new AtmPlacement
         {
+            PlacementKey = key,
             PrototypeId = protoId,
             MapName = mapName,
             TileX = ix,
             TileY = iy,
         };
 
-        SavePlacements();
+        _db.UpsertAtmPlacementAsync(_placements[key]);
         _log.Debug($"Recorded ATM '{protoId}' at {key}");
     }
 
@@ -136,7 +141,7 @@ public sealed class FactionBankTerminalSystem : EntitySystem
 
         if (_placements.Remove(key))
         {
-            SavePlacements();
+            _db.RemoveAtmPlacementAsync(key);
             _log.Debug($"Removed ATM placement at {key}");
         }
     }
@@ -218,17 +223,21 @@ public sealed class FactionBankTerminalSystem : EntitySystem
 
     private void OpenWalletForPlayer(EntityUid user, Entity<FactionBankTerminalComponent> terminal)
     {
+        // Require an active player session — needed for all private messages.
+        if (!TryComp<ActorComponent>(user, out var actor))
+            return;
+
+        var session = actor.PlayerSession;
+
         // The player must have a persistent currency component (loaded on spawn).
         if (!TryComp<PersistentCurrencyComponent>(user, out var wallet))
         {
-            _popup.PopupEntity(
-                Loc.GetString("faction-terminal-no-account"),
-                user, user);
+            // Private feedback — the user has no bank account.
+            var noAccountMsg = Loc.GetString("faction-terminal-no-account");
+            _chatManager.ChatMessageToOne(ChatChannel.Local, noAccountMsg, noAccountMsg,
+                EntityUid.Invalid, false, session.Channel);
             return;
         }
-
-        if (!TryComp<ActorComponent>(user, out var actor))
-            return;
 
         var factionName = terminal.Comp.Faction switch
         {
@@ -241,9 +250,16 @@ public sealed class FactionBankTerminalSystem : EntitySystem
             _                             => "Unknown",
         };
 
-        _popup.PopupEntity(
-            Loc.GetString("faction-terminal-greeting", ("faction", factionName)),
-            user, user);
+        // Private greeting to the user only.
+        var greetingMsg = Loc.GetString("faction-terminal-greeting", ("faction", factionName));
+        _chatManager.ChatMessageToOne(ChatChannel.Local, greetingMsg, greetingMsg,
+            EntityUid.Invalid, false, session.Channel);
+
+        // Bystander emote — nearby players see the user interacting with the terminal.
+        var terminalName = Name(terminal);
+        _chat.TrySendInGameICMessage(user,
+            Loc.GetString("misfits-chat-terminal-use", ("terminal", terminalName)),
+            InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
         // Reuse the existing wallet state message — opens the same wallet window the HUD button does.
         var msg = new CurrencyWalletStateMessage
@@ -251,60 +267,80 @@ public sealed class FactionBankTerminalSystem : EntitySystem
             Bottlecaps = wallet.Bottlecaps,
         };
 
-        RaiseNetworkEvent(msg, actor.PlayerSession.Channel);
+        RaiseNetworkEvent(msg, session.Channel);
     }
 
-    // ── JSON persistence ──────────────────────────────────────────────────────
+    // ── Database persistence ─────────────────────────────────────────────────────
 
     private static string BuildKey(string mapName, int x, int y) => $"{mapName}:{x}:{y}";
 
-    private void LoadPlacements()
+    private async void LoadPlacementsAsync()
     {
         try
         {
-            if (!File.Exists(_saveFilePath))
-                return;
+            var all = await _db.GetAllAtmPlacementsAsync();
+            foreach (var placement in all)
+                _placements[placement.PlacementKey] = placement;
 
-            var json = File.ReadAllText(_saveFilePath);
-            var data = JsonSerializer.Deserialize<Dictionary<string, AtmPlacementRecord>>(json);
-            if (data == null)
-                return;
-
-            foreach (var kvp in data)
-                _placements[kvp.Key] = kvp.Value;
-
-            _log.Debug($"Loaded {_placements.Count} ATM placements from {PlacementDataFile}.");
+            _log.Debug($"Loaded {_placements.Count} ATM placements from database.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to load {PlacementDataFile}: {ex}");
+            _log.Error($"Failed to load ATM placements: {ex}");
         }
     }
 
-    private void SavePlacements()
+    // ── One-time JSON → database migration ─────────────────────────────────────
+
+    private async void MigrateJsonToDatabase()
     {
+        var userDataPath = _resourceManager.UserData.RootDir ?? ".";
+        var jsonPath = Path.Combine(userDataPath, "atm_placements.json");
+
+        if (!File.Exists(jsonPath))
+            return;
+
         try
         {
-            var json = JsonSerializer.Serialize(_placements, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_saveFilePath, json);
+            var json = File.ReadAllText(jsonPath);
+            var data = JsonSerializer.Deserialize<Dictionary<string, LegacyAtmPlacementRecord>>(json);
+
+            if (data != null && data.Count > 0)
+            {
+                _log.Info($"Migrating {data.Count} ATM placement records from JSON to database...");
+
+                foreach (var (key, record) in data)
+                {
+                    var dbPlacement = new AtmPlacement
+                    {
+                        PlacementKey = key,
+                        PrototypeId = record.PrototypeId,
+                        MapName = record.MapName,
+                        TileX = record.TileX,
+                        TileY = record.TileY,
+                    };
+
+                    await _db.UpsertAtmPlacementAsync(dbPlacement);
+                    _placements[key] = dbPlacement;
+                }
+            }
+
+            File.Move(jsonPath, jsonPath + ".migrated");
+            _log.Info("ATM placement JSON migration complete.");
         }
         catch (Exception ex)
         {
-            _log.Error($"Failed to save {PlacementDataFile}: {ex}");
+            _log.Error($"Failed to migrate atm_placements.json to database: {ex}");
         }
     }
 }
 
-// ── Data model ────────────────────────────────────────────────────────────────
+// ── Legacy data model for one-time JSON migration ──────────────────────────────
 
-/// <summary>JSON-serialisable record for one ATM terminal placement.</summary>
-public sealed class AtmPlacementRecord
+internal sealed class LegacyAtmPlacementRecord
 {
     public string PrototypeId { get; set; } = string.Empty;
-
-    /// <summary>Map entity name (e.g. "Wendover") used to correlate placements across rounds.</summary>
     public string MapName { get; set; } = string.Empty;
-
     public int TileX { get; set; }
     public int TileY { get; set; }
 }

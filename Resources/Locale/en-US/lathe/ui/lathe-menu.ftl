@@ -28,3 +28,5 @@ lathe-menu-queue-title = Build Queue
 # Misfits Change Add: Section header strings for the 3-panel lathe menu layout
 lathe-menu-all-items-title = All Items
 lathe-menu-craftable-title = Craftable Now
+lathe-menu-blueprints-title = Blueprints
+lathe-menu-search-blueprints = Search blueprints

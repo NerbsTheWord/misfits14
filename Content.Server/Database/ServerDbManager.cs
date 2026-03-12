@@ -353,6 +353,44 @@ namespace Content.Server.Database
         Task UpsertCharacterCurrencyAsync(Guid playerId, string characterName, int bottlecaps);
 
         #endregion
+
+        // #Misfits Change - Persistent player data
+
+        #region PlayerData
+
+        Task<CharacterPlayerData?> GetCharacterPlayerDataAsync(Guid playerId, string characterName, CancellationToken cancel = default);
+        Task UpsertCharacterPlayerDataAsync(CharacterPlayerData data);
+
+        #endregion
+
+        // #Misfits Change - Persistent entities, tiles, decals
+
+        #region PersistentSpawn
+
+        Task<List<PersistentEntity>> GetAllPersistentEntitiesAsync(CancellationToken cancel = default);
+        Task UpsertPersistentEntityAsync(PersistentEntity entity);
+        Task RemovePersistentEntityAsync(string persistenceId);
+
+        Task<List<PersistentTile>> GetAllPersistentTilesAsync(CancellationToken cancel = default);
+        Task UpsertPersistentTileAsync(PersistentTile tile);
+        Task RemovePersistentTileAsync(string persistenceId);
+        Task RemovePersistentTilesAsync(IEnumerable<string> persistenceIds);
+
+        Task<List<PersistentDecal>> GetAllPersistentDecalsAsync(CancellationToken cancel = default);
+        Task UpsertPersistentDecalAsync(PersistentDecal decal);
+        Task RemovePersistentDecalsAsync(IEnumerable<string> persistenceIds);
+
+        #endregion
+
+        // #Misfits Change - Persistent ATM placements
+
+        #region AtmPlacements
+
+        Task<List<AtmPlacement>> GetAllAtmPlacementsAsync(CancellationToken cancel = default);
+        Task UpsertAtmPlacementAsync(AtmPlacement placement);
+        Task RemoveAtmPlacementAsync(string placementKey);
+
+        #endregion
     }
     /// </summary>
     /// <remarks>
@@ -1042,6 +1080,114 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.UpsertCharacterCurrencyAsync(playerId, characterName, bottlecaps));
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent player data
+
+        #region PlayerData
+
+        public Task<CharacterPlayerData?> GetCharacterPlayerDataAsync(Guid playerId, string characterName, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetCharacterPlayerDataAsync(playerId, characterName, cancel));
+        }
+
+        public Task UpsertCharacterPlayerDataAsync(CharacterPlayerData data)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertCharacterPlayerDataAsync(data));
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent entities, tiles, decals
+
+        #region PersistentSpawn
+
+        public Task<List<PersistentEntity>> GetAllPersistentEntitiesAsync(CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllPersistentEntitiesAsync(cancel));
+        }
+
+        public Task UpsertPersistentEntityAsync(PersistentEntity entity)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertPersistentEntityAsync(entity));
+        }
+
+        public Task RemovePersistentEntityAsync(string persistenceId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePersistentEntityAsync(persistenceId));
+        }
+
+        public Task<List<PersistentTile>> GetAllPersistentTilesAsync(CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllPersistentTilesAsync(cancel));
+        }
+
+        public Task UpsertPersistentTileAsync(PersistentTile tile)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertPersistentTileAsync(tile));
+        }
+
+        public Task RemovePersistentTileAsync(string persistenceId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePersistentTileAsync(persistenceId));
+        }
+
+        public Task RemovePersistentTilesAsync(IEnumerable<string> persistenceIds)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePersistentTilesAsync(persistenceIds));
+        }
+
+        public Task<List<PersistentDecal>> GetAllPersistentDecalsAsync(CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllPersistentDecalsAsync(cancel));
+        }
+
+        public Task UpsertPersistentDecalAsync(PersistentDecal decal)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertPersistentDecalAsync(decal));
+        }
+
+        public Task RemovePersistentDecalsAsync(IEnumerable<string> persistenceIds)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePersistentDecalsAsync(persistenceIds));
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent ATM placements
+
+        #region AtmPlacements
+
+        public Task<List<AtmPlacement>> GetAllAtmPlacementsAsync(CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllAtmPlacementsAsync(cancel));
+        }
+
+        public Task UpsertAtmPlacementAsync(AtmPlacement placement)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertAtmPlacementAsync(placement));
+        }
+
+        public Task RemoveAtmPlacementAsync(string placementKey)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveAtmPlacementAsync(placementKey));
         }
 
         #endregion

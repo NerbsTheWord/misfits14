@@ -39,9 +39,10 @@
     back: N14ClothingBackpackMilitary # Forge-Change
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatArmyCap
-    outerClothing: N14ClothingOuterMBoSInitiateArmor
+    outerClothing: N14ClothingOuterCombatArmorBOS
     pocket1: BoSBrotherhoodSquireKits
-    id: N14IDBrotherhoodHolotagSquire
+    id: N14IDBrotherhoodOfSteelHolotagSquire
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: ClothingBeltMilitary
   storage: # Forge-Change
     back:

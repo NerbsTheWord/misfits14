@@ -40,11 +40,11 @@
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCombatFilled
     head:  N14ClothingHeadHatBrotherhoodFieldCap
-    outerClothing: N14ClothingOuterPowerArmorT51Elder
+    outerClothing: N14ClothingOuterCombatArmorCaptainBOS
     hands: N14ClothingHandsGlovesCombat
     pocket1: BoSBrotherhoodElderKits
-    id: N14IDBrotherhoodWestHolotagElderCommander
-    ears: N14ClothingHeadsetBOSWest
+    id: N14IDBrotherhoodOfSteelHolotagElder
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
     belt: N14ClothingBeltBoSWesternKnight
   storage:
     back:
