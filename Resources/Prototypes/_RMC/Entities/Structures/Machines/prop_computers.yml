@@ -44,6 +44,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCPropCommunicationsConsole
+  categories: [ HideSpawnMenu ]
   name: communications console
   components:
   - type: Sprite
@@ -60,6 +61,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCPersonalDesktop
+  categories: [ HideSpawnMenu ]
   name: personal desktop
   components:
   - type: Sprite
@@ -68,6 +70,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCSecurityCameraConsole
+  categories: [ HideSpawnMenu ]
   name: security cameras console
   components:
   - type: Sprite
@@ -92,6 +95,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCSecurityRecordsConsole
+  categories: [ HideSpawnMenu ]
   name: security records
   components:
   - type: Sprite
@@ -100,6 +104,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCSecurityRecordsConsoleAlt
+  categories: [ HideSpawnMenu ]
   name: security records
   components:
   - type: Sprite
@@ -108,6 +113,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCIdentificationComputer
+  categories: [ HideSpawnMenu ]
   name: identification computer
   components:
   - type: Sprite
@@ -116,6 +122,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCStationAlertComputer
+  categories: [ HideSpawnMenu ]
   name: station alert computer
   components:
   - type: Sprite
@@ -124,6 +131,7 @@
 - type: entity
   parent: RMCPropComputerBase
   id: RMCSystemsComputer
+  categories: [ HideSpawnMenu ]
   name: systems computer
   components:
   - type: Sprite

@@ -48,6 +48,7 @@
 - type: entity
   parent: CMShardBase
   id: CMShardGlass
+  categories: [ HideSpawnMenu ]
   name: glass shard
   description: A shard of broken glass. Could probably be used as ... a throwing weapon?
   components:
@@ -62,6 +63,7 @@
 - type: entity
   parent: CMShardBase
   id: RMCShardIce
+  categories: [ HideSpawnMenu ]
   name: ice shard
   description: A shard of ice. Could probably be used as ... a throwing weapon?
   components:
@@ -72,6 +74,7 @@
 - type: entity
   parent: CMShardBase
   id: CMShardPhoron
+  categories: [ HideSpawnMenu ]
   name: phoron shard
   description: A shard of broken phoron glass. Considerably tougher than normal glass shards. Apparently not tough enough to be a window.
   components:

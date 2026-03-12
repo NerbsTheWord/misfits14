@@ -48,6 +48,7 @@
 - type: entity
   parent: RMCAirlockEvacuation
   id: RMCAirlockEvacuationBlack
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Structures/Doors/Airlocks/escape_pod_door_black.rsi
@@ -55,6 +56,7 @@
 - type: entity
   parent: RMCAirlockEvacuation
   id: RMCAirlockEvacuationWhite
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Structures/Doors/Airlocks/escape_pod_door_white.rsi

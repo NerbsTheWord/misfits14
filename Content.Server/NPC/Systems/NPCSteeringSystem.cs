@@ -376,15 +376,35 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         // Blend last and current tick
         Blend(steering, frameTime, interest, danger);
 
+        // #Misfits Fix — Tie-breaking hysteresis: prefer the previously chosen direction
+        // when values are within a small epsilon to prevent frame-to-frame oscillation.
         // Remove the danger map from the interest map.
         var desiredDirection = -1;
         var desiredValue = 0f;
+        const float hysteresisEpsilon = 0.05f;
+
+        // Determine the previous direction index (if any) so we can apply hysteresis.
+        var prevDirectionIndex = -1;
+        if (steering.LastSteerDirection != Vector2.Zero)
+        {
+            var prevAngle = (float) steering.LastSteerDirection.ToAngle().Theta;
+            if (prevAngle < 0f)
+                prevAngle += MathF.Tau;
+            prevDirectionIndex = (int) MathF.Round(prevAngle / InterestRadians) % InterestDirections;
+        }
 
         for (var i = 0; i < InterestDirections; i++)
         {
             var adjustedValue = Math.Clamp(steering.Interest[i] - steering.Danger[i], 0f, 1f);
 
-            if (adjustedValue > desiredValue)
+            // Apply hysteresis: the previous direction only needs to beat the current best
+            // minus a small epsilon, so we don't flip-flop on near-ties.
+            if (i == prevDirectionIndex && adjustedValue > 0f && adjustedValue >= desiredValue - hysteresisEpsilon)
+            {
+                desiredDirection = i;
+                desiredValue = adjustedValue;
+            }
+            else if (adjustedValue > desiredValue)
             {
                 desiredDirection = i;
                 desiredValue = adjustedValue;

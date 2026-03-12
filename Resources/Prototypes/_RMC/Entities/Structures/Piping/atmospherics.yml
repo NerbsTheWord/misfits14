@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMVentPump
+  categories: [ HideSpawnMenu ]
   name: air vent
   description: Has a valve and pump attached to it.
   placement:

@@ -145,6 +145,7 @@
 - type: entity
   parent: CMShellShotgunBuckshot
   id: RMCShellShotgunIncendiaryHeavyBuckshot
+  categories: [ HideSpawnMenu ]
   name: handful of heavy dragonbreath buckshot shells
   components:
   - type: Sprite

@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingExternalWebbing
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:

@@ -40,6 +40,7 @@
 - type: entity
   parent: RMCAreaVaradero
   id: RMCAreaVaraderoExterior
+  categories: [ HideSpawnMenu ]
   name: New Varadero - Exterior
   components:
   - type: Area
@@ -56,6 +57,7 @@
 - type: entity
   parent: RMCAreaVaradero
   id: RMCAreaVaraderoInterior
+  categories: [ HideSpawnMenu ]
   name: New Varadero - Interior
   components:
   - type: Area
@@ -73,6 +75,7 @@
 - type: entity
   parent: RMCAreaVaradero
   id: RMCAreaVaraderoInteriorProtected
+  categories: [ HideSpawnMenu ]
   name: New Varadero - Interior
   components:
 #  - type: Sprite

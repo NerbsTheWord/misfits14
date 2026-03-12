@@ -1,5 +1,6 @@
 - type: entity
   id: XenoTunnel
+  categories: [ HideSpawnMenu ]
   name: Tunnel
   description: A tunnel entrance. Looks like it was dug by some kind of clawed beast.
   placement:

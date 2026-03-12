@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCBaseWeaponMount
+  categories: [ HideSpawnMenu ]
   name: weapon mount
   description: A mount to place a weapon on
   components:

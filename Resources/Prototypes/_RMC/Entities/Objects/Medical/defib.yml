@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMBaseDefibrillator
+  categories: [ HideSpawnMenu ]
   name: emergency defibrillator
   description: A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead.
   abstract: true

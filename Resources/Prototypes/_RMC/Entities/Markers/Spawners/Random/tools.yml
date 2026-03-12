@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomTools
+  categories: [ HideSpawnMenu ]
   name: random tools spawner
   description: This is a random tool.
   components:
@@ -21,6 +22,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomToolbox
+  categories: [ HideSpawnMenu ]
   name: random toolbox spawner
   description: This is a random toolbox.
   components:
@@ -43,6 +45,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomPowercell
+  categories: [ HideSpawnMenu ]
   name: random powercell spawner
   description: This is a random powercell.
   components:
@@ -71,6 +74,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerBombSupply
+  categories: [ HideSpawnMenu ]
   name: bomb supply
   description: This is a random bomb supply
   components:
@@ -89,6 +93,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomTechSupply
+  categories: [ HideSpawnMenu ]
   name: random tech supply spawner
   description: This is a random piece of technology supplies.
   components:

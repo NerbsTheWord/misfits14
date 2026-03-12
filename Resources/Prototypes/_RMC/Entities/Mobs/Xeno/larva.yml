@@ -4,6 +4,7 @@
   - CMXenoFlammable
   - RMCXenoVentCrawler
   id: CMXenoLarva
+  categories: [ HideSpawnMenu ]
   name: Larva
   components:
   - type: GuideHelp
@@ -108,6 +109,7 @@
 # For surgeries/failed incubations
 - type: entity
   id: RMCXenoEmbryo
+  categories: [ HideSpawnMenu ]
   parent: BaseItem
   name: alien embryo
   description: All slimy and yucky.

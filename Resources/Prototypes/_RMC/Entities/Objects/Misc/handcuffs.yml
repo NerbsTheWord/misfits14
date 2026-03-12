@@ -1,6 +1,7 @@
 - type: entity
   parent: Handcuffs
   id: RMCHandcuffs
+  categories: [ HideSpawnMenu ]
   name: handcuffs
   description: Use this to keep prisoners in line.
   components:

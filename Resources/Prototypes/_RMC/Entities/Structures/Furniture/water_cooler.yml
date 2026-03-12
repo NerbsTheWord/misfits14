@@ -1,6 +1,7 @@
 - type: entity
   parent: StorageTank
   id: RMCWaterCooler
+  categories: [ HideSpawnMenu ]
   name: water cooler
   description: A machine that dispenses water to drink. It has levers for hot and cold, but it only dispenses room-temperature water.
   components:

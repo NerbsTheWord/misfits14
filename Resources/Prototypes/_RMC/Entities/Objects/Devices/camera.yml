@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCameraBroadcasting
+  categories: [ HideSpawnMenu ]
   name: broadcasting camera
   description: Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. # TODO Has a built-in printer for action shots.
   components:

@@ -5,6 +5,7 @@
   - CMXenoFlammable
   - RMCXenoVentCrawler
   id: CMXenoParasiteBase
+  categories: [ HideSpawnMenu ]
   name: Parasite
   components:
   - type: GuideHelp

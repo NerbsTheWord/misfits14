@@ -3,6 +3,7 @@
   abstract: true
   parent: BaseItem
   id: CMEncryptionKey
+  categories: [ HideSpawnMenu ]
   name: standard encryption key
   description: An encryption key for a radio headset.
   components:

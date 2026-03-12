@@ -1,5 +1,6 @@
 - type: entity
   id: RMCGlowshroom
+  categories: [ HideSpawnMenu ]
   name: glowshroom
   description: ""
   placement:

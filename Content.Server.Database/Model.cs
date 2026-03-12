@@ -1122,7 +1122,7 @@ namespace Content.Server.Database
         public float Y { get; set; }
         public float Rotation { get; set; }
         public int ColorArgb { get; set; }
-        public int ZIndex { get; set; }
+        [Column("z_index")] public int ZIndex { get; set; }
         public bool Cleanable { get; set; }
         public string SpawnedBy { get; set; } = string.Empty;
     }

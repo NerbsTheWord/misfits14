@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseRecharger
   id: RMCRecharger
+  categories: [ HideSpawnMenu ]
   name: recharger
   components:
   - type: Sprite

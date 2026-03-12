@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: BaseHiveStructure
+  categories: [ HideSpawnMenu ]
   components:
   - type: GuideHelp
     guides:
@@ -42,6 +43,7 @@
 - type: entity
   abstract: true
   id: BaseHiveStructureNode
+  categories: [ HideSpawnMenu ]
   components:
   - type: GuideHelp
     guides:

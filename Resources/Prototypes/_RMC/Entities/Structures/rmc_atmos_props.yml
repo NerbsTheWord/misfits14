@@ -1,6 +1,7 @@
 ﻿# Scrubbers
 - type: entity
   id: RMCAirScrubberPortable
+  categories: [ HideSpawnMenu ]
   parent: BaseStructureDynamic
   name: portable air scrubber
   description: It scrubs, portably!
@@ -124,6 +125,7 @@
 # Heaters
 - type: entity
   id: RMCRadiator
+  categories: [ HideSpawnMenu ]
   name: radiator
   description: It's a radiator. It heats the room through convection with hot water.
   components:
@@ -169,6 +171,7 @@
 
 - type: entity
   id: RMCSpaceHeater
+  categories: [ HideSpawnMenu ]
   parent: BaseStructureDynamic
   name: space heater
   description: It's an electric space heater. It heats the room through radiation with electricity.

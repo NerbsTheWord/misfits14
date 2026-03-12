@@ -4,6 +4,7 @@
 #  parent: BaseStockPart
   parent: BaseItem
   id: CMStockPartBase
+  categories: [ HideSpawnMenu ]
   name: stock part
   description: What?
   components:

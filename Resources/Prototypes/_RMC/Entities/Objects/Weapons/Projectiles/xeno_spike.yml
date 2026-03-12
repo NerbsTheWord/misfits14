@@ -1,5 +1,6 @@
 - type: entity
   id: XenoSpikeProjectile
+  categories: [ HideSpawnMenu ]
   name: spike shard
   description: A sharp spike shard.
   components:

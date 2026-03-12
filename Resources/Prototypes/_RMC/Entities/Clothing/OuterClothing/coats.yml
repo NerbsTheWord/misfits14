@@ -150,6 +150,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingJacketMB
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -184,6 +185,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingLabcoat
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -230,6 +232,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingChefApron
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCFlowerVase
+  categories: [ HideSpawnMenu ]
   name: vase of red and white flowers
   description: A flower vase filled with red and white roses.
   components:

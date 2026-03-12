@@ -24,6 +24,7 @@
 - type: entity
   parent: RMCBarrierBase
   id: RMCCrashLandBarrier
+  categories: [ HideSpawnMenu ]
   name: crash land on touch barrier
   components:
   - type: CrashLandOnTouch
@@ -31,6 +32,7 @@
 - type: entity
   parent: RMCBarrierBase
   id: RMCDeleteCrashLandBarrier
+  categories: [ HideSpawnMenu ]
   name: delete crash landable on touch barrier
   components:
   - type: DeleteCrashLandableOnTouch

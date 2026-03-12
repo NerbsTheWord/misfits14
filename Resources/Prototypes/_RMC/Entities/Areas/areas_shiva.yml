@@ -58,6 +58,7 @@
 - type: entity
   parent: RMCAreaShiva
   id: RMCAreaShivaExterior
+  categories: [ HideSpawnMenu ]
   name: Shiva's Snowball - Exterior
   components:
   - type: Area
@@ -74,6 +75,7 @@
 - type: entity
   parent: RMCAreaShiva
   id: RMCAreaShivaInterior
+  categories: [ HideSpawnMenu ]
   name: Shiva's Snowball - Interior
   components:
   - type: Area
@@ -188,6 +190,7 @@
   abstract: true
   parent: RMCAreaShiva
   id: RMCAreaShivaCaves
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaShivaInteriorTelecomm

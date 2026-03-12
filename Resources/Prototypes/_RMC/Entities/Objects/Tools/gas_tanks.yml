@@ -5,6 +5,7 @@
   abstract: true
   parent: GasTankBase
   id: CMGasTankBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: PhysicalComposition
     materialComposition: {}
@@ -122,6 +123,7 @@
   abstract: true
   parent: BaseItem
   id: RMCReagentGasTankBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Tanks/generic.rsi

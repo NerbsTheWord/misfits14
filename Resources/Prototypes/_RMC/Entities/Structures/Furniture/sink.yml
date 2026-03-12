@@ -59,6 +59,7 @@
 - type: entity
   parent: CMSinkEmpty
   id: CMSink
+  categories: [ HideSpawnMenu ]
   name: sink
   suffix: Water
   components:

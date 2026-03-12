@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseStructureDynamic
   id: RMCCrateBase
+  categories: [ HideSpawnMenu ]
   name: crate
   description: A rectangular metal crate.
   components:

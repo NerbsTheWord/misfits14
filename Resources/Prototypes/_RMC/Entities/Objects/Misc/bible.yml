@@ -3,6 +3,7 @@
   description: A book containing the sacred texts of that one popular guy you heard a lot about.
   parent: BaseStorageItem
   id: RMCBible
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Misc/Books/Bibles/bible.rsi

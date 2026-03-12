@@ -186,11 +186,13 @@ public sealed partial class NPCSteeringSystem
             // If it's a pathfinding node it might be different to the destination.
             arrived = direction.Length() <= steering.Range;
         }
-        // If next node is a free tile then get within its bounds.
-        // This is to avoid popping it too early
+        // #Misfits Fix — Use distance-based check (half the node's smallest dimension) instead
+        // of strict box containment.  Box containment fails when the NPC's physics body keeps
+        // it from fully entering the box, causing it to orbit the node edge forever.
         else if (steering.CurrentPath.TryPeek(out var node) && IsFreeSpace(uid, steering, node))
         {
-            arrived = node.Box.Contains(ourCoordinates.Position);
+            var nodeHalfMin = MathF.Min(node.Box.Width, node.Box.Height) * 0.5f;
+            arrived = direction.Length() <= nodeHalfMin;
         }
         // Try getting into blocked range I guess?
         // TODO: Consider melee range or the likes.
@@ -271,7 +273,16 @@ public sealed partial class NPCSteeringSystem
 
                 // Gonna resume now business as usual
                 direction = targetMap.Position - ourMap.Position;
-                ResetStuck(steering, ourCoordinates);
+
+                // #Misfits Fix — Only reset the stuck timer when the NPC has actually moved
+                // a meaningful distance since the last stuck checkpoint. Without this gate,
+                // popping a node (even without real movement) resets the timer and prevents
+                // the anti-stuck repath from ever triggering when the NPC orbits in place.
+                if (ourCoordinates.TryDistance(EntityManager, steering.LastStuckCoordinates, out var movedDist)
+                    && movedDist >= NPCSteeringComponent.StuckDistance * 0.5f)
+                {
+                    ResetStuck(steering, ourCoordinates);
+                }
             }
             else
             {

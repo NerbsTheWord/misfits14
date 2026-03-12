@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCArmorVest
   id: RMCArmorVestTSEPA
+  categories: [ HideSpawnMenu ]
   name: TSEPA armored vest
   description: An TSEPA armored vest that protects against some damage.
   components:
@@ -16,6 +17,7 @@
 
 - type: entity
   id: RMCBaseTSEArmor
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: ClothingRequireEquipped

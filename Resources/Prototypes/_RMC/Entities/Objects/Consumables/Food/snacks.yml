@@ -1,6 +1,7 @@
 - type: entity
   parent: CMFoodBase
   id: RMCFoodSnackBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Food

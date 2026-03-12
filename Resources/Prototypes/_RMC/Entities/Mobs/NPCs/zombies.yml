@@ -21,6 +21,7 @@
 
 - type: entity
   id: RMCSpawnZombifiedColonist
+  categories: [ HideSpawnMenu ]
   name: zombie spawner
   suffix: Colonist
   components:

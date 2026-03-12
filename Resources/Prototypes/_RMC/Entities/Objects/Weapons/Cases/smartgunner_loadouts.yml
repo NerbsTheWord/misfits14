@@ -27,6 +27,7 @@
 - type: entity
   parent: CMSmartGunOperatorEquipmentCase
   id: CMSmartGunOperatorEquipmentCaseBelt
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:

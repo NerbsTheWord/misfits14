@@ -2,6 +2,7 @@
 - type: entity
   parent: SeatBase
   id: RMCCouchMid
+  categories: [ HideSpawnMenu ]
   name: couch
   description: A piece of Swedish flat pack furniture, just dont ask the MTs for an Allen key.
   suffix: Mid

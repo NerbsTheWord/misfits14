@@ -1,5 +1,6 @@
 - type: entity # TODO RMC14 sound
   id: XenoWeeds
+  categories: [ HideSpawnMenu ]
   name: weeds
   description: Weird black weeds...
   placement:
@@ -356,6 +357,7 @@
 
 - type: entity
   id: XenoWeedsWall
+  categories: [ HideSpawnMenu ]
   name: weeds
   placement:
     mode: SnapgridCenter

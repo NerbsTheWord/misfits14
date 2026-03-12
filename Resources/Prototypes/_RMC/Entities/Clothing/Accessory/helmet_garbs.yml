@@ -12,6 +12,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbToggleableBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: ItemToggle
@@ -64,6 +65,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbNetting
+  categories: [ HideSpawnMenu ]
   name: combat netting
   description: Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless.
   components:
@@ -127,6 +129,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbRainCover
+  categories: [ HideSpawnMenu ]
   name: raincover
   description: The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something.
   components:
@@ -190,6 +193,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbBuckshot
+  categories: [ HideSpawnMenu ]
   name: spent buckshot
   description: Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times.
   components:
@@ -206,6 +210,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbFlechette
+  categories: [ HideSpawnMenu ]
   name: spent flechette
   description: The more you fire these, the more you're reminded that a fragmentation grenade is probably more effective at fulfilling the same purpose. Say, aren't these supposed to eject from your gun?
   components:
@@ -222,6 +227,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbSlug
+  categories: [ HideSpawnMenu ]
   name: spent slugs
   description: For when you need to knock your target down with superior stopping power. These three have already been fired.
   components:
@@ -238,6 +244,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbCartridge
+  categories: [ HideSpawnMenu ]
   name: cartridge
   description: This is the bullet from a Type 54 Assault Rifle. It is deformed from impact against an armored surface. It's been reduced to a lucky keepsake now.
   components:
@@ -256,6 +263,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbGasmask
+  categories: [ HideSpawnMenu ]
   name: M5 integrated gasmask
   description: The UNMC had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UN High Command.
   components:
@@ -318,6 +326,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCRC6RiotShield
+  categories: [ HideSpawnMenu ]
   name: RC6 riot shield
   description: The complimentary, but sold separate face shield associated with the RC6 riot helmet.
   components:
@@ -336,6 +345,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbFeather
+  categories: [ HideSpawnMenu ]
   name: lucky white feather
   description: A sniper's greatest asset is his mind, not his rifle.
   components:
@@ -418,6 +428,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbGunOil
+  categories: [ HideSpawnMenu ]
   name: gun oil
   description: It is a bottle of oil, for your gun. Don't fall for the rumors, the M54C is NOT a self-cleaning firearm.
   components:
@@ -454,6 +465,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbPrescription
+  categories: [ HideSpawnMenu ]
   name: prescription medication
   description: Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock.
   components:
@@ -470,6 +482,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbWire
+  categories: [ HideSpawnMenu ]
   name: trimmed barbed wire
   description: It is a length of barbed wire that's had most of the sharp points filed down so that it is safe to handle.
   components:
@@ -486,6 +499,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbChaplainPatch
+  categories: [ HideSpawnMenu ]
   name: UNMC chaplain helmet patch
   description: This patch is all that remains of the Chaplaincy of the UNS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Tychon Tackle.
   components:
@@ -502,6 +516,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbPeaceFlair
+  categories: [ HideSpawnMenu ]
   name: peace flair
   description: Doesn't matter when it's Arcturian, baby..
   components:
@@ -518,6 +533,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbIoFlair
+  categories: [ HideSpawnMenu ]
   name: io flair
   description: The Arcturians might be our allies now, but Io is forever a stain on trans-species relations. Never forget those who gave their lives aboard the UNS Doramin..
   components:
@@ -534,6 +550,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbTerraTekFlair
+  categories: [ HideSpawnMenu ]
   name: TerraTek flair
   description: Flair for some weird tech company back on Earth. How did they get promotional material this far out in the rim?.
   components:
@@ -550,6 +567,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbUNMCFlair
+  categories: [ HideSpawnMenu ]
   name: UNMC flair
   description: These pins get handed out like candy at enlistment offices. Wear it with pride marine.
   components:
@@ -566,6 +584,7 @@
 - type: entity
   parent: RMCHelmetGarbBase
   id: RMCHelmetGarbMovieTicket
+  categories: [ HideSpawnMenu ]
   name: movie ticket
   description: A pair of red movie tickets. It reminds you of a time you could watch more than the same 5 or so VHS films the Almayer has.
   components:

@@ -69,6 +69,7 @@
   name: peanut butter cookie
   parent: CMFoodBase
   id: RMCFoodCookiePeanutButter
+  categories: [ HideSpawnMenu ]
   description: Soft, chewy, and absolutely delicious!
   components:
   - type: Sprite
@@ -94,6 +95,7 @@
   name: peanut butter and jelly sandwich
   parent: CMFoodBase
   id: RMCFoodPBJSandwich
+  categories: [ HideSpawnMenu ]
   description: A sweet and savory sandwich loved by adults and marines alike!
   components:
   - type: Food
@@ -122,6 +124,7 @@
   name: onigiri
   parent: CMFoodBase
   id: RMCFoodOnigiri
+  categories: [ HideSpawnMenu ]
   description: These donuts are great! Jelly-filled are my favorite! Nothing beats a jelly-filled donut!
   components:
   - type: Sprite
@@ -148,6 +151,7 @@
   name: carbonara
   parent: FoodNoodlesBase
   id: RMCFoodCarbonara
+  categories: [ HideSpawnMenu ]
   description: Bacon with pasta? YES PLEASE!
   components:
   - type: Sprite
@@ -172,6 +176,7 @@
   name: sticky mango rice
   parent: FoodBowlBase
   id: FoodRiceMango
+  categories: [ HideSpawnMenu ]
   description: It's a grand gesture that isn't the least bit grand.
   components:
   - type: FlavorProfile
@@ -188,6 +193,7 @@
   name: banh mi
   parent: CMFoodBase
   id: FoodBanhMi
+  categories: [ HideSpawnMenu ]
   description: Banh Mi, for Banh You
   components:
   - type: Sprite
@@ -215,6 +221,7 @@
   name: banh mi half
   parent: CMFoodBase
   id: FoodBanhMiHalf
+  categories: [ HideSpawnMenu ]
   description: That's a symphony in a sandwich!
   components:
   - type: Sprite
@@ -239,6 +246,7 @@
   name: chicken parm hero
   parent: CMFoodBase
   id: FoodChickenParmHero
+  categories: [ HideSpawnMenu ]
   description: Now thats a sandwich, fuggedaboutit!
   components:
   - type: Sprite
@@ -269,6 +277,7 @@
   name: chicken parm half
   parent: CMFoodBase
   id: FoodChickenParmHalf
+  categories: [ HideSpawnMenu ]
   description: Better than eating a grilled cheese off the radiator.
   components:
   - type: Sprite
@@ -296,6 +305,7 @@
   name: meatball sub
   parent: CMFoodBase
   id: FoodMeatballSub
+  categories: [ HideSpawnMenu ]
   description: Made with the secrets of Death Kwon Do!
   components:
   - type: Sprite
@@ -326,6 +336,7 @@
   name: meatball sub half
   parent: CMFoodBase
   id: FoodMeatballSubHalf
+  categories: [ HideSpawnMenu ]
   description: It's enough to make a grown marine cry.
   components:
   - type: Sprite
@@ -353,6 +364,7 @@
   name: gabagool sandwich
   parent: CMFoodBase
   id: FoodGabagool
+  categories: [ HideSpawnMenu ]
   description: Woke up this morning, got yourself a sandwich.
   components:
   - type: Sprite
@@ -381,6 +393,7 @@
   name: gabagool sandwich half
   parent: CMFoodBase
   id: FoodGabagoolHalf
+  categories: [ HideSpawnMenu ]
   description: Gabagool? Over here!!
   components:
   - type: Sprite
@@ -406,6 +419,7 @@
   name: cheesesteak
   parent: CMFoodBase
   id: FoodCheesesteak
+  categories: [ HideSpawnMenu ]
   description: If your hands aren't greasy holding it, is it really a cheesesteak?
   components:
   - type: Sprite
@@ -435,6 +449,7 @@
   name: cheesesteak half
   parent: CMFoodBase
   id: FoodCheesesteakHalf
+  categories: [ HideSpawnMenu ]
   description: Served wit-out onions.
   components:
   - type: Sprite
@@ -461,6 +476,7 @@
   name: yorkshire pudding
   parent: CMFoodBase
   id: FoodYorkshirePudding
+  categories: [ HideSpawnMenu ]
   description: What a delightful pastry!
   components:
   - type: Tag
@@ -491,6 +507,7 @@
   name: black forest cake
   parent: CMFoodBase
   id: FoodCakeBlackForest
+  categories: [ HideSpawnMenu ]
   description: The cake is a lie no more!
   components:
   - type: Sprite
@@ -518,6 +535,7 @@
   name: black forest cake slice
   parent: CMFoodBase
   id: FoodBlackForestSlice
+  categories: [ HideSpawnMenu ]
   description: Now without fish-shaped ethyl benzene!
   components:
   - type: Sprite
@@ -544,6 +562,7 @@
   name: uncooked sausage
   parent: CMFoodBase
   id: FoodMeatSausage
+  categories: [ HideSpawnMenu ]
   description: A piece of mixed, long meat.
   components:
   - type: Sprite
@@ -569,6 +588,7 @@
   name: cooked sausage
   parent: CMFoodBase
   id: FoodMeatSausageCooked
+  categories: [ HideSpawnMenu ]
   description: This snagger looks like it just came off the barbie!
   components:
   - type: Sprite
@@ -593,6 +613,7 @@
   name: hot dog
   parent: CMFoodBase
   id: FoodHotDog
+  categories: [ HideSpawnMenu ]
   description: Life is tasting pretty good! Oh yes!
   components:
   - type: Sprite
@@ -618,6 +639,7 @@
   name: tapsilog
   parent: CMFoodBase
   id: FoodTapsilog
+  categories: [ HideSpawnMenu ]
   description: It's like steak and eggs, but better!
   components:
   - type: Sprite
@@ -645,6 +667,7 @@
   name: carpsilog
   parent: CMFoodBase
   id: FoodCarpsilog
+  categories: [ HideSpawnMenu ]
   description: Drenched in enough vinegar to make you forget about that carpotoxin!
   components:
   - type: Sprite
@@ -673,6 +696,7 @@
   name: chicksilog
   parent: CMFoodBase
   id: FoodChicksilog
+  categories: [ HideSpawnMenu ]
   description: Now I know you asked for tonkatsu, but this is all we got today.
   components:
   - type: Sprite
@@ -700,6 +724,7 @@
   name: tocilog
   parent: CMFoodBase
   id: FoodTocilog
+  categories: [ HideSpawnMenu ]
   description: Looks nothing like bacon, but just as great!
   components:
   - type: Sprite
@@ -727,6 +752,7 @@
   name: bangers and mash
   parent: CMFoodBase
   id: FoodBangersMash
+  categories: [ HideSpawnMenu ]
   description: Goes together like fish and chips, beans and.... nevermind.
   components:
   - type: Sprite
@@ -752,6 +778,7 @@
   name: pie and mash
   parent: CMFoodBase
   id: FoodPieMash
+  categories: [ HideSpawnMenu ]
   description: Goes together like fish and chips, beans and.... nevermind.
   components:
   - type: Sprite

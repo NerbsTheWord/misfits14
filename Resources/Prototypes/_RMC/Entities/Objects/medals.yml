@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCMedalBase
+  categories: [ HideSpawnMenu ]
   name: medal
   description: A medal.
   components:

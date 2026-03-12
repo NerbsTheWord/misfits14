@@ -3,6 +3,7 @@
   abstract: true
   parent: RMCMapInsertBase
   id: RMCMapInsertSolarisBase
+  categories: [ HideSpawnMenu ]
   suffix: Insert Solaris
   components:
   - type: MapInsert

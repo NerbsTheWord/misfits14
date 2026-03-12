@@ -1,6 +1,7 @@
 - type: entity
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   id: CMTelecomServer
+  categories: [ HideSpawnMenu ]
   name: telecommunication server
   description: When powered and filled with encryption keys it allows radio headset communication.
   components:

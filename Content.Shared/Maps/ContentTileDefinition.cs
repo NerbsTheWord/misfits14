@@ -137,5 +137,9 @@ namespace Content.Shared.Maps
 
         [DataField]
         public float TileRipResistance = 125f;
+
+        // #Misfits Add - Allow hiding tiles from spawn menus via YAML
+        [DataField("editorHidden")]
+        public bool EditorHidden { get; private set; }
     }
 }

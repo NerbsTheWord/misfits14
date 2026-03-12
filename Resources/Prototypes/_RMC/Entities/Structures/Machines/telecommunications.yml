@@ -1,5 +1,6 @@
 - type: entity
   id: RMCTelecomBusMainframe
+  categories: [ HideSpawnMenu ]
   name: Bus Mainframe
   description: A mighty piece of hardware used to send massive amounts of data quickly.
   placement:

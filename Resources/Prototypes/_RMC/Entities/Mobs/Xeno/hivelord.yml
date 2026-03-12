@@ -8,6 +8,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: CMXenoHivelordBase
+  categories: [ HideSpawnMenu ]
   name: Hivelord
   description: A builder of really big hives.
   components:

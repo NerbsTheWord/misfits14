@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStorageItem
   id: CMSurgicalCase
+  categories: [ HideSpawnMenu ]
   name: surgical case
   description: It's a medical case for storing basic surgical tools. # TODO RMC14 extended description with instructions for treating internal bleeds once those are added
   components:

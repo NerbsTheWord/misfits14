@@ -75,6 +75,7 @@
 
 - type: entity
   id: RMCEffectExplosionParticle
+  categories: [ HideSpawnMenu ]
   name: explosion
   components:
   - type: Transform

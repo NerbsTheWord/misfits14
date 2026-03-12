@@ -134,6 +134,7 @@
 - type: entity
   parent: RMCBoxShotgunBase
   id: RMCBox458SOCOM
+  categories: [ HideSpawnMenu ]
   name: box of .458 SOCOM rounds
   description: A box filled with handfuls of .458 SOCOM rounds, designed for use with the XM88 heavy rifle.
   components:

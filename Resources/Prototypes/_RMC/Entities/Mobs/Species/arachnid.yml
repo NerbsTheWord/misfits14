@@ -3,6 +3,7 @@
   name: Urist C.M McWeb
   parent: RMCBaseMobSpeciesOrganic
   id: CMMobArachnid
+  categories: [ HideSpawnMenu ]
   suffix: RMC14
   components:
   - type: HumanoidAppearance

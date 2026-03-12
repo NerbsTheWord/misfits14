@@ -2,6 +2,7 @@
 - type: entity
   parent: ClothingNeckBase
   id: RMCGeneralFormalCloak
+  categories: [ HideSpawnMenu ]
   name: General's formal cloak
   description: A lavish cloak and decorated only worn for special occasions.
   components:

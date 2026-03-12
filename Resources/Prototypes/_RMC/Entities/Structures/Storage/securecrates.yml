@@ -201,6 +201,7 @@
   abstract: true
   parent: BaseStructureDynamic
   id: RMCCrateOpenableBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: CrateOpenable
     spawn:
@@ -299,6 +300,7 @@
 - type: entity
   parent: RMCSecureCaseDouble #Evilass hidden GUN GAMBA CRATEEEEEEEE For CHANCESSSS CLAIMEEEEEEEEEEEEEE
   id: RMCCrateBlackmarketFireArmsHidden
+  categories: [ HideSpawnMenu ]
   name: supply crate
   description: A hefty wooden crate.
   components:
@@ -338,6 +340,7 @@
 - type: entity
   parent: RMCCrateLarge # UNMC Guns Crate
   id: RMCCrateUNMCGuns
+  categories: [ HideSpawnMenu ]
   name: UNMC firearms crate (x3)
   description: A supply crate containing 3 firearms used by UNMC forces.
   components:
@@ -351,6 +354,7 @@
 - type: entity
   parent: RMCCrateLarge # UNMC Guns Crate
   id: RMCCrateUNMCGunsSingle
+  categories: [ HideSpawnMenu ]
   name: UNMC firearms crate
   description: A supply crate containing firearms used by UNMC forces.
   components:
@@ -360,6 +364,7 @@
 - type: entity
   parent: RMCSecureCaseMedicalBig #Medical Vendor Crate
   id: RMCCrateMedicalVendor
+  categories: [ HideSpawnMenu ]
   name: We-Ya-Med Plus crate
   description: A crate containing one We-Ya-Med Plus vendor.
   components:
@@ -369,6 +374,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Generator Crate
   id: RMCCrateGeneratorPACMAN
+  categories: [ HideSpawnMenu ]
   name: P.A.C.M.A.N. crate
   description: A crate containing a P.A.C.M.A.N. generator, some fuel, and some cable coil to get your power up and going.
   components:
@@ -386,6 +392,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Floodlights (funny drag stuff)
   id: RMCCrateFloodlightX4
+  categories: [ HideSpawnMenu ]
   name: floodlight crate (x4)
   description: A crate containing four floodlights. "Warning It might be bit tangled!" written on the side.
   components:
@@ -399,6 +406,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Floodlights (funny drag stuff)
   id: RMCCrateTablesAndRacks
+  categories: [ HideSpawnMenu ]
   name: storage solutions crate (x10, x10)
   description: A crate containing ten table parts, and ten rack parts, for easy storage setup.
   components:
@@ -414,6 +422,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Water Bottles
   id: RMCCrateBottledWaterX50
+  categories: [ HideSpawnMenu ]
   name: We-Ya Bottled Water crate (x50)
   description: A crate containing fifty We-Ya Bottled Spring Water bottles.
   components:
@@ -427,6 +436,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Flare Boxes
   id: RMCCrateFlares200
+  categories: [ HideSpawnMenu ]
   name: Flare supply crate (x200)
   description: A supply crate containing two crates of flares.
   components:
@@ -440,6 +450,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Powerloader
   id: RMCCratePowerLoaderYellow
+  categories: [ HideSpawnMenu ]
   name: Powerloader crate
   description: A crate containing one folded, but fully assembled, LU-50 Power Loader and included pamphlet for quick training.
   components:
@@ -453,6 +464,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Powerloader Fujin
   id: RMCCratePowerLoaderGreen
+  categories: [ HideSpawnMenu ]
   name: Fujin Powerloader crate
   description: A crate containing one folded, but fully assembled, LU-43 Power Loader and included pamphlet for quick training.
   components:
@@ -466,6 +478,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped #Powerloader Ferret
   id: RMCCratePowerLoaderBlue
+  categories: [ HideSpawnMenu ]
   name: Ferret Powerloader crate
   description: A crate containing one folded, but fully assembled, LU-52 Power Loader and included pamphlet for quick training.
   components:
@@ -479,6 +492,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped # 4 x25 Sandbags
   id: RMCCrateSandbags100
+  categories: [ HideSpawnMenu ]
   name: sandbag supply crate (x100)
   description: A supply crate containing four piles of twenty-five sandbags.
   components:
@@ -492,6 +506,7 @@
 - type: entity
   parent: RMCSecureCaseStrapped # 2 x30 Plasteel Sheets
   id: RMCCratePlasteel60
+  categories: [ HideSpawnMenu ]
   name: plasteel supply crate (x60)
   description: A supply crate containing two stacks of 30 plasteel sheets.
   components:

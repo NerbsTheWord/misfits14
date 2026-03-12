@@ -2,6 +2,7 @@
 - type: entity
   parent: PottedPlantRandom
   id: CMPottedPlantRandom
+  categories: [ HideSpawnMenu ]
   name: random potted plant spawner
   components:
   - type: RandomSpawner
@@ -44,6 +45,7 @@
 - type: entity
   parent: PottedPlantBase
   id: CMPottedPlantBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: potted plant
   description: ""

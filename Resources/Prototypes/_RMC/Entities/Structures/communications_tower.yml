@@ -97,6 +97,7 @@
 - type: entity
   parent: RMCCommunicationsTower
   id: RMCCommunicationsTowerOn
+  categories: [ HideSpawnMenu ]
   suffix: "On, UNMC, Colony, WeYa"
   components:
   - type: CommunicationsTower
@@ -124,6 +125,7 @@
   abstract: true
   parent: MarkerBase
   id: RMCSpawnerCommunicationsTowerBase
+  categories: [ HideSpawnMenu ]
   name: static comms
   components: # TODO RMC14 some start broken
   - type: Sprite
@@ -156,6 +158,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCCommunicationsTowerProp
+  categories: [ HideSpawnMenu ]
   name: destroyed comms tower
   description: An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days.
   components:

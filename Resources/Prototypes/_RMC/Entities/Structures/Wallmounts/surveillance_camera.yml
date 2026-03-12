@@ -94,6 +94,7 @@
 - type: entity
   parent: RMCSurveillanceCameraAlmayer
   id: RMCMonitorCameraAlamo
+  categories: [ HideSpawnMenu ]
   description: It's used to monitor the dropship.
   suffix: "Alamo"
   components:
@@ -103,6 +104,7 @@
 - type: entity
   parent: RMCSurveillanceCameraAlmayer
   id: RMCMonitorCameraNormandy
+  categories: [ HideSpawnMenu ]
   description: It's used to monitor the dropship.
   suffix: "Normandy"
   components:
@@ -112,6 +114,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCMonitorCameraLandingZone
+  categories: [ HideSpawnMenu ]
   name: landing zone camera
   suffix: "LZ Detector"
   components:

@@ -8,6 +8,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: CMXenoDefenderBase
+  categories: [ HideSpawnMenu ]
   name: Defender
   description: An alien with an armored crest.
   components:

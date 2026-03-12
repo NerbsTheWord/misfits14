@@ -1,5 +1,6 @@
 - type: entity
   id: HiveAcidPillarXeno
+  categories: [ HideSpawnMenu ]
   name: acid pillar
   description: A tall pillar that is capable of firing weak acid.
   components:

@@ -96,6 +96,7 @@
   - RMCPodDoorIndestructible
   - RMCShutterBase
   id: RMCPodDoor
+  categories: [ HideSpawnMenu ]
   description: That looks like it doesn't open easily. Maybe look for a button or use a breaching charge?
   components:
   - type: Door

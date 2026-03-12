@@ -23,6 +23,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatLandingConsole
+  categories: [ HideSpawnMenu ]
   name: "LZ1 'Gamma'"
   components:
     - type: Sprite
@@ -33,6 +34,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatLandingConsole2
+  categories: [ HideSpawnMenu ]
   name: "LZ2 'Sigma'"
   components:
     - type: Sprite
@@ -43,6 +45,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatEmergencyAccess
+  categories: [ HideSpawnMenu ]
   name: Unknown Area
   components:
     - type: Sprite
@@ -62,6 +65,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatSigma
+  categories: [ HideSpawnMenu ]
   name: Sigma Sector
   components:
     - type: Sprite
@@ -472,6 +476,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatGamma
+  categories: [ HideSpawnMenu ]
   name: Gamma Sector
   components:
     - type: Sprite
@@ -1006,6 +1011,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatTheta
+  categories: [ HideSpawnMenu ]
   name: Theta Sector
   components:
     - type: Sprite
@@ -1100,6 +1106,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatOmega
+  categories: [ HideSpawnMenu ]
   name: Sector Omega
   components:
     - type: Sprite
@@ -1252,6 +1259,7 @@
 - type: entity
   parent: RMCAreaCorsat
   id: RMCAreaCorsatInaccessible
+  categories: [ HideSpawnMenu ]
   name: Unknown Location
   components:
     - type: Sprite

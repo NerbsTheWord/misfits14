@@ -3,6 +3,7 @@
   abstract: true
   parent: BaseSMES
   id: CMSMESBase
+  categories: [ HideSpawnMenu ]
   name: SMES
   description: A high-capacity superconducting magnetic energy storage (SMES) unit.
   components:

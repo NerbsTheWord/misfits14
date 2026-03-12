@@ -21,6 +21,7 @@
   abstract: true
   parent: BaseItem
   id: RMCCassetteTapeBase
+  categories: [ HideSpawnMenu ]
   name: cassette
   description: A plastic cassette tape.
   components:

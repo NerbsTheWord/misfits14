@@ -1,6 +1,7 @@
 - type: entity
   parent: Clothing
   id: RMCParachute
+  categories: [ HideSpawnMenu ]
   name: parachute
   description: A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one.
   components:
@@ -18,6 +19,7 @@
 
 - type: entity
   id: RMCParachuteDeployed
+  categories: [ HideSpawnMenu ]
   name: deployed parachute
   components:
   - type: Sprite

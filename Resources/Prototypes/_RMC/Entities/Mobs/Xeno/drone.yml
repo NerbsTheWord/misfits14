@@ -9,6 +9,7 @@
   - RMCXenoMobCollision
   - RMCXenoVentCrawler
   id: CMXenoDroneBase
+  categories: [ HideSpawnMenu ]
   name: Drone
   description: An alien drone.
   components:

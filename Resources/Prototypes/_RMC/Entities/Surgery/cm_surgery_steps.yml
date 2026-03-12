@@ -7,6 +7,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepOpenIncisionScalpel
+  categories: [ HideSpawnMenu ]
   name: Cut with a scalpel
   components:
   - type: CMSurgeryStep
@@ -24,6 +25,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepClampBleeders
+  categories: [ HideSpawnMenu ]
   name: Clamp the bleeders
   components:
   - type: CMSurgeryStep
@@ -39,6 +41,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepRetractSkin
+  categories: [ HideSpawnMenu ]
   name: Retract the skin
   components:
   - type: CMSurgeryStep
@@ -53,6 +56,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepSawBones
+  categories: [ HideSpawnMenu ]
   name: Saw through bones
   components:
   - type: CMSurgeryStep
@@ -68,6 +72,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepPriseOpenBones
+  categories: [ HideSpawnMenu ]
   name: Prise the bones open
   components:
   - type: CMSurgeryStep
@@ -82,6 +87,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepCutLarvaRoots
+  categories: [ HideSpawnMenu ]
   name: Cut larva roots
   components:
   - type: CMSurgeryStep
@@ -97,6 +103,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepRemoveLarva
+  categories: [ HideSpawnMenu ]
   name: Remove larva
   components:
   - type: CMSurgeryStep
@@ -114,6 +121,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepCloseBones
+  categories: [ HideSpawnMenu ]
   name: Close bones
   components:
   - type: CMSurgeryStep
@@ -128,6 +136,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepMendRibcage
+  categories: [ HideSpawnMenu ]
   name: Mend ribcage
   components:
   - type: CMSurgeryStep
@@ -142,6 +151,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: CMSurgeryStepCloseIncision
+  categories: [ HideSpawnMenu ]
   name: Close incision
   components:
   - type: CMSurgeryStep
@@ -159,6 +169,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: RMCSurgeryCutExoskeleton
+  categories: [ HideSpawnMenu ]
   name: Cut exoskeleton carapace
   components:
   - type: CMSurgeryStep
@@ -174,6 +185,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: RMCSurgeryOpenExoskeleton
+  categories: [ HideSpawnMenu ]
   name: Pry exoskeleton open
   components:
   - type: CMSurgeryStep
@@ -189,6 +201,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: RMCSurgerySevereXenoConnections
+  categories: [ HideSpawnMenu ]
   name: Sever organ connections
   components:
   - type: CMSurgeryStep
@@ -204,6 +217,7 @@
 - type: entity
   parent: CMSurgeryStepBase
   id: RMCSurgeryRemoveXenoOrgan
+  categories: [ HideSpawnMenu ]
   name: Remove xenonid organ
   components:
   - type: CMSurgeryStep

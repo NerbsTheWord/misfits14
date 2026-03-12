@@ -1,6 +1,7 @@
 ﻿# TODO RMC14 make a central system to manage these instead of ticking them all separately
 - type: entity
   id: RMCFogWallPermanent
+  categories: [ HideSpawnMenu ]
   name: dense fog
   description: It looks way too dangerous to traverse.
   suffix: Permanent
@@ -53,6 +54,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCFogWallRemoverOne
+  categories: [ HideSpawnMenu ]
   name: random fog remover
   description: Marks this fog for random removal at round-start.
   suffix: group one
@@ -70,6 +72,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCFogWallAdderOne
+  categories: [ HideSpawnMenu ]
   name: random fog spawner
   description: Marks a spot for random fog spawning at round-start.
   suffix: group one, 25 minutes
@@ -116,6 +119,7 @@
 
 - type: entity
   id: RMCFogShockwave
+  categories: [ HideSpawnMenu ]
   name: shockwave smoke
   components:
   - type: Transform
@@ -132,6 +136,7 @@
 
 - type: entity
   id: RMCFogSpawner15
+  categories: [ HideSpawnMenu ]
   parent: MarkerBase
   name: fog blocker
   suffix: 15 minutes

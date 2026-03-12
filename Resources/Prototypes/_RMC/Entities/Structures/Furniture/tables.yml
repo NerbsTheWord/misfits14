@@ -2,6 +2,7 @@
 - type: entity
   parent: TableBase
   id: CMTable
+  categories: [ HideSpawnMenu ]
   name: table
   description: A square metal surface resting on four legs. Useful to put stuff on.
   components:
@@ -54,6 +55,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCLargeTable
+  categories: [ HideSpawnMenu ]
   name: table
   description: A square metal surface resting on four legs. Useful to put stuff on.
   abstract: true

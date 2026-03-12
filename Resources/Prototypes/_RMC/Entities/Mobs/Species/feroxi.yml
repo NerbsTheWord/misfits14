@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCBaseMobSpeciesOrganic
   id: RMCMobFeroxi
+  categories: [ HideSpawnMenu ]
   name: Urist C.M McFeroxi
   suffix: RMC14
   components:

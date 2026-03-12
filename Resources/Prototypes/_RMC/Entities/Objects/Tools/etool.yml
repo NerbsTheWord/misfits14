@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMEntrenchingTool
+  categories: [ HideSpawnMenu ]
   name: entrenching tool
   description: Used to dig holes and bash heads in. Folds in to fit in small spaces.
   components:

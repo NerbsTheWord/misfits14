@@ -43,6 +43,7 @@
 
 - type: entity
   id: RMCGasWeedKiller
+  categories: [ HideSpawnMenu ]
   name: C10-W weedkiller
   components:
   - type: Transform

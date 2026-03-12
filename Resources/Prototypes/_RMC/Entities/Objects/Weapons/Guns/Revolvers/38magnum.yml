@@ -53,6 +53,7 @@
 - type: entity
   parent: RMCWeaponRevolver38Magnum
   id: RMCWeaponRevolver38Empty
+  categories: [ HideSpawnMenu ]
   suffix: Empty
   components:
   - type: RevolverAmmoProvider
@@ -67,6 +68,7 @@
 
 - type: entity
   id: RMCBaseSpeedLoader38
+  categories: [ HideSpawnMenu ]
   name: "Speed loader (.38)"
   parent: BaseItem
   abstract: true

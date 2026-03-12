@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCDropshipDoorBlocker
+  categories: [ HideSpawnMenu ]
   name: dropship door blocker
   description: Blocks barricades from being pulled into the dropship.
   components:

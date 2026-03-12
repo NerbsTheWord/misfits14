@@ -8,6 +8,7 @@
 - type: entity
   parent: BaseItem
   id: RMCInflatableWallFolded
+  categories: [ HideSpawnMenu ]
   name: inflatable wall
   description: A folded membrane which rapidly expands into a large cubical shape on activation.
   suffix: Full
@@ -47,6 +48,7 @@
 - type: entity
   parent: BaseItem
   id: RMCInflatableDoorFolded
+  categories: [ HideSpawnMenu ]
   name: inflatable door
   description: A folded membrane which rapidly expands into a simple door on activation.
   suffix: Full

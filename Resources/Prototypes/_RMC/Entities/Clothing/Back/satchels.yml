@@ -430,6 +430,7 @@
 - type: entity
   parent: CMSatchelMarineIntel # Reskin for FORECON
   id: RMCSatchelMarineLogisticsBig
+  categories: [ HideSpawnMenu ]
   name: UNMC logistics IMP backpack
   description: A standard-issue backpack worn by logistics personnel. It is occasionally issued to combat personnel for longer term expeditions and deep space incursions.
 

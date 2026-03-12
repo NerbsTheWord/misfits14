@@ -12,6 +12,7 @@
   abstract: true
   parent: RMCIntelBase
   id: RMCIntelReadableBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: IntelReadObjective
     value: 0.1
@@ -109,6 +110,7 @@
   abstract: true
   parent: RMCIntelBase
   id: RMCIntelRetrieveDeviceBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: IntelRetrieveItemObjective
     state: Active
@@ -128,6 +130,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCTechTreeConsole
+  categories: [ HideSpawnMenu ]
   name: tech tree console
   description: A console used to make tech purchases.
   components:
@@ -150,6 +153,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCComputerIntel
+  categories: [ HideSpawnMenu ]
   name: intel computer
   description: An UNMC Intel Computer for data cataloguing and distribution.
   components:

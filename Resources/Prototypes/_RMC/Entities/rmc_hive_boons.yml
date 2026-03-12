@@ -9,6 +9,7 @@
 - type: entity
   parent: RMCHiveBoonBase
   id: RMCHiveBoonFireResistance
+  categories: [ HideSpawnMenu ]
   name: Boon of Fire Resistance
   description: Makes all xenonids immune to fire for 5 minutes.
   components:
@@ -20,6 +21,7 @@
 - type: entity
   parent: RMCHiveBoonBase
   id: RMCHiveBoonLarvaSurge
+  categories: [ HideSpawnMenu ]
   name: Surge of Larva
   description: Provides 5 larva instantly to the hive.
   components:
@@ -32,6 +34,7 @@
 - type: entity
   parent: RMCHiveBoonBase
   id: RMCHiveBoonKing
+  categories: [ HideSpawnMenu ]
   name: His Grace
   description: A huge behemoth of a Xenonid which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn.
   components:

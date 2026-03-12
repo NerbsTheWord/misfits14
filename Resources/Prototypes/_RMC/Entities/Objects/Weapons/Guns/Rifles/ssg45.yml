@@ -119,6 +119,7 @@
 - type: entity
   parent: RMCWeaponRifleSSG45NoLock
   id: RMCWeaponRifleSSG45
+  categories: [ HideSpawnMenu ]
   suffix: Has ID Lock
   components:
   - type: GunIDLock
@@ -126,6 +127,7 @@
 - type: entity
   parent: RMCWeaponRifleSSG45NoLock
   id: RMCWeaponRifleSSG45NoLockStripped
+  categories: [ HideSpawnMenu ]
   suffix: No ID Lock, Stripped
   components:
   - type: AttachableHolder

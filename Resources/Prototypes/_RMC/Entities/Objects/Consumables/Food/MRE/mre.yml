@@ -4,6 +4,7 @@
 - type: entity
   parent: BaseStorageItem
   id: CMMRE
+  categories: [ HideSpawnMenu ]
   name: UNMC MRE
   description: A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy.
   components:
@@ -136,6 +137,7 @@
 - type: entity
   parent: BaseItem
   id: RMCMRECLF
+  categories: [ HideSpawnMenu ]
   name: wrapped makeshift meal
   description: Some home cooked or salvaged meal, you do what you must within your capabilities.
   components:
@@ -168,6 +170,7 @@
   abstract: true
   parent: BaseItem
   id: CMMREComponentBase
+  categories: [ HideSpawnMenu ]
   name: MRE component
   description: A package from a Meal Ready-to-Eat, property of the Marines. Contains a part of a meal, prepared for field consumption.
   components:
@@ -184,6 +187,7 @@
   abstract: true
   parent: CMFoodBase
   id: CMMREFoodBase
+  categories: [ HideSpawnMenu ]
   description: The contents of a Marine Standard issue MRE.
   components:
   - type: Sprite
@@ -197,6 +201,7 @@
 - type: entity
   parent: BaseItem
   id: RMCSurvivalRationSPP
+  categories: [ HideSpawnMenu ]
   name: SPP survival ration
   description: A small compressed package containing a single portion of food you cannot distinguish.
   components:

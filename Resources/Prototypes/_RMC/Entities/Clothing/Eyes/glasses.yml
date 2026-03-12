@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: CMGlassesSecurity
+  categories: [ HideSpawnMenu ]
   name: security HUD-glasses
   description: Sunglasses wired up with the best nano-tech the UNMC can muster out on the frontier. Displays information about any person you decree worthy of your gaze.
   components:
@@ -41,6 +42,7 @@
 - type: entity
   parent: [ ClothingEyesBase , ShowMedicalIcons ]
   id: CMGlassesM42ScoutSight
+  categories: [ HideSpawnMenu ]
   name: M96 scout sight
   description: A headset and night vision sighting system for the M96 Scout Rifle. Allows highlighted imaging of surroundings.
   components:
@@ -78,6 +80,7 @@
 - type: entity
   parent: ClothingEyesHudMedical
   id: RMCGlassesM4SPRBattleSight
+  categories: [ HideSpawnMenu ]
   name: M4SPR Battle Sight
   description: A headset and night vision sighting system for the M4SPR Custom Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines.
   components:
@@ -104,6 +107,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesSmartGunSight
+  categories: [ HideSpawnMenu ]
   name: ML66A head mounted sight # TODO RMC14 meson tile vision see description below
   description: A headset and goggles system for the ML66A Smart Gun. # TODO RMC14 Has a low-res short-range imager, allowing for view of terrain.
   components:
@@ -135,6 +139,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesExperimentalMeson
+  categories: [ HideSpawnMenu ]
   name: experimental meson goggles # TODO RMC14 meson tile vision see description below
   description: An improved but experimental version of the standard issue meson goggles, due to increased complexity these can only be worn by synthetics. Allows for full night vision. # TODO RMC14 and viewing of the surroundings. Click it to toggle.
   components:
@@ -172,6 +177,7 @@
 - type: entity
   parent: [ClothingEyesHudMedical, BaseToggleClothing]
   id: RMCGlassesMedicalHUDGlasses
+  categories: [ HideSpawnMenu ]
   name: HealthMate HUD
   description: A heads-up display that scans the humanoids in view and provides accurate data about their health status.
   components:
@@ -221,6 +227,7 @@
 - type: entity
   parent: [ClothingEyesHudMedical, BaseToggleClothing]
   id: RMCGlassesHUDSecurity
+  categories: [ HideSpawnMenu ]
   name: PatrolMate HUD
   description: A heads-up display that scans the humans in view and provides accurate data about their ID status and security records.
   components:
@@ -257,6 +264,7 @@
 - type: entity
   parent: [ClothingEyesBase, BaseToggleClothing]
   id: RMCGlassesReagentHUDGlasses
+  categories: [ HideSpawnMenu ]
   name: reagent scanner HUD goggles
   description: These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy.
   components:
@@ -300,6 +308,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesMarineRpg # TODO make this actually prescription
+  categories: [ HideSpawnMenu ]
   name: marine RPG glasses
   description: The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses.
   components:
@@ -577,6 +586,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGogglesBallisticSquad
+  categories: [ HideSpawnMenu ]
   name: Advanced ballistic goggles
   description: Cutting edge UNMC goggles. Advanced polymers and expensive nanotechnology allow the goggles to link with the wearer's armor and change the color of the lenses to match their squad designation. The lenses are invisible when worn by the unworthy.
   components:
@@ -600,6 +610,7 @@
 - type: entity
   parent: ClothingEyesGlassesCheapSunglasses
   id: RMCSunglasses
+  categories: [ HideSpawnMenu ]
   suffix: RMC
   name: sunglasses
   description: Generic off-brand eyewear, used to help provide rudimentary eye cover.
@@ -622,6 +633,7 @@
 - type: entity
   parent: ClothingEyesEyepatch
   id: RMCEyepatch
+  categories: [ HideSpawnMenu ]
   suffix: RMC
   name: eyepatch
   description: Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire.
@@ -734,6 +746,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesAviators
+  categories: [ HideSpawnMenu ]
   name: aviator shades
   description: A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these.
   components:
@@ -761,6 +774,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCHipsterGlasses
+  categories: [ HideSpawnMenu ]
   name: prescription glasses
   description: Boring glasses, makes you look smart and potentially reputable.
   components:
@@ -860,6 +874,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCWeldingGoggles
+  categories: [ HideSpawnMenu ]
   name: welding goggles # TODO RMC14 impairs vision when on
   description: Protects the eyes from welders, approved by the mad scientist association.
   components:
@@ -912,6 +927,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGogglesKutjevo
+  categories: [ HideSpawnMenu ]
   name: kutjevo goggles
   description: Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles.
   components:
@@ -928,6 +944,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesJensen
+  categories: [ HideSpawnMenu ]
   name: augmented shades
   description: Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?
   components:
@@ -944,6 +961,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: RMCGlassesMonocle
+  categories: [ HideSpawnMenu ]
   name: monocle
   description: Such a dapper eyepiece!
   components:

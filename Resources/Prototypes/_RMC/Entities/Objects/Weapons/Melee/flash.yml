@@ -1,6 +1,7 @@
 - type: entity
   parent: Flash
   id: CMFlash
+  categories: [ HideSpawnMenu ]
   name: flash
   description: Used for blinding and being an asshole. Recharges one flash every 15 seconds. You must wait 1 second between uses for the capacitor to recharge.
   components:

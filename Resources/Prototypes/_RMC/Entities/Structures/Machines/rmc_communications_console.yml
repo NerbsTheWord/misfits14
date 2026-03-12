@@ -30,6 +30,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCGroundsideOperationsConsole
+  categories: [ HideSpawnMenu ]
   name: groundside operations console
   description: This can be used for various important functions.
   components:
@@ -63,6 +64,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCWarshipControlConsole
+  categories: [ HideSpawnMenu ]
   name: almayer control console
   description: This is used for controlling ship and its related functions.
   components:
@@ -84,6 +86,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCOverwatchConsole
+  categories: [ HideSpawnMenu ]
   name: overwatch console
   description: State of the art machinery for giving orders to a squad.
   components:
@@ -145,6 +148,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCTacticalMapTable
+  categories: [ HideSpawnMenu ]
   name: map table
   description: A table that displays a map of the current operation location.
   components:
@@ -270,6 +274,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCEscapePodController
+  categories: [ HideSpawnMenu ]
   name: escape pod controller
   description: A shuttle control computer.
   components:
@@ -303,6 +308,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCLifeboatConsole
+  categories: [ HideSpawnMenu ]
   name: lifeboat console
   description: A lifeboat control computer.
   components:

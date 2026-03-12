@@ -1,6 +1,7 @@
 # Marines
 - type: entity
   id: RMCJumpsuitMarinePatchBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: UniformAccessoryHolder

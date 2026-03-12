@@ -1,5 +1,6 @@
 - type: entity
   id: RMCFireProp
+  categories: [ HideSpawnMenu ]
   name: fire
   description: That isn't going out any time soon.
   suffix: Prop

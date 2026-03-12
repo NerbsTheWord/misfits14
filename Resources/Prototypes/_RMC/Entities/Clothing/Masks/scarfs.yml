@@ -1,6 +1,7 @@
 - type: entity
   parent: [ClothingMaskBaseButcherable, BaseFoldable]
   id: RMCBaseScarfMask
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Appearance
@@ -237,6 +238,7 @@
 - type: entity
   parent: ClothingMaskBaseButcherable
   id: RMCMaskTornScarfBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Clothing

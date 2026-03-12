@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCPropBase
+  categories: [ HideSpawnMenu ]
   placement:
     mode: SnapgridCenter
   components:

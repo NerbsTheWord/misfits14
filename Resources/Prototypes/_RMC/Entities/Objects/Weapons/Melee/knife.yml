@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCBaseMeleeWeapon
+  categories: [ HideSpawnMenu ]
   components:
   - type: MeleeDamageMultiplier
     whitelist:

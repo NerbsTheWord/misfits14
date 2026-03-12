@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStorageItem
   id: CMMedicalUpgradeKit
+  categories: [ HideSpawnMenu ]
   name: medical upgrade kit
   description: This kit holds upgraded trauma and burn kits, for critical injuries.
   components:

@@ -6,6 +6,7 @@
 - type: entity
   parent: RMCAreaShuttle
   id: RMCAreaShuttleDrop1
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     resinAllowed: false
@@ -91,6 +92,7 @@
 - type: entity
   parent: RMCAreaShuttle
   id: RMCAreaShuttleDrop2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     resinAllowed: false
@@ -176,6 +178,7 @@
 - type: entity
   parent: RMCAreaShuttle
   id: RMCAreaShuttleDistress
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaShuttleDistress

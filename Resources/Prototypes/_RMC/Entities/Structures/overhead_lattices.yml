@@ -27,6 +27,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeVertical1
+  categories: [ HideSpawnMenu ]
   suffix: Vertical
   components:
   - type: Sprite
@@ -210,6 +211,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal4
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -222,6 +224,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal8
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -234,6 +237,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal12
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -246,6 +250,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal4A
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -258,6 +263,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal4B
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -270,6 +276,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal4C
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -282,6 +289,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal4D
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -294,6 +302,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal5A
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -306,6 +315,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal5B
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -318,6 +328,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal5C
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -330,6 +341,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal5D
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -342,6 +354,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal6A
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -354,6 +367,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal6B
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -366,6 +380,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal6C
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite
@@ -378,6 +393,7 @@
 - type: entity
   parent: RMCOverheadLattice
   id: RMCOverheadLatticeHorizontal6D
+  categories: [ HideSpawnMenu ]
   suffix: Horizontal
   components:
   - type: Sprite

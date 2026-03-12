@@ -12,6 +12,7 @@
 - type: entity
   parent: RMCMapInsertVaraderoBase
   id: RMCMapInsertVaraderoCLFRaid
+  categories: [ HideSpawnMenu ]
   name: CLF Raid
   suffix: Insert Varadero
   components:
@@ -24,6 +25,7 @@
 - type: entity
   parent: RMCMapInsertVaraderoBase
   id: RMCMapInsertVaraderoResturant
+  categories: [ HideSpawnMenu ]
   name: Resturant
   suffix: Insert Varadero
   components:
@@ -35,6 +37,7 @@
 - type: entity
   parent: RMCMapInsertVaraderoBase
   id: RMCMapInsertVaraderoAltHospital
+  categories: [ HideSpawnMenu ]
   name: Alt. Hospital
   suffix: Insert Varadero
   components:
@@ -49,6 +52,7 @@
 - type: entity
   parent: RMCMapInsertVaraderoBase
   id: RMCMapInsertVaraderoEngiHold
+  categories: [ HideSpawnMenu ]
   name: Engi Hold
   suffix: Insert Varadero
   components:

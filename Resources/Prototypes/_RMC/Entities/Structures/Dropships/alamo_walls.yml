@@ -14,6 +14,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall1
+  categories: [ HideSpawnMenu ]
   suffix: 1
   components:
   - type: Sprite
@@ -26,6 +27,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall2
+  categories: [ HideSpawnMenu ]
   suffix: 2
   components:
   - type: Sprite
@@ -38,6 +40,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall3
+  categories: [ HideSpawnMenu ]
   suffix: 3
   components:
   - type: Sprite
@@ -48,6 +51,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall4
+  categories: [ HideSpawnMenu ]
   suffix: 4
   components:
   - type: Sprite
@@ -58,6 +62,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall5
+  categories: [ HideSpawnMenu ]
   suffix: 5
   components:
   - type: Sprite
@@ -70,6 +75,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall6
+  categories: [ HideSpawnMenu ]
   suffix: 6
   components:
   - type: Sprite
@@ -82,6 +88,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall7
+  categories: [ HideSpawnMenu ]
   suffix: 7
   components:
   - type: Sprite
@@ -92,6 +99,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall8
+  categories: [ HideSpawnMenu ]
   suffix: 8
   components:
   - type: Sprite
@@ -102,6 +110,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall9
+  categories: [ HideSpawnMenu ]
   suffix: 9
   components:
   - type: Sprite
@@ -112,6 +121,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall10
+  categories: [ HideSpawnMenu ]
   suffix: 10
   components:
   - type: Sprite
@@ -122,6 +132,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall11
+  categories: [ HideSpawnMenu ]
   suffix: 11
   components:
   - type: Sprite
@@ -132,6 +143,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall12
+  categories: [ HideSpawnMenu ]
   suffix: 12
   components:
   - type: Sprite
@@ -142,6 +154,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall13
+  categories: [ HideSpawnMenu ]
   suffix: 13
   components:
   - type: Sprite
@@ -152,6 +165,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall14
+  categories: [ HideSpawnMenu ]
   suffix: 14
   components:
   - type: Sprite
@@ -162,6 +176,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall15
+  categories: [ HideSpawnMenu ]
   suffix: 15
   components:
   - type: Sprite
@@ -172,6 +187,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall16
+  categories: [ HideSpawnMenu ]
   suffix: 16
   components:
   - type: Sprite
@@ -184,6 +200,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall17
+  categories: [ HideSpawnMenu ]
   suffix: 17
   components:
   - type: Sprite
@@ -196,6 +213,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall18
+  categories: [ HideSpawnMenu ]
   suffix: 18
   components:
   - type: Sprite
@@ -206,6 +224,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall19
+  categories: [ HideSpawnMenu ]
   suffix: 19
   components:
   - type: Sprite
@@ -216,6 +235,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall20
+  categories: [ HideSpawnMenu ]
   suffix: 20
   components:
   - type: Sprite
@@ -226,6 +246,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall21
+  categories: [ HideSpawnMenu ]
   suffix: 21
   components:
   - type: Sprite
@@ -236,6 +257,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall22
+  categories: [ HideSpawnMenu ]
   suffix: 22
   components:
   - type: Sprite
@@ -248,6 +270,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall23
+  categories: [ HideSpawnMenu ]
   suffix: 23
   components:
   - type: Sprite
@@ -260,6 +283,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall24
+  categories: [ HideSpawnMenu ]
   suffix: 24
   components:
   - type: Sprite
@@ -270,6 +294,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall25
+  categories: [ HideSpawnMenu ]
   suffix: 25
   components:
   - type: Sprite
@@ -280,6 +305,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall26
+  categories: [ HideSpawnMenu ]
   suffix: 26
   components:
   - type: Sprite
@@ -292,6 +318,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall27
+  categories: [ HideSpawnMenu ]
   suffix: 27
   components:
   - type: Sprite
@@ -304,6 +331,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall28
+  categories: [ HideSpawnMenu ]
   suffix: 28
   components:
   - type: Sprite
@@ -316,6 +344,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall29
+  categories: [ HideSpawnMenu ]
   suffix: 29
   components:
   - type: Sprite
@@ -328,6 +357,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall30
+  categories: [ HideSpawnMenu ]
   suffix: 30
   components:
   - type: Sprite
@@ -338,6 +368,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall31
+  categories: [ HideSpawnMenu ]
   suffix: 31
   components:
   - type: Sprite
@@ -348,6 +379,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall32
+  categories: [ HideSpawnMenu ]
   suffix: 32
   components:
   - type: Sprite
@@ -360,6 +392,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall33
+  categories: [ HideSpawnMenu ]
   suffix: 33
   components:
   - type: Sprite
@@ -372,6 +405,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall34
+  categories: [ HideSpawnMenu ]
   suffix: 34
   components:
   - type: Sprite
@@ -384,6 +418,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall35
+  categories: [ HideSpawnMenu ]
   suffix: 35
   components:
   - type: Sprite
@@ -396,6 +431,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall36
+  categories: [ HideSpawnMenu ]
   suffix: 36
   components:
   - type: Sprite
@@ -406,6 +442,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall37
+  categories: [ HideSpawnMenu ]
   suffix: 37
   components:
   - type: Sprite
@@ -416,6 +453,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall38
+  categories: [ HideSpawnMenu ]
   suffix: 38
   components:
   - type: Sprite
@@ -428,6 +466,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall39
+  categories: [ HideSpawnMenu ]
   suffix: 39
   components:
   - type: Sprite
@@ -440,6 +479,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall40
+  categories: [ HideSpawnMenu ]
   suffix: 40
   components:
   - type: Sprite
@@ -452,6 +492,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall41
+  categories: [ HideSpawnMenu ]
   suffix: 41
   components:
   - type: Sprite
@@ -464,6 +505,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall42
+  categories: [ HideSpawnMenu ]
   suffix: 42
   components:
   - type: Sprite
@@ -474,6 +516,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall43
+  categories: [ HideSpawnMenu ]
   suffix: 43
   components:
   - type: Sprite
@@ -484,6 +527,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall44
+  categories: [ HideSpawnMenu ]
   suffix: 44
   components:
   - type: Sprite
@@ -494,6 +538,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall45
+  categories: [ HideSpawnMenu ]
   suffix: 45
   components:
   - type: Sprite
@@ -504,6 +549,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall46
+  categories: [ HideSpawnMenu ]
   suffix: 46
   components:
   - type: Sprite
@@ -514,6 +560,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall46a
+  categories: [ HideSpawnMenu ]
   suffix: 46a
   components:
   - type: Sprite
@@ -524,6 +571,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall47
+  categories: [ HideSpawnMenu ]
   suffix: 47
   components:
   - type: Sprite
@@ -534,6 +582,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall48
+  categories: [ HideSpawnMenu ]
   suffix: 48
   components:
   - type: Sprite
@@ -544,6 +593,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall49
+  categories: [ HideSpawnMenu ]
   suffix: 49
   components:
   - type: Sprite
@@ -554,6 +604,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall49a
+  categories: [ HideSpawnMenu ]
   suffix: 49a
   components:
   - type: Sprite
@@ -564,6 +615,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall50
+  categories: [ HideSpawnMenu ]
   suffix: 50
   components:
   - type: Sprite
@@ -574,6 +626,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall51
+  categories: [ HideSpawnMenu ]
   suffix: 51
   components:
   - type: Sprite
@@ -584,6 +637,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall52
+  categories: [ HideSpawnMenu ]
   suffix: 52
   components:
   - type: Sprite
@@ -594,6 +648,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall53
+  categories: [ HideSpawnMenu ]
   suffix: 53
   components:
   - type: Sprite
@@ -604,6 +659,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall54
+  categories: [ HideSpawnMenu ]
   suffix: 54
   components:
   - type: Sprite
@@ -614,6 +670,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall55
+  categories: [ HideSpawnMenu ]
   suffix: 55
   components:
   - type: Sprite
@@ -624,6 +681,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall56
+  categories: [ HideSpawnMenu ]
   suffix: 56
   components:
   - type: Sprite
@@ -634,6 +692,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall57
+  categories: [ HideSpawnMenu ]
   suffix: 57
   components:
   - type: Sprite
@@ -644,6 +703,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall58
+  categories: [ HideSpawnMenu ]
   suffix: 58
   components:
   - type: Sprite
@@ -654,6 +714,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall59
+  categories: [ HideSpawnMenu ]
   suffix: 59
   components:
   - type: Sprite
@@ -664,6 +725,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall60
+  categories: [ HideSpawnMenu ]
   suffix: 60
   components:
   - type: Sprite
@@ -674,6 +736,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall61
+  categories: [ HideSpawnMenu ]
   name: port wing weapon attach point
   description: A place where heavy equipment can be installed with a powerloader.
   suffix: 61
@@ -702,6 +765,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall62
+  categories: [ HideSpawnMenu ]
   suffix: 62
   components:
   - type: Sprite
@@ -712,6 +776,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall63
+  categories: [ HideSpawnMenu ]
   suffix: 63
   components:
   - type: Sprite
@@ -722,6 +787,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall64
+  categories: [ HideSpawnMenu ]
   suffix: 64
   components:
   - type: Sprite
@@ -732,6 +798,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall65
+  categories: [ HideSpawnMenu ]
   name: starboard wing weapon attach point
   description: A place where heavy equipment can be installed with a powerloader.
   suffix: 65
@@ -760,6 +827,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall66
+  categories: [ HideSpawnMenu ]
   suffix: 66
   components:
   - type: Sprite
@@ -772,6 +840,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall67
+  categories: [ HideSpawnMenu ]
   suffix: 67
   components:
   - type: Sprite
@@ -782,6 +851,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall68
+  categories: [ HideSpawnMenu ]
   suffix: 68
   components:
   - type: Sprite
@@ -792,6 +862,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall69
+  categories: [ HideSpawnMenu ]
   suffix: 69
   components:
   - type: Sprite
@@ -802,6 +873,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall70
+  categories: [ HideSpawnMenu ]
   suffix: 70
   components:
   - type: Sprite
@@ -814,6 +886,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall71
+  categories: [ HideSpawnMenu ]
   suffix: 71
   components:
   - type: Sprite
@@ -826,6 +899,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall72
+  categories: [ HideSpawnMenu ]
   suffix: 72
   components:
   - type: Sprite
@@ -836,6 +910,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall73
+  categories: [ HideSpawnMenu ]
   suffix: 73
   components:
   - type: Sprite
@@ -846,6 +921,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall74
+  categories: [ HideSpawnMenu ]
   suffix: 74
   components:
   - type: Sprite
@@ -858,6 +934,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall75
+  categories: [ HideSpawnMenu ]
   suffix: 75
   components:
   - type: Sprite
@@ -868,6 +945,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall76
+  categories: [ HideSpawnMenu ]
   suffix: 76
   components:
   - type: Sprite
@@ -878,6 +956,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall77
+  categories: [ HideSpawnMenu ]
   suffix: 77
   components:
   - type: Sprite
@@ -888,6 +967,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall78
+  categories: [ HideSpawnMenu ]
   suffix: 78
   components:
   - type: Sprite
@@ -900,6 +980,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall79
+  categories: [ HideSpawnMenu ]
   suffix: 79
   components:
   - type: Sprite
@@ -910,6 +991,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall80
+  categories: [ HideSpawnMenu ]
   suffix: 80
   components:
   - type: Sprite
@@ -922,6 +1004,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall81
+  categories: [ HideSpawnMenu ]
   suffix: 81
   components:
   - type: Sprite
@@ -932,6 +1015,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall82
+  categories: [ HideSpawnMenu ]
   suffix: 82
   components:
   - type: Sprite
@@ -942,6 +1026,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall83
+  categories: [ HideSpawnMenu ]
   suffix: 83
   components:
   - type: Sprite
@@ -952,6 +1037,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall84
+  categories: [ HideSpawnMenu ]
   name: port fore weapon attach point
   description: A place where heavy equipment can be installed with a powerloader.
   suffix: 84
@@ -1025,6 +1111,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall86
+  categories: [ HideSpawnMenu ]
   suffix: 86
   components:
   - type: Sprite
@@ -1037,6 +1124,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall86a
+  categories: [ HideSpawnMenu ]
   suffix: 86a
   components:
   - type: Sprite
@@ -1049,6 +1137,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall86b
+  categories: [ HideSpawnMenu ]
   suffix: 86b
   components:
   - type: Sprite
@@ -1061,6 +1150,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall87
+  categories: [ HideSpawnMenu ]
   suffix: 87
   components:
   - type: Sprite
@@ -1071,6 +1161,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall88
+  categories: [ HideSpawnMenu ]
   suffix: 88
   components:
   - type: Sprite
@@ -1081,6 +1172,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall89
+  categories: [ HideSpawnMenu ]
   suffix: 89
   components:
   - type: Sprite
@@ -1093,6 +1185,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall89a
+  categories: [ HideSpawnMenu ]
   suffix: 89a
   components:
   - type: Sprite
@@ -1105,6 +1198,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall89b
+  categories: [ HideSpawnMenu ]
   suffix: 89b
   components:
   - type: Sprite
@@ -1117,6 +1211,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall90
+  categories: [ HideSpawnMenu ]
   suffix: 90
   components:
   - type: Sprite
@@ -1129,6 +1224,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall91
+  categories: [ HideSpawnMenu ]
   suffix: 91
   components:
   - type: Sprite
@@ -1141,6 +1237,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall92
+  categories: [ HideSpawnMenu ]
   suffix: 92
   components:
   - type: Sprite
@@ -1153,6 +1250,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall93
+  categories: [ HideSpawnMenu ]
   suffix: 93
   components:
   - type: Sprite
@@ -1163,6 +1261,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall94
+  categories: [ HideSpawnMenu ]
   suffix: 94
   components:
   - type: Sprite
@@ -1175,6 +1274,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall95
+  categories: [ HideSpawnMenu ]
   suffix: 95
   components:
   - type: Sprite
@@ -1187,6 +1287,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall95a
+  categories: [ HideSpawnMenu ]
   suffix: 95a
   components:
   - type: Sprite
@@ -1199,6 +1300,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall96
+  categories: [ HideSpawnMenu ]
   suffix: 96
   components:
   - type: Sprite
@@ -1211,6 +1313,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall97
+  categories: [ HideSpawnMenu ]
   suffix: 97
   components:
   - type: Sprite
@@ -1223,6 +1326,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall97a
+  categories: [ HideSpawnMenu ]
   suffix: 97a
   components:
   - type: Sprite
@@ -1235,6 +1339,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall98
+  categories: [ HideSpawnMenu ]
   suffix: 98
   components:
   - type: Sprite
@@ -1247,6 +1352,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall99
+  categories: [ HideSpawnMenu ]
   suffix: 99
   components:
   - type: Sprite
@@ -1259,6 +1365,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall99a
+  categories: [ HideSpawnMenu ]
   suffix: 99a
   components:
   - type: Sprite
@@ -1271,6 +1378,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall100
+  categories: [ HideSpawnMenu ]
   suffix: 100
   components:
   - type: Sprite
@@ -1283,6 +1391,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall101
+  categories: [ HideSpawnMenu ]
   suffix: 101
   components:
   - type: Sprite
@@ -1295,6 +1404,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall101a
+  categories: [ HideSpawnMenu ]
   suffix: 101a
   components:
   - type: Sprite
@@ -1307,6 +1417,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall102
+  categories: [ HideSpawnMenu ]
   suffix: 102
   components:
   - type: Sprite
@@ -1319,6 +1430,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall103
+  categories: [ HideSpawnMenu ]
   suffix: 103
   components:
   - type: Sprite
@@ -1329,6 +1441,7 @@
 - type: entity
   parent: CMBaseAlamoWall
   id: CMAlamoWall104
+  categories: [ HideSpawnMenu ]
   suffix: 104
   components:
   - type: Sprite

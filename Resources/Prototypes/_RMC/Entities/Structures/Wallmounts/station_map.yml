@@ -1,5 +1,6 @@
 - type: entity
   id: RMCStationMap
+  categories: [ HideSpawnMenu ]
   name: vessel map
   description: A virtual map of the vessel, used for navigation.
   suffix: Wall

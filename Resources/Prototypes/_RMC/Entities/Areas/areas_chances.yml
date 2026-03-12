@@ -12,6 +12,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522Indoors
+  categories: [ HideSpawnMenu ]
   name: Chance's Claim - Indoors
   components:
   - type: Sprite
@@ -31,6 +32,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522Outdoors
+  categories: [ HideSpawnMenu ]
   name: Chance's Claim - Outdoors
   components:
   - type: Sprite
@@ -49,6 +51,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522Oob
+  categories: [ HideSpawnMenu ]
   name: LV522 - Out Of Bounds
   components:
   - type: Sprite
@@ -81,6 +84,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522LandingZone1
+  categories: [ HideSpawnMenu ]
   name: Chance's Claim - Landing Zone One
   components:
   - type: Sprite
@@ -166,6 +170,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522LandingZone2
+  categories: [ HideSpawnMenu ]
   name: Chance's Claim - Landing Zone Two
   components:
   - type: Sprite
@@ -215,6 +220,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522LandingZoneForecon
+  categories: [ HideSpawnMenu ]
   name: Chance's Claim - FORECON Shuttle
   components:
   - type: Sprite
@@ -1041,6 +1047,7 @@
 - type: entity
   parent: RMCAreaLv522
   id: RMCAreaLv522Atmos
+  categories: [ HideSpawnMenu ]
   name: Atmospheric Processor
   components:
   - type: Sprite

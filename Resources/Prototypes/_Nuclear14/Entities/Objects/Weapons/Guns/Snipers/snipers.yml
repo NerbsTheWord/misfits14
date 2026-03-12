@@ -19,7 +19,6 @@
     soundGunshot:
       collection: N14SniperHuntingGunshot
   - type: BallisticAmmoProvider
-    wieldedSpeedModifier: 0.75
     whitelist:
       tags:
       - N14Cartridge308Rifle
@@ -57,7 +56,6 @@
     whitelist:
       tags:
       - N14Cartridge308Rifle
-    backStrength: 3
   - type: StaticPrice
     price: 100
 

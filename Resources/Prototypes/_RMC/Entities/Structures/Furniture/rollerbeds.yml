@@ -6,6 +6,7 @@
 
 - type: entity
   id: RMCRollerBedDestruction
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Damageable

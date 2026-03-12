@@ -74,6 +74,7 @@
 - type: entity
   parent: BaseItem
   id: RMCInformationDogtagProp
+  categories: [ HideSpawnMenu ]
   name: faded information dog tag
   description: A fallen marine's information dog tag. It looks battered and the name is worn out.
   components:
@@ -89,6 +90,7 @@
 - type: entity
   parent: BaseItem
   id: RMCInformationDogtag
+  categories: [ HideSpawnMenu ]
   name: information dog tag
   description: A fallen marine's information dog tag.
   components:
@@ -138,6 +140,7 @@
 
 - type: entity
   id: RMCDogtagProp
+  categories: [ HideSpawnMenu ]
   name: dog tag
   description: A fallen marine's dog tag, no body in sight.
   components:

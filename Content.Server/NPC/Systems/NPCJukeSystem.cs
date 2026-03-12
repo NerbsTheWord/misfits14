@@ -86,6 +86,15 @@ public sealed class NPCJukeSystem : EntitySystem
             if (args.Transform.GridUid == null)
                 return;
 
+            // #Misfits Fix — Suppress juking for ALL NPC types while they still have path nodes.
+            // This prevents juke from overriding the seek direction mid-route, which causes
+            // circular/zigzag movement around fences and other obstacles.
+            if (_steeringQuery.TryGetComponent(uid, out var steeringComp) && steeringComp.CurrentPath.Count > 0)
+            {
+                component.TargetTile = null;
+                return;
+            }
+
             if (_npcRangedQuery.TryGetComponent(uid, out var ranged)
                 && ranged.Status is CombatStatus.NotInSight
                 || !TryComp<MapGridComponent>(args.Transform.GridUid, out var grid))
@@ -100,8 +109,7 @@ public sealed class NPCJukeSystem : EntitySystem
                 // If we're still following a path or haven't actually reached melee envelope yet,
                 // keep committing to the route so doors and other blockers can be handled first.
                 if (!_melee.TryGetWeapon(uid, out _, out var meleeWeapon) ||
-                    !melee.Target.IsValid() ||
-                    _steeringQuery.TryGetComponent(uid, out var steering) && steering.CurrentPath.Count > 0)
+                    !melee.Target.IsValid())
                 {
                     component.TargetTile = null;
                     return;

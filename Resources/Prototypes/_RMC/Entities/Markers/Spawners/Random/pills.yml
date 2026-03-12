@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomPillBase
+  categories: [ HideSpawnMenu ]
   name: pill bottle loot spawner
   description: This is a random pill bottle, for survivors.
   suffix: Base

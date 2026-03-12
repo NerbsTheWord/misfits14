@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMRadioHandheld
+  categories: [ HideSpawnMenu ]
   name: marine radiophone
   description: Also known as a Walkie-Talkie, this device allows for long range communication when telecommunications are down.
   components:

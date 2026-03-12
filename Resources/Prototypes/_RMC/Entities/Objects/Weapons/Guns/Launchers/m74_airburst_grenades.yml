@@ -3,6 +3,7 @@
   abstract: true
   parent: BaseItem
   id: RMCBaseAirBurstGrenade
+  categories: [ HideSpawnMenu ]
   name: air burst grenade
   components:
   - type: Appearance

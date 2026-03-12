@@ -2,6 +2,7 @@
 - type: entity
   parent: [ Clothing, ClothingSlotBase ]
   id: RMCScabbardBase
+  categories: [ HideSpawnMenu ]
   name: base scabbard
   description: -- insert description here --
   abstract: true

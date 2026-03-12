@@ -3,6 +3,7 @@
   - CMBaseDoor
   - CMBaseDoorConstructible
   id: CMAirlock
+  categories: [ HideSpawnMenu ]
   name: airlock
   placement:
     mode: SnapgridCenter

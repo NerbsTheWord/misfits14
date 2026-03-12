@@ -2,6 +2,7 @@
 
 - type: entity
   id: RMCMarkerSoundBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: sound marker
   placement:

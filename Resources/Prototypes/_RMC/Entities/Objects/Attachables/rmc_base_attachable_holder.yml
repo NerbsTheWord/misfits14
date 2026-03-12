@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCBaseAttachableHolder
+  categories: [ HideSpawnMenu ]
   components:
   - type: AttachableHolder
   - type: ItemSizeChange

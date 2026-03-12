@@ -8,6 +8,7 @@
 - type: entity
   abstract: true
   id: RMCItemSlotM5Bayonet
+  categories: [ HideSpawnMenu ]
   suffix: Filled
   components:
   - type: ContainerContainer
@@ -35,6 +36,7 @@
 - type: entity
   parent: ClothingShoesMilitaryBase
   id: CMBootsBlack
+  categories: [ HideSpawnMenu ]
   name: marine combat boots
   description: Standard issue combat boots for combat scenarios or combat situations. All combat, all the time.
   components:
@@ -288,6 +290,7 @@
 - type: entity
   parent: ClothingShoesBase
   id: RMCShoesTychoBoots
+  categories: [ HideSpawnMenu ]
   name: Tycho 4000 radiation protection boots
   description: The burn-resistant boots for the Weston-Yamada Tycho 4000 Radiation Protection Suit. It's lined with lead, and the boot is steel-toed, perfect for trouncing around detonated nuclear reactors and avoiding radiation poisoning.
   components:

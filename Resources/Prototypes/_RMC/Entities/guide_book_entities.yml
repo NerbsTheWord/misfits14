@@ -1,5 +1,6 @@
 - type: entity
   id: RMCBaseMapIcon
+  categories: [ HideSpawnMenu ]
   parent: BaseItem
   name: Icon
   abstract: true

@@ -2,6 +2,7 @@
 - type: entity
   parent: ClothingShoesBase
   id: RMCShoesBlack
+  categories: [ HideSpawnMenu ]
   name: black shoes
   description: A pair of black shoes.
   components:

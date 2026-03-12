@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCBaseUniformAccessoryItemBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: UniformAccessoryHolder
   - type: UserInterface
@@ -84,6 +85,7 @@
   abstract: true
   parent: BaseItem
   id: RMCBaseUniformAccessory
+  categories: [ HideSpawnMenu ]
   components:
   - type: UniformAccessory
   - type: Item

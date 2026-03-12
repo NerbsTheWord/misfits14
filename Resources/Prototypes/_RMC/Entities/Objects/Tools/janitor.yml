@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMMop
+  categories: [ HideSpawnMenu ]
   name: mop
   description: The world of janitalia wouldn't be complete without a mop.
   components:
@@ -44,6 +45,7 @@
 - type: entity
   parent: BaseItem
   id: CMWetSign
+  categories: [ HideSpawnMenu ]
   name: wet floor sign
   description: Caution! Wet Floor!
   components:
@@ -63,6 +65,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: CMWarningCone
+  categories: [ HideSpawnMenu ]
   name: warning cone
   description: This cone is trying to warn you of something!
   components:
@@ -84,6 +87,7 @@
 - type: entity
   parent: BaseItem
   id: RMCLightReplacer
+  categories: [ HideSpawnMenu ]
   name: light replacer
   description: A device to automatically replace lights. Refill with working lightbulbs.
   components:
@@ -117,6 +121,7 @@
 - type: entity
   parent: SprayBottleSpaceCleaner
   id: RMCSprayBottleSpaceCleaner
+  categories: [ HideSpawnMenu ]
   suffix: RMC
   components:
   - type: Sprite

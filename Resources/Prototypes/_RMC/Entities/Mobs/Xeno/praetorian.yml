@@ -8,6 +8,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: CMXenoPraetorianBase
+  categories: [ HideSpawnMenu ]
   name: Praetorian
   description: A huge, looming beast of an alien.
   components:

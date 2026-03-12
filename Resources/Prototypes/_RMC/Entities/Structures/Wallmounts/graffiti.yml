@@ -13,6 +13,7 @@
 - type: entity
   parent: CMGraffitiBase
   id: CMGraffitiYellowSign
+  categories: [ HideSpawnMenu ]
   name: "strange symbol"
   description: "Have you seen the yellow sign?"
   components:

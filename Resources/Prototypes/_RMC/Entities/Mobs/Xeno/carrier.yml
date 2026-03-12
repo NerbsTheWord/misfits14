@@ -7,6 +7,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: RMCXenoCarrierBase
+  categories: [ HideSpawnMenu ]
   name: Carrier
   description: A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures.
   abstract: true

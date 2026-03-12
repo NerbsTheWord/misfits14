@@ -1,5 +1,6 @@
 - type: entity
   id: RMCAICore
+  categories: [ HideSpawnMenu ]
   name: ARES v3.2
   description: This is the artificial intelligence system for the UNS Almayer. Like many other military-grade AI systems, this one was manufactured by We-Ya.
   placement:
@@ -44,6 +45,7 @@
 
 - type: entity
   id: RMCAICoreProcessor
+  categories: [ HideSpawnMenu ]
   name: ARES Processor
   description: An external processor for ARES, used to process vast amounts of information.
   placement:
@@ -166,6 +168,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCAIConsoleARES
+  categories: [ HideSpawnMenu ]
   name: ARES Interface
   description: A console built to interface with ARES, allowing for 1:1 communication.
   components:
@@ -190,6 +193,7 @@
 - type: entity
   parent: RMCCommunicationsConsoleBase
   id: RMCAIConsoleHERMES
+  categories: [ HideSpawnMenu ]
   name: HERMES Maintenance Controller
   description: A console built to facilitate Average Joes and their operation, allowing for simple allocation of resources.
   components:

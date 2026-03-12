@@ -1,5 +1,6 @@
 - type: entity
   id: RMCAreaWarship
+  categories: [ HideSpawnMenu ]
   name: Warship
   suffix: Warship Area
   components:

@@ -95,6 +95,7 @@
   parent: CMBaseWeaponSMG
   name: FN FP9000/2 Submachinegun
   id: RMCWeaponSMGFP9000PMC
+  categories: [ HideSpawnMenu ]
   description: Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has received several upgrades and tuning to its design over time.
   suffix: Filled
   components:

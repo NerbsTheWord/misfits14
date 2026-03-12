@@ -23,6 +23,7 @@
 - type: entity
   parent: RMCArmorVest
   id: RMCArmorVestFlak
+  categories: [ HideSpawnMenu ]
   name: M70 flak jacket
   description: A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles.
   components:
@@ -44,6 +45,7 @@
 - type: entity
   parent: RMCArmorVest
   id: RMCArmorVestWeYa
+  categories: [ HideSpawnMenu ]
   name: We-Ya security armor vest
   description: An armored vest that protects against some damage. This one has a Weston-Yamada corporate badge.
 
@@ -58,6 +60,7 @@
 - type: entity
   parent: RMCArmorVest
   id: RMCArmorVestCivilian
+  categories: [ HideSpawnMenu ]
   name: armored vest
   description: An general-use, unmarked armored vest that protects against some damage.
   components:
@@ -67,6 +70,7 @@
 - type: entity
   parent: RMCArmorVest
   id: RMCArmorBulletproof
+  categories: [ HideSpawnMenu ]
   name: bulletproof vest
   description: A vest that excels in protecting the wearer against high-velocity solid projectiles.
   suffix: RMC

@@ -14,6 +14,7 @@
 - type: entity
   parent: CMLockerFridge
   id: RMCLockerFridgeGroceries
+  categories: [ HideSpawnMenu ]
   name: groceries
   components:
   - type: StorageFill
@@ -28,6 +29,7 @@
 - type: entity
   parent: CMLockerFridge
   id: RMCLockerFridgeOrganic
+  categories: [ HideSpawnMenu ]
   name: organic
   components:
   - type: StorageFill
@@ -64,6 +66,7 @@
 - type: entity
   parent: CMLockerFridge
   id: RMCLockerFridgeDry
+  categories: [ HideSpawnMenu ]
   name: dry
   components:
   - type: StorageFill
@@ -76,6 +79,7 @@
 - type: entity
   parent: CMLockerFridge
   id: RMCLockerFridgeMeat
+  categories: [ HideSpawnMenu ]
   name: meat
   components:
   - type: StorageFill
@@ -86,6 +90,7 @@
 - type: entity
   parent: CMLockerFridge
   id: RMCLockerFridgeFish
+  categories: [ HideSpawnMenu ]
   name: fish
   components:
   - type: StorageFill

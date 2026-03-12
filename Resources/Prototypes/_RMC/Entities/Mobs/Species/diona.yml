@@ -3,6 +3,7 @@
   name: Urist C.M McPlants
   parent: RMCBaseMobSpeciesOrganic
   id: CMMobDiona
+  categories: [ HideSpawnMenu ]
   suffix: RMC14
   components:
   - type: HumanoidAppearance

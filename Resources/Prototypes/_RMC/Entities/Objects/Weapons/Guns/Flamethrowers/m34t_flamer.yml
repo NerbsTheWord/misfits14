@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCWeaponFlamer
   id: RMCWeaponFlamerSpec
+  categories: [ HideSpawnMenu ]
   name: M34-T incinerator unit
   description: An improved version of the M34 incinerator unit, the M34-T model is capable of dispersing a larger variety of fuel types.
   components:

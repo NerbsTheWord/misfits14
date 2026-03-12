@@ -2,6 +2,7 @@
   parent: BaseItem
   abstract: true
   id: RMCBaseTesla
+  categories: [ HideSpawnMenu ]
   components:
   - type: GuideHelp
     guides:

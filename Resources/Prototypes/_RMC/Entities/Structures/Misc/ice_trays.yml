@@ -1,5 +1,6 @@
 - type: entity
   id: RMCIceSlabTrayBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: ice slab tray
   description: It is a tray filled with slabs of dark ice.

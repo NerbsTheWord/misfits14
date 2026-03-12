@@ -1,5 +1,6 @@
 - type: entity
   id: RMCMarkerGM
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: GM marker
   placement:

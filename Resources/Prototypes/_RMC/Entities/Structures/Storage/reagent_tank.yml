@@ -68,6 +68,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentWater
+  categories: [ HideSpawnMenu ]
   suffix: Water
   components:
   - type: SolutionContainerManager
@@ -95,6 +96,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentFuel
+  categories: [ HideSpawnMenu ]
   name: fuel tank
   description: A fuel tank, normally used to hold welding fuel. It's painted red with explosive warning labels.
   suffix: Fuel
@@ -144,6 +146,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentMeralyne
+  categories: [ HideSpawnMenu ]
   suffix: Meralyne
   components:
   - type: SolutionContainerManager
@@ -158,6 +161,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentDermaline
+  categories: [ HideSpawnMenu ]
   suffix: Dermaline
   components:
   - type: SolutionContainerManager
@@ -172,6 +176,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentPhoron
+  categories: [ HideSpawnMenu ]
   suffix: Phoron
   components:
   - type: SolutionContainerManager
@@ -186,6 +191,7 @@
 - type: entity
   parent: RMCTankReagentEmpty
   id: RMCTankReagentSulphuricAcid
+  categories: [ HideSpawnMenu ]
   suffix: SulphuricAcid
   components:
   - type: SolutionContainerManager

@@ -1,5 +1,6 @@
 - type: entity
   id: CMDisposalUnit
+  categories: [ HideSpawnMenu ]
   parent: DisposalUnitBase
   name: disposal unit
   description: A pneumatic waste disposal unit.

@@ -6,6 +6,7 @@
   - RMCXenoSpeechSounds
   - RMCXenoMobCollision
   id: RMCXenoKing
+  categories: [ HideSpawnMenu ]
   name: King
   description: The end of the line.
   components:

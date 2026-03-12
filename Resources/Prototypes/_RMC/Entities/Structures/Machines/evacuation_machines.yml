@@ -16,6 +16,7 @@
 - type: entity
   parent: RMCSpawnerEvacuationPodSouth
   id: RMCSpawnerEvacuationPodEast
+  categories: [ HideSpawnMenu ]
   suffix: East
   components:
   - type: GridSpawner
@@ -24,6 +25,7 @@
 - type: entity
   parent: RMCSpawnerEvacuationPodSouth
   id: RMCSpawnerEvacuationPodNorth
+  categories: [ HideSpawnMenu ]
   suffix: North
   components:
   - type: GridSpawner
@@ -32,6 +34,7 @@
 - type: entity
   parent: RMCSpawnerEvacuationPodSouth
   id: RMCSpawnerEvacuationPodWest
+  categories: [ HideSpawnMenu ]
   suffix: West
   components:
   - type: GridSpawner
@@ -40,6 +43,7 @@
 - type: entity
   parent: RMCSpawnerEvacuationPodSouth
   id: RMCSpawnerEvacuationPodEastLiaison
+  categories: [ HideSpawnMenu ]
   suffix: East, Liaison
   components:
   - type: GridSpawner
@@ -48,6 +52,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerLifeboat
+  categories: [ HideSpawnMenu ]
   name: lifeboat spawner
   description: Defines a location to spawn a lifeboat.
   placement:
@@ -62,6 +67,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerLifeboatAthena
+  categories: [ HideSpawnMenu ]
   name: lifeboat spawner
   description: Defines a location to spawn a lifeboat.
   placement:

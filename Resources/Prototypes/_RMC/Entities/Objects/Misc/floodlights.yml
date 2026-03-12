@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStructureDynamic
   id: RMCSmallFloodlight
+  categories: [ HideSpawnMenu ]
   name: small floodlight
   description: A small bit of light in the darkness.
   components:
@@ -76,6 +77,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCTallFloodlight
+  categories: [ HideSpawnMenu ]
   name: tall floodlight
   description: A pillar of light in the darkness.
   placement:
@@ -146,6 +148,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCFloodlightBroken
+  categories: [ HideSpawnMenu ]
   name: tall broken floodlight
   description: A pasted on note says 'To fix, unscrew the panel, crowbar out the damaged assembly, weld it fixed, add 2 cable, then close the panel.'
   components:
@@ -185,6 +188,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCLZFloodlight
+  categories: [ HideSpawnMenu ]
   name: landing light
   description: A powerful light usually stationed near landing zones to provide better visibility. This one seems to have been bolted down and is unable to be moved.
   placement:
@@ -218,6 +222,7 @@
 - type: entity
   abstract: true
   id: LandingZoneLightBase
+  categories: [ HideSpawnMenu ]
   name: landing light
   description: A landing light, if it's flashing stay clear!
   placement:
@@ -399,6 +404,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCTrafficLightBase
+  categories: [ HideSpawnMenu ]
   name: traffic light
   description: A traffic light.
   abstract: true

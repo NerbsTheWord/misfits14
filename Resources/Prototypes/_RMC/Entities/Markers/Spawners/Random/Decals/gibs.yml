@@ -2,6 +2,7 @@
   abstract: true
   parent: DecalSpawnerBase
   id: RMCDecalSpawnerGibsBase
+  categories: [ HideSpawnMenu ]
   suffix: RMC14, Gibs
   components:
   - type: RandomDecalSpawner

@@ -80,6 +80,7 @@
 - type: entity
   abstract: true
   id: RMCBaseWeaponGunMagazineProvider
+  categories: [ HideSpawnMenu ]
   components:
   - type: MagazineAmmoProvider
     autoEject: true
@@ -92,6 +93,7 @@
 - type: entity
   abstract: true
   id: RMCBaseSlideMagazineVisuals
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:

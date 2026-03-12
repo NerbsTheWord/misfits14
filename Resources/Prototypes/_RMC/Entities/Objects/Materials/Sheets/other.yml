@@ -17,6 +17,7 @@
 - type: entity
   parent: SheetOtherBase
   id: CMSheetPhoron
+  categories: [ HideSpawnMenu ]
   name: phoron
   suffix: Full
   components:
@@ -98,6 +99,7 @@
 - type: entity
   parent: SheetOtherBase
   id: RMCPlankWood
+  categories: [ HideSpawnMenu ]
   name: wooden plank
   description: One can only guess that this is a bunch of wood.
   suffix: Full
@@ -209,6 +211,7 @@
 - type: entity
   parent: SheetOtherBase
   id: RMCSheetAluminum
+  categories: [ HideSpawnMenu ]
   name: aluminum
   suffix: Full
   components:

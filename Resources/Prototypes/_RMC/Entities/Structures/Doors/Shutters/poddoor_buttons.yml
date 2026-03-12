@@ -43,6 +43,7 @@
 - type: entity
   parent: RMCPodDoorButton
   id: RMCPodDoorButtonShip
+  categories: [ HideSpawnMenu ]
   name: button
   description: A basic button that does basic things.
 
@@ -241,6 +242,7 @@
 - type: entity
   parent: RMCPodDoorButton
   id: RMCPodDoorButtonBigRed
+  categories: [ HideSpawnMenu ]
   name: button
   description: A remote control-switch for a door.
   components:
@@ -443,6 +445,7 @@
 - type: entity
   parent: RMCPodDoorButton
   id: RMCPodDoorButtonWeYa
+  categories: [ HideSpawnMenu ]
   suffix: Locked, We-Ya
   components:
   - type: AccessReader
@@ -507,6 +510,7 @@
 - type: entity
   parent: RMCPodDoorButton
   id: RMCPodDoorButtonSPP
+  categories: [ HideSpawnMenu ]
   suffix: Locked, SPP
   components:
   - type: AccessReader
@@ -515,6 +519,7 @@
 - type: entity
   parent: RMCPodDoorButton
   id: RMCPodDoorButtonHybrisaCavesLockdown
+  categories: [ HideSpawnMenu ]
   name: Caves Lockdown
   suffix: Hybrisa
   components:

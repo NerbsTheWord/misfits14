@@ -14,6 +14,7 @@
 - type: entity
   parent: RMCAreaDesertDam
   id: RMCAreaDesertDamInterior
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     CAS: true
@@ -514,6 +515,7 @@
 - type: entity
   parent: RMCAreaDesertDam
   id: RMCAreaDesertDamBuilding
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     CAS: true
@@ -1560,6 +1562,7 @@
 - type: entity
   parent: RMCAreaDesertDam
   id: RMCAreaDesertDamExterior
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaDesertDamExterior
@@ -1896,6 +1899,7 @@
   abstract: true
   parent: RMCAreaDesertDam
   id: RMCAreaDesertDamLanding
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaDesertDamLanding
@@ -1924,6 +1928,7 @@
   abstract: true
   parent: RMCAreaShuttle
   id: RMCAreaShuttleTriTrans1
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaShuttleTriTrans1
@@ -1943,6 +1948,7 @@
   abstract: true
   parent: RMCAreaShuttle
   id: RMCAreaShuttleTriTrans2
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaShuttleTriTrans2

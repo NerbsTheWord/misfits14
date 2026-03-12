@@ -17,6 +17,7 @@
 - type: entity
   parent: RMCPropVehicle2Base #use East and West
   id: RMCPropVehicleCargoCrane
+  categories: [ HideSpawnMenu ]
   suffix: Use East, West
   name: cargo crane
   description: A crane used for loading and unloading cargo.
@@ -107,6 +108,7 @@
 - type: entity
   parent: RMCPropVehicle2Base #Use East and West
   id: RMCPropVehicleCrawler
+  categories: [ HideSpawnMenu ]
   suffix: Use East, West
   name: colony crawler
   description: It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of We-Ya.
@@ -180,6 +182,7 @@
 - type: entity
   parent: RMCPropVehicle2Base #Use East and West
   id: RMCPropVehicleTruck
+  categories: [ HideSpawnMenu ]
   suffix: Use East, West
   name: truck
   description: An old truck, seems to be broken down.
@@ -244,6 +247,7 @@
 - type: entity
   parent: RMCPropVehicle2Base #Use East and West
   id: RMCPropVehicleTractor
+  categories: [ HideSpawnMenu ]
   suffix: Use East, West
   name: tractor
   description: An old tractor, seems to be broken down.
@@ -281,6 +285,7 @@
 - type: entity
   parent: RMCPropVehicle2Base #Use East and West
   id: RMCPropVehicleVan
+  categories: [ HideSpawnMenu ]
   suffix: Use East, West [PropVan
   name: van
   description: An old van, seems to be broken down.

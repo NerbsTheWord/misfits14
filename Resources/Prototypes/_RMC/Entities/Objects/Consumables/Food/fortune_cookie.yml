@@ -21,6 +21,7 @@
 - type: entity
   parent: CMFoodBase
   id: CMFortuneCookieCracked
+  categories: [ HideSpawnMenu ]
   name: broken fortune cookie
   description: A golden brown fortune cookie. Some say the paper inside even has the ability to predict the future, whatever that means.
   components:
@@ -43,6 +44,7 @@
 - type: entity
   parent: FoodCookieFortune
   id: CMFortuneCookiePaper
+  categories: [ HideSpawnMenu ]
   name: fortune
   components:
   - type: Sprite

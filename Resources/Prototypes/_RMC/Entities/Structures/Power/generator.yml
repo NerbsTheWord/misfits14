@@ -30,6 +30,7 @@
 - type: entity
   parent: RMCGeneratorFusionFake
   id: RMCGeneratorFusion
+  categories: [ HideSpawnMenu ]
   name: S-52 fusion reactor
   placement:
     mode: SnapgridCenter
@@ -116,6 +117,7 @@
 - type: entity
   parent: BaseItem
   id: RMCGeneratorFusionCell
+  categories: [ HideSpawnMenu ]
   name: WL-6 universal fuel cell
   description: A rechargeable fuel cell.
   components:
@@ -129,6 +131,7 @@
 - type: entity
   abstract: true
   id: RMCPortableGeneratorBase # TODO RMC14 - Functionality
+  categories: [ HideSpawnMenu ]
   parent: [ BaseMachine, SmallConstructibleMachine, StructureWheeled]
   components:
     - type: GuideHelp

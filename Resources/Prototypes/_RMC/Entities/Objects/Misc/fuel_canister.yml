@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCFuelCan
+  categories: [ HideSpawnMenu ]
   name: fuel can
   description: A jerry can. In space! Or maybe a colony.
   components:

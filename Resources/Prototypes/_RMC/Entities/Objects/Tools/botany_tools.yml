@@ -1,6 +1,7 @@
 - type: entity
   parent: HydroponicsToolMiniHoe
   id: RMCToolMiniHoe
+  categories: [ HideSpawnMenu ]
   name: mini hoe
   description: It's used for removing weeds or scratching your back.
   components:
@@ -16,6 +17,7 @@
 - type: entity
   parent: HydroponicsToolSpade
   id: RMCToolSpade
+  categories: [ HideSpawnMenu ]
   name: spade
   description: A small tool for digging and moving dirt.
   components:
@@ -33,6 +35,7 @@
 - type: entity
   parent: HydroponicsToolHatchet
   id: RMCToolHatchet
+  categories: [ HideSpawnMenu ]
   name: hatchet
   description: A sharp hand hatchet, commonly used to cut things apart, be it timber or other objects. Often found in the hands of woodsmen, scouts, and looters.
   components:

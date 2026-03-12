@@ -24,6 +24,7 @@
 - type: entity
   parent: RMCAreaShuttleDrop1PortNereid
   id: RMCAreaShuttleDrop2PortNereid
+  categories: [ HideSpawnMenu ]
   name: Port Nereid International Spaceport - LZ2
   components:
   - type: Sprite

@@ -14,6 +14,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoOob
+  categories: [ HideSpawnMenu ]
   name: Out Of Bounds
   components:
   - type: Sprite
@@ -38,6 +39,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoLZ1
+  categories: [ HideSpawnMenu ]
   name: Bosenmori Basho - Nexus Landing
   components:
   - type: Sprite
@@ -66,6 +68,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoUnknownCaves
+  categories: [ HideSpawnMenu ]
   name: Unknown
   components:
   - type: Sprite
@@ -130,6 +133,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoPilgrimPath
+  categories: [ HideSpawnMenu ]
   name: Pilgrim Path
   components:
   - type: Sprite
@@ -157,6 +161,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoFieldResearchSite
+  categories: [ HideSpawnMenu ]
   name: Field Research Site
   components:
   - type: Sprite
@@ -174,6 +179,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoNorthBarrens
+  categories: [ HideSpawnMenu ]
   name: North Barrens
   components:
   - type: Sprite
@@ -182,6 +188,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoFiltration
+  categories: [ HideSpawnMenu ]
   name: Filtration Sector
   components:
   - type: Sprite
@@ -198,6 +205,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoCavernRiver
+  categories: [ HideSpawnMenu ]
   name: Cavern River
   components:
   - type: Sprite
@@ -206,6 +214,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoRiver
+  categories: [ HideSpawnMenu ]
   name: Bosenmori River
   components:
   - type: Sprite
@@ -214,6 +223,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoWestSector
+  categories: [ HideSpawnMenu ]
   name: West Sector
   components:
   - type: Sprite
@@ -224,6 +234,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoWestBarrens
+  categories: [ HideSpawnMenu ]
   name: West Barrens
   components:
   - type: Sprite
@@ -244,6 +255,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoSouthWestSector
+  categories: [ HideSpawnMenu ]
   name: Southwest Sector
   components:
   - type: Sprite
@@ -254,6 +266,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoSouthEastSector
+  categories: [ HideSpawnMenu ]
   name: Southeast Sector
   components:
   - type: Sprite
@@ -264,6 +277,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoEastSector
+  categories: [ HideSpawnMenu ]
   name: East Sector
   components:
   - type: Sprite
@@ -274,6 +288,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoNorthSector
+  categories: [ HideSpawnMenu ]
   name: North Sector
   components:
   - type: Sprite
@@ -284,6 +299,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoMountainClearing
+  categories: [ HideSpawnMenu ]
   name: Mountain Clearing
   components:
   - type: Sprite
@@ -374,6 +390,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoConstruction
+  categories: [ HideSpawnMenu ]
   name: Construction Site
   components:
   - type: Sprite
@@ -581,6 +598,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoSandTemple
+  categories: [ HideSpawnMenu ]
   name: Sand Temple
   components:
   - type: Sprite
@@ -589,6 +607,7 @@
 - type: entity
   parent: RMCAreaBosenmoriBasho
   id: RMCAreaBosenmoriBashoRuinsPerimeter
+  categories: [ HideSpawnMenu ]
   name: Ruins Perimeter
   components:
   - type: Sprite

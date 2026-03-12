@@ -1,5 +1,6 @@
 - type: entity
   id: RMCBaseTree
+  categories: [ HideSpawnMenu ]
   description: Yep, it's a tree.
   abstract: true
   components:

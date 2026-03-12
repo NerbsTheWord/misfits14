@@ -25,6 +25,7 @@
 - type: entity
   parent: RMCPouchFirstAid
   id: RMCPouchFirstAidInjectors
+  categories: [ HideSpawnMenu ]
   suffix: Injectors
   description: Contains a variety of autoinjectors for quickly treating injuries.
   components:
@@ -38,6 +39,7 @@
 - type: entity
   parent: RMCPouchFirstAid
   id: RMCPouchFirstAidSplintsGauzeOintment
+  categories: [ HideSpawnMenu ]
   suffix: Splints, Gauze, Ointment
   components:
   - type: StorageFill
@@ -50,6 +52,7 @@
 - type: entity
   parent: RMCPouchFirstAid
   id: RMCPouchFirstAidPills
+  categories: [ HideSpawnMenu ]
   suffix: Pills
   components:
   - type: StorageFill
@@ -64,6 +67,7 @@
 - type: entity
   parent: RMCPouchFirstAid
   id: RMCPouchFirstAidERT
+  categories: [ HideSpawnMenu ]
   description: It can contain autoinjectors, ointments, and bandages. This one has some extra stuff.
   suffix: ERT
   components:
@@ -88,6 +92,7 @@
 - type: entity
   parent: RMCPouchFirstAid
   id: RMCPouchFirstAidPMC
+  categories: [ HideSpawnMenu ]
   name: We-Ya first-aid pouch
   description: Contains a variety of autoinjectors for quickly treating injuries.
   components:

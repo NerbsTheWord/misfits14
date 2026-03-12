@@ -82,6 +82,7 @@
 - type: entity
   parent: CMVinesBase
   id: CMVinesLight
+  categories: [ HideSpawnMenu ]
   name: vines
   description: A mass of twisted vines.
   components:
@@ -98,6 +99,7 @@
 - type: entity
   parent: CMVinesBase
   id: CMVinesHeavy
+  categories: [ HideSpawnMenu ]
   name: vines
   description: A thick, coiled mass of twisted vines.
   components:

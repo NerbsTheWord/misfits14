@@ -32,6 +32,7 @@
 - type: entity
   parent: CMSniperEquipmentCase
   id: RMCAntiMaterielEquipmentCase
+  categories: [ HideSpawnMenu ]
   name: anti-materiel sniper equipment case
   description: "A large case containing your very own long-range XM43E1 anti-materiel sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\n\nNOTE: You cannot put items back inside this case."
   components:
@@ -205,6 +206,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitLoader
+  categories: [ HideSpawnMenu ]
   name: loader kit
   description: "A large kit containing all the supplies needed to turn a Private into the loading assistant for a Demolitions Specialist.
 
@@ -257,6 +259,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitSpotter
+  categories: [ HideSpawnMenu ]
   name: spotter kit
   components:
   - type: Storage

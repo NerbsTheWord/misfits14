@@ -37,6 +37,7 @@
 - type: entity
   parent: ClothingHandsBase
   id: CMHandsBrown
+  categories: [ HideSpawnMenu ]
   name: brown gloves
   description: A pair of brown gloves.
   components:
@@ -50,6 +51,7 @@
 - type: entity
   parent: ClothingHandsBase
   id: CMHandsLightBrown
+  categories: [ HideSpawnMenu ]
   name: light brown gloves
   description: A pair of light brown gloves.
   components:
@@ -63,6 +65,7 @@
 - type: entity
   parent: ClothingHandsBase
   id: CMHandsWhite
+  categories: [ HideSpawnMenu ]
   name: white gloves
   description: A pair of white gloves.
   components:

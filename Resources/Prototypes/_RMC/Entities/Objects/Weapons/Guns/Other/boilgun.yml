@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCWeaponBoilgun
+  categories: [ HideSpawnMenu ]
   name: young boilgun
   description: Mother, would you still love us if we were a gun?
   suffix: DO NOT MAP

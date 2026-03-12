@@ -8,6 +8,7 @@
   - RMCXenoMobCollision
   - RMCXenoVentCrawler
   id: CMXenoSentinel
+  categories: [ HideSpawnMenu ]
   name: Sentinel
   description: A slithery, spitting kind of alien.
   components:

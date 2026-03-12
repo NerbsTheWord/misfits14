@@ -1,5 +1,6 @@
 - type: entity
   id: RMCGraveCross
+  categories: [ HideSpawnMenu ]
   name: wooden cross
   description: A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?
   placement:
@@ -16,6 +17,7 @@
 
 - type: entity
   id: RMCGravestone1
+  categories: [ HideSpawnMenu ]
   name: grave marker
   description: A grave marker, in the traditional Japanese style.
   placement:

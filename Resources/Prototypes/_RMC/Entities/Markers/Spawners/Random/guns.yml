@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomGunBase
+  categories: [ HideSpawnMenu ]
   name: gun spawner
   description: hi this will spawn a random gun
   suffix: Base

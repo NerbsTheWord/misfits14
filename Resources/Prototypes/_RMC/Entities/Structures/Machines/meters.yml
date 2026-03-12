@@ -19,6 +19,7 @@
 - type: entity
   parent: RMCWallMeterBase
   id: RMCWallMeterGreen
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: biggreenmeter1
@@ -26,6 +27,7 @@
 - type: entity
   parent: RMCWallMeterBase
   id: RMCWallMeterRed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: redmeter

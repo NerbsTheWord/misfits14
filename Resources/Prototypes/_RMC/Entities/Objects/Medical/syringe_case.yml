@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStorageItem
   id: RMCSyringeCase
+  categories: [ HideSpawnMenu ]
   name: syringe case
   description: It's a medical case for storing syringes and bottles.
   components:

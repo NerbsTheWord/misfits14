@@ -1,5 +1,6 @@
 - type: entity
   id: RMCDispenserBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -123,6 +124,7 @@
 - type: entity
   abstract: true
   id: RMCChemStorageBase
+  categories: [ HideSpawnMenu ]
   name: chemical storage system
   description: Storage system for a large supply of chemicals, which slowly recharges.
   placement:

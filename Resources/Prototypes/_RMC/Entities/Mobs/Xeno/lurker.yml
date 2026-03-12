@@ -8,6 +8,7 @@
   - RMCXenoMobCollision
   - RMCXenoVentCrawler
   id: RMCXenoLurkerBase
+  categories: [ HideSpawnMenu ]
   name: Lurker
   description: A beefy, fast alien with sharp claws.
   components:
@@ -106,6 +107,7 @@
   - CMXenoTail
   - RMCXenoLurkerBase
   id: CMXenoLurker
+  categories: [ HideSpawnMenu ]
   suffix: Base
   components:
   - type: GuideHelp

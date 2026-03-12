@@ -2,6 +2,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RMCHelmetBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: helmet
   components:
@@ -214,6 +215,7 @@
 
 - type: entity
   id: RMCFoldableHelmetBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Foldable

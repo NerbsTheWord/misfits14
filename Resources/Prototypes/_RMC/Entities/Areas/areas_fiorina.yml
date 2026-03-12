@@ -24,6 +24,7 @@
 - type: entity
   parent: RMCAreaFiorina
   id: RMCAreaFiorinaOob
+  categories: [ HideSpawnMenu ]
   name: Fiorina - Out Of Bounds
   components:
   - type: Sprite
@@ -47,6 +48,7 @@
 - type: entity
   parent: RMCAreaFiorina
   id: RMCAreaFiorinaMaintenance
+  categories: [ HideSpawnMenu ]
   name: Fiorina - Maintenance
   components:
   - type: Sprite
@@ -65,6 +67,7 @@
 - type: entity
   parent: RMCAreaFiorina
   id: RMCAreaFiorinaTumor
+  categories: [ HideSpawnMenu ]
   name: Fiorina - Resin Tumor
   components:
   - type: Sprite
@@ -146,6 +149,7 @@
 - type: entity
   parent: RMCAreaFiorina
   id: RMCAreaFiorinaLz
+  categories: [ HideSpawnMenu ]
   name: Fiorina - LZ
   components:
   - type: Sprite
@@ -225,6 +229,7 @@
 - type: entity
   parent: RMCAreaFiorina
   id: RMCAreaFiorinaStation
+  categories: [ HideSpawnMenu ]
   name: Fiorina - Station Interior
   components:
   - type: Sprite

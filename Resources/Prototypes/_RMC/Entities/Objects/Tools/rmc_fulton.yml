@@ -29,6 +29,7 @@
 - type: entity
   parent: RMCFulton
   id: RMCFulton20
+  categories: [ HideSpawnMenu ]
   suffix: 20
   components:
   - type: Stack

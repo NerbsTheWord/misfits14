@@ -2,6 +2,7 @@
 
 - type: entity
   id: CMMedilinkSupplyPort
+  categories: [ HideSpawnMenu ]
   name: medilink supply port
   description: A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies.
   placement:

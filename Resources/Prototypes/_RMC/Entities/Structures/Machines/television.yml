@@ -56,6 +56,7 @@
 - type: entity
   parent: RMCTelevision
   id: RMCTelevisionWallMount
+  categories: [ HideSpawnMenu ]
   suffix: Wall Mount
   components:
   - type: WallMount

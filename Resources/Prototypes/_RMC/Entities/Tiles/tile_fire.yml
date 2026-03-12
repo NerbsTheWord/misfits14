@@ -1,5 +1,6 @@
 - type: entity
   id: RMCTileFire
+  categories: [ HideSpawnMenu ]
   name: fire
   placement:
     mode: SnapgridCenter

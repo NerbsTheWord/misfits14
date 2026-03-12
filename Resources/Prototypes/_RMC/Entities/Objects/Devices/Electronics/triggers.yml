@@ -1,6 +1,7 @@
 - type: entity
   parent: TimerTrigger
   id: RMCTimerTrigger
+  categories: [ HideSpawnMenu ]
   name: timer
   description: Used to time things. Works well with contraptions which has to count down. Tick tock.
   suffix: RMC

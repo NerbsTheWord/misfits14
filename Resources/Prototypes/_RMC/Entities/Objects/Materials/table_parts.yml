@@ -2,6 +2,7 @@
   abstract: true
   parent: BaseItem
   id: RMCTablePartBase
+  categories: [ HideSpawnMenu ]
   name: table parts
   description: A kit for a table, including a large, flat metal surface and four legs. Some assembly required.
   components:

@@ -1,5 +1,6 @@
 - type: entity
   id: RMCCalendarBase
+  categories: [ HideSpawnMenu ]
   name: wall calendar
   description: Classic office decoration and a place to stare at maniacally.
   abstract: true

@@ -27,6 +27,7 @@
 - type: entity
   parent: RMCFiltration
   id: RMCFiltrationDisinfection
+  categories: [ HideSpawnMenu ]
   name: disinfection filter
   description: A water filter specifically designed to separate micro-organisms, such as viruses and bacteria, from water.
   components:
@@ -46,6 +47,7 @@
 - type: entity
   parent: RMCFiltration
   id: RMCFiltrationDistribution
+  categories: [ HideSpawnMenu ]
   name: waste distribution system
   description: This machine separates the leftover waste from the purification processes to be discarded into space, recycled for supplies, or used for research.
   components:
@@ -64,6 +66,7 @@
 - type: entity
   parent: RMCFiltration
   id: RMCFiltrationSedimentation
+  categories: [ HideSpawnMenu ]
   name: sedimentation filter
   description: A water filter specifically designed to capture and remove sediment, such as sand, silt, dirt, and rust, from water without removing the nutritious minerals for that crisp, clean taste every time.
   components:
@@ -91,6 +94,7 @@
 - type: entity
   parent: RMCFiltration
   id: RMCCoagulationArm
+  categories: [ HideSpawnMenu ]
   name: coagulation arm
   description: An axel with four sides, made to spin to help filter the water.
   components:

@@ -1,5 +1,6 @@
 - type: entity
   id: CMCarpetBase
+  categories: [ HideSpawnMenu ]
   parent: BaseStructure
   name: carpet
   description: "Fancy walking surface."
@@ -30,6 +31,7 @@
 
 - type: entity
   id: RMCCarpetBaseNonIconsmooth
+  categories: [ HideSpawnMenu ]
   parent: BaseStructure
   name: carpet
   description: Fancy walking surface.
@@ -57,6 +59,7 @@
 
 - type: entity
   id: CMCarpetPrison
+  categories: [ HideSpawnMenu ]
   parent: CarpetBase
   components:
   - type: Clickable
@@ -493,6 +496,7 @@
 # Rug
 - type: entity
   id: RMCBaseColourableRug
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: rug
   components:

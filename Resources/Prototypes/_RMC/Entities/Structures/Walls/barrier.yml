@@ -1,6 +1,7 @@
 - type: entity
   parent: DeployableBarrier
   id: CMDeployableBarrier
+  categories: [ HideSpawnMenu ]
   name: deployable barrier
   description: A deployable barrier. Swipe your ID card to lock/unlock it.
   components:

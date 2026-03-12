@@ -3,6 +3,7 @@
   description: A small box of 'Space-Proof' premium matches.
   parent: [ SmallboxItem, BaseBagOpenClose ]
   id: RMCMatchbox
+  categories: [ HideSpawnMenu ]
   components:
   - type: EmitSoundOnLand
     sound:
@@ -67,6 +68,7 @@
   description: A simple match stick, used for lighting fine smokables.
   parent: Matchstick
   id: RMCMatchstick
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Consumable/Smokeables/Matches/match.rsi

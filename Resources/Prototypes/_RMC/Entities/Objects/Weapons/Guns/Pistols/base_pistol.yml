@@ -89,6 +89,7 @@
   abstract: true
   parent: BaseItem
   id: CMBaseMagazinePistol
+  categories: [ HideSpawnMenu ]
   description: A pistol magazine.
   components:
   - type: MagazineVisuals
@@ -122,6 +123,7 @@
   abstract: true
   parent: BaseCartridgePistol
   id: CMCartridgePistolBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: CartridgeAmmo
     deleteOnSpawn: true

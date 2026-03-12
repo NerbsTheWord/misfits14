@@ -36,6 +36,7 @@
 - type: entity
   parent: RMCPintGlass
   id: RMCPintGlassFull
+  categories: [ HideSpawnMenu ]
   suffix: full
   components:
   - type: SolutionContainerManager

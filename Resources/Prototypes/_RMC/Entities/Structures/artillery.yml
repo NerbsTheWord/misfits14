@@ -30,6 +30,7 @@
 - type: entity
   parent: RMCAntiAirProp
   id: RMCAntiAirPropFlipped
+  categories: [ HideSpawnMenu ]
   suffix: Prop, Flipped
   components:
   - type: Sprite
@@ -38,6 +39,7 @@
 - type: entity
   parent: RMCAntiAirProp
   id: RMCRailgunProp
+  categories: [ HideSpawnMenu ]
   name: "'BURST' MAC Planetary Battery"
   description: "The 'BURST' MAC Planetary Battery is an advanced magnetic mass accelerator cannon which utilises a long linear system of magnetic coils to propel metal payloads at incredible speeds."
 

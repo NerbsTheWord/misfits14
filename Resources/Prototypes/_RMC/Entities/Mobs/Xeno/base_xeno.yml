@@ -30,6 +30,7 @@
 # TODO RMC14 xenos should bleed and hurt nearby marines when damaged
 - type: entity
   id: CMXenoBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   save: false
   components: # TODO RMC14 camera recoil from large explosions? check 13
@@ -372,6 +373,7 @@
 - type: entity
   abstract: true
   id: CMXenoPrying
+  categories: [ HideSpawnMenu ]
   components:
   - type: Prying
     pryPowered: true
@@ -382,12 +384,14 @@
 - type: entity
   abstract: true
   id: CMXenoPuller
+  categories: [ HideSpawnMenu ]
   components:
   - type: Puller
 
 - type: entity
   abstract: true
   id: CMXenoMelee
+  categories: [ HideSpawnMenu ]
   components:
   - type: CombatMode
     canDisarm: true
@@ -418,6 +422,7 @@
 - type: entity
   abstract: true
   id: CMXenoLarge
+  categories: [ HideSpawnMenu ]
   components:
   - type: Speech
     speechVerb: LargeMob
@@ -439,6 +444,7 @@
 - type: entity
   abstract: true
   id: RMCXenoVentCrawler
+  categories: [ HideSpawnMenu ]
   components:
   - type: VentCrawler
     ventCrawlIcon: unknown
@@ -446,6 +452,7 @@
 
 - type: entity
   id: CMXenoDeveloped
+  categories: [ HideSpawnMenu ]
   parent:
   - CMXenoBase
   - CMXenoPrying
@@ -479,6 +486,7 @@
 - type: entity
   abstract: true
   id: CMXenoTail
+  categories: [ HideSpawnMenu ]
   components:
   - type: XenoTailStab
     tailDamage:
@@ -489,6 +497,7 @@
 - type: entity
   abstract: true
   id: CMXenoFlammable
+  categories: [ HideSpawnMenu ]
   components:
   - type: Flammable
     fireSpread: false
@@ -500,12 +509,14 @@
 - type: entity
   abstract: true
   id: RMCXenoCommendationReceiver
+  categories: [ HideSpawnMenu ]
   components:
   - type: CommendationReceiver
 
 - type: entity
   abstract: true
   id: RMCXenoSpeechSounds
+  categories: [ HideSpawnMenu ]
   components:
   - type: Speech
     speechSounds: Xenonid
@@ -513,6 +524,7 @@
 - type: entity
   abstract: true
   id: RMCXenoMobCollision
+  categories: [ HideSpawnMenu ]
   components:
   - type: MobCollision
     minimumSpeedModifier: 0.25

@@ -1,6 +1,7 @@
 ﻿# Rain
 - type: entity
   id: RMCHybrisaRainLightProp
+  categories: [ HideSpawnMenu ]
   name: light rain
   description: It's a small amount of rain, falling from the sky.
   suffix: prop, Hybrisa, weather

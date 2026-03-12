@@ -8,6 +8,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCableCoil
+  categories: [ HideSpawnMenu ]
   name: cable coil
   description: A coil of power cable.
   suffix: Full

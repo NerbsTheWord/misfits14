@@ -1,5 +1,6 @@
 - type: entity
   id: CMBaseElectronics
+  categories: [ HideSpawnMenu ]
   parent: BaseElectronics
   name: base electronics
   abstract: true

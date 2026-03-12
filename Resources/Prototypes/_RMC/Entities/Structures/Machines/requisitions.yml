@@ -36,6 +36,7 @@
 - type: entity
   parent: CMBaseStructureCorrodible # Misfits Fix - CMCargoCatalog doesn't exist; components defined inline
   id: CMASRSConsole
+  categories: [ HideSpawnMenu ]
   name: ASRS console
   description: A console for the Automated Storage Retrieval System.
   suffix: Requisitions
@@ -129,6 +130,7 @@
 
 - type: entity
   id: CMCargoElevator
+  categories: [ HideSpawnMenu ]
   name: cargo elevator
   suffix: Lowered, Requisitions
   placement:
@@ -207,6 +209,7 @@
 
 - type: entity
   id: CMGear
+  categories: [ HideSpawnMenu ]
   name: gear
   description: ""
   placement:

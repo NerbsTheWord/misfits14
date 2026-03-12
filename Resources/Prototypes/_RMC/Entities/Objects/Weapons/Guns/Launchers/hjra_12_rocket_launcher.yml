@@ -75,6 +75,7 @@
 
 - type: entity
   id: RMCRocketHJRA12AT
+  categories: [ HideSpawnMenu ]
   name: HJRA-12 Anti-Tank Rocket
   parent: BaseItem
   description: A rocket for the SPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles.
@@ -100,6 +101,7 @@
 
 - type: entity
   id: RMCRocketHJRA12HE
+  categories: [ HideSpawnMenu ]
   name: HJRA-12 High-Explosive Rocket
   parent: BaseItem
   description: A rocket for the SPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade.
@@ -125,6 +127,7 @@
 
 - type: entity
   id: RMCRocketHJRA12Incen
+  categories: [ HideSpawnMenu ]
   name: HJRA-12 Extreme-Intensity Incendiary Rocket
   parent: BaseItem
   description: A rocket for the SPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket.

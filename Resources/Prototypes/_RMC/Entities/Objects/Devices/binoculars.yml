@@ -47,6 +47,7 @@
 - type: entity
   parent: RMCBinoculars
   id: RMCBinocularsPVE
+  categories: [ HideSpawnMenu ]
   suffix: PVE
   name: tactical monocular
   description: A military-issued monocular.
@@ -65,6 +66,7 @@
 - type: entity
   parent: RMCBinoculars
   id: RMCBinocularsCiv
+  categories: [ HideSpawnMenu ]
   name: binoculars
   description: A pair of binoculars.
   components:
@@ -89,6 +91,7 @@
 - type: entity
   parent: RMCBinoculars
   id: RMCRangefinder
+  categories: [ HideSpawnMenu ]
   name: rangefinder
   description: "A pair of binoculars with a rangefinding function. Click a tile to acquire it's coordinates."
   components:
@@ -201,6 +204,7 @@
 
 - type: entity
   id: RMCRangefinderTarget
+  categories: [ HideSpawnMenu ]
   name: laser
   components:
   - type: Transform

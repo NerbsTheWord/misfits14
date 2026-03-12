@@ -18,6 +18,7 @@
 
 - type: entity
   id: RMCBasePlant
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite
@@ -69,6 +70,7 @@
 
 - type: entity
   id: RMCBaseRockIndistructable
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Clickable

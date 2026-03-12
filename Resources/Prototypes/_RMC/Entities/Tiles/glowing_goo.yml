@@ -1,5 +1,6 @@
 - type: entity
   id: RMCGlowingGoo
+  categories: [ HideSpawnMenu ]
   name: glowing goo
   description: You don't think you should be near this.
   placement:

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCFlightRecorderProp
+  categories: [ HideSpawnMenu ]
   name: FR-112 flight recorder
   description: A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red.
   components:

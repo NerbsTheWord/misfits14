@@ -7,6 +7,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: CMXenoWarrior
+  categories: [ HideSpawnMenu ]
   name: Warrior
   description: A beefy alien with an armored carapace.
   components:

@@ -2,6 +2,7 @@
   abstract: true
   parent: GrenadeBase
   id: CMGrenadeBase
+  categories: [ HideSpawnMenu ]
   name: grenade
   description: Duck and cover.
   components:
@@ -30,6 +31,7 @@
 - type: entity
   abstract: true
   id: RMCM40DPTags
+  categories: [ HideSpawnMenu ]
   components:
   - type: Tag
     tags:
@@ -75,6 +77,7 @@
   - CMGrenadeBase
   - RMCM40DPTags
   id: CMGrenadeHighExplosive
+  categories: [ HideSpawnMenu ]
   name: 30mm HEDP grenade
   description: High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the 30mm HEFA. Capable of being loaded in grenade launchers, or thrown by hand.
   components:
@@ -102,6 +105,7 @@
   - CMGrenadeBase
   - RMCM40DPTags
   id: CMGrenadeSmoke
+  categories: [ HideSpawnMenu ]
   name: 30mm HSDP smoke grenade
   description: The 30mm HSDP is a small, but powerful smoke grenade. Based off the same platform as the 30mm HEDP. It is set to detonate in 2 seconds.
   components:
@@ -128,6 +132,7 @@
 - type: entity
   parent: Smoke
   id: RMCSmokeExplosionProof
+  categories: [ HideSpawnMenu ]
   components:
   - type: Transform
     anchored: true
@@ -165,6 +170,7 @@
 - type: entity
   parent: Smoke
   id: RMCSmokeFireSentry
+  categories: [ HideSpawnMenu ]
   components:
   - type: Transform
     anchored: true
@@ -302,6 +308,7 @@
   - RMCM40DPTags
   - CMGrenadeBase
   id: RMCGrenadeIncendiary
+  categories: [ HideSpawnMenu ]
   name: 30mm HIDP incendiary grenade
   description: The 30mm HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds.
   components:

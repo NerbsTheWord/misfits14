@@ -3,6 +3,7 @@
 - type: entity
   abstract: true
   id: RMCPrefabBase
+  categories: [ HideSpawnMenu ]
   name: prefabricated structure
   description: This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UN ballistics vests, UNMC and SPP uniforms. The loose walls roll with each gust of wind.
   placement:
@@ -30,6 +31,7 @@
 - type: entity
   abstract: true
   id: RMCPrefabBaseTop
+  categories: [ HideSpawnMenu ]
   name: prefabricated structure
   description: This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UN ballistics vests, UNMC and SPP uniforms. The loose walls roll with each gust of wind.
   placement:
@@ -135,6 +137,7 @@
 - type: entity
   abstract: true
   id: RMCPrefab32BaseTop
+  categories: [ HideSpawnMenu ]
   name: prefabricated structure
   description: This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UN ballistics vests, UNMC and SPP uniforms. The loose walls roll with each gust of wind.
   placement:
@@ -293,6 +296,7 @@
 - type: entity
   abstract: true
   id: RMCPrefabGreebleBase
+  categories: [ HideSpawnMenu ]
   name: prefabricated structure
   description: Windsocks, Air-Con units, solarpanels, oh my!
   suffix: Greeble

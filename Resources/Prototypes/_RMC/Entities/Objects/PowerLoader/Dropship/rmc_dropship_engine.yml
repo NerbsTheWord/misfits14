@@ -22,6 +22,7 @@
 - type: entity
   parent: RMCDropshipAttachmentEngine
   id: RMCDropshipAttachmentFuelEnhancer
+  categories: [ HideSpawnMenu ]
   name: fuel enhancer
   description: A fuel enhancement system for dropships. It improves the thrust produced by the fuel combustion for faster travels. Fits inside the engine attach points. You need a powerloader to lift it.
   components:
@@ -37,6 +38,7 @@
 - type: entity
   parent: RMCDropshipAttachmentEngine
   id: RMCDropshipAttachmentCoolingSystem
+  categories: [ HideSpawnMenu ]
   name: cooling system
   description: A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it.
   components:

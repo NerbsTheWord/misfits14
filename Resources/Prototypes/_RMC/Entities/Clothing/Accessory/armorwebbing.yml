@@ -2,6 +2,7 @@
   parent: BaseItem
   abstract: true
   id: RMCArmorWebbingBase
+  categories: [ HideSpawnMenu ]
   name: armor webbing
   components:
   - type: Sprite

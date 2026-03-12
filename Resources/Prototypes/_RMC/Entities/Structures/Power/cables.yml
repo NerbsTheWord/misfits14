@@ -15,6 +15,7 @@
 - type: entity
   parent: RMCCableBase
   id: RMCCableHeavy
+  categories: [ HideSpawnMenu ]
   name: large power cable
   description: This cable is tough. It cannot be cut with simple hand tools.
   components:
@@ -72,6 +73,7 @@
 - type: entity
   parent: CableTerminal
   id: RMCCableTerminal
+  categories: [ HideSpawnMenu ]
   suffix: RMC
   components:
   - type: Sprite

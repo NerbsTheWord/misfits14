@@ -1,6 +1,7 @@
 - type: entity
   parent: BoxFolderClipboard
   id: CMClipboard
+  categories: [ HideSpawnMenu ]
   name: clipboard
   components:
   - type: Sprite

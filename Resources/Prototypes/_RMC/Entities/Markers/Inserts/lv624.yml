@@ -2,6 +2,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624Armory
+  categories: [ HideSpawnMenu ]
   name: Armory
   suffix: Insert LV624
   components:
@@ -19,6 +20,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624CorporateDome
+  categories: [ HideSpawnMenu ]
   name: Corporate Dome
   suffix: Insert LV624
   components:
@@ -33,6 +35,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624Gym
+  categories: [ HideSpawnMenu ]
   name: Gym
   suffix: Insert LV624
   components:
@@ -48,6 +51,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624NexusCenter
+  categories: [ HideSpawnMenu ]
   name: Nexus Barricaded
   suffix: Insert LV624
   components:
@@ -61,6 +65,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624SandtempleSE
+  categories: [ HideSpawnMenu ]
   name: Sandtemple LZ1
   suffix: Insert LV624
   components:
@@ -74,6 +79,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624SandtempleJungle
+  categories: [ HideSpawnMenu ]
   name: Sandtemple Jungle
   suffix: Insert LV624
   components:
@@ -88,6 +94,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624CargoSpecial1
+  categories: [ HideSpawnMenu ]
   name: Cargo Special Mines
   suffix: Insert LV624
   components:
@@ -101,6 +108,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624CargoSpecial2
+  categories: [ HideSpawnMenu ]
   name: Cargo Special Weapons
   suffix: Insert LV624
   components:
@@ -114,6 +122,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624CargoSpecial3
+  categories: [ HideSpawnMenu ]
   name: Cargo Special Gear
   suffix: Insert LV624
   components:
@@ -128,6 +137,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624Hydro
+  categories: [ HideSpawnMenu ]
   name: Hydro Destroyed
   suffix: Insert LV624
   components:
@@ -141,6 +151,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624Bridge
+  categories: [ HideSpawnMenu ]
   name: Bridge
   suffix: Insert LV624
   components:
@@ -156,6 +167,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624CentralCaves
+  categories: [ HideSpawnMenu ]
   name: Central Caves
   suffix: Insert LV624
   components:
@@ -171,6 +183,7 @@
 - type: entity
   parent: RMCMapInsertBase
   id: RMCMapInsertLV624Medbay
+  categories: [ HideSpawnMenu ]
   name: Medbay
   suffix: Insert LV624
   components:

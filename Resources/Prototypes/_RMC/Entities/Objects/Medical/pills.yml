@@ -2,6 +2,7 @@
   name: pill
   parent: BaseItem
   id: CMPill
+  categories: [ HideSpawnMenu ]
   description: "A pill."
   components:
   - type: Sprite

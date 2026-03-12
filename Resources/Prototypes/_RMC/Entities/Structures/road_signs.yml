@@ -24,6 +24,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsign2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_2
@@ -33,6 +34,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsign3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_3
@@ -42,6 +44,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsign4
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_4
@@ -51,6 +54,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsignAlt1
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_alt_1
@@ -60,6 +64,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsignAlt2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_alt_2
@@ -69,6 +74,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsignAlt3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_alt_3
@@ -78,6 +84,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadRoadsignAlt4
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: roadsign_alt_4
@@ -89,6 +96,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadBillboardBigger1
+  categories: [ HideSpawnMenu ]
   name: billboard
   description: An advertisement billboard.
   components:
@@ -528,6 +536,7 @@
 - type: entity
   parent: RMCOverheadRoadsign
   id: RMCOverheadBillboardWallmount1
+  categories: [ HideSpawnMenu ]
   name: billboard
   description: An advertisement billboard.
   components:

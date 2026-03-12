@@ -4,6 +4,7 @@
   abstract: true
   parent: BaseItem
   id: RMCOreBase
+  categories: [ HideSpawnMenu ]
   description: ""
   components:
   - type: Sprite

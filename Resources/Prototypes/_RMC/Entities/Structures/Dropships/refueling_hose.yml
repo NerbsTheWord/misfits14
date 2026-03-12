@@ -19,6 +19,7 @@
 - type: entity
   parent: RMCRefuelingHose
   id: RMCRefuelingHoseAlt
+  categories: [ HideSpawnMenu ]
   suffix: Mid
   components:
   - type: Sprite

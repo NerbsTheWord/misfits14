@@ -1,5 +1,6 @@
 - type: entity
   id: RMCHefaDecalBase
+  categories: [ HideSpawnMenu ]
   name: strange paint marks
   description: You think you can make out the iconography of a HEFA grenade.
   abstract: true

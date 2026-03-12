@@ -10,6 +10,7 @@
 - type: entity
   parent: RMCSpawnerIntelBase
   id: RMCSpawnerIntelClose
+  categories: [ HideSpawnMenu ]
   name: objective landmark close
   components:
   - type: Sprite
@@ -20,6 +21,7 @@
 - type: entity
   parent: RMCSpawnerIntelBase
   id: RMCSpawnerIntelMedium
+  categories: [ HideSpawnMenu ]
   name: objective landmark medium
   components:
   - type: Sprite
@@ -30,6 +32,7 @@
 - type: entity
   parent: RMCSpawnerIntelBase
   id: RMCSpawnerIntelFar
+  categories: [ HideSpawnMenu ]
   name: objective landmark far
   components:
   - type: Sprite
@@ -40,6 +43,7 @@
 - type: entity
   parent: RMCSpawnerIntelBase
   id: RMCSpawnerIntelScience
+  categories: [ HideSpawnMenu ]
   name: objective landmark science
   components:
   - type: Sprite

@@ -72,6 +72,7 @@
 - type: entity
   parent: RMCWeaponRevolverZHNK72
   id: RMCWeaponRevolverZHNK72Empty
+  categories: [ HideSpawnMenu ]
   suffix: Empty
   components:
   - type: RevolverAmmoProvider
@@ -87,6 +88,7 @@
 
 - type: entity
   id: RMCBaseSpeedLoaderZHNK72
+  categories: [ HideSpawnMenu ]
   name: "Speed loader (7.62mm)"
   parent: BaseItem
   abstract: true

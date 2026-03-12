@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCPowerCell
+  categories: [ HideSpawnMenu ]
   name: power cell
   description: A rechargeable electrochemical power cell.
   components:
@@ -234,6 +235,7 @@
 
 - type: entity
   id: RMCPowerCellSlot
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
     - type: ContainerContainer

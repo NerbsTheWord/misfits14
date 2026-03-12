@@ -43,6 +43,7 @@
 - type: entity
   parent: BaseStorageItem
   id: RMCD18Case
+  categories: [ HideSpawnMenu ]
   name: D18 pistol case
   description: A fairly decorated and sturdy box containing a D18 Hummingbird and a single additional magazine for it. If the gun doesn't make you feel secure, the box sure does.
   components:

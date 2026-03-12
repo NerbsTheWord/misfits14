@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCBoxCardboard
   id: RMCCrayonBox
+  categories: [ HideSpawnMenu ]
   name: box of crayons
   description: A box of every flavor of crayon.
   components:
@@ -58,6 +59,7 @@
 - type: entity
   parent: Crayon
   id: RMCBaseCrayon
+  categories: [ HideSpawnMenu ]
   abstract: true
   description: A colorful crayon. Please refrain from eating it or putting it in your nose.
   components:

@@ -1,5 +1,6 @@
 - type: entity
   id: RMCBaseFoamedMetal
+  categories: [ HideSpawnMenu ]
   name: RMC base foamed metal
   abstract: true
   placement:

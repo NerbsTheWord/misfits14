@@ -4,6 +4,7 @@
 - type: entity
   parent: Clothing
   id: CMHeadset
+  categories: [ HideSpawnMenu ]
   name: radio headset
   description: An updated, modular intercom that fits over the head. Takes encryption keys.
   components:

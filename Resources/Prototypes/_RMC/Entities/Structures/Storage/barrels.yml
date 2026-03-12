@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: RMCBarrelPileBase
+  categories: [ HideSpawnMenu ]
   name: barrel pile
   description: big pile energy.
   placement:

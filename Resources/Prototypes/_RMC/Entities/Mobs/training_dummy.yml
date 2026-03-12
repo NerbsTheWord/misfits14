@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCBaseMobSpeciesOrganic
   id: RMCTrainingDummy
+  categories: [ HideSpawnMenu ]
   name: training dummy
   description: A training dummy used by the UNMC to simulate a humanoid body. Feels almost too lifelike.
   suffix: RMC14
@@ -35,6 +36,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnRMCTrainingDummy
+  categories: [ HideSpawnMenu ]
   name: RMC Training Dummy Spawner
   components:
   - type: Sprite

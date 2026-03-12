@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomSentry
+  categories: [ HideSpawnMenu ]
   name: sentry loot spawner
   description: This is a random sentry, for survivors.
   suffix: Guaranteed

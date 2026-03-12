@@ -29,6 +29,7 @@
   abstract: true
   parent: MarkerBase
   id: RMCSupplyDropPadBase
+  categories: [ HideSpawnMenu ]
   name: supply drop pad
   components:
   - type: Transform

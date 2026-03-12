@@ -52,6 +52,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerBlueLeft
+  categories: [ HideSpawnMenu ]
   suffix: Blue, Left
   components:
   - type: Sprite
@@ -60,6 +61,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerBlueMiddle
+  categories: [ HideSpawnMenu ]
   suffix: Blue, Middle
   components:
   - type: Sprite
@@ -68,6 +70,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerBlueRight
+  categories: [ HideSpawnMenu ]
   suffix: Blue, Right
   components:
   - type: Sprite
@@ -76,6 +79,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerGreenLeft
+  categories: [ HideSpawnMenu ]
   suffix: Green, Left
   components:
   - type: Sprite
@@ -84,6 +88,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerGreenMiddle
+  categories: [ HideSpawnMenu ]
   suffix: Green, Middle
   components:
   - type: Sprite
@@ -92,6 +97,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerGreenRight
+  categories: [ HideSpawnMenu ]
   suffix: Green, Right
   components:
   - type: Sprite
@@ -100,6 +106,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerRedLeft
+  categories: [ HideSpawnMenu ]
   suffix: Red, Left
   components:
   - type: Sprite
@@ -108,6 +115,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerRedMiddle
+  categories: [ HideSpawnMenu ]
   suffix: Red, Middle
   components:
   - type: Sprite
@@ -116,6 +124,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerRedRight
+  categories: [ HideSpawnMenu ]
   suffix: Red, Right
   components:
   - type: Sprite
@@ -124,6 +133,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerFujinLeft
+  categories: [ HideSpawnMenu ]
   name: Fujin Cargo Container
   description: "A huge industrial shipping container.\nThis one is from Fujin, a manufacturer of a variety of electronical and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
   suffix: Fujin, Left
@@ -142,6 +152,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerApocraphyLeft
+  categories: [ HideSpawnMenu ]
   name: Apocraphy Cargo Container
   description: "A huge industrial shipping container.\nThis one is from The Apocrahpy Corporation, a manufacturer of medical and biotechnological parts.\nYou remember hearing about one of their latest drugs, and how dangerous it was... though they claimed to be close to finding a solution."
   suffix: Apocraphy, Left
@@ -160,6 +171,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerPathosLeft
+  categories: [ HideSpawnMenu ]
   name: Pathos Cargo Container
   description: "A huge industrial shipping container.\nThis one is from Pathos, a computer parts and motion detector manufacturer.\nYou still wonder why we have a container of old Motion Detectors, and if they even still work."
   suffix: Pathos, Left
@@ -178,6 +190,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerWeYaLeft
+  categories: [ HideSpawnMenu ]
   name: Weston-Yamada Cargo Container
   description: "A huge industrial shipping container.\nThis one is from The Weston-Yamada Corporation, you have probably heard of them before."
   suffix: WeYa, Left
@@ -228,6 +241,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerTrijentLeft
+  categories: [ HideSpawnMenu ]
   name: Trijent Corporation Cargo Container
   description: "A huge industrial shipping container.\nThis one is from The Trijent Corporation's mining operations.\nIf this breaks open, you figure you probably shouldn't breathe in what's inside."
   suffix: Trijent, Left
@@ -278,6 +292,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerFerretLeft
+  categories: [ HideSpawnMenu ]
   name: Ferret Heavy Industries Cargo Container
   description: "A huge industrial shipping container.\nThis one is from Ferret Heavy Industries, a manufacturer of terrestrial crawlers and powerloaders.\nUnfortunately, the company went bankrupt. Fortunately, these containers are really cheap now."
   suffix: Ferret, Left
@@ -304,6 +319,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerNovarisLeft
+  categories: [ HideSpawnMenu ]
   name: Novaris Cargo Container
   description: "A huge industrial shipping containerThis one is from Novaris, they makes just about anything and everything.\nYou notice this container has a peeling note on it, saying all contents were transferred from another station decades ago, how long has it been here?"
   suffix: Novaris, Left
@@ -330,6 +346,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerAICMiddle
+  categories: [ HideSpawnMenu ]
   name: AIC Cargo Container
   description: "A huge industrial shipping container.\nThis one is from the Asian Industrial Collective, which was absorded into the SPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
   suffix: AIC, Middle
@@ -340,6 +357,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerSPPLeft
+  categories: [ HideSpawnMenu ]
   suffix: SPP, Left
   name: SPP Cargo Container
   description: "A huge industrial shipping container.\nThis one is from the Socialist Progressive Peoples, as indicated by the massive symbol on the side."
@@ -390,6 +408,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerMSPLeft
+  categories: [ HideSpawnMenu ]
   suffix: MSP, Left
   name: Ministry of Space Protection Cargo Container
   description: "A huge industrial shipping container.\nThis one belongs to the SPP's Ministry of Space Protection."
@@ -416,6 +435,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerUNMCLeft
+  categories: [ HideSpawnMenu ]
   suffix: UNMC, Left
   name: United Nations Marine Corps Cargo Container
   description: "A huge industrial shipping container.\nThis one belongs to the UN's United Nations Marine Corps."
@@ -442,6 +462,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerAegisLeft
+  categories: [ HideSpawnMenu ]
   suffix: AEGIS, Left
   name: AEGIS Cargo Container
   description: "A huge industrial shipping container.\nThis one is from AEGIS, the defense contractors behind the M54C and other marine weaponry."
@@ -470,6 +491,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerTartarusLeft
+  categories: [ HideSpawnMenu ]
   suffix: Tartarus, Left
   components:
   - type: Sprite
@@ -966,6 +988,7 @@
 - type: entity
   parent: RMCContainerBase
   id: RMCContainerVerticalBottom
+  categories: [ HideSpawnMenu ]
   suffix: Bottom
   components:
   - type: Fixtures

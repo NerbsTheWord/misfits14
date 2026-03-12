@@ -3,6 +3,7 @@
 - type: entity
   abstract: true
   id: ColMarTechBase
+  categories: [ HideSpawnMenu ]
   name: ColMarTech vendor
   placement:
     mode: SnapgridCenter

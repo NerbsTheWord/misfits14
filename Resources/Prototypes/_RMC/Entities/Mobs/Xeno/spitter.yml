@@ -8,6 +8,7 @@
   - RMCXenoMobCollision
   - RMCXenoVentCrawler
   id: CMXenoSpitter
+  categories: [ HideSpawnMenu ]
   name: Spitter
   description: A gross, oozing alien of some kind.
   components:

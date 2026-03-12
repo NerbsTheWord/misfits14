@@ -4,6 +4,7 @@
 - type: entity
   parent: AlwaysPoweredWallLight
   id: RMCLightFixtureAlwaysPowered
+  categories: [ HideSpawnMenu ]
   name: light fixture
   description: A lighting fixture that is fitted with a bright fluorescent light tube. Looking at it for too long makes your eyes go watery.
   suffix: Always powered, DO NOT MAP

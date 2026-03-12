@@ -1,5 +1,6 @@
 - type: entity
   id: RMCPlanetLV624
+  categories: [ HideSpawnMenu ]
   name: LV-624 Lazarus Landing
   components:
   - type: RMCPlanetMapPrototype
@@ -56,6 +57,7 @@
 
 - type: entity
   id: RMCPlanetSolaris
+  categories: [ HideSpawnMenu ]
   name: Solaris Ridge
   components:
   - type: RMCPlanetMapPrototype
@@ -155,6 +157,7 @@
 
 - type: entity
   id: RMCPlanetShiva
+  categories: [ HideSpawnMenu ]
   name: Shivas Snowball
   components:
   - type: RMCPlanetMapPrototype
@@ -201,6 +204,7 @@
 
 - type: entity
   id: RMCPlanetFiorina
+  categories: [ HideSpawnMenu ]
   name: Fiorina Science Annex
   components:
   - type: RMCPlanetMapPrototype
@@ -247,6 +251,7 @@
 
 - type: entity
   id: RMCPlanetTrijent
+  categories: [ HideSpawnMenu ]
   name: Trijent Dam
   components:
   - type: RMCPlanetMapPrototype
@@ -315,6 +320,7 @@
 
 - type: entity
   id: RMCPlanetVaradero
+  categories: [ HideSpawnMenu ]
   name: New Varadero
   components:
   - type: RMCPlanetMapPrototype
@@ -358,6 +364,7 @@
 
 - type: entity
   id: RMCPlanetKutjevo
+  categories: [ HideSpawnMenu ]
   name: Kutjevo Refinery
   components:
   - type: RMCPlanetMapPrototype
@@ -385,6 +392,7 @@
 
 - type: entity
   id: RMCPlanetChances
+  categories: [ HideSpawnMenu ]
   name: LV-522 Chance's Claim
   components:
   - type: RMCPlanetMapPrototype
@@ -415,6 +423,7 @@
 
 - type: entity
   id: RMCPlanetHybrisa
+  categories: [ HideSpawnMenu ]
   name: LV-759 Hybrisa Prospera
   components:
   - type: RMCPlanetMapPrototype
@@ -482,6 +491,7 @@
 
 - type: entity
   id: RMCPlanetSorokyne
+  categories: [ HideSpawnMenu ]
   name: LV-976 Sorokyne Strata
   components:
   - type: RMCPlanetMapPrototype
@@ -552,6 +562,7 @@
 # PVE Maps Below
 - type: entity
   id: RMCPlanetArcticValley
+  categories: [ HideSpawnMenu ]
   name: Arctic Valley
   components:
   - type: RMCPlanetMapPrototype
@@ -561,6 +572,7 @@
 
 - type: entity
   id: RMCPlanetJungleDelta
+  categories: [ HideSpawnMenu ]
   name: Jungle Delta
   components:
   - type: RMCPlanetMapPrototype
@@ -570,6 +582,7 @@
 
 - type: entity
   id: RMCPlanetCorsat
+  categories: [ HideSpawnMenu ]
   name: CORSAT
   components:
   - type: RMCPlanetMapPrototype
@@ -579,6 +592,7 @@
 
 - type: entity
   id: RMCPlanetHybrisaRepaired
+  categories: [ HideSpawnMenu ]
   name: LV-759 Hybrisa Prospera (Repaired)
   components:
   - type: RMCPlanetMapPrototype
@@ -588,6 +602,7 @@
 
 - type: entity
   id: RMCPlanetSorokyneRepaired
+  categories: [ HideSpawnMenu ]
   name: LV-976 - Sorokyne Strata (Repaired)
   components:
   - type: RMCPlanetMapPrototype

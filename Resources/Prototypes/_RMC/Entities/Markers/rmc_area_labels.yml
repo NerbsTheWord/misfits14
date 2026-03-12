@@ -14,6 +14,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelRed
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Red Text
   components:
   - type: NavMapBeacon
@@ -22,6 +23,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelBlue
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Blue Text
   components:
   - type: NavMapBeacon
@@ -30,6 +32,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelGreen
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Green Text
   components:
   - type: NavMapBeacon
@@ -38,6 +41,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelCyan
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Cyan Text
   components:
   - type: NavMapBeacon
@@ -46,6 +50,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelPurple
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Purple Text
   components:
   - type: NavMapBeacon
@@ -54,6 +59,7 @@
 - type: entity
   parent: RMCMarkerAreaLabel
   id: RMCMarkerAreaLabelOrange
+  categories: [ HideSpawnMenu ]
   suffix: Tactical Map Area Label, Orange Text
   components:
   - type: NavMapBeacon

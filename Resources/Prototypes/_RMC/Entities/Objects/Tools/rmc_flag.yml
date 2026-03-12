@@ -24,6 +24,7 @@
 - type: entity
   parent: RMCFlagCarriableBase
   id: RMCFlagCarriableUN
+  categories: [ HideSpawnMenu ]
   name: UN flag
   description: "The flag of the UN." # This one looks ready to be planted into the ground."
   components:
@@ -37,6 +38,7 @@
 - type: entity
   parent: RMCFlagCarriableBase
   id: RMCFlagCarriableUNMC
+  categories: [ HideSpawnMenu ]
   name: UNMC flag
   description: "The flag of the UNMC." # This one looks ready to be planted into the ground."
   components:

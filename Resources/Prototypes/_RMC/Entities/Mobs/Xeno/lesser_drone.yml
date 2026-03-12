@@ -6,6 +6,7 @@
   - RMCXenoSpeechSounds
   - RMCXenoVentCrawler
   id: CMXenoLesserDrone
+  categories: [ HideSpawnMenu ]
   name: Lesser Drone
   description: An alien drone. Looks... smaller.
   components:

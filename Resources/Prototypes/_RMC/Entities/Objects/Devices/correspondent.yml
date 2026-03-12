@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCorrespondentMicrophone
+  categories: [ HideSpawnMenu ]
   name: microphone
   suffix: RMC
   description: To report on the events where no other correspondent has gone before. Now with sound!

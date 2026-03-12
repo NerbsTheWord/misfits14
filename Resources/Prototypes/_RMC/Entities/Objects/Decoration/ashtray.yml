@@ -1,6 +1,7 @@
 - type: entity
   parent: Ashtray
   id: RMCAshtray
+  categories: [ HideSpawnMenu ]
   name: plastic ashtray
   description: Cheap platic ashtray.
   components:

@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseToolSurgery
   id: CMBaseToolSurgery
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: retractor
   description: Retracts stuff.

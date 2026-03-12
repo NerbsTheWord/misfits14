@@ -42,6 +42,7 @@
 
 - type: entity
   id: RMCSandstoneDoor
+  categories: [ HideSpawnMenu ]
   name: sandstone door
   parent: RMCBaseMaterialDoor
   description: It opens and closes.

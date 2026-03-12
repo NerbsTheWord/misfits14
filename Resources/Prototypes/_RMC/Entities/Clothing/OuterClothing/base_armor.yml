@@ -44,6 +44,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingArmor
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -76,6 +77,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingArmorVest
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -95,6 +97,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingArmorPMC
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -122,6 +125,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingSmartgunner
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -145,6 +149,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingArmorMP
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:
@@ -178,6 +183,7 @@
 - type: entity
   abstract: true
   id: RMCAllowSuitStorageClothingArmorRoyal
+  categories: [ HideSpawnMenu ]
   components:
   - type: AllowSuitStorage
     whitelist:

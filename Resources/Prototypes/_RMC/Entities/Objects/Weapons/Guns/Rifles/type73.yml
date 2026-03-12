@@ -94,6 +94,7 @@
 - type: entity
   parent: RMCWeaponRifleType73
   id: RMCWeaponRifleType73Filled
+  categories: [ HideSpawnMenu ]
   suffix: Filled
   components:
   - type: ItemSlots

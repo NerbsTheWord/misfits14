@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCDigitalClock
+  categories: [ HideSpawnMenu ]
   name: digital clock
   description: A battery powered clock, able to keep time within about 5 seconds... it was never that accurate.
   components:
@@ -13,6 +14,7 @@
 
 - type: entity
   id: RMCCatClock
+  categories: [ HideSpawnMenu ]
   name: cat clock
   description: An unbelievably creepy cat clock that surveys the room with every tick and every tock.
   components:
@@ -30,6 +32,7 @@
 
 - type: entity
   id: RMCWoodClock
+  categories: [ HideSpawnMenu ]
   name: wood clock
   description: An ordinary clock, for telling the time.
   components:

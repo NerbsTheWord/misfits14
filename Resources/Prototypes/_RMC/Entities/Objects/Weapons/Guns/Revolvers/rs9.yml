@@ -61,6 +61,7 @@
 
 - type: entity
   id: RMCBaseSpeedLoaderRsh9
+  categories: [ HideSpawnMenu ]
   name: "RSh-9 Speed Loader (9x39)"
   parent: BaseItem
   abstract: true

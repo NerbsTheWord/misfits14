@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseStorageItem
   id: RMCDropshipStorageCompartment
+  categories: [ HideSpawnMenu ]
   name: storage compartment
   description: A wide storage unit to allow it's users to store a wide variety of objects, from equipment to weapons and their ammo. Very versatile.
   suffix: PVE

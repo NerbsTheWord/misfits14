@@ -48,6 +48,7 @@
 - type: entity
   parent: RMCMotionDetector
   id: RMCMotionDetectorCompact
+  categories: [ HideSpawnMenu ]
   name: M717 pocket motion detector
   description: This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets.
   components:

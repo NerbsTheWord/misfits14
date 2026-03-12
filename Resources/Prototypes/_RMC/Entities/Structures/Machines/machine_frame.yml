@@ -27,6 +27,7 @@
 - type: entity
   parent: MachineFrame
   id: CMMachineFrame
+  categories: [ HideSpawnMenu ]
   suffix: RMC14, Ready
   placement:
     mode: SnapgridCenter
@@ -55,6 +56,7 @@
 - type: entity
   parent: MachineFrameDestroyed
   id: CMMachineFrameDestroyed
+  categories: [ HideSpawnMenu ]
   suffix: RMC14
   placement:
     mode: SnapgridCenter
@@ -81,6 +83,7 @@
 - type: entity
   parent: CMMachineFrameUnfinished
   id: RMCComputerFrameUnfinished
+  categories: [ HideSpawnMenu ]
   name: computer frame
   suffix: RMC14, Unfinished
   placement:

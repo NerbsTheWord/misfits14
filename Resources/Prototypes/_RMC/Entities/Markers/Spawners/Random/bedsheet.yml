@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: CMBedsheetSpawner
+  categories: [ HideSpawnMenu ]
   name: Random Sheet Spawner
   components:
     - type: Sprite

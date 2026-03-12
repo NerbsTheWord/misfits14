@@ -2,6 +2,7 @@
   name: flare
   parent: BaseItem
   id: CMFlare
+  categories: [ HideSpawnMenu ]
   description: A red Marine issued flare. There are instructions on the side, it reads 'pull cord, make light'.
   components:
   - type: Fixtures
@@ -258,6 +259,7 @@
   abstract: true
   parent: BaseItem
   id: CMPackFlareBase
+  categories: [ HideSpawnMenu ]
   name: M94 marking flare pack
   description: A packet of eight M94 Marking Flares. Carried by Marine soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp.
   components:
@@ -474,6 +476,7 @@
   name: flare
   parent: BaseItem
   id: RMCFlareL96
+  categories: [ HideSpawnMenu ]
   description: A vibrant purple Royal Crown Marines issued flare. There are instructions on the side, it reads 'To light, pull cord'.
   components:
   - type: Tag

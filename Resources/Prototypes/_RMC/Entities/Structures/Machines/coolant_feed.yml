@@ -1,5 +1,6 @@
 - type: entity
   id: RMCHypersleepFeed
+  categories: [ HideSpawnMenu ]
   name: hypersleep chamber feed
   description: A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.
   placement:

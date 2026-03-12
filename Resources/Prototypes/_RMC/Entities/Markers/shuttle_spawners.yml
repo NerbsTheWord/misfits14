@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerShuttle
+  categories: [ HideSpawnMenu ]
   name: shuttle spawner
   suffix: Generic
   description: Defines a location to spawn a shuttle in.

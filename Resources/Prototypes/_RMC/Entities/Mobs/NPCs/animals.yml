@@ -1,5 +1,6 @@
 - type: entity
   id: RMCSimpleMob
+  categories: [ HideSpawnMenu ]
   name: abstract simple mob
   abstract: true
   components:
@@ -33,6 +34,7 @@
 
 - type: entity
   id: RMCSmallHost
+  categories: [ HideSpawnMenu ]
   name: abstract small host
   abstract: true
   components:
@@ -401,6 +403,7 @@
 - type: entity
   parent: MarkerBase
   id: CMSpawnMobMonkey
+  categories: [ HideSpawnMenu ]
   name: monkey spawner
   suffix: RMC
   components:
@@ -416,6 +419,7 @@
 - type: entity
   parent: MarkerBase
   id: CMSpawnMobKobold
+  categories: [ HideSpawnMenu ]
   name: kobold spawner
   suffix: RMC
   components:
@@ -432,6 +436,7 @@
 - type: entity
   parent: SpawnMobMouse
   id: CMSpawnMobMouse
+  categories: [ HideSpawnMenu ]
   suffix: CM
   components:
   - type: ConditionalSpawner
@@ -443,6 +448,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnRatBlack
+  categories: [ HideSpawnMenu ]
   name: rat spawner
   suffix: black
   components:
@@ -500,6 +506,7 @@
 - type: entity
   parent: MarkerBase
   id: CMSpawnMobWiggles
+  categories: [ HideSpawnMenu ]
   name: Mr. Wiggles Spawner
   suffix: CM
   components:
@@ -515,6 +522,7 @@
 - type: entity
   parent: MarkerBase
   id: CMSpawnMobJones
+  categories: [ HideSpawnMenu ]
   name: Jones Spawner
   suffix: CM
   components:
@@ -530,6 +538,7 @@
 - type: entity
   parent: MarkerBase
   id: CMSpawnMobOrion
+  categories: [ HideSpawnMenu ]
   name: Orion Spawner
   suffix: RMC
   components:
@@ -545,6 +554,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnMobGarry
+  categories: [ HideSpawnMenu ]
   name: Garry Spawner
   suffix: RMC
   components:
@@ -560,6 +570,7 @@
 - type: entity
   parent: SpawnMobMouse
   id: RMCSpawnMobDoc
+  categories: [ HideSpawnMenu ]
   name: doc spawner
   suffix: RMC
   components:

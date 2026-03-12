@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCandle
+  categories: [ HideSpawnMenu ]
   name: red candle
   description: a candle.
   components:
@@ -80,6 +81,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCandle4
+  categories: [ HideSpawnMenu ]
   name: red candle
   description: a candle.
   components:

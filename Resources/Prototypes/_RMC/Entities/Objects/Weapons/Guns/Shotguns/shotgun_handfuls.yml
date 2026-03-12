@@ -31,6 +31,7 @@
 - type: entity
   parent: CMShellShotgunBuckshot
   id: CMShellShotgunBuckshot1
+  categories: [ HideSpawnMenu ]
   suffix: 1
 
 - type: stack
@@ -236,6 +237,7 @@
 - type: entity
   parent: CMShellShotgunBuckshot
   id: CMShellShotgunIncendiaryBuckshot
+  categories: [ HideSpawnMenu ]
   name: handful of incendiary buckshot shells
   components:
   - type: Sprite

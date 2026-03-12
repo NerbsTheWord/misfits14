@@ -19,6 +19,7 @@
 - type: entity
   parent: RMCMachineScreenBase
   id: RMCMachineScreenBasePowered
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite
@@ -103,6 +104,7 @@
 - type: entity
   parent: RMCMachineScreenBase
   id: RMCTelescreen
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: telescreen
@@ -110,6 +112,7 @@
 - type: entity
   parent: RMCMachineScreenBase
   id: RMCTelescreenBroken
+  categories: [ HideSpawnMenu ]
   suffix: broken
   components:
   - type: Sprite
@@ -118,6 +121,7 @@
 - type: entity
   parent: RMCMachineScreenBase
   id: RMCTelescreenBrokenSparks
+  categories: [ HideSpawnMenu ]
   suffix: sparks
   components:
   - type: Sprite

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseDeployFoldable
   id: RMCBaseStorageBag
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: storage bag
   description: A foldable storage container.
@@ -195,6 +196,7 @@
 - type: entity
   parent: BaseItem
   id: RMCStasisBagUsed
+  categories: [ HideSpawnMenu ]
   name: used stasis bag
   description: It's been ripped open. You will need to find a machine capable of recycling it.
   suffix: trash

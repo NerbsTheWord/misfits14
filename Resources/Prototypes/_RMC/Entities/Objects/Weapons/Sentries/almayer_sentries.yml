@@ -53,6 +53,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCDeployerSentry
+  categories: [ HideSpawnMenu ]
   name: sentry deployment system
   description: A box that deploys a sentry turret.
   components:

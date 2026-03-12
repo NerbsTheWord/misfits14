@@ -34,6 +34,7 @@
 - type: entity
   parent: RMCHeadsetProvost
   id: RMCHeadsetProvostLead
+  categories: [ HideSpawnMenu ]
   suffix: SL Tracker
   components:
   - type: GrantSquadLeaderTracker

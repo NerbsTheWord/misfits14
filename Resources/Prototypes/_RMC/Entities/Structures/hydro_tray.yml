@@ -2,6 +2,7 @@
   parent: hydroponicsSoil
   name: hydroponics tray
   id: CMHydroponicsTray
+  categories: [ HideSpawnMenu ]
   description: Used for growing plants.
   components:
   - type: Fixtures

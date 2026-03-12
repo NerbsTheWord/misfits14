@@ -2,6 +2,7 @@
 - type: entity
   parent: ClosetBase
   id: CMClosetBaseUnanchored
+  categories: [ HideSpawnMenu ]
   name: closet
   description: It's a basic storage unit.
   suffix: Unanchored

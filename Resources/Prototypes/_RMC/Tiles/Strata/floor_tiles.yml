@@ -1,6 +1,8 @@
+# Misfits Add - editorHidden to hide all _RMC tiles from spawn menus
 - type: tile
   abstract: true
   id: RMCFloorStrataMiscBase
+  editorHidden: true
   name: tiles-cm-default-misc
   suffix: Sorokyne
 

@@ -2,6 +2,7 @@
   abstract: true
   parent: DrinkBase
   id: CMCanteenBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Consumable/Drinks/canteen.rsi

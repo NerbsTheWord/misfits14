@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseBeaker
   id: CMBeakerBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: InteractedBlacklist
@@ -34,6 +35,7 @@
 - type: entity
   parent: BaseBeakerMetallic
   id: RMCBeakerBaseMetallic
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: InteractedBlacklist
@@ -225,6 +227,7 @@
 - type: entity
   parent: BaseItem
   id: RMCSealedChemicalContainer
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: InteractedBlacklist

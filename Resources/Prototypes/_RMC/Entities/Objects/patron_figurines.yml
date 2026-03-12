@@ -14,6 +14,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerFigurinePatron
+  categories: [ HideSpawnMenu ]
   name: patron figurine spawner
   description: A patron figurine spawner.
   components:
@@ -27,6 +28,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFoxBridgeton
+  categories: [ HideSpawnMenu ]
   name: Fox Bridgeton figurine
   description: This is like that book by George Orwell, Nineteen Eighty Fo'
   components:
@@ -50,6 +52,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMinervaHostel
+  categories: [ HideSpawnMenu ]
   name: Minerva Hostel figurine
   description: The battle's maestro, always in tune with the chaos.
   components:
@@ -61,6 +64,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTempestasFrostbiteGlacies
+  categories: [ HideSpawnMenu ]
   name: Tempestas 'Frostclaw' Glacies figurine
   description: If I die before you continue, You shall have heard my final dying roar.
   components:
@@ -72,6 +76,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSilvanodAndrea
+  categories: [ HideSpawnMenu ]
   name: Silvano d'Andrea figurine
   description: Employee of the Month, every month.
   components:
@@ -83,6 +88,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronIanthaAtikson
+  categories: [ HideSpawnMenu ]
   name: Iantha Atikson
   description: A figurine of an ASO. A sense of mental exhaustion fills your mind and clouds your vision, and you swear you could see paperwork on the back of your eyelids. Was she... always facing toward you?
   components:
@@ -94,6 +100,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronScott
+  categories: [ HideSpawnMenu ]
   name: Scott Hoover figurine
   description: "I work for the company. But don't let that fool you, I'm really an OK guy!"
   components:
@@ -105,6 +112,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurineRyanRockstarRuan
+  categories: [ HideSpawnMenu ]
   name: Ryan "Rockstar" Ruan
   description: "He had big dreams of being a rockstar, but the marines corps had other plans. That, and also the fact that he has no idea how to play the guitar."
   components:
@@ -116,6 +124,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKasumiAyako
+  categories: [ HideSpawnMenu ]
   name: Kasumi Ayako figurine
   description: "The emotional support cat."
   components:
@@ -127,6 +136,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronChikiSugimoto
+  categories: [ HideSpawnMenu ]
   name: Chiki Suzuki figurine
   description: “Hi! Me Chiki!”
   components:
@@ -138,6 +148,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronArchylleCatleay
+  categories: [ HideSpawnMenu ]
   name: Archylle Catleay figurine
   description: The inspirational cat, following the footsteps of her mother
   components:
@@ -149,6 +160,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTessieTerrence
+  categories: [ HideSpawnMenu ]
   name: Tessie Terrence figurine
   description: "She's here to brighten your day!"
   components:
@@ -160,6 +172,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDagobertDogburglar
+  categories: [ HideSpawnMenu ]
   name: Dagobert Dogburglar figurine
   description: "One must imagine marines happy."
   components:
@@ -171,6 +184,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHerbsquirto
+  categories: [ HideSpawnMenu ]
   name: Herbsquirto figurine
   description: "The corporation's best botanist."
   components:
@@ -182,6 +196,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRainyCloudly
+  categories: [ HideSpawnMenu ]
   name: Rainy Cloudly figurine
   description: "The pearlescent slimeperson figurine ripples and shimmers like a puddle, emanating a faint scent of fresh rain and whispers of distant thunder."
   components:
@@ -193,6 +208,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAtlasBootes
+  categories: [ HideSpawnMenu ]
   name: Atlas 'The Law' Bootes figurine
   description: "A young career officer with a big tail and heart."
   components:
@@ -204,6 +220,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKameronCook
+  categories: [ HideSpawnMenu ]
   name: Kameron Cook figurine
   description: "I Cooka Da Pizza."
   components:
@@ -215,6 +232,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSatoruSuzuki
+  categories: [ HideSpawnMenu ]
   name: Satoru Suzuki figurine
   description: "Gods strongest Medic."
   components:
@@ -226,6 +244,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRytilPyain
+  categories: [ HideSpawnMenu ]
   name: Rytil Pyain figurine
   description: "Rytil may lack a lot of empathy, but she does her best to maintain the law and not get pissed off by the idiots breaking it."
   components:
@@ -237,6 +256,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronBillTitan
+  categories: [ HideSpawnMenu ]
   name: Bill Titan figurine
   components:
   - type: Sprite
@@ -247,6 +267,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJimmyPunishedPitJohnson
+  categories: [ HideSpawnMenu ]
   name: Jimmy 'Punished Pit' Johnson figurine
   description: "\"ah been smokin in medbay\""
   components:
@@ -258,6 +279,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSimonStarseeker
+  categories: [ HideSpawnMenu ]
   name: Simon Starseeker figurine
   description: "Silent But Deadly."
   components:
@@ -269,6 +291,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLenaMilize
+  categories: [ HideSpawnMenu ]
   name: Lena Milize figurine
   description: "Nanotrasen's Trademark Bartender: Handler-One."
   components:
@@ -280,6 +303,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronBites-The-Dust
+  categories: [ HideSpawnMenu ]
   name: Bites-The-Dust figurine
   description: One of the best smart gun operators within the UNMC, though, they seem to get hurt a lot...
   components:
@@ -303,6 +327,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLillyPipsqueakHarding
+  categories: [ HideSpawnMenu ]
   name: Lilly 'Pipsqueak' Harding figurine
   description: "She may be a pipsqueak, but she is mighty!!!"
   components:
@@ -314,6 +339,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKateFleming
+  categories: [ HideSpawnMenu ]
   name: Kate 'Gel' Fleming figurine
   description: "A small, detailed miniature of a purple slime-person marine. There is a sticker on the bottom warning of health risks. Caution: This product may contain lead."
   components:
@@ -356,6 +382,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaylieRowleyininski
+  categories: [ HideSpawnMenu ]
   name: Kaylie Rowleyininski figurine
   description: "Smells of freshly baked bread."
   components:
@@ -367,6 +394,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAmariDroppingHotWilliams
+  categories: [ HideSpawnMenu ]
   name: Amari 'Dropping Hot' Williams figurine
   description: "\"FLYING LOW, DROPPING HOT, DRINKING LOTS! OORAH!\""
   components:
@@ -379,6 +407,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAlexGregory
+  categories: [ HideSpawnMenu ]
   name: Alex Gregory figurine
   description: "A prominent Nanotrasen Captain. You think you might have seen him before."
   components:
@@ -390,6 +419,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMadelynnBuzzLewis
+  categories: [ HideSpawnMenu ]
   name: Madelynn 'Buzz' Lewis figurine
   description: "Best chef on the field."
   components:
@@ -401,6 +431,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronShawnFox
+  categories: [ HideSpawnMenu ]
   name: Shawn Fox figurine
   description: "The figurine smells of ..news.."
   components:
@@ -412,6 +443,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronPandiFackler
+  categories: [ HideSpawnMenu ]
   name: CMO Pandi Fackler figurine
   description: "A small and kind Redsuko, a rare race of felinid with the markings and characteristics of a Red Panda. Pacifist by nature, she’s often found healing others in the medical bay"
   components:
@@ -423,6 +455,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAstorDebb
+  categories: [ HideSpawnMenu ]
   name: Astor Debb figurine
   description: "Full-time demolitionist, she moves with a purpose, wielding her ~Magic Missile~"
   components:
@@ -466,6 +499,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDaltonHarris
+  categories: [ HideSpawnMenu ]
   name: Dalton Harris figurine
   description: Former NFSD sergeant, but through some weird military loopholes ended up on the Almayer.
   components:
@@ -477,6 +511,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronChadScott
+  categories: [ HideSpawnMenu ]
   name: Chad Scott figurine
   description: "\"This is Chad Scott, last survivor of the warship, signing off.\""
   components:
@@ -488,6 +523,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronWorships-The-Gods
+  categories: [ HideSpawnMenu ]
   name: Worships-The-Gods figurine
   description: Just a Silly Lizzy.
   components:
@@ -499,6 +535,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSukunaKurze
+  categories: [ HideSpawnMenu ]
   name: Sukuna Kurze figurine
   description: "This man is fueled by root beer and patriotism, and brother we're all outta root beer..."
   components:
@@ -510,6 +547,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTheSoilofMartyrs
+  categories: [ HideSpawnMenu ]
   name: The Soil of Martyrs figurine
   description: "It used to be green."
   components:
@@ -521,6 +559,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLanceVictors
+  categories: [ HideSpawnMenu ]
   name: Lance Victors figurine
   description: This detailed figurine of a Marine Corps Warden just LOOKS like it's going to bury you in paperwork. And it has an eye scar. Edgy.
   components:
@@ -532,6 +571,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronBredDahne
+  categories: [ HideSpawnMenu ]
   name: Bred Dahne figurine
   description: "Gluten Free"
   components:
@@ -543,6 +583,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDartingSleepyGroth
+  categories: [ HideSpawnMenu ]
   name: Darting 'Sleepy' Groth figurine
   description: "\"Is it naptime yet..?\""
   components:
@@ -554,6 +595,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSamAli
+  categories: [ HideSpawnMenu ]
   name: Sam Ali figurine
   description: "Heavily wounded dwarf."
   components:
@@ -565,6 +607,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronWalks-The-Graves
+  categories: [ HideSpawnMenu ]
   name: Walks-The-Graves figurine
   components:
   - type: Sprite
@@ -575,6 +618,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHonkzeeBeezs
+  categories: [ HideSpawnMenu ]
   name: Honkzee Beezs figurine
   description: "\"Wowies, marines eated more crayons than honkzee!\"\nThis figurine is horrifically unbalanced."
   components:
@@ -586,6 +630,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronVellaMorticianSakeao
+  categories: [ HideSpawnMenu ]
   name: Vella 'Mortician' Sakeao figurine
   description: "Detachable SMG arm not included*"
   components:
@@ -597,6 +642,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSeeks-to-Fight
+  categories: [ HideSpawnMenu ]
   name: Seeks-to-Fight figurine
   description: "Navy is just the taxi service for the Marines."
   components:
@@ -608,6 +654,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronStares-at-Stars
+  categories: [ HideSpawnMenu ]
   name: Stares-at-Stars figurine
   description: "Smells of citrus."
   components:
@@ -619,6 +666,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRhettRainmanMcIndrick
+  categories: [ HideSpawnMenu ]
   name: Rhett 'Rainman' McIndrick figurine
   description: "There's a difference between trying something different when regular procedure fails- and starting off with the same losing strategy. Are you surprising anyone?"
   components:
@@ -630,6 +678,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDoes-The-Dishes
+  categories: [ HideSpawnMenu ]
   name: Does-The-Dishes figurine
   description: "\"Anybody want a sssmoke?\""
   components:
@@ -641,6 +690,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTempest
+  categories: [ HideSpawnMenu ]
   name: Tempest figurine
   description: "A beam of light through the clouds. Smells of blue raspberry."
   components:
@@ -665,6 +715,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFishyMcTuna
+  categories: [ HideSpawnMenu ]
   name: Fishy McTuna figurine
   description: "\"Fishy, where is my goddamn fish?\""
   components:
@@ -676,6 +727,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJester-Who-Helps
+  categories: [ HideSpawnMenu ]
   name: Jester-Who-Helps figurine
   description: "A Dubious Little Creature Up To Mischief!"
   components:
@@ -695,6 +747,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFlynnWendigoSuziko
+  categories: [ HideSpawnMenu ]
   name: Flynn 'Wendigo' Suziko figurine
   description: "A figurine of Flynn 'Wendigo' Suziko, a middle-aged felinid girl serving in the UNMC to support her daughter, Evelyn Suziko. Gained the nickname of 'wendigo' at a young age due to having mannerisms similar to that of one. Despite her specialization in stealth, she seems to always end up as a rifleman."
   components:
@@ -706,6 +759,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJulieSniperWalker
+  categories: [ HideSpawnMenu ]
   name: Julie 'Sniper' Walker figurine
   description: "Her cold gaze Strengthens the longer you stare at her."
   components:
@@ -717,6 +771,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAlecProtagBuchanan
+  categories: [ HideSpawnMenu ]
   name: Alec 'Protag' Buchanan figurine
   description: "Here stands the Fireteam Lord, a Delta Marine's best friend. Known for his bravery and being the heaviest drinker in the UNMC. The figurine smells vaguely of Alcohol and imminent Death."
   components:
@@ -728,6 +783,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKonKleemaan
+  categories: [ HideSpawnMenu ]
   name: Kon Kleemaan figurine
   description: "1 of 57, this one is... chittering?"
   components:
@@ -743,6 +799,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronPorterZombieCoolidge
+  categories: [ HideSpawnMenu ]
   name: Porter 'Zombie' Coolidge figurine
   description: "A figurine of a longtime Delta Combat Technician. He seems to be repairing a cadeline - you can even see the flash of the blowtorch reflected in his goggles..."
   components:
@@ -754,6 +811,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFumbles-The-Rifle
+  categories: [ HideSpawnMenu ]
   name: Fumbles-The-Rifle figurine
   description: "A friendly grey-blue reptilian with an assortment of spines. Bandages around his hands indicate some kind of previous injury and a hint to his namesake..."
   components:
@@ -765,6 +823,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNovaQuinn
+  categories: [ HideSpawnMenu ]
   name: Nova Quinn figurine
   description: "An overworked Auxiliary Support Officer. Smells like paperwork and tobacco."
   components:
@@ -776,6 +835,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronStellaLakePoley
+  categories: [ HideSpawnMenu ]
   name: Stella 'Lake' Poley figurine
   description: "You're pretty sure this is a Diona. You're also pretty sure she's giving you the stink-eye."
   components:
@@ -787,6 +847,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDarfmanForgemog
+  categories: [ HideSpawnMenu ]
   name: Darfman Forgemog figurine
   description: "With this little Darfman ye always be in safe hands."
   components:
@@ -798,6 +859,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRonanRickOShea
+  categories: [ HideSpawnMenu ]
   name: Ronan 'Rick' O'Shea figurine
   description: "This commemorative figurine is a part of the 'Valiant Fall Memorial' collection- \"Sometimes the best marines are just the ones who show up.\""
   components:
@@ -809,6 +871,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJamesRockler
+  categories: [ HideSpawnMenu ]
   name: James Rockler figurine
   description: "Just a lizard with heterochromia."
   components:
@@ -820,6 +883,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMizunoKittyDrakonovisch
+  categories: [ HideSpawnMenu ]
   name: Mizuno 'Kitty' Drakonovisch figurine
   description: "Delta cat marine, loves headpats. Chases mice and lasers. There appears to be a placard saying meowrah meowrines."
   components:
@@ -839,6 +903,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMerlinLeander
+  categories: [ HideSpawnMenu ]
   name: Merlin Leander figurine
   description: "Limited edition wizard figurine. This one seems blissful."
   components:
@@ -850,6 +915,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaziPriestess
+  categories: [ HideSpawnMenu ]
   name: Kazi Priestess figurine
   description: "\"An orbital strike a day, keeps the enemy at bay.\""
   components:
@@ -861,6 +927,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMarrik
+  categories: [ HideSpawnMenu ]
   name: Marrik' figurine
   description: "A vorpal recreation of a stoic law enforcer. You aren't sure how this was made... His gleaming red eye seems to follow your every move. Reeks of Blood and Metal."
   components:
@@ -880,6 +947,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronXalos-Of-Europa
+  categories: [ HideSpawnMenu ]
   name: Xalos-Of-Europa figurine
   description: "Wait, what's the LO doing out of Req!?"
   components:
@@ -891,6 +959,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCarlosMiguel
+  categories: [ HideSpawnMenu ]
   name: Carlos Miguel figurine
   description: "Ex Sergeant of the Portuguese Army. Now serving the UNMC, always protecting his comrades and his booze."
   components:
@@ -902,6 +971,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEmilyKlutzRathen
+  categories: [ HideSpawnMenu ]
   name: Emily 'Klutz' Rathen figurine
   description: "A figurine of Emily 'Klutz' Rathen. It looks chipped and scuffed from being dropped repeatedly. The base is very small and uneven, making it want to fall over at all times."
   components:
@@ -916,6 +986,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRanuko
+  categories: [ HideSpawnMenu ]
   name: Ranuko figurine
   description: "You know a patch up with a smile is close at hand with this Avali."
   components:
@@ -928,6 +999,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronConsumes-the-Petrol
+  categories: [ HideSpawnMenu ]
   name: Consumes-the-Petrol figurine
   description: "That one lizard everyone tolerates. No, not that one. The other one. No, the other other- you know what, forget it."
   components:
@@ -939,6 +1011,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLennyDugs
+  categories: [ HideSpawnMenu ]
   name: Lenny Dugs figurine
   description: "Greenhorn. Bumpkin. Marine. He didn't wanna be here. You didn't want him here. But he's what we got. The figurine smells vaguely of country air."
   components:
@@ -950,6 +1023,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronkaelsharkvoss
+  categories: [ HideSpawnMenu ]
   name: Kael 'Shark' Voss figurine
   description: "A hug hungry little Sharky."
   components:
@@ -961,6 +1035,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMarkSholl
+  categories: [ HideSpawnMenu ]
   name: Mark 'Blacklung' Sholl figurine
   description: "A figurine of Mark 'Blacklung' Sholl. It depicts him with his usual 'Smokes like a chimney' nature on full display and tired eyes. Around his neck you see a well worn whistle with the words \"Cat wrangler\" engraved on the top."
   components:
@@ -972,6 +1047,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDaveBigDaveSmall
+  categories: [ HideSpawnMenu ]
   name: Dave 'Big Dave' Small figurine
   description: "Life-sized if not bigger. A companion along your travels"
   components:
@@ -984,6 +1060,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCyrilClovesCulkins
+  categories: [ HideSpawnMenu ]
   name: Cyril 'Cloves' Culkins figurine
   description: "\"People sleep peaceably in their beds at night only because rough men stand ready to do violence on their behalf.\" - Orwell."
   components:
@@ -995,6 +1072,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHexatheleHasselti
+  categories: [ HideSpawnMenu ]
   name: Hexathele Hasselti figurine
   description: "Womp Womp."
   components:
@@ -1006,6 +1084,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFaePetrovic
+  categories: [ HideSpawnMenu ]
   name: Fae Petrovic figurine
   description: "A figurine of a very handsome* engineer. You feel like you've seen him around here before, but since when was he an engineer?"
   components:
@@ -1017,6 +1096,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKasumi
+  categories: [ HideSpawnMenu ]
   name: Kasumi figurine
   description: "She's doing her part, are you?"
   components:
@@ -1028,6 +1108,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMuz
+  categories: [ HideSpawnMenu ]
   name: Muz figurine
   description: "\"Just look at these muscles!\""
   components:
@@ -1039,6 +1120,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNovaStargazer
+  categories: [ HideSpawnMenu ]
   name: Nova Stargazer figurine
   description: "Rumor says if you interact with it enough, it might squeak."
   components:
@@ -1050,6 +1132,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKippedKipper
+  categories: [ HideSpawnMenu ]
   name: Kipped Kipper figurine
   description: "This thing is putting off a serious amount of heat, good for warming up on shiva's snowball."
   components:
@@ -1061,6 +1144,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKyrus
+  categories: [ HideSpawnMenu ]
   name: Kyrus figurine
   description: "Just a simple engineer doing engineer things."
   components:
@@ -1072,6 +1156,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTalerynVogsburg
+  categories: [ HideSpawnMenu ]
   name: Taleryn Vogsburg figurine
   description: "\"My only crime was playing a saz.\" -Taleryn Vogsburg"
   components:
@@ -1083,6 +1168,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronPenelopeCyclopsDavid
+  categories: [ HideSpawnMenu ]
   name: Penelope 'Cyclops' David figurine
   description: "Easy to spot, misses a lot."
   components:
@@ -1094,6 +1180,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronWilliamSpursCrockett
+  categories: [ HideSpawnMenu ]
   name: William 'Spurs' Crockett figurine
   description: "He has spurs that jingle jangle jingle"
   components:
@@ -1105,6 +1192,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRinaShell-ShockedGensvil
+  categories: [ HideSpawnMenu ]
   name: Rina 'Shell-Shocked' Gensvil figurine
   description: "In front of you is a statuette of a noticeably battered and tired red-haired felinid. Her right eye is completely missing, in its place you see a black eye patch. She looks physically fit, her arms look strong. There's a medical HUD on her only surviving eye. There's a word, scratched with something sharp on the bottom of the small figurine. It says \"UNFAIR\"."
   components:
@@ -1116,6 +1204,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSips-On-Puddles
+  categories: [ HideSpawnMenu ]
   name: Sips-On-Puddles figurine
   description: "Floopy ears. Small Snout. Quirky Humour.
 
@@ -1131,6 +1220,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurineDukeBigBossMorris
+  categories: [ HideSpawnMenu ]
   name: Duke 'Big Boss' Morris figurine
   description: "This MIGHT be the man who sold the round"
   components:
@@ -1142,6 +1232,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKamielLancoaster
+  categories: [ HideSpawnMenu ]
   name: Kamiel Lancoaster figurine
   description: "Set a record for most sub 5 minute deaths during boot camp training simulations."
   components:
@@ -1153,6 +1244,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEricRasczak
+  categories: [ HideSpawnMenu ]
   name: Eric Rasczak figurine
   description: "\"Has anyone seen my synth-graft?\""
   components:
@@ -1164,6 +1256,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNanSnowBunnyMazu
+  categories: [ HideSpawnMenu ]
   name: Nan Mazu figurine
   description: "The Way of Sunlight
 
@@ -1178,6 +1271,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronZverNemesis
+  categories: [ HideSpawnMenu ]
   name: Zver' Nemesis figurine
   description: "\"If you had not broken Marine Law, I would not have been sent to arrest you.\""
   components:
@@ -1189,6 +1283,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHazzyLicious
+  categories: [ HideSpawnMenu ]
   name: Hazzy Licious figurine
   description: "It looks fleshy and covered in red tendrils..."
   components:
@@ -1200,6 +1295,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFlapsConflagMoth
+  categories: [ HideSpawnMenu ]
   name: Flaps 'Conflag' Moth figurine
   description: "You can almost hear him Screaming, \"HI FREN!\""
   components:
@@ -1211,6 +1307,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJunoKleptocatKaneko
+  categories: [ HideSpawnMenu ]
   name: Juno 'Kleptocat' Kaneko figurine
   description: "The figure bears a striking appearance of a young male felinid. Could it be a thief? A scoundrel? A Cargonian? No, it's just your lovable Kleptocat and his \"legally\" acquired goods! Soaring high in the sky like the Gunship Pilot he was always meant to be. Proudly marking another tally on the hull of Normandy. Whether or not those tallies are enemy or Marines... you will never know."
   components:
@@ -1222,6 +1319,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronStellaCowabungaStewart
+  categories: [ HideSpawnMenu ]
   name: Stella 'Cowabunga' Stewart figurine
   description: "We're building the mother of all FOB's here, Jack!"
   components:
@@ -1233,6 +1331,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRosalindHexVolkov
+  categories: [ HideSpawnMenu ]
   name: Rosalind 'Hex' Volkov figurine
   description: "\"I solemnly swear to not charge sensors.\""
   components:
@@ -1244,6 +1343,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronColtenRipcordBailey
+  categories: [ HideSpawnMenu ]
   name: Colten 'Ripcord' Bailey figurine
   description: "This figure's tail appears to have broken off and been glued back on. Twice."
   components:
@@ -1255,6 +1355,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSpikeLight-FootFluff-Usta
+  categories: [ HideSpawnMenu ]
   name: Spike Light-Foot Fluff-Usta figurine
   description: "This abomination vulp-slime hybrid dosent seem to stay dead long yet always seem to be killed often."
   components:
@@ -1272,6 +1373,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNells-the-Jobs
+  categories: [ HideSpawnMenu ]
   name: Nells-the-Jobs figurine
   description: "A silly little lizard that is known for enjoying Slaw."
   components:
@@ -1283,6 +1385,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronFast-pawsChip
+  categories: [ HideSpawnMenu ]
   name: Fast-paws Chip figurine
   components:
   - type: Sprite
@@ -1293,6 +1396,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDryWetbrush
+  categories: [ HideSpawnMenu ]
   name: Dry Wetbrush figurine
   description: "He wonders what you are thinking about."
   components:
@@ -1304,6 +1408,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHaileyMorgan
+  categories: [ HideSpawnMenu ]
   name: Hailey Ayako figurine
   description: "This figure emanates a sweet, lime-vanilla scent and a happy-go-lucky aura; an eager, excited smile is on the figure's face! There's a little readable inscription on it: \"Yaa bestie, I like, so totally loves your outfit!\""
   components:
@@ -1315,6 +1420,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronOsbornCheeseballCurry
+  categories: [ HideSpawnMenu ]
   name: Osborn 'Cheeseball' Curry figurine
   description: "Under the figurine, a text is engraved that reads:
 
@@ -1352,6 +1458,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronGregorCain
+  categories: [ HideSpawnMenu ]
   name: Gregor Cain figurine
   description: ""
   components:
@@ -1363,6 +1470,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJessieFirstDaily
+  categories: [ HideSpawnMenu ]
   name: Jessie 'First' Daily figurine
   description: "\"Charlies never die.\" Smells like pinesap and sawdust."
   components:
@@ -1374,6 +1482,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKhauniBrooks
+  categories: [ HideSpawnMenu ]
   name: Khauni Brooks figurine
   description: "She has a cute an adorable snoot you can boop."
   components:
@@ -1385,6 +1494,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronBurniHeatSenira
+  categories: [ HideSpawnMenu ]
   name: Burni 'Heat' Senira figurine
   description: "Every scar a mistake, and a lesson."
   components:
@@ -1396,6 +1506,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronShei-Teegla
+  categories: [ HideSpawnMenu ]
   name: Shei-Teegla figurine
   #description: ""
   components:
@@ -1407,6 +1518,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJazzyJune
+  categories: [ HideSpawnMenu ]
   name: Jazzy June figurine
   description: "She's trying her best. Can't you tell?"
   components:
@@ -1418,6 +1530,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAnglerAngusSeawing
+  categories: [ HideSpawnMenu ]
   name: Angler 'Angus' Seawing figurine
   description: "A fish-looking dragon who is known for telling people they arent a fish.
 
@@ -1432,6 +1545,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLilianaShorkGodwin
+  categories: [ HideSpawnMenu ]
   name: Liliana 'Shork' Godwin figurine
   description: "Shork Medical Officer on Deck!"
   components:
@@ -1451,6 +1565,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKuafuSpeedDemonLightweaver
+  categories: [ HideSpawnMenu ]
   name: Kuafu 'Speed Demon' Lightweaver figurine
   description: "Seems like she knows everyone around."
   components:
@@ -1462,6 +1577,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJackHunterDunes
+  categories: [ HideSpawnMenu ]
   name: Jack 'Hunter' Dunes figurine
   description: "This item smells of old MRE, and blood......seems like people thrown this one at their targets with all the dents on it."
   components:
@@ -1473,6 +1589,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDurganChumCarlyle
+  categories: [ HideSpawnMenu ]
   name: Durgan 'Chum' Carlyle figurine
   #description: ""
   components:
@@ -1484,6 +1601,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAdrianArchangelGutierrez
+  categories: [ HideSpawnMenu ]
   name: Adrian 'Archangel' Gutierrez figurine
   description: "The Armor and looks worn and battered, You notice a faded cross on his left shoulder pad.  On the back of the helmet you see his callsign. \"Archangel\" In a faded red. You can almost notice a faint smile."
   components:
@@ -1495,6 +1613,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNeza
+  categories: [ HideSpawnMenu ]
   name: Neza figurine
   description: "Charlie squad till the day he dies, again."
   components:
@@ -1506,6 +1625,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJadeFiendEria
+  categories: [ HideSpawnMenu ]
   name: Jade 'Fiend' Eria figurine
   description: "You can see a broken receiver sticking out, it emits incomprehensible gibberish when squeezed. The figurine's jaw looks slightly melted off, as if someone held it above a candle."
   components:
@@ -1517,6 +1637,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAshWinter
+  categories: [ HideSpawnMenu ]
   name: Ash Winter figurine
   description: "Most Devious Silly Lizard."
   components:
@@ -1528,6 +1649,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLoreWulbrenEra
+  categories: [ HideSpawnMenu ]
   name: Lore 'Wulbren' Era figurine
   description: "The best Pilot in the Almayer! - And the best rifleman.."
   components:
@@ -1539,6 +1661,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLydiaSanitater
+  categories: [ HideSpawnMenu ]
   name: Lydia Sanitater figurine
   description: "Stand still or I can not save you."
   components:
@@ -1550,6 +1673,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronVinceDogPetrov
+  categories: [ HideSpawnMenu ]
   name: Vince 'Dog' Petrov figurine
   description: "A figurine of a prime woofrine. Even though he's pocket sized, he still has that dog in him."
   components:
@@ -1561,6 +1685,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKallKallovski
+  categories: [ HideSpawnMenu ]
   name: Kall Kallovski figurine
   description: "Delta leads the way."
   components:
@@ -1572,6 +1697,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAtlasWolfySnowlight
+  categories: [ HideSpawnMenu ]
   name: Katerina AW Dragunov figurine
   description: "A short figure depicting one of the poster child of the success of the Artificial Womb program. Katerina ability to inspire her fellow marines and fear in the enemies of the UN resulted in WE-YA making her into a figure, despite her objections. As many have learn to their dismay her bite is stronger than her bark. It smells like strawberries."
   components:
@@ -1591,6 +1717,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCaineRuffRuffalo
+  categories: [ HideSpawnMenu ]
   name: Caine 'Ruff' Ruffalo figurine
   description: "Ruff as a Ruffalo. Always Ruffs. Is always Rough as a Ruff."
   components:
@@ -1602,6 +1729,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAnneTaylor
+  categories: [ HideSpawnMenu ]
   name: Anne Taylor figurine
   description: "If you see her piloting the Alamo and it still looks normal, something is horribly wrong."
   components:
@@ -1613,6 +1741,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronYeoSakuraBunnia
+  categories: [ HideSpawnMenu ]
   name: Yeo 'Sakura' Bunnia figurine
   description: "This bunny seems familiar. Maybe they’re working around the medical department? Maybe even around the Staff office perhaps. Who knows! This bunny sure loves to provide overwatch for the marines and even providing medical care for them too."
   components:
@@ -1624,6 +1753,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSoft-pawsLiona
+  categories: [ HideSpawnMenu ]
   name: Soft-paws Liona figurine
   description: "Huh, seems like this squirrel action figure comes with its own miniature sentry gun as well."
   components:
@@ -1643,6 +1773,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronValerieHawkins
+  categories: [ HideSpawnMenu ]
   name: Valerie Hawkins figurine
   description: "\"I am just here to relay orders from the shark.\""
   components:
@@ -1669,6 +1800,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCargoNahami
+  categories: [ HideSpawnMenu ]
   name: Cargo Nahami figurine
   description: "That's cargo Nahami, one of the very many Nahami. It says on the bottom that you can redeem this at requisitions for one free HEDP."
   components:
@@ -1680,6 +1812,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSamsonParker
+  categories: [ HideSpawnMenu ]
   name: Samson Parker figurine
   description: "An Alpha squad leader willing to give up his life for his men! Reckless but with a big heart, always seeking to make the best out of the worst situations and NOT die in the process..."
   components:
@@ -1691,6 +1824,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKasuni
+  categories: [ HideSpawnMenu ]
   name: Kasuni figurine
   description: "Kasuni is fix, will be ok soon."
   components:
@@ -1702,6 +1836,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRikkiNakesone
+  categories: [ HideSpawnMenu ]
   name: Rikki Nakesone figurine
   description: "When one loaf of banana bread isn't enough."
   components:
@@ -1719,6 +1854,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSudie-Mim
+  categories: [ HideSpawnMenu ]
   name: Sudie-Mim figurine
   #description: ""
   components:
@@ -1730,6 +1866,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJazminLudwig
+  categories: [ HideSpawnMenu ]
   name: Jazmin Ludwig figurine
   description: "Wait, this isn't Hawaii."
   components:
@@ -1741,6 +1878,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJakeFoster
+  categories: [ HideSpawnMenu ]
   name: Jake Foster figurine
   description: "Hey bro!"
   components:
@@ -1752,6 +1890,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronForgeGrimes
+  categories: [ HideSpawnMenu ]
   name: Forge Grimes figurine
   #description: ""
   components:
@@ -1763,6 +1902,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCoreyShaffer
+  categories: [ HideSpawnMenu ]
   name: Corey Shaffer figurine
   #description: ""
   components:
@@ -1774,6 +1914,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCorlaBlitzDreams
+  categories: [ HideSpawnMenu ]
   name: Corla 'Blitz' Dreams figurine
   description: "An arachnid that reeks of gunpowder, thermite and oddly enough...a bunny? Whoever this arachnid is, you can sense how reckless they are with explosives...and how big their heart is, too."
   components:
@@ -1785,6 +1926,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRedMachinaSwiftcleave
+  categories: [ HideSpawnMenu ]
   name: Red 'Machina' Swiftcleave figurine
   description: "Not much can be said apart from this figure having some style to it. The Beret, the smart pistol having ivory colored engravings, a miniature plasma turret sits atop the left shoulder next to the light. But one thing that may catch your eye is the words, \"To a place where...\"written on the bottom of the stand."
   components:
@@ -1796,6 +1938,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMinjiFailsafeKilgrim
+  categories: [ HideSpawnMenu ]
   name: Minji 'Failsafe' Kilgrim figurine
   description: "Some stray cat usually found roaming in medbay. The figure itself smells strongly of various chemicals, small singe marks litter it as if it's been through an explosion or two.
 
@@ -1818,6 +1961,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJohnrookWeller
+  categories: [ HideSpawnMenu ]
   name: John 'rook' Weller figurine
   description: "Mother and Father forgive me, Sisters and Brothers bless me, Daughter and Sons treasure me, I ask for safety, I plead for salvation, I pray for clarity, please, rid my soul of this nightmare."
   components:
@@ -1829,6 +1973,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHazelSkyfallSingh
+  categories: [ HideSpawnMenu ]
   name: Hazel 'Skyfall' Singh figurine
   description: "¡We'll be fine! ¡I've esurvived much worse!"
   components:
@@ -1840,6 +1985,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSilasAlatus
+  categories: [ HideSpawnMenu ]
   name: Silas Alatus figurine
   description: "Silas is a dark green moth person, standing at 5' 11\" tall. His antennae are nearly always pointed behind him at all times, and his wings are a darker green with grey pattern. He has grey-blueish eyes, though he is missing his left eye, which has been covered by a dark colored eyepad. He is seen with some form of sidearm on his person at all times, usually a revolver of some sort."
   components:
@@ -1851,6 +1997,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronThrukiaLongbow
+  categories: [ HideSpawnMenu ]
   name: Thrukia Longbow figurine
   description: "A message carved beneath it reads: \"Take this with you to your struggles and victory is assured! No matter how much you hate yourself, the stars will still forgive you.\""
   components:
@@ -1862,6 +2009,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRoxanneFloppyEarsDreams
+  categories: [ HideSpawnMenu ]
   name: Roxanne 'Floppy Ears' Dreams figurine
   description: "Tiny bun! Tiny bun with sharp teeth... and a big gun..."
   components:
@@ -1873,6 +2021,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronGallaginGCAddictCaitman
+  categories: [ HideSpawnMenu ]
   name: Gallagin 'GC Addict' Caitman figurine
   description: "Smells of medicine and gunpowder."
   components:
@@ -1884,6 +2033,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKurtDocHolidayLachner
+  categories: [ HideSpawnMenu ]
   name: Kurt 'Doc Holiday' Lachner figurine
   description: "Looking at the bottom of the base of the figurine, you read: \"We choose to become corpsman not because it is easy, but because we really don't feel like being alone, ok?\""
   components:
@@ -1895,6 +2045,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAmberFallsLamplight
+  categories: [ HideSpawnMenu ]
   name: Amber 'Falls' Lamplight figurine
   description: "A photorealistic depiction of the most commonly awoken Dropship Crew Chief. Despite her downfalls, she’s always making an effort to do her job the best she can: whether it be medevacing the injured or… or… uhhh…"
   components:
@@ -1906,6 +2057,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronArthurNash
+  categories: [ HideSpawnMenu ]
   name: Arthur Nash figurine
   #description: ""
   components:
@@ -1917,6 +2069,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAguSeal
+  categories: [ HideSpawnMenu ]
   name: Agu Seal figurine
   description: "Agu Seal stands firm in his tactical vest and tilted beret, carrying himself with calm authority. Agu’s movements are disciplined and precise, every step controlled and deliberate."
   components:
@@ -1928,6 +2081,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEricLunaheart
+  categories: [ HideSpawnMenu ]
   name: Eric Lunaheart figurine
   description: "Lunaheart is here to save the day! 3/4 Doctor 1/4 MP is the way!"
   components:
@@ -1939,6 +2093,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLeahLocaHarding
+  categories: [ HideSpawnMenu ]
   name: Leah 'Loca' Harding figurine
   description: "Your local kitchen raider, some confuse her with a space-racoon. announce when you approach, she can be skittish and she is armed."
   components:
@@ -1950,6 +2105,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronZaydenSoapKirkson
+  categories: [ HideSpawnMenu ]
   name: Zayden 'Soap' Kirkson figurine
   description: "Zayden 'Soap' Kirkson Collectible Figurine!\n\nFrom brig bound to shelf ready, this unserious MP is finally here! Rumored to have finally conquered his PTSD, Soap arrives with his trademark stare and his infamous habit of devouring soap..? possibly with unlimited resistance!\n\nGet yours today before he eats the rest of the stock!"
   components:
@@ -1961,6 +2117,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronPsyJuniJuniper
+  categories: [ HideSpawnMenu ]
   name: Psy 'Juni' Juniper figurine
   description: "You look at the tiny rabbit, he has an Anti-Material Rifle on his back and blood all over his fur. He's offering a carrot! Just for you!"
   components:
@@ -1972,6 +2129,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronIceyIana
+  categories: [ HideSpawnMenu ]
   name: Icey Iana figurine
   description: "Be Aggressive! Never stop pushing!"
   components:
@@ -1983,6 +2141,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaizerDeathwishValentine
+  categories: [ HideSpawnMenu ]
   name: Kaizer 'Deathwish' Valentine figurine
   description: "This high-quality figurine depicts Kaizer 'Deathwish' Valentine, an elite UNMC medic known for his perfectionist attitude towards treatment and his reckless disregard for his own safety when recovering the fallen.  Sculpted with exceptional precision, the figure shows his pristine, meticulously arranged medical tools contrasted against his battle-worn armor, reflecting both his discipline and the danger he constantly throws himself into.  His focused expression peers through a cracked visor, one hand gripping a compact scanner while the other reaches toward a debris-strewn base featuring shattered concrete and a partially exposed UNMC emblem.  Premium paintwork, layered shading, and fine weathering give the entire piece a cinematic realism befitting a tribute to a medic who refuses to lose a patient—even at his own expense."
   components:
@@ -1994,6 +2153,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronZozieWristwatch
+  categories: [ HideSpawnMenu ]
   name: Zozie Wristwatch figurine
   description: This particularly tall figurine looks hand-made. Her glasses seem hastily glued to her face, and the paint-job seems unfinished.
   components:
@@ -2005,6 +2165,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKyrissSnowWinters
+  categories: [ HideSpawnMenu ]
   name: Kyriss 'Snow' Winters
   description: The figurine looks determined as if she is searching for something or someone.
   components:
@@ -2019,6 +2180,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNatoAchMenoe
+  categories: [ HideSpawnMenu ]
   name: Nato Ach-Menoe
   description: Little gremlin of a Siberian forest cat, they seem to love fire and citrus fruits, better make way for them!
   components:
@@ -2038,6 +2200,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEmmaliseIsabelChambers
+  categories: [ HideSpawnMenu ]
   name: Emmalise Isabel Chambers
   description: "You could swear those pointy ears twitch when you make a noise, even across the room."
   components:
@@ -2049,6 +2212,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAmeliaFields
+  categories: [ HideSpawnMenu ]
   name: Amelia Fields figurine
   description: "A chipped figurine surrounded by dust.
 
@@ -2068,6 +2232,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRosemaryShenaniganizerSmox
+  categories: [ HideSpawnMenu ]
   name: Rosemary 'Shenaniganizer' Smox
   description: "It may not fit in this world, but it hopes to make a difference."
   components:
@@ -2079,6 +2244,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHudsonDemuth
+  categories: [ HideSpawnMenu ]
   name: Hudson 'Hungry' Demuth
   description: "Your local Charlie crusty Gunny that's hungry for MREs and Queens!  He may or may not steal all your food and FN pills, for his pushes drain him of all of his blood!"
   components:
@@ -2090,6 +2256,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAtreiyaVuctoiris
+  categories: [ HideSpawnMenu ]
   name: Atreiya Vuctoiris
   description: "Is it a plane? Is it a bug? No it's a Moff!"
   components:
@@ -2101,6 +2268,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronNitrumNJucundus
+  categories: [ HideSpawnMenu ]
   name: Nitrum 'N' Jucundus figurine
   components:
   - type: Sprite
@@ -2111,6 +2279,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronPepper
+  categories: [ HideSpawnMenu ]
   name: Pepper figurine
   description: "It's Pepper!"
   components:
@@ -2122,6 +2291,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAlbrechAlbyHerrmann
+  categories: [ HideSpawnMenu ]
   name: Albrecht 'Alby' Herrmann figurine
   description: "dead"
   components:
@@ -2133,6 +2303,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronOliveOrr
+  categories: [ HideSpawnMenu ]
   name: Olive Orr figurine
   description: "Hello!"
   components:
@@ -2144,6 +2315,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronArdyApeManGuy
+  categories: [ HideSpawnMenu ]
   name: Ardy 'Ape Man' Guy figurine
   description: ""
   components:
@@ -2155,6 +2327,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRhysHendricks
+  categories: [ HideSpawnMenu ]
   name: Rhys Hendricks figurine
   description: "You feel an evil aura coming from this figurine..."
   components:
@@ -2166,6 +2339,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKeenanFoolishHoundEpiolos
+  categories: [ HideSpawnMenu ]
   name: Keenan 'Foolish Hound' Epiolos figurine
   description: "A foolish hound, perhaps too foolish."
   components:
@@ -2177,6 +2351,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronOleenStarseeker
+  categories: [ HideSpawnMenu ]
   name: Oleen-Starseeker figurine
   description: "Your favorite Corporate Liaison, now in blood red!"
   components:
@@ -2188,6 +2363,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEvadEsrever
+  categories: [ HideSpawnMenu ]
   name: Evad Esrever figurine
   description: ""
   components:
@@ -2199,6 +2375,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronLost-In-Stars
+  categories: [ HideSpawnMenu ]
   name: Lost-In-Stars figurine
   description: "The laziest, most irresponsible purple lizard of the requisition crew. Wonder where he got that giant poppy from..."
   components:
@@ -2210,6 +2387,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMothroach
+  categories: [ HideSpawnMenu ]
   name: Luxi La Lustriana figurine
   description: "At a glance it catches your eye, a strange looking moth... Looking closer, it seems to not just be a moth... but also some sort of insect... Like a moth... roach...? You think a bit more about it... How could it be a moth... and a roach... At the same time? It seems contradictory...\n\nLooking at it further... it seems to invoke some emotion... Like... you want to give everything you have to the moth... Your eyes can't look away from it... Drawn to it... like a moth to a flame... How ironic..."
   components:
@@ -2221,6 +2399,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronArtemisLua
+  categories: [ HideSpawnMenu ]
   name: Artemis Lua figurine
   description: "Moff loaded. . . Clear for SADAR!!"
   components:
@@ -2232,6 +2411,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronZoeyMarz
+  categories: [ HideSpawnMenu ]
   name: Zoey Marz figurine
   description: "Looks like there's a crudely taped label on the figure's leg that says, '#1 Technician'."
   components:
@@ -2243,6 +2423,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronGreedyJamie
+  categories: [ HideSpawnMenu ]
   name: Greedy Jamie figurine
   description: "Always gets too Greedy."
   components:
@@ -2254,6 +2435,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronBailey
+  categories: [ HideSpawnMenu ]
   name: Bailey figurine
   description: "1 of 100. The figure smells eerily like napthal, high-combustion napalm, and CLF3. The burn marks are very apparent and the M34 incinerator toy does not come off. Ever."
   components:
@@ -2265,6 +2447,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronVickyHowlitzer
+  categories: [ HideSpawnMenu ]
   name: Vicky Howlitzer figurine
   description: "The local irritable 50 year-old Delta SGO Vulp. The figure itself has a few knicks and marks from the constant handling over time and has a faint smell of magnolias, reflecting its owner. Vicky says she looks more youthful than the figurine. She does not."
   components:
@@ -2276,6 +2459,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronIgnisNightfireNyx
+  categories: [ HideSpawnMenu ]
   name: Ignis 'Nightfire' Nyx figurine
   description: "You can almost smell the ash and fire of the flames that this pyromaniac uses..."
   components:
@@ -2287,6 +2471,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHethrynCliffton
+  categories: [ HideSpawnMenu ]
   name: Hethryn Cliffton figurine
   description: "It's just intuition. My sources? How about my gut feeling, huh? How am I supposed to explain that?"
   components:
@@ -2298,6 +2483,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSenecaArchibald
+  categories: [ HideSpawnMenu ]
   name: Seneca Archibald figurine
   #description: ""
   components:
@@ -2309,6 +2495,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKeeganRockwell
+  categories: [ HideSpawnMenu ]
   name: Keegan Rockwell figurine
   description: "Faux Chaplain of the Fobbit religion, alcoholic and smells faintly like cheap grog and heavy smoke. Someone glued a rum bottle mini to her hand, and someone wrote on the underside of the figure's stand \"Who ahara mazda?\""
   components:
@@ -2320,6 +2507,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTheLazySlothComu
+  categories: [ HideSpawnMenu ]
   name: Sque 'Squealer Squeak' Pippin figurine
   description: "They don't know how they got turned into a marketable mini figure..."
   components:
@@ -2331,6 +2519,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAnneArtichokePowell
+  categories: [ HideSpawnMenu ]
   name: Anne 'Artichoke' Powell figurine
   description: "\"CLOSE THE DAMN CADES!\""
   components:
@@ -2342,6 +2531,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronVexsZirnita
+  categories: [ HideSpawnMenu ]
   name: Vexs Zirnita figurine
   #description: ""
   components:
@@ -2353,6 +2543,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronDanielDiversicolor
+  categories: [ HideSpawnMenu ]
   name: Daniel Diversicolor figurine
   description: "\"Hello Trey morington III!\""
   components:
@@ -2364,6 +2555,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMozaacVin
+  categories: [ HideSpawnMenu ]
   name: Mozaac Vin figurine
   description: "\"That ain't very profit of you.\""
   components:
@@ -2375,6 +2567,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronHugs-The-Void
+  categories: [ HideSpawnMenu ]
   name: Hugs-The-Void figurine
   description: "You could swear you've seen this blue lizard before.. but where at?\n\nIt seems dubious, evil even!.. But with a hint of blueberry fragrance.\n\nP.S do not add miniature soap to hands."
   components:
@@ -2386,6 +2579,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronMarvinPotshotStange
+  categories: [ HideSpawnMenu ]
   name: Marvin 'Potshot' Stange figurine
   description: "Somehow, this figurine appears to be looking at you with an disappointed, piercingly angry stare..."
   components:
@@ -2397,6 +2591,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronIsaakBennett
+  categories: [ HideSpawnMenu ]
   name: Isaak Bennett figurine
   description: "This green vulpkanin comes with your standard Logistics Officer uniform, a perfect companion for any of your logistics needs!\n\nWooden crate accessory sold separately."
   components:
@@ -2408,6 +2603,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronVaelorGlowleaf
+  categories: [ HideSpawnMenu ]
   name: Vaelor Glowleaf figurine
   description: "Thumph... Beep... WEH!"
   components:
@@ -2419,6 +2615,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaitlinZalack
+  categories: [ HideSpawnMenu ]
   name: Kaitlin Zalack figurine
   description: "A tiny officer standing at attention, medical visor lowered and sidearm drawn. Though motionless, it stands with a steadfast courage, as if it would march into fire without hesitation."
   components:
@@ -2430,6 +2627,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronIrisNadesMoondancer
+  categories: [ HideSpawnMenu ]
   name: Iris 'Nades' Moondancer figurine
   description: "\"This Science Annex... To hold.....ME?\""
   components:
@@ -2441,6 +2639,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEidu-Hughe
+  categories: [ HideSpawnMenu ]
   name: Eidu-Hughe figurine
   description: "Number one Lizard in the sector, just don't tell that to anyone else."
   components:
@@ -2452,6 +2651,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronRuns-with-Boxes
+  categories: [ HideSpawnMenu ]
   name: Runs-with-Boxes figurine
   description: "The E4 Mafia's most dedicated fobbit."
   components:
@@ -2463,6 +2663,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronCassandraReed
+  categories: [ HideSpawnMenu ]
   name: Cassandra Reed figurine
   description: "A figurine depicting a human woman in a Chief MP uniform with black, straight hair and jade green eyes. Sports a forced looking smile. Regardless of the angle you look at the figure, it seems like the eyes are always staring directly at you."
   components:
@@ -2474,6 +2675,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronAustinAustieEventide
+  categories: [ HideSpawnMenu ]
   name: Austin 'Austie' Eventide figurine
   description: "\"Allan please add description\""
   components:
@@ -2485,6 +2687,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronTrinityRathens
+  categories: [ HideSpawnMenu ]
   name: Trinity Rathens figurine
   description: "Beaten and bloodied, Trinity holds out a cigar to share with a piercing stare and a smile on her face. You are unsure if the blood is hers or not, or if you should even accept the cigar, for she also has her hand resting on her pistol in its holster. Will you tempt fate?"
   components:
@@ -2496,6 +2699,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronSethXi
+  categories: [ HideSpawnMenu ]
   name: Seth Xi figurine
   description: "As you gaze upon the figurine, a sudden surge of motivation stirs within you. From afar comes the clash of blades and the shatter of glass, drifting toward you like the warning of an approaching storm."
   components:
@@ -2507,6 +2711,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEats-The-Crayons
+  categories: [ HideSpawnMenu ]
   name: Eats-The-Crayons figurine
   #description: ""
   components:
@@ -2518,6 +2723,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaliDarland
+  categories: [ HideSpawnMenu ]
   name: Kali Darland figurine
   description: "This is a young martian felinid. All craftsmanship is of the highest quality.\nShe holds her rifle slung over her shoulder, striking a smug, triumphant pose. Ninth time's the charm, darling."
   components:
@@ -2529,6 +2735,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronJackieCrateheadTaylor
+  categories: [ HideSpawnMenu ]
   name: Jackie 'Cratehead' Taylor figurine
   description: "SEVEN MEDICS! It took SEVEN to put you back together, Jackie. For gods sake watch the skies!"
   components:
@@ -2540,6 +2747,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronEinukoTwitchSteelfeather
+  categories: [ HideSpawnMenu ]
   name: Einuko 'Twitch' Steelfeather figurine
   description: "\/Made in collaboration with the Avalon Defence Forces.\/\n\"Feet first into hell. Always forward. Unto death.\"\n\n\"The patron saint of 'Bird JTAC' (and bad ideas.)\"\nA skilled forward observer with several medals for service and military achievements, see box for details.\n\nThis one comes with an optional parachute attachment stored under the base!\n/Clip to chest before dropping for best results./\n\n-!!- WARNING - DO NOT IGNITE -!!-"
   components:
@@ -2553,6 +2761,7 @@
 - type: entity
   parent: RMCBaseFigurinePatron
   id: RMCFigurinePatronKaraHathaway
+  categories: [ HideSpawnMenu ]
   name: Kara Hathaway figurine
   description: "\"You got a sandwich in there?\""
   components:

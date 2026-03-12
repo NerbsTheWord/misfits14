@@ -18,6 +18,7 @@
   abstract: true
   parent: SheetMetalBase
   id: CMSheetMetalBase
+  categories: [ HideSpawnMenu ]
   components:
     - type: Stack
       count: 50

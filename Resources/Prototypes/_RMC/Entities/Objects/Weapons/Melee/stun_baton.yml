@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCStunBatonDamaged
+  categories: [ HideSpawnMenu ]
   name: damaged stun baton
   description: A stun baton for incapacitating people with. This one seems pretty broken and beat up, especially around the on/off switch..
   components:

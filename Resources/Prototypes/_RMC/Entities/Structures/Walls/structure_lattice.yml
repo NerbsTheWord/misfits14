@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStructureDynamic
   id: RMCStructureLattice
+  categories: [ HideSpawnMenu ]
   name: structural lattice
   description: Like rebar, but in space.
   components:
@@ -77,6 +78,7 @@
 - type: entity
   parent: BaseStructureDynamic
   id: RMCStructureLatticeDouble
+  categories: [ HideSpawnMenu ]
   name: structural lattice
   description: Like rebar, but in space.
   components:

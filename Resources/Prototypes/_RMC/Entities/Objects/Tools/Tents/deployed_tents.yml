@@ -104,10 +104,12 @@
 - type: entity
   parent: RMCTentBase
   id: RMCTentUNMCStandard
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCTentBase
   id: RMCTentUNMCBig
+  categories: [ HideSpawnMenu ]
   name: UNMC Big Tent
   description: A standard UNMC Field Tent. This one is just a general purpose, large version. Unfold in a suitable location for micro-FOB vibes. ComTech not included. ENTRANCE TO THE SOUTH.
   components:
@@ -167,6 +169,7 @@
 - type: entity
   parent: RMCTentBase
   id: RMCTentUNMCStandardCommand
+  categories: [ HideSpawnMenu ]
   name: UNMC Command Tent
   description: A standard UNMC Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. Unfold in a suitable location to maximize usefulness. Staff Officer not included. ENTRANCE TO THE SOUTH.
   components:
@@ -182,6 +185,7 @@
 - type: entity
   parent: RMCTentBase
   id: RMCTentUNMCStandardMedical
+  categories: [ HideSpawnMenu ]
   name: UNMC Medical Tent
   description: A standard UNMC Medical Tent. This one comes equipped with advanced field surgery facilities. Unfold in a suitable location to maximize health gains. Surgical Tray not included. ENTRANCE TO THE SOUTH.
   components:
@@ -205,6 +209,7 @@
 - type: entity
   parent: RMCTentBase
   id: RMCTentUNMCExtended
+  categories: [ HideSpawnMenu ]
   name: UNMC Extended Field Tent
   description: A standard UNMC Tent. This one is just an extended general purpose version. Unfold in a suitable location for mega FOB vibes. Mess Tech not included. ENTRANCE TO THE SOUTH.
   components:

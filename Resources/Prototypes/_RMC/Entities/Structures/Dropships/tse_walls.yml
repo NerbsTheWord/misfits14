@@ -15,6 +15,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall1
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 1
@@ -24,6 +25,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 2
@@ -33,6 +35,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 3
@@ -42,6 +45,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall4
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 4
@@ -51,6 +55,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall5
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 5
@@ -60,6 +65,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall6
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 6
@@ -69,6 +75,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall7
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 7
@@ -78,6 +85,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall8
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 8
@@ -87,6 +95,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall9
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 9
@@ -96,6 +105,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall10
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 10
@@ -105,6 +115,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall11
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 11
@@ -114,6 +125,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall12
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 12
@@ -123,6 +135,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall13
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 13
@@ -132,6 +145,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall14
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 14
@@ -141,6 +155,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall15
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 15
@@ -150,6 +165,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall16
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 16
@@ -159,6 +175,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall17
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 17
@@ -168,6 +185,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall18
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 18
@@ -177,6 +195,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall19
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 19
@@ -186,6 +205,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall20
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 20
@@ -195,6 +215,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall21
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 21
@@ -204,6 +225,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall22
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 22
@@ -213,6 +235,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall23
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: 23
@@ -222,6 +245,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall24
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 24
@@ -231,6 +255,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall25
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 25
@@ -240,6 +265,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall26
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 26
@@ -249,6 +275,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall27
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 27
@@ -258,6 +285,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall28
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 28
@@ -267,6 +295,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall29
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 29
@@ -276,6 +305,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall30
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 30
@@ -285,6 +315,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall31
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 31
@@ -294,6 +325,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall32
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 32
@@ -303,6 +335,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall33
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 33
@@ -312,6 +345,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall34
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 34
@@ -321,6 +355,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall35
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 35
@@ -330,6 +365,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall36
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 36
@@ -339,6 +375,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall37
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 37
@@ -348,6 +385,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall38
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 38
@@ -357,6 +395,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall39
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 39
@@ -366,6 +405,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall40
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 40
@@ -375,6 +415,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall41
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 41
@@ -384,6 +425,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall42
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 42
@@ -393,6 +435,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall43
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 43
@@ -402,6 +445,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall44
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 44
@@ -411,6 +455,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall45
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 45
@@ -420,6 +465,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall46
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 46
@@ -429,6 +475,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall47
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 47
@@ -438,6 +485,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall48
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 48
@@ -447,6 +495,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall49
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 49
@@ -456,6 +505,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall50
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 50
@@ -465,6 +515,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall51
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 51
@@ -474,6 +525,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall52
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 52
@@ -483,6 +535,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall53
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 53
@@ -492,6 +545,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall54
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 54
@@ -501,6 +555,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall55
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 55
@@ -510,6 +565,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall56
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 56
@@ -519,6 +575,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall57
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 57
@@ -528,6 +585,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall58
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 58
@@ -537,6 +595,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall59
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 59
@@ -546,6 +605,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall60
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 60
@@ -555,6 +615,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall61
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 61
@@ -564,6 +625,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall62
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 62
@@ -573,6 +635,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall63
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 63
@@ -584,6 +647,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall64
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 64
@@ -593,6 +657,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall65
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 65
@@ -602,6 +667,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall66
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 66
@@ -611,6 +677,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall67
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 67
@@ -620,6 +687,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall68
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 68
@@ -629,6 +697,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall69
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 69
@@ -638,6 +707,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall70
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 70
@@ -647,6 +717,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall71
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 71
@@ -656,6 +727,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall72
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 72
@@ -665,6 +737,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall73
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 73
@@ -674,6 +747,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall74
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 74
@@ -685,6 +759,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall75
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 75
@@ -694,6 +769,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall76
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 76
@@ -705,6 +781,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall77
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 77
@@ -716,6 +793,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall78
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 78
@@ -725,6 +803,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall79
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 79
@@ -736,6 +815,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall80
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 80
@@ -747,6 +827,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall81
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 81
@@ -756,6 +837,7 @@
 - type: entity
   parent: RMCBaseTSEDropshipWall
   id: RMCTSEDropshipWall82
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       state: 82

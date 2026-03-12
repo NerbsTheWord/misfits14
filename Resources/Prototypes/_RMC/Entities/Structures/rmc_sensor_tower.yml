@@ -53,6 +53,7 @@
 - type: entity
   parent: RMCSensorTower
   id: RMCSensorTowerOn
+  categories: [ HideSpawnMenu ]
   suffix: "On, No break chance"
   components:
   - type: SensorTower
@@ -62,6 +63,7 @@
 - type: entity
   parent: RMCSensorTower
   id: RMCSensorTowerOffset
+  categories: [ HideSpawnMenu ]
   suffix: Offset
   components:
   - type: Sprite

@@ -19,6 +19,7 @@
 - type: entity
   abstract: true
   id: CMPlatformBaseBroken
+  categories: [ HideSpawnMenu ]
   name: destroyed platform
   description: A square metal surface resting on four legs. It has been destroyed.
   components:
@@ -33,6 +34,7 @@
   abstract: true
   parent: CMPlatformBase
   id: CMPlatformBaseDestructible
+  categories: [ HideSpawnMenu ]
   components:
   - type: Damageable
     damageContainer: Inorganic
@@ -161,6 +163,7 @@
 - type: entity
   parent: CMPlatformBase
   id: RMCPlatformRound
+  categories: [ HideSpawnMenu ]
   name: platform
   description: A square metal surface resting on four legs.
   placement:

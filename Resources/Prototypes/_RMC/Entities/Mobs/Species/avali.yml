@@ -2,6 +2,7 @@
   save: false
   parent: RMCBaseMobSpeciesOrganic
   id: CMMobAvali
+  categories: [ HideSpawnMenu ]
   name: Urist C.M McRaptor
   suffix: RMC14
   components:

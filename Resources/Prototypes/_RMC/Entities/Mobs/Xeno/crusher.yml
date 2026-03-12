@@ -8,6 +8,7 @@
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
   id: CMXenoCrusherBase
+  categories: [ HideSpawnMenu ]
   name: Crusher
   description: A huge alien with an enormous armored crest.
   components:

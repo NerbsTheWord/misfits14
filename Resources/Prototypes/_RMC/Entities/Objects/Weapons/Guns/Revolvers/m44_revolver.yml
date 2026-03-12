@@ -64,6 +64,7 @@
 - type: entity
   parent: RMCWeaponRevolverM44
   id: RMCWeaponRevolverM44Marksman
+  categories: [ HideSpawnMenu ]
   suffix: Marksman
   components:
   - type: RevolverAmmoProvider
@@ -72,6 +73,7 @@
 - type: entity
   parent: RMCWeaponRevolverM44
   id: RMCWeaponRevolverM44Empty
+  categories: [ HideSpawnMenu ]
   suffix: Empty
   components:
   - type: RevolverAmmoProvider
@@ -80,6 +82,7 @@
 
 - type: entity
   id: RMCBaseSpeedLoader44
+  categories: [ HideSpawnMenu ]
   name: "M44 speed loader (.44)"
   parent: BaseItem
   abstract: true

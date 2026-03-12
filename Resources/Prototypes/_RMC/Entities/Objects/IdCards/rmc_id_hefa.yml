@@ -9,6 +9,7 @@
 - type: entity
   parent: RMCIDCardHEFAShrapnelsworn
   id: RMCIDCardHEFAShrapnelswornMelee
+  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: CMHEFAShrapnelswornMelee

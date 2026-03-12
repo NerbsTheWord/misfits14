@@ -1,5 +1,6 @@
 - type: entity
   id: RMCBaseBush
+  categories: [ HideSpawnMenu ]
   suffix: RMCBaseBush
   abstract: true
   name: bush

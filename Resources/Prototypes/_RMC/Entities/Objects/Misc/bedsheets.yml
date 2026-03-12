@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMBedsheetBase
+  categories: [ HideSpawnMenu ]
   name: bedsheet
   description: A surprisingly soft linen bedsheet.
   abstract: true

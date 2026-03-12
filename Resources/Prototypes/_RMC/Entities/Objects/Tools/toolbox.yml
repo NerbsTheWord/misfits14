@@ -32,6 +32,7 @@
   name: emergency toolbox
   parent: [RMCToolboxBase, ToolboxEmergency]
   id: RMCToolboxEmergency
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Tools/Toolboxes/toolbox_red.rsi
@@ -60,6 +61,7 @@
   name: electrical toolbox
   parent: [RMCToolboxBase, ToolboxElectrical]
   id: RMCToolboxElectrical
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Tools/Toolboxes/toolbox_yellow.rsi
@@ -90,6 +92,7 @@
   name: mechanical toolbox
   parent: [RMCToolboxBase, ToolboxMechanical]
   id: RMCToolboxMechanical
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Tools/Toolboxes/toolbox_blue.rsi
@@ -132,6 +135,7 @@
   description: A compact and suspicious looking toolbox. This one is small enough to fit into a bag.
   parent: RMCToolboxBase
   id: RMCToolboxSyndicate
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Tools/Toolboxes/toolbox_syndi.rsi

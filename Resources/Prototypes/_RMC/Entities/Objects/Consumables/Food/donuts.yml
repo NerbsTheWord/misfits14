@@ -60,6 +60,7 @@
 - type: entity
   parent: RMCBoxDonutEmpty
   id: RMCBoxDonut
+  categories: [ HideSpawnMenu ]
   suffix: ""
   components:
   - type: EntityTableContainerFill
@@ -87,6 +88,7 @@
 - type: entity
   parent: FoodInjectableBase
   id: RMCFoodDonut
+  categories: [ HideSpawnMenu ]
   name: donut
   description: A donut. Rare on the frontier, so take care of it.
   components:

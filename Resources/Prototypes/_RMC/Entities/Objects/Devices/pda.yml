@@ -1,6 +1,7 @@
 - type: entity
   parent: CentcomPDA # Not AdminPDA, because then this would be both a health scanner and a base health analyzer, which is a little bit stupid.
   id: RMCAdminPDA
+  categories: [ HideSpawnMenu ]
   name: Admin PDA
   suffix: Admin
   description: If you are not an admin please return this PDA to the nearest admin.

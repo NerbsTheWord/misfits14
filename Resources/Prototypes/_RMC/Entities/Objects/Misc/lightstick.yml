@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStructure
   id: RMCLightStick
+  categories: [ HideSpawnMenu ]
   name: red lightstick
   description: You can stick them in the ground.
   placement:

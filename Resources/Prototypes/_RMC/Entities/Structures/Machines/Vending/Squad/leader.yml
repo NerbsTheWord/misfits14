@@ -337,6 +337,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitRifleM4SPR
+  categories: [ HideSpawnMenu ]
   name: M4SPR marksman kit
   description: Contains a M4SPR rifle, a 4x telescopic scope, a suppressor, an extended barrel and 2 AP magazines.
   components:
@@ -356,6 +357,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitCM54C
+  categories: [ HideSpawnMenu ]
   name: M54C rifle kit
   description: Contains a M54C rifle, an angled grip, a suppressor, an extended barrel and 2 AP magazines.
   components:
@@ -375,6 +377,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitEngineering
+  categories: [ HideSpawnMenu ]
   name: engineering supply kit
   description: Contains a construction pouch with 50 metal, 30 plasteel and 15 barbed wire, and an electronics pouch with three high-capacity power cells.
   components:
@@ -395,6 +398,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitPyroMini
+  categories: [ HideSpawnMenu ]
   name: M34 pyrotechnician support kit
   description: Contains a M34 incinerator unit, a G4-1 fueltank, 3 incinerator tanks, and a portable fire extinguisher.
   components:

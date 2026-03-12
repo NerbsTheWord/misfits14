@@ -5,6 +5,7 @@
   save: false
   parent: MobSkeletonPerson
   id: CMMobSkeletonPerson
+  categories: [ HideSpawnMenu ]
   name: Urist C.M McSkelly
   suffix: RMC14
   components:

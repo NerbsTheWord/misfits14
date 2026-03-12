@@ -1,6 +1,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitHonorGuard
+  categories: [ HideSpawnMenu ]
   name: honor guard kit
   description: A case containing the equipment for an Honor Guard.
   components:

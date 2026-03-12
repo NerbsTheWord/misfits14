@@ -48,6 +48,7 @@
 - type: entity
   parent: RMCAreaSpace
   id: RMCAreaSpaceHighalt
+  categories: [ HideSpawnMenu ]
   name: High Altitude
   components:
   - type: Sprite

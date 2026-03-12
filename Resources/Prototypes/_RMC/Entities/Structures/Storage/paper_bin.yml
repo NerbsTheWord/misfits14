@@ -1,6 +1,7 @@
 - type: entity
   parent: PaperBin
   id: CMPaperBin
+  categories: [ HideSpawnMenu ]
   suffix: Empty
   components:
   - type: Sprite

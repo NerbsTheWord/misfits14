@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: XenoBaseProjectile
+  categories: [ HideSpawnMenu ]
   name: projectile
   components:
   - type: Clickable
@@ -34,6 +35,7 @@
 - type: entity
   abstract: true
   id: XenoSpitImpactSounds
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     soundHit:

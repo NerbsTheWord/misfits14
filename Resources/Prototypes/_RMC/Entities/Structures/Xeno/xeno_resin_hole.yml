@@ -1,5 +1,6 @@
 - type: entity
   id: XenoResinHole
+  categories: [ HideSpawnMenu ]
   name: resin trap
   description: It looks like a hidey hole.
   placement:

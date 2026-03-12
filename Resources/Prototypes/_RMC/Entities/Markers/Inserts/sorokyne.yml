@@ -3,6 +3,7 @@
   abstract: true
   parent: RMCMapInsertBase
   id: RMCMapInsertSorokyneBase
+  categories: [ HideSpawnMenu ]
   suffix: Insert Sorokyne
   components:
   - type: MapInsert

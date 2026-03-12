@@ -1,5 +1,6 @@
 - type: entity
   id: RMCBasePipe
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Item

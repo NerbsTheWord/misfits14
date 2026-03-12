@@ -337,6 +337,7 @@
 
 - type: entity
   id: RMCIDCardAegis
+  categories: [ HideSpawnMenu ]
   name: AEGIS Access Badge
   description: High-Level AEGIS Access Badge, granting access to many of their restricted areas and equipment. Required to unlock AEGIS crates.
   components:

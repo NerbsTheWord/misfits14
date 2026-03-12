@@ -160,6 +160,7 @@
 - type: entity
   parent: RMCSmartGunPVENoCamo
   id: RMCSmartGunPVE
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Objects/Weapons/Guns/SmartGuns/ml66a.rsi
@@ -183,6 +184,7 @@
 - type: entity
   parent: RMCSmartGunPVENoCamo
   id: RMCSmartGunPMCPVE
+  categories: [ HideSpawnMenu ]
   name: ML79A heavy support gun
   description: The actual firearm in the Support Gun System, modified for We-Ya PMCs. Essentially a heavy, mobile machinegun.
   suffix: PVE, PMC
@@ -258,6 +260,7 @@
 - type: entity
   parent: RMCSmartGunPVENoCamo
   id: RMCSmartGunRCMPVE
+  categories: [ HideSpawnMenu ]
   name: ML66C general purpose machine gun
   description: A heavy, mobile machinegun used by the Royal Crown Marines. Heavily modified from the UN's ML66A platform, it fires 10x30mm holotargeting rounds. # In parity this is 10x28 HT but I don't want to make more unnecessary duplicate gear
   suffix: PVE, RCM

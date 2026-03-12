@@ -7,6 +7,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackBishop
+  categories: [ HideSpawnMenu ]
   name: black bishop bottle
   components:
   - type: Sprite
@@ -15,6 +16,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackKing
+  categories: [ HideSpawnMenu ]
   name: black king bottle
   components:
   - type: Sprite
@@ -23,6 +25,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackKnight
+  categories: [ HideSpawnMenu ]
   name: black knight bottle
   components:
   - type: Sprite
@@ -31,6 +34,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackPawn
+  categories: [ HideSpawnMenu ]
   name: black pawn bottle
   components:
   - type: Sprite
@@ -39,6 +43,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackQueen
+  categories: [ HideSpawnMenu ]
   name: black queen bottle
   components:
   - type: Sprite
@@ -47,6 +52,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessBlackRook
+  categories: [ HideSpawnMenu ]
   name: black rook bottle
   components:
   - type: Sprite
@@ -55,6 +61,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhiteKing
+  categories: [ HideSpawnMenu ]
   name: white king bottle
   components:
   - type: Sprite
@@ -63,6 +70,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhiteKnight
+  categories: [ HideSpawnMenu ]
   name: white knight bottle
   components:
   - type: Sprite
@@ -71,6 +79,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhitePawn
+  categories: [ HideSpawnMenu ]
   name: white pawn bottle
   components:
   - type: Sprite
@@ -79,6 +88,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhiteBishop
+  categories: [ HideSpawnMenu ]
   name: white bishop bottle
   components:
   - type: Sprite
@@ -87,6 +97,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhiteQueen
+  categories: [ HideSpawnMenu ]
   name: white queen bottle
   components:
   - type: Sprite
@@ -95,6 +106,7 @@
 - type: entity
   parent: RMCDrinkAlcoholVodkaChess
   id: RMCDrinkAlcoholVodkaChessWhiteRook
+  categories: [ HideSpawnMenu ]
   name: white rook bottle
   components:
   - type: Sprite

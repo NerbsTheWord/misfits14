@@ -1,5 +1,6 @@
 - type: entity
   id: CMChemMaster
+  categories: [ HideSpawnMenu ]
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: ChemMaster 3000
   description: An industrial grade chemical manipulator with pill and bottle production included.

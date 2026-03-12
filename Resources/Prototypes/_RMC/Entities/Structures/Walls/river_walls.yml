@@ -3,6 +3,7 @@
 - type: entity
   abstract: true
   id: RMCWallRiverBase
+  categories: [ HideSpawnMenu ]
   description: A huge chunk of metal used to separate rooms.
   placement:
     mode: SnapgridCenter

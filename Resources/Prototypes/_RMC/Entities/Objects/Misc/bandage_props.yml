@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCDirtBandageProp
+  categories: [ HideSpawnMenu ]
   name: dirty bandages
   description: Some used gauze.
   components:

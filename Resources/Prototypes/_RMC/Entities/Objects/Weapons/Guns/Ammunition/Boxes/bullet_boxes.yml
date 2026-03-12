@@ -2,6 +2,7 @@
   abstract: true
   parent: BaseItem
   id: RMCBoxBulletsBase
+  categories: [ HideSpawnMenu ]
   name: rifle ammunition box (???)
   description: An unknown ammunition box. It comes with a leather strap allowing someone to wear it on their back.
   components:

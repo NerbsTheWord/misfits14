@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingShoesBase
   id: RMCShoesLaceup
+  categories: [ HideSpawnMenu ]
   name: laceup shoes
   description: The height of fashion, and they're pre-polished!
   components:

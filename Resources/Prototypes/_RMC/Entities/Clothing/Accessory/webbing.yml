@@ -2,6 +2,7 @@
   parent: BaseItem
   abstract: true
   id: CMWebbingBase
+  categories: [ HideSpawnMenu ]
   name: webbing
   components:
   - type: Sprite

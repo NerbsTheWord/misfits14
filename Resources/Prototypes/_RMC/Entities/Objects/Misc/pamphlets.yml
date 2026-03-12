@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMPamphlet
+  categories: [ HideSpawnMenu ]
   name: instructional pamphlet
   description: A pamphlet used to quickly impart vital knowledge.
   components:

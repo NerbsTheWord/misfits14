@@ -23,6 +23,7 @@
 - type: entity
   parent: RMCHeadsetRoyalMarine
   id: RMCHeadsetRoyalMarineLeader
+  categories: [ HideSpawnMenu ]
   name: royal marine leader's headset
   description: A sleek headset used by the Royal Crown Marines. Low profile enough to fit under their unique helmets. 
   components:
@@ -37,6 +38,7 @@
 - type: entity
   parent: RMCHeadsetRoyalMarine
   id: RMCHeadsetRoyalMarineOfficer
+  categories: [ HideSpawnMenu ]
   name: royal marine officer's headset
   description: A sleek headset used by the Royal Crown Marines. Low profile enough to fit under their unique helmets. This one is heavier with the weight of responsibility.
   components:
@@ -51,6 +53,7 @@
 - type: entity
   parent: RMCHeadsetRoyalMarine
   id: RMCHeadsetRoyalMarinePVE
+  categories: [ HideSpawnMenu ]
   name: royal marine's headset
   suffix: PVE
   description: A sleek headset used by the Royal Crown Marines. Low profile enough to fit under their unique helmets. 

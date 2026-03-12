@@ -2,6 +2,7 @@
 - type: entity
   parent: Matchbox
   id: CMMatchBook
+  categories: [ HideSpawnMenu ]
   name: lucky sloths matchbook
   description: A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Sloths, but you'll be anything but lucky when you burn your hand trying to light a match on this.
   components:

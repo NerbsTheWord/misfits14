@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: BarbedWireBase
+  categories: [ HideSpawnMenu ]
   parent: BaseItem
   name: barbed wire
   suffix: Filled

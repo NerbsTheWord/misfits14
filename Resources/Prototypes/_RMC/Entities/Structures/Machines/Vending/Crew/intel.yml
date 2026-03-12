@@ -324,6 +324,7 @@
 - type: entity
   parent: RMCKitBase
   id: RMCKitIntel
+  categories: [ HideSpawnMenu ]
   name: field intelligence support kit
   components:
   - type: Storage

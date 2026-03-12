@@ -114,6 +114,7 @@
   parent: WeaponRifleM4SPR
   name: M5SPR battle rifle
   id: WeaponRifleM5SPR
+  categories: [ HideSpawnMenu ]
   description: The M5SPR battle rifle is a modified version of the M4SPR, able to chamber High Velocity Piercing rounds, and equipped a two-burst configuration.
   components:
   - type: Sprite
@@ -238,6 +239,7 @@
 - type: entity
   parent: WeaponRifleM4SPR
   id: WeaponRifleM4SPRFilled
+  categories: [ HideSpawnMenu ]
   suffix: Filled
   components:
   - type: ItemSlots

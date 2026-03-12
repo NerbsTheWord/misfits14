@@ -79,6 +79,7 @@
 - type: entity
   parent: RMCWeaponRevolverSpearhead
   id: RMCWeaponRevolverSpearheadTactitcal
+  categories: [ HideSpawnMenu ]
   components:
   - type: AttachableHolder
     slots:
@@ -92,6 +93,7 @@
 - type: entity
   parent: RMCWeaponRevolverSpearhead
   id: RMCWeaponRevolverSpearheadCustom
+  categories: [ HideSpawnMenu ]
   name: Spearhead custom autorevolver
   description: An automatic revolver chambered in .357, custom made of darker metal and with a wooden handle, clearly made for a person with taste in mind.
   components:
@@ -110,6 +112,7 @@
 - type: entity
   parent: RMCWeaponRevolverSpearhead
   id: RMCWeaponRevolverSpearheadEmpty
+  categories: [ HideSpawnMenu ]
   suffix: Empty
   components:
   - type: RevolverAmmoProvider
@@ -124,6 +127,7 @@
 
 - type: entity
   id: RMCBaseSpeedLoader357
+  categories: [ HideSpawnMenu ]
   name: "Speed loader (.357)"
   parent: BaseItem
   abstract: true

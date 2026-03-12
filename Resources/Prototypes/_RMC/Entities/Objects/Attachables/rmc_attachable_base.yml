@@ -2,6 +2,7 @@
   parent: BaseItem
   abstract: true
   id: RMCAttachableBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: Item
     size: Small

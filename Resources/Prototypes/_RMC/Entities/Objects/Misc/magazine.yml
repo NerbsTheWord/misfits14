@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseItem
   id: RMCMagazineBootsN160
+  categories: [ HideSpawnMenu ]
   name: Boots! Issue No.160.
   description: The only official UNMC magazine, the headline reads 'Corporate Liaison 'emotionally exhausted' from screwing so many people over.'
   components:
@@ -109,6 +110,7 @@
 - type: entity
   parent: BaseItem
   id: RMCMagazineWeYaOrrery
+  categories: [ HideSpawnMenu ]
   name: WeYa Orrery Issue No.65.
   description: A WeYa owned magazine, covering workplace gossip and corporate news. The cover shows a rugged, colony embedded in a cliff face, with the headline 'Disaster at Danton'
   components:

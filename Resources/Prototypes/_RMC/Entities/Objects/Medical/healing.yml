@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMBaseHealingItem
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite

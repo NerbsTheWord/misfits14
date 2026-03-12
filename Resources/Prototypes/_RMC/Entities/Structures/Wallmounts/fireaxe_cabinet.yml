@@ -2,6 +2,7 @@
 - type: entity
   parent: FireAxeCabinet
   id: RMCFireAxeCabinet
+  categories: [ HideSpawnMenu ]
   suffix: RMC
   components:
   - type: AccessReader

@@ -2,6 +2,7 @@
   save: false
   parent: RMCBaseMobSpeciesOrganic
   id: CMMobSlimePerson
+  categories: [ HideSpawnMenu ]
   name: Urist C.M McSlime
   suffix: RMC14
   components:

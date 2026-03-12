@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCRackParts
+  categories: [ HideSpawnMenu ]
   name: rack parts
   description: A collapsable kit for a three-shelf rack with four telescoping legs. Some assembly required.
   components:

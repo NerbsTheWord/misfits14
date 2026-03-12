@@ -1,5 +1,6 @@
 - type: entity
   id: RMCInflatableWall
+  categories: [ HideSpawnMenu ]
   name: inflatable wall
   description: An inflated membrane. Activate to deflate. Do not puncture.
   components:
@@ -46,6 +47,7 @@
 - type: entity
   parent: BaseMaterialDoor
   id: RMCInflatableDoor
+  categories: [ HideSpawnMenu ]
   name: inflatable door
   description: An inflated membrane. Activate to deflate. Now with a door. Do not puncture.
   components:

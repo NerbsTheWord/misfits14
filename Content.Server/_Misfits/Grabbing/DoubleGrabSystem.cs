@@ -13,6 +13,7 @@ using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Movement.Events;
+using Content.Shared.Mind.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -60,6 +61,11 @@ public sealed class DoubleGrabSystem : EntitySystem
         {
             return;
         }
+
+        // Only allow double-grabbing entities with an active mind (i.e. player-controlled).
+        // Prevents choking NPCs, animals, and any AI-controlled mob.
+        if (!TryComp<MindContainerComponent>(args.Target, out var mind) || !mind.HasMind)
+            return;
 
         StartDoubleGrab(args.User, args.Target);
         args.Handled = true;

@@ -36,6 +36,7 @@
 - type: entity
   parent: RMCOrbitalCannonDerelict
   id: RMCOrbitalCannon
+  categories: [ HideSpawnMenu ]
   name: orbital cannon
   description: "The UNMC Orbital Cannon System. Used for shooting large targets on the planet that is orbited. It accelerates its payload with solid fuel for devastating results upon impact."
   components:
@@ -48,6 +49,7 @@
 
 - type: entity
   id: RMCOrbitalCannonFuel
+  categories: [ HideSpawnMenu ]
   name: solid fuel
   placement:
     mode: SnapgridCenter
@@ -72,6 +74,7 @@
 - type: entity
   abstract: true
   id: RMCOrbitalCannonWarheadBase
+  categories: [ HideSpawnMenu ]
   name: orbital warhead
   placement:
     mode: SnapgridCenter
@@ -156,6 +159,7 @@
 
 - type: entity
   id: RMCOrbitalCannonWarheadSpawner
+  categories: [ HideSpawnMenu ]
   name: random orbital warhead
   description: "This is a random orbital warhead."
   placement:
@@ -174,6 +178,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCOrbitalCannonExplosionExplosive
+  categories: [ HideSpawnMenu ]
   name: explosive OB explosion
   suffix: FIRES AN OB!!!
   placement:
@@ -203,6 +208,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCOrbitalCannonExplosionAegis
+  categories: [ HideSpawnMenu ]
   name: explosive Aegis OB explosion
   suffix: FIRES AN OB!!!
   placement:
@@ -233,6 +239,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCOrbitalCannonExplosionIncendiary
+  categories: [ HideSpawnMenu ]
   name: incendiary OB explosion
   suffix: FIRES AN OB!!!
   placement:
@@ -253,6 +260,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCOrbitalCannonExplosionCluster
+  categories: [ HideSpawnMenu ]
   name: cluster OB explosion
   suffix: FIRES AN OB!!!
   placement:
@@ -276,6 +284,7 @@
 
 - type: entity
   id: RMCOrbitalCannonComputer
+  categories: [ HideSpawnMenu ]
   name: orbital cannon console
   description: "The console controlling the orbital cannon loading systems."
   placement:
@@ -321,6 +330,7 @@
 
 - type: entity
   id: RMCOrbitalCannonCableConnector
+  categories: [ HideSpawnMenu ]
   name: cannon cable connector
   description: "A connector for the large cannon cables."
   placement:
@@ -347,6 +357,7 @@
 
 - type: entity
   id: RMCOrbitalCannonCable
+  categories: [ HideSpawnMenu ]
   name: cannon cables
   description: "Some large cables."
   placement:
@@ -386,6 +397,7 @@
 # Tray
 - type: entity
   id: RMCOrbitalCannonTray
+  categories: [ HideSpawnMenu ]
   name: loading tray
   description: "The orbital cannon's loading tray."
   suffix: Cannon spawns with one that's linked to it.

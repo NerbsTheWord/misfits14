@@ -88,6 +88,7 @@
   abstract: true
   parent: RMCBaseWeaponShotgun
   id: RMCBaseBreechloader
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
@@ -116,6 +117,7 @@
   abstract: true
   parent: BaseCartridge
   id: CMShellShotgunBase
+  categories: [ HideSpawnMenu ]
   name: handful of shotgun shell
   description: A handful of rounds to reload on the go.
   components:

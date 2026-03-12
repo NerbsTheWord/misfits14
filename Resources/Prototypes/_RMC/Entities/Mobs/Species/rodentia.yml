@@ -3,6 +3,7 @@
   name: Urist McRat
   parent: RMCBaseMobSpeciesOrganic
   id: CMMobRodentia
+  categories: [ HideSpawnMenu ]
   suffix: RMC14
   components:
   - type: HumanoidAppearance

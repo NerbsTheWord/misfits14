@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStorageItem
   id: CMFirstAidKit
+  categories: [ HideSpawnMenu ]
   name: first-aid kit
   description: It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack.
   components:

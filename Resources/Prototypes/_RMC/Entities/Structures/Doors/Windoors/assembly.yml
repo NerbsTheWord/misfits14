@@ -52,6 +52,7 @@
 - type: entity
   parent: CMWindoorAssembly
   id: CMWindoorAssemblySecure
+  categories: [ HideSpawnMenu ]
   name: secure windoor assembly
   description: It opens, it closes, and you can see through it! This one looks tough.
   components:

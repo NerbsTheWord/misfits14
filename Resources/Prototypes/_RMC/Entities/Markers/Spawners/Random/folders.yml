@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomFolder
+  categories: [ HideSpawnMenu ]
   name: random folder spawner
   components:
     - type: Sprite

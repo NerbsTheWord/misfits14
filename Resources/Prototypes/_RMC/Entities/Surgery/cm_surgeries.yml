@@ -5,6 +5,7 @@
 - type: entity
   parent: CMSurgeryBase
   id: CMSurgeryOpenIncision
+  categories: [ HideSpawnMenu ]
   name: Open Incision
   components:
   - type: CMSurgery
@@ -16,6 +17,7 @@
 - type: entity
   parent: CMSurgeryBase
   id: CMSurgeryCloseIncision
+  categories: [ HideSpawnMenu ]
   name: Close Incision
   components:
   - type: CMSurgery
@@ -28,6 +30,7 @@
 - type: entity
   parent: CMSurgeryBase
   id: CMSurgeryOpenRibcage
+  categories: [ HideSpawnMenu ]
   name: Open Ribcage
   components:
   - type: CMSurgery
@@ -41,6 +44,7 @@
 - type: entity
   parent: CMSurgeryBase
   id: CMSurgeryAlienEmbryoRemoval
+  categories: [ HideSpawnMenu ]
   name: Alien Embryo Removal
   description: Removal of an alien embryo from the body.
   components:
@@ -57,6 +61,7 @@
 - type: entity
   parent: CMSurgeryBase
   id: RMCSurgeryAlienHeartRemoval
+  categories: [ HideSpawnMenu ]
   name: Experimental Harvesting Surgery
   description: Harvest the heart of an deceased alien.
   components:

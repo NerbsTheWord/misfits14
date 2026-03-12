@@ -1,6 +1,7 @@
 - type: entity
   parent: FloorTileItemBase
   id: CMTileItemBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite

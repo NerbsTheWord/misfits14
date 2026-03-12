@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CMSoap
+  categories: [ HideSpawnMenu ]
   name: soap
   description: A cheap bar of soap. Doesn't smell.
   components:

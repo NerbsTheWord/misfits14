@@ -60,6 +60,7 @@
 - type: entity
   parent: CMWindowDirectional
   id: RMCWindowDirectionalAltDrawDepth
+  categories: [ HideSpawnMenu ]
   suffix: Alt Drawdepth
   components:
   - type: Sprite
@@ -67,6 +68,7 @@
 
 - type: entity
   id: CMWindowReinforcedDirectional
+  categories: [ HideSpawnMenu ]
   parent: CMWindowDirectional
   name: reinforced window
   description: A glass window reinforced with bracing rods. It looks rather strong. Might take a few good hits to shatter it.
@@ -110,6 +112,7 @@
 
 - type: entity
   id: CMWindowStrongReinforcedDirectional
+  categories: [ HideSpawnMenu ]
   parent: CMWindowDirectional
   name: strong reinforced window
   description: A glass window reinforced with bracing rods. It looks very strong. You can't break it with your fists.
@@ -142,6 +145,7 @@
 
 - type: entity
   id: CMWindowTintedDirectional
+  categories: [ HideSpawnMenu ]
   parent: CMWindowDirectional
   name: tinted window
   description: A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it.
@@ -162,6 +166,7 @@
 
 - type: entity
   id: RMCWindowDirectionalBlue
+  categories: [ HideSpawnMenu ]
   parent: CMWindowDirectional
   suffix: Blue
   components:
@@ -170,6 +175,7 @@
 
 - type: entity
   id: CMWindowUltraDirectional
+  categories: [ HideSpawnMenu ]
   parent: CMWindowDirectional
   name: ultra-reinforced window
   description: An ultra-reinforced window designed to keep the briefing podium a secure area.

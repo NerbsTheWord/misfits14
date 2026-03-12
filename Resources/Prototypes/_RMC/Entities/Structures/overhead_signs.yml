@@ -21,6 +21,7 @@
 - type: entity
   parent: RMCOverheadSign
   id: RMCOverheadSignNeon
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite
@@ -45,6 +46,7 @@
 - type: entity
   parent: RMCOverheadSign
   id: RMCOverheadSignBarCrow
+  categories: [ HideSpawnMenu ]
   name: The Drowning Crow Bar
   description: A sign for 'The Drowning Crow' bar. The sign is old and delapitated.
   components:

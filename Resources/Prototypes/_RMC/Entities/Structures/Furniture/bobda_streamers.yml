@@ -1,5 +1,6 @@
 - type: entity
   id: RMCStreamerBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter

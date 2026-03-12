@@ -1,6 +1,7 @@
 - type: entity
   parent: CMSniperEquipmentCase
   id: RMCScoutSniperSniperEquipmentCase
+  categories: [ HideSpawnMenu ]
   name: scout-sniper equipment case
   description: "A large case containing an M96S-B suppressed scoped rifle, its corresponding head-mounted sight, six spare magazines of standard ammo, and a bipod. \n\nNOTE: You cannot put items back inside this case."
   suffix: Sniper
@@ -41,6 +42,7 @@
 - type: entity
   parent: CMSniperEquipmentCase
   id: RMCScoutSniperMarksmanEquipmentCase
+  categories: [ HideSpawnMenu ]
   name: scout-sniper equipment case
   description: "A large case containing an L112A1 designated marksman rifle, its corresponding head-mounted sight, ten spare magazines of squash-head rounds, and a bipod."
   suffix: Marksman

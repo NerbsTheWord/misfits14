@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCBucket
+  categories: [ HideSpawnMenu ]
   name: bucket
   description: It's a bucket. Holds 120 units.
   components:

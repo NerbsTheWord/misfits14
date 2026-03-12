@@ -25,6 +25,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerCommand
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     minimapColor: '#2D3FA2EE'
@@ -139,6 +140,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerEngineering
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     minimapColor: '#C19504E7'
@@ -262,6 +264,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerShipboard
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     minimapColor: '#A22D2DEE'
@@ -501,6 +504,7 @@
   abstract: true
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerHallways
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaAlmayerHallways
@@ -649,6 +653,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerStairClone
+  categories: [ HideSpawnMenu ]
   name: Lower Deck Stairs
   components:
   - type: Sprite
@@ -670,6 +675,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerMaint
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaAlmayerMaint
@@ -873,6 +879,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerLiving
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     minimapColor: '#6C6767D8'
@@ -1125,6 +1132,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerMedical
+  categories: [ HideSpawnMenu ]
   components:
   - type: Area
     minimapColor: '#3DBF75EE'
@@ -1293,6 +1301,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerSquads
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaAlmayerSquads
@@ -1367,6 +1376,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerPowered
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaAlmayerPowered
@@ -1395,6 +1405,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerLifeboatPumps
+  categories: [ HideSpawnMenu ]
   name: Lifeboat Fuel Pumps
   components:
   - type: Sprite
@@ -1439,6 +1450,7 @@
   abstract: true
   parent: RMCAreaSpace
   id: RMCAreaSpaceAlmayer
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaSpaceAlmayer
@@ -1457,6 +1469,7 @@
 - type: entity
   parent: RMCAreaAlmayer
   id: RMCAreaAlmayerEvacuation
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Areas/areas.rsi

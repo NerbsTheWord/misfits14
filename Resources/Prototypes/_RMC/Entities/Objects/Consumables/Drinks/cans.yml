@@ -1,6 +1,7 @@
 - type: entity
   parent: DrinkCanBaseFull
   id: CMDrinkCanBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: GenericVisualizer
@@ -312,6 +313,7 @@
 - type: entity
   parent: DrinkCanPack
   id: RMCBeerPack
+  categories: [ HideSpawnMenu ]
   name: Sequoia beer pack
   description: A pack of Sequoia beer cans.
   components:

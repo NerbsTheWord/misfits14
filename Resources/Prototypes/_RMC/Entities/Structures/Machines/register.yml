@@ -68,6 +68,7 @@
 - type: entity
   parent: RMCCashRegisterBase
   id: RMCCashRegisterOff
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: register_off
@@ -79,6 +80,7 @@
 - type: entity
   parent: RMCCashRegisterBase
   id: RMCCashRegisterOn
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: register_on

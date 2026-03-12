@@ -96,6 +96,7 @@
   parent: RMCWeaponSMGPDW90
   name: L57 submachine gun
   id: RMCWeaponSMGPDW90TSE
+  categories: [ HideSpawnMenu ]
   description: A PDW90 submachine gun in the colors of the Royal Crown Marines, manufactured for the TSE's armed forces under license. This weapon only accepts 5.7x28mm rounds.
   suffix: Filled
   components:

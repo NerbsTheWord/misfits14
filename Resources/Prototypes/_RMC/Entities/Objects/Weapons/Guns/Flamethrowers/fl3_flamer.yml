@@ -53,6 +53,7 @@
 - type: entity
   parent: RMCWeaponFL3Flamer
   id: RMCWeaponFL3FlamerPVE
+  categories: [ HideSpawnMenu ]
   suffix: PVE
   components:
   - type: RMCMagneticItem
@@ -62,6 +63,7 @@
 - type: entity
   parent: RMCWeaponFL3Flamer
   id: RMCWeaponFL3FlamerWhiteout
+  categories: [ HideSpawnMenu ]
   suffix: Whiteout
   components:
   - type: RMCMagneticItem

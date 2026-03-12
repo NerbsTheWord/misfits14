@@ -3,6 +3,7 @@
   abstract: true
   parent: RMCMapInsertBase
   id: RMCMapInsertTrijentBase
+  categories: [ HideSpawnMenu ]
   suffix: Insert Trijent
   components:
   - type: MapInsert

@@ -4,6 +4,7 @@
 - type: entity
   parent: FireExtinguisher
   id: CMFireExtinguisher
+  categories: [ HideSpawnMenu ]
   name: fire extinguisher
   description: A traditional red fire extinguisher.
   components:

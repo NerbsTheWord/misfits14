@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerRandomClothingBase
+  categories: [ HideSpawnMenu ]
   name: gun spawner
   description: spawns a random clothing item
   suffix: Base

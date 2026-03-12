@@ -3,6 +3,7 @@
   abstract: true
   parent: RMCMapInsertBase
   id: RMCMapInsertFiorinaBase
+  categories: [ HideSpawnMenu ]
   suffix: Insert Fiorina
   components:
   - type: MapInsert

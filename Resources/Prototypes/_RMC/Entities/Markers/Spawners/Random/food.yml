@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCDrinkSpawner
+  categories: [ HideSpawnMenu ]
   name: Random Drink Spawner
   components:
     - type: Sprite
@@ -53,6 +54,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCFoodSpawner
+  categories: [ HideSpawnMenu ]
   name: Random Food Spawner
   components:
     - type: Sprite

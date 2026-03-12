@@ -1,5 +1,6 @@
 - type: entity
   id: CMWashingMachine
+  categories: [ HideSpawnMenu ]
   parent: BaseStructure
   name: washing machine
   description: The WM-321 is a rugged, cylindrical powerhouse, equipped with a transparent window. This one is not operational.

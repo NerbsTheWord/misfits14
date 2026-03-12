@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: RMCPortableVendor
+  categories: [ HideSpawnMenu ]
   name: automated storage briefcase
   description: A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items.
   components:

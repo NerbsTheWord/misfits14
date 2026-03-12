@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseMachinePowered
   id: RMCMedilathe
+  categories: [ HideSpawnMenu ]
   name: medilathe
   suffix: Right Output
   description: A specialized autolathe made for printing medical items.

@@ -27,6 +27,7 @@
 - type: entity
   parent: RMCDropshipMaintsComputer
   id: RMCDropshipMaintsComputerOpen
+  categories: [ HideSpawnMenu ]
   name: dropship maintenance computer
   description: A closed dropship maintenance computer that technicians and pilots use to find out what's wrong with a dropship. It has various outlets for different systems.
   suffix: Closed

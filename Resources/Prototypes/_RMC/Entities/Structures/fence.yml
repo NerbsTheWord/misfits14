@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseFenceMetal
   id: CMFence
+  categories: [ HideSpawnMenu ]
   name: fence
   description: A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it.
   components:

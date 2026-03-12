@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCSpawnerCorpse
+  categories: [ HideSpawnMenu ]
   name: Corpse Spawner - Unknown
   suffix: RMC
   components:

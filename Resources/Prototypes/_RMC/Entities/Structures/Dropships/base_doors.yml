@@ -53,6 +53,7 @@
 - type: entity
   parent: RMCDropshipDoorBase
   id: RMCDropshipCockpitBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   name: cockpit
   components:
@@ -89,6 +90,7 @@
 - type: entity
   parent: RMCDropshipDoorBase
   id: RMCDropshipDoorAftBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   suffix: Aft
   components:
@@ -111,6 +113,7 @@
 - type: entity
   parent: RMCDropshipDoorBase
   id: RMCDropshipDoorPortBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   suffix: Port
   components:
@@ -134,6 +137,7 @@
 - type: entity
   parent: RMCDropshipDoorBase
   id: RMCDropshipDoorStarboardBase
+  categories: [ HideSpawnMenu ]
   abstract: true
   suffix: Starboard
   components:

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseStructure
   id: CMBaseStructure
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -10,6 +11,7 @@
   - CMBaseStructure
   - CMCorrodible
   id: CMBaseStructureCorrodible
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -22,6 +24,7 @@
 - type: entity
   parent: BaseStructure
   id: CMBaseXenoStructure
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -66,6 +69,7 @@
 
 - type: entity
   id: CMCorrodible
+  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Corrodible
@@ -75,6 +79,7 @@
 - type: entity
   abstract: true
   id: RMCBaseWallInvincibleNoIcon
+  categories: [ HideSpawnMenu ]
   description: A huge chunk of metal used to separate rooms.
   placement:
     mode: SnapgridCenter
@@ -161,6 +166,7 @@
   - BaseWall
   - CMBaseXenoStructure
   id: CMBaseWallXeno
+  categories: [ HideSpawnMenu ]
   name: resin wall
   abstract: true
   placement:
@@ -197,6 +203,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCWallInvisibleBulletPassible
+  categories: [ HideSpawnMenu ]
   name: wall blocker
   suffix: Projectile Passible
   placement:
@@ -234,6 +241,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCBlockerAirtight
+  categories: [ HideSpawnMenu ]
   name: airtight blocker
   placement:
     mode: SnapgridCenter

@@ -1,6 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: RMCAegisSpawner
+  categories: [ HideSpawnMenu ]
   name: AEGIS crate spawner
   components:
   - type: Sprite

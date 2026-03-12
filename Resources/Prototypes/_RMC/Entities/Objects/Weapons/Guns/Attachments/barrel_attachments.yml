@@ -12,6 +12,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentExtendedBarrel # extended_barrel
+  categories: [ HideSpawnMenu ]
   name: extended barrel
   description: The lengthened barrel speeds up and stabilizes the bullet, increasing velocity. # and accuracy.
   components:
@@ -70,6 +71,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentBarrelMar50
+  categories: [ HideSpawnMenu ]
   name: MAR-50 barrel
   description: A heavy barrel.
   components:
@@ -88,6 +90,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentBarrelCharger
+  categories: [ HideSpawnMenu ]
   name: barrel charger
   description: A hyper threaded barrel extender that fits to the muzzle of most firearms. Greatly increases projectile damage at the cost of firing speed.
   components:
@@ -121,6 +124,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentRecoilCompensator # compensator
+  categories: [ HideSpawnMenu ]
   name: recoil compensator
   description: "A muzzle attachment that reduces recoil by diverting expelled gasses upwards.
     Reduces recoil, at the cost of a small amount of weapon damage." # increases accuracy and reduces recoil
@@ -147,6 +151,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentRecoilCompensatorM13
+  categories: [ HideSpawnMenu ]
   name: M13 extended recoil compensator
   description: A heavy, overbuilt compensator and barrel extension for the M13 Auto Pistol. Greatly improves recoil control during automatic fire, at the cost of bulk and handling. Definitely compensating for something, but brutally effective.
   components:
@@ -203,6 +208,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentShotgunChoke # choke
+  categories: [ HideSpawnMenu ]
   name: shotgun choke
   description: "A threaded choke that can be inserted into the M42A2 Shotgun.
     Improves accuracy, velocity, tightens spread, and increases the cyclic rate.
@@ -241,6 +247,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentSuppressor # suppressor
+  categories: [ HideSpawnMenu ]
   name: suppressor
   description: "A small tube with exhaust ports to expel noise and gas.
     Does not completely silence a weapon, but does make it much quieter at the cost of slightly reduced damage."
@@ -306,6 +313,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentSuppressorNPZ92
+  categories: [ HideSpawnMenu ]
   name: NPZ92 integrated suppressor
   description: You shouldn't have this.
   components:
@@ -327,6 +335,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentSuppressorM96SB
+  categories: [ HideSpawnMenu ]
   name: M96S-B integrated suppressor
   description: You shouldn't have this.
   components:
@@ -345,6 +354,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentSuppressorL112
+  categories: [ HideSpawnMenu ]
   name: L112A1 integrated suppressor
   description: Cor... I don't think you can put that one back on.
   components:
@@ -365,6 +375,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentMatebaStandard
+  categories: [ HideSpawnMenu ]
   name: Standard Mateba Barrel
   description: A standard mateba barrel. Offers a balance between accuracy and fire rate.
   components:
@@ -380,6 +391,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentMatebaMarksman
+  categories: [ HideSpawnMenu ]
   name: Marksman Mateba Barrel
   description: A marksman mateba barrel. Offers a greater accuracy at the cost of fire rate.
   components:
@@ -399,6 +411,7 @@
 - type: entity
   parent: RMCBarrelAttachmentBase
   id: RMCAttachmentMatebaSnubNose
+  categories: [ HideSpawnMenu ]
   name: Snubnose Mateba Barrel
   description: A snubnosed mateba barrel. Offers a fast fire rate at the cost of accuracy.
   components:

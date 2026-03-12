@@ -10,6 +10,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod1
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall1
@@ -17,6 +18,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall2
@@ -24,6 +26,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall3
@@ -31,6 +34,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod4
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall4
@@ -38,6 +42,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod5
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall5
@@ -45,6 +50,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod6
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall6
@@ -52,6 +58,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod7
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall7
@@ -59,6 +66,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod8
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall8
@@ -66,6 +74,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod9
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall9
@@ -73,6 +82,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod10
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall10
@@ -80,6 +90,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod11
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall11
@@ -87,6 +98,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod12
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall12
@@ -94,6 +106,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod13
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall13
@@ -101,6 +114,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod14
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall14
@@ -108,6 +122,7 @@
 - type: entity
   parent: RMCWallEscapePod0
   id: RMCWallEscapePod15
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: wall15

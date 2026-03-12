@@ -391,6 +391,7 @@
 - type: entity
   parent: RMCWindowFrameHybrisa
   id: RMCWindowFrameHybrisaSpacePort
+  categories: [ HideSpawnMenu ]
   suffix: space port
   components:
   - type: Sprite

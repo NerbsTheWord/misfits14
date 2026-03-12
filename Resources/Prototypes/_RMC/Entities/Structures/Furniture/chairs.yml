@@ -6,6 +6,7 @@
   abstract: true
   parent: SeatBase
   id: CMSeatBase
+  categories: [ HideSpawnMenu ]
   name: abstract chair
   suffix: RMC
   components:

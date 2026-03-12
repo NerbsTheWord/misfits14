@@ -23,6 +23,7 @@
 - type: entity
   parent: RMCCurtainBase
   id: RMCCurtainGreen
+  categories: [ HideSpawnMenu ]
   suffix: Green
   components:
   - type: Sprite
@@ -43,6 +44,7 @@
 - type: entity
   parent: RMCCurtainBase
   id: RMCCurtainMedical
+  categories: [ HideSpawnMenu ]
   name: plastic curtain
   components:
   - type: Sprite
@@ -68,6 +70,7 @@
 - type: entity
   parent: RMCCurtainBase
   id: RMCCurtainShower
+  categories: [ HideSpawnMenu ]
   name: shower curtain
   components:
   - type: Sprite
@@ -92,6 +95,7 @@
 - type: entity
   parent: RMCCurtainBase
   id: RMCCurtainRed
+  categories: [ HideSpawnMenu ]
   name: red curtain
   components:
   - type: Sprite
@@ -106,6 +110,7 @@
 - type: entity
   parent: RMCCurtainBase
   id: RMCCurtainColourableTransparent
+  categories: [ HideSpawnMenu ]
   name: blinds
   components:
   - type: Sprite

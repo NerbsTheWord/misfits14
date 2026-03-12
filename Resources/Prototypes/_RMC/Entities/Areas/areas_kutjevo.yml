@@ -39,6 +39,7 @@
 - type: entity
   parent: RMCAreaKutjevo
   id: RMCAreaKutjevoExterior
+  categories: [ HideSpawnMenu ]
   name: Kutjevo - Exterior
   components:
   - type: Sprite
@@ -58,6 +59,7 @@
 - type: entity
   parent: RMCAreaKutjevo
   id: RMCAreaKutjevoInterior
+  categories: [ HideSpawnMenu ]
   name: Kutjevo - Interior
   components:
   - type: Sprite

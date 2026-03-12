@@ -2,6 +2,7 @@
 - type: entity
   parent: Memorial
   id: CMMemorialBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _RMC/Structures/Furniture/memorial.rsi

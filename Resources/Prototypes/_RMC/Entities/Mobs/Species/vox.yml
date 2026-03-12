@@ -6,6 +6,7 @@
   name: Urist C.M McVox
   parent: MobVox
   id: CMMobVox
+  categories: [ HideSpawnMenu ]
   suffix: RMC14
   components:
   - type: Marine

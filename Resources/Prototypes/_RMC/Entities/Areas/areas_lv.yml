@@ -14,6 +14,7 @@
 - type: entity
   parent: RMCAreaLv624
   id: RMCAreaLv624Ground
+  categories: [ HideSpawnMenu ]
   name: Ground
   components:
   - type: Sprite
@@ -576,6 +577,7 @@
 - type: entity
   parent: RMCAreaLv624
   id: RMCAreaLv624Lazarus
+  categories: [ HideSpawnMenu ]
   name: Lazarus
   components:
   - type: Sprite
@@ -892,6 +894,7 @@
 - type: entity
   parent: RMCAreaLv624
   id: RMCAreaLv624Landing
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: RMCAreaLv624Landing

@@ -7,6 +7,7 @@
   abstract: true
   parent: ClothingBeltBase
   id: CMBeltBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: ExplosionResistance
     damageCoefficient: 0.9

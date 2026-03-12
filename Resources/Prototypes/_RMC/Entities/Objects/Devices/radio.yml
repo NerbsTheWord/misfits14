@@ -27,6 +27,7 @@
 - type: entity
   parent: RMCRadioHandheldColonyBase
   id: RMCRadioHandheldColony
+  categories: [ HideSpawnMenu ]
   suffix: On
   components:
   - type: ActiveListener
@@ -38,6 +39,7 @@
 - type: entity
   parent: RMCRadioHandheldColonyBase
   id: RMCRadioHandheldColonyOff
+  categories: [ HideSpawnMenu ]
   suffix: Off
   components:
   - type: RadioMicrophone
@@ -48,6 +50,7 @@
 - type: entity
   parent: RMCRadioHandheldColonyBase
   id: RMCRadioHandheldAlmayer
+  categories: [ HideSpawnMenu ]
   suffix: On
   components:
   - type: ActiveListener

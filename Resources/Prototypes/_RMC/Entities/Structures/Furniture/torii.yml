@@ -1,5 +1,6 @@
 - type: entity
   id: RMCTorii
+  categories: [ HideSpawnMenu ]
   name: torii arch
   description: A traditional Japanese archway, made out of wood, and adorned with lanterns.
   placement:

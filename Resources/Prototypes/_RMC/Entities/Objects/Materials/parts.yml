@@ -1,6 +1,7 @@
 - type: entity
   parent: PartRodMetal
   id: CMRodMetal
+  categories: [ HideSpawnMenu ]
   name: metal rod
   description: Some rods. Can be used for building, or something.
   suffix: Filled

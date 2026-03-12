@@ -3,6 +3,7 @@
   - CMXenoRunner
   - RMCXenoCommendationReceiver
   id: RMCXenoRouny
+  categories: [ HideSpawnMenu ]
   name: Rouny
   suffix: RMC14
   description: thas a fuckin rouny.
@@ -21,6 +22,7 @@
   - CMXenoRunner
   - RMCXenoCommendationReceiver
   id: RMCXenoWehny
+  categories: [ HideSpawnMenu ]
   name: Wehny
   description: A cruel, cruel joke made by some sick individual.
   components:
@@ -40,6 +42,7 @@
   - CMXenoFlammable
   - RMCXenoSpeechSounds
   id: RMCXenoLesserCarrier
+  categories: [ HideSpawnMenu ]
   name: Lesser Carrier
   description: A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures. Looks... smaller.
   components:

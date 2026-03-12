@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: CMHeadBeret
+  categories: [ HideSpawnMenu ]
   name: beret
   description: Does not protect a head from bullet.
   components:
@@ -182,6 +183,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: CMHeadCapMP
+  categories: [ HideSpawnMenu ]
   name: MP cap
   description: A ball-cap worn by the more casual of the Marines' Military Police.
   components:
@@ -771,6 +773,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RMCHeadRadiationHood
+  categories: [ HideSpawnMenu ]
   name: radiation hood
   description: "A hood with radiation protective properties. Label: Made with lead, do not eat insulation."
   components:
@@ -822,6 +825,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RMCHeadDurag
+  categories: [ HideSpawnMenu ]
   name: durag
   description: An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair.
   components:
@@ -936,6 +940,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RMCHeadCowboyHatLight
+  categories: [ HideSpawnMenu ]
   name: light cowboy hat
   description: A finely made cowboy hat.
   components:
@@ -957,6 +962,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RMCHeadFedoraBrown
+  categories: [ HideSpawnMenu ]
   name: brown fedora
   description: A classic brown fedora.
   components:
@@ -1012,6 +1018,7 @@
 - type: entity
   parent: ClothingHeadHatHoodNunHood
   id: RMCHeadNunHood
+  categories: [ HideSpawnMenu ]
   name: nun hood
   description: Maximum piety in this star system.
   components:

@@ -8,6 +8,7 @@
 - type: entity
   abstract: true
   id: RMCAreaBase
+  categories: [ HideSpawnMenu ]
   name: area
   suffix: Area
   placement:

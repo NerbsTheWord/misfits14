@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseItem
   id: RMCCondiment
+  categories: [ HideSpawnMenu ]
   name: condiment container
   description: Just your average condiment container.
   components:

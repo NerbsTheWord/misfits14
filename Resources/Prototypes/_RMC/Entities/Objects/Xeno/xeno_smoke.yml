@@ -147,6 +147,7 @@
 
 - type: entity
   id: RMCSmokeKingDoom
+  categories: [ HideSpawnMenu ]
   name: king doom
   components:
   - type: Transform

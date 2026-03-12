@@ -22,6 +22,7 @@
 - type: entity
   parent: RMCBaseballBat
   id: RMCBaseballBatMetal
+  categories: [ HideSpawnMenu ]
   name: metal baseball bat
   description: A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians.
   components:

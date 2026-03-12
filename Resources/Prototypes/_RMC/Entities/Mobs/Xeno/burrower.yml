@@ -8,6 +8,7 @@
   - RMCXenoMobCollision
   - RMCXenoVentCrawler
   id: CMXenoBurrower
+  categories: [ HideSpawnMenu ]
   name: Burrower
   description: A beefy alien with sharp claws.
   components:

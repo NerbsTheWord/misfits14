@@ -2,6 +2,7 @@
   abstract: true
   parent: [ BaseStructureDynamic, BaseBagOpenClose ]
   id: CMFilingCabinetBase
+  categories: [ HideSpawnMenu ]
   description: A large cabinet with drawers.
   suffix: Empty
   components:
