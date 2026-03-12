@@ -113,3 +113,15 @@ pipboy-hub-remove-password = Remove Password
 pipboy-hub-lock = Lock Pip-Boy
 pipboy-hub-password-set = Password is set.
 pipboy-hub-password-not-set = No password set.
+
+# ── Notifications ──
+# #Misfits Add - Self-emote notifications for PipBoy events (only visible to holder)
+pipboy-notif-message-title = Pip-Boy: Message from {$sender}
+pipboy-notif-group-message-title = Pip-Boy: [{$group}]
+pipboy-notif-group-message-body = {$sender}: {$message}
+pipboy-notif-sos-title = Pip-Boy: SOS ALERT
+pipboy-notif-sos-body = {$sender} is requesting help at ({$x}, {$y})!
+pipboy-notif-contact-request-title = Pip-Boy: Contact Request
+pipboy-notif-contact-request-body = {$sender} wants to add you as a contact.
+pipboy-notif-dead-drop-title = Pip-Boy: Dead Drop Detected
+pipboy-notif-dead-drop-body = A dead drop from {$sender} is nearby.

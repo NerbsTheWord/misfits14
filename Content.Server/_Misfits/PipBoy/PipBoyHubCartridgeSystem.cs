@@ -5,7 +5,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.CartridgeLoader;
 using Content.Shared._Misfits.PipBoy;
 using Content.Shared.Access.Components;
-using Content.Shared.CartridgeLoader;
+using Content.Shared.CartridgeLoader; // #Misfits Change - also provides CartridgeLoaderComponent for notifications
 using Content.Shared.Database;
 using Content.Shared.DeltaV.CartridgeLoader.Cartridges;
 using Content.Shared.DeltaV.NanoChat;
@@ -27,6 +27,7 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
     private const int MaxNoteLength = 256;
     private const int MaxStatusLength = 64;
     private const int MaxWaypointLabelLength = 32;
+    private const int NotificationMaxLength = 64; // #Misfits Add - max length for notification body text
 
     public override void Initialize()
     {
@@ -175,7 +176,19 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         if (msg.TargetNumber == null)
             return;
 
-        _network.SendContactRequest(ownNumber, msg.TargetNumber.Value);
+        if (!_network.SendContactRequest(ownNumber, msg.TargetNumber.Value))
+            return;
+
+        // #Misfits Add - Notify the target that they have an incoming contact request
+        var targetCard = _network.FindCardByNumber(msg.TargetNumber.Value);
+        var senderCard = _network.FindCardByNumber(ownNumber);
+        if (targetCard != null && senderCard != null)
+        {
+            var senderInfo = _network.GetCardDisplayInfo(senderCard.Value);
+            NotifyCardHolder(targetCard.Value,
+                Loc.GetString("pipboy-notif-contact-request-title"),
+                Loc.GetString("pipboy-notif-contact-request-body", ("sender", senderInfo.Name)));
+        }
     }
 
     private void HandleContactAccept(uint ownNumber, PipBoyHubUiMessageEvent msg)
@@ -226,6 +239,12 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         {
             _nanoChat.EnsureRecipientExists((targetCard.Value, targetChatComp), cardComp.Number.Value, GetNanoChatRecipientInfo(cardComp.Number.Value));
             _nanoChat.AddMessage((targetCard.Value, targetChatComp), cardComp.Number.Value, nanoChatMsg with { DeliveryFailed = false });
+
+            // #Misfits Add - Notify recipient of incoming message
+            var senderInfo = _network.GetCardDisplayInfo(cardUid);
+            NotifyCardHolder(targetCard.Value,
+                Loc.GetString("pipboy-notif-message-title", ("sender", senderInfo.Name)),
+                Truncate(content, NotificationMaxLength));
         }
     }
 
@@ -320,6 +339,25 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         var groupMsg = new PipBoyGroupMessage(_timing.CurTime, content, ownNumber, info.Name);
         _network.AddGroupMessage(msg.GroupId.Value, groupMsg);
 
+        // #Misfits Add - Notify all other group members of the new message
+        var group = _network.GetGroup(msg.GroupId.Value);
+        if (group != null)
+        {
+            foreach (var memberNum in group.Members)
+            {
+                if (memberNum == ownNumber)
+                    continue; // don't notify the sender
+
+                var memberCard = _network.FindCardByNumber(memberNum);
+                if (memberCard != null)
+                {
+                    NotifyCardHolder(memberCard.Value,
+                        Loc.GetString("pipboy-notif-group-message-title", ("group", group.GroupName)),
+                        Loc.GetString("pipboy-notif-group-message-body", ("sender", info.Name), ("message", Truncate(content, NotificationMaxLength))));
+                }
+            }
+        }
+
         // Trigger UI update for all group members who have the hub open
         UpdateUIForGroupMembers(msg.GroupId.Value);
     }
@@ -408,6 +446,24 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         var xform = Transform(card.PdaUid.Value);
         var pos = xform.WorldPosition;
         _network.BroadcastSos(ownNumber, info.Name, pos.X, pos.Y);
+
+        // #Misfits Add - Notify all contacts that an SOS was sent
+        if (TryComp<PipBoyNetworkComponent>(cardUid, out var net))
+        {
+            foreach (var (contactNum, contact) in net.Contacts)
+            {
+                if (contact.Status != PipBoyContactStatus.Accepted)
+                    continue;
+
+                var contactCard = _network.FindCardByNumber(contactNum);
+                if (contactCard != null)
+                {
+                    NotifyCardHolder(contactCard.Value,
+                        Loc.GetString("pipboy-notif-sos-title"),
+                        Loc.GetString("pipboy-notif-sos-body", ("sender", info.Name), ("x", $"{pos.X:F0}"), ("y", $"{pos.Y:F0}")));
+                }
+            }
+        }
     }
 
     private void HandleSetStatus(uint ownNumber, PipBoyHubUiMessageEvent msg)
@@ -580,6 +636,17 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
                     var xform = Transform(card.PdaUid.Value);
                     var pos = xform.WorldPosition;
                     nearbyDeadDrops = _network.GetNearbyDeadDrops(pos.X, pos.Y, ownNumber);
+
+                    // #Misfits Add - Notify player about newly detected dead drops
+                    foreach (var drop in nearbyDeadDrops)
+                    {
+                        if (ent.Comp.NotifiedDeadDropIds.Add(drop.Id))
+                        {
+                            NotifyCardHolder(ent.Comp.Card.Value,
+                                Loc.GetString("pipboy-notif-dead-drop-title"),
+                                Loc.GetString("pipboy-notif-dead-drop-body", ("sender", drop.SenderName)));
+                        }
+                    }
                 }
             }
         }
@@ -615,6 +682,25 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
 
         var info = _network.GetCardDisplayInfo(cardUid.Value);
         return new NanoChatRecipient(number, info.Name, info.JobTitle);
+    }
+
+    // #Misfits Add - Send a PDA notification to the player holding the PDA that contains this card.
+    // Uses the established CartridgeLoader notification pipeline (ringtone + chat channel).
+    private void NotifyCardHolder(EntityUid cardUid, string header, string body)
+    {
+        if (!TryComp<NanoChatCardComponent>(cardUid, out var card) || card.PdaUid is not {} pdaUid)
+            return;
+
+        if (!TryComp<CartridgeLoaderComponent>(pdaUid, out var loader))
+            return;
+
+        _cartridge.SendNotification(pdaUid, header, body, loader);
+    }
+
+    // #Misfits Add - Truncate a string for notification display.
+    private static string Truncate(string text, int maxLength)
+    {
+        return text.Length <= maxLength ? text : text[..maxLength] + " [...]";
     }
 
     #endregion

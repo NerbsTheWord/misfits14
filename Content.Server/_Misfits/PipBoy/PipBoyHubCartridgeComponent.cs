@@ -11,4 +11,7 @@ public sealed partial class PipBoyHubCartridgeComponent : Component
     /// <summary>Currently selected group ID for viewing messages/tracking.</summary>
     [DataField]
     public uint? SelectedGroupId;
+
+    // #Misfits Add - Track dead drop IDs already notified so we don't spam on every UI update
+    public HashSet<uint> NotifiedDeadDropIds = new();
 }
