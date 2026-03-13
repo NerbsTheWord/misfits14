@@ -1358,3 +1358,148 @@ Entries:
   id: 5638
   time: '2026-03-12T20:16:09.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/110
+- author: Cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Restored direct hunger and thirst satiation on several consumables and
+        reagents, including base food, broc tea, datura tea, carrot cake, carrot
+        cake slices, and carrot fries.
+    - type: Fix
+      message: >-
+        Switched human, ghoul, supermutant, and glowing ghoul starvation and
+        dehydration damage back to Cold-based damage so hunger and thirst no
+        longer cause unintended brute or bleed-style effects.
+    - type: Fix
+      message: >-
+        Re-enabled missing Stack components on many wild flora entities so
+        map-referenced plants deserialize correctly.
+    - type: Fix
+      message: >-
+        Added SolutionTransfer to fuel containers so they can actually transfer
+        fuel into refillable targets like generators.
+    - type: Fix
+      message: >-
+        Disabled broken Washington Brotherhood holotag recipes and emptied
+        NPC/job loadouts that referenced commented-out Washington or Inquisitor
+        gear prototypes to prevent YAML and runtime issues.
+    - type: Fix
+      message: >-
+        Removed invalid or duplicated Washington Brotherhood entities, NPCs,
+        turrets, doors, headsets, traits, pets, and augmentation references by
+        commenting them out where they were still being referenced.
+    - type: Fix
+      message: >-
+        Added missing Nutriment to carrot-based foods that previously gave
+        little or no direct hunger relief.
+    - type: Fix
+      message: >-
+        Corrected several visual and content issues, including town guard armor
+        names, missing mango-rice bowl sprite usage, duplicate pouch fill
+        states, and a lathe blueprint recipe with an empty materials bug.
+    - type: Fix
+      message: >-
+        Added NoPull to oversized hostile mobs like maypoles and deathclaws so
+        they can no longer be grabbed.
+    - type: Fix
+      message: >-
+        Removed bottlecaps from legion box filler rolls, roundstart wallets, and
+        player loadout options where they should no longer appear.
+    - type: Fix
+      message: Reverted Healing Powder haze duration back to its longer value.
+    - type: Fix
+      message: Disabled CameraFollow on the base species prototype.
+    - type: Tweak
+      message: >-
+        Consolidated Washington Brotherhood roles into a new shared Brotherhood
+        structure with BoSHeadKnight, BoSPaladin, BoSKnight, BoSScribe, and
+        BoSInitiate, along with updated faction membership, holotags, spawn
+        points, map slots, loadouts, and job definitions.
+    - type: Tweak
+      message: >-
+        Reworked Brotherhood starting gear and undecided loadout kits across
+        elder, head, senior, paladin, knight, scribe, squire, and initiate ranks
+        to use the new consolidated Misfits kit flow.
+    - type: Tweak
+      message: >-
+        Rebalanced Brotherhood kits, including initiate sidearm-focused kits,
+        stimpak additions to knight kits, a shotgun-focused paladin kit, a Bozar
+        paladin option, and a new Wattz 2000 paladin set.
+    - type: Tweak
+      message: >-
+        Removed Inquisitor role availability and related loadouts from the
+        Misfits setup.
+    - type: Tweak
+      message: >-
+        Consolidated NCR Engineer and NCR Medic into NCR Specialist, merged
+        their access and kit options into NCRWS, renamed Corporal-facing content
+        to Specialist, and renamed First Sergeant-facing content to Sergeant
+        First Class.
+    - type: Tweak
+      message: >-
+        Updated NCR guidebook text, dogtags, spawn names, map slots,
+        sponsor/loadout access, and role presentation to match the Specialist
+        and Sergeant First Class changes.
+    - type: Tweak
+      message: >-
+        Opened up many NCR, Legion, and Brotherhood jobs in character selection
+        by removing hidden or whitelist-only presentation and lowering or
+        restructuring several access requirements.
+    - type: Tweak
+      message: >-
+        Rebalanced Wendover role slot counts, especially NCR Specialist,
+        Brotherhood slots, and several Legion roles.
+    - type: Tweak
+      message: >-
+        Disabled many roundstart armor and resistance-bearing loadouts across
+        Brotherhood, NCR, Rangers, Tribe, and general clothing categories.
+    - type: Tweak
+      message: >-
+        Increased Legion coin minting lathe costs to require meaningful gold and
+        silver investment.
+    - type: Tweak
+      message: >-
+        Renamed the Washington elite T-51 variant to lore-accurate T-51b power
+        armor and updated its description.
+    - type: Tweak
+      message: >-
+        Renamed the book Watched into a Fallout-style satellite-themed Sentinel
+        entry with new description and paper content key.
+    - type: Add
+      message: >-
+        Added OverdoseScaledDamage, a new Misfits reagent effect that applies
+        poison damage scaling above overdose thresholds.
+    - type: Add
+      message: >-
+        Added overdose suffocation and scaling toxicity behavior to Turbo,
+        Psycho, Buffout, Med-X, and Hydra.
+    - type: Add
+      message: >-
+        Added power armor brace mechanics with a toggle action, shared brace
+        system, component state, and extra active resistances while braced.
+    - type: Add
+      message: >-
+        Added faction-restricted blueprint lathe support, including new
+        blueprint recipes, blueprint denial localization, and armor bench
+        printing support for Brotherhood, NCR, and Legion armor blueprints.
+    - type: Add
+      message: >-
+        Added new crafting localization entries needed for Misfits medical
+        crafting content.
+    - type: Add
+      message: Added throw-impact emote localization for thrown-item hit messaging.
+    - type: Add
+      message: >-
+        Added procedural ore-yield wall variants and a Misfits ore cluster
+        spawner system for random mining rock generation on Wendover-style maps.
+    - type: Add
+      message: >-
+        Added random ore-yield rock, basalt, sandstone, and andesite wall
+        variants plus a slanted drought rock mining variant.
+    - type: Add
+      message: Added new faction armor blueprint entries to crafting benches.
+    - type: Add
+      message: Added a missing Legion Orator, and Explorer spawnpoints.
+  id: 5639
+  time: '2026-03-13T09:18:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/113
