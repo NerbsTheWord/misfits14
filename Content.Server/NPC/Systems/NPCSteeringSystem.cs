@@ -1,6 +1,5 @@
 using System.Numerics;
 using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.DoAfter;
 using Content.Server.NPC.Components;
@@ -72,6 +71,11 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
     private ObjectPool<HashSet<EntityUid>> _entSetPool =
         new DefaultObjectPool<HashSet<EntityUid>>(new SetPolicy<EntityUid>());
+
+    /// <summary>
+    /// Pooled array for NPC steering data to avoid per-frame allocation.
+    /// </summary>
+    private (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[] _npcPool = Array.Empty<(EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)>();
 
     /// <summary>
     /// Enabled antistuck detection so if an NPC is in the same spot for a while it will re-path.
@@ -228,29 +232,28 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             return;
 
         // Not every mob has the modifier component so do it as a separate query.
-        var npcs = new (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[Count<ActiveNPCComponent>()];
+        var count = Count<ActiveNPCComponent>();
+
+        // Grow pooled array if needed (never shrink to avoid churn).
+        if (_npcPool.Length < count)
+            _npcPool = new (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[count];
 
         var query = EntityQueryEnumerator<ActiveNPCComponent, NPCSteeringComponent, InputMoverComponent, TransformComponent>();
         var index = 0;
 
         while (query.MoveNext(out var uid, out _, out var steering, out var mover, out var xform))
         {
-            npcs[index] = (uid, steering, mover, xform);
+            _npcPool[index] = (uid, steering, mover, xform);
             index++;
         }
 
-        // Dependency issues across threads.
-        var options = new ParallelOptions
-        {
-            MaxDegreeOfParallelism = 1,
-        };
         var curTime = _timing.CurTime;
 
-        Parallel.For(0, index, options, i =>
+        for (var i = 0; i < index; i++)
         {
-            var (uid, steering, mover, xform) = npcs[i];
+            var (uid, steering, mover, xform) = _npcPool[i];
             Steer(uid, steering, mover, xform, frameTime, curTime);
-        });
+        }
 
 
         if (_subscribedSessions.Count > 0)
@@ -259,7 +262,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
             for (var i = 0; i < index; i++)
             {
-                var (uid, steering, mover, _) = npcs[i];
+                var (uid, steering, mover, _) = _npcPool[i];
 
                 data.Add(new NPCSteeringDebugData(
                     GetNetEntity(uid),

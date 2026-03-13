@@ -31,12 +31,17 @@ namespace Content.Server.Power.EntitySystems
 
         private BatteryRampPegSolver _solver = new();
 
+        private EntityQuery<AppearanceComponent> _appearanceQuery;
+        private EntityQuery<MetaDataComponent> _metaQuery;
+
         public override void Initialize()
         {
             base.Initialize();
 
             UpdatesAfter.Add(typeof(NodeGroupSystem));
             _solver = new(_cfg.GetCVar(CCVars.DebugPow3rDisableParallel));
+            _appearanceQuery = GetEntityQuery<AppearanceComponent>();
+            _metaQuery = GetEntityQuery<MetaDataComponent>();
 
             SubscribeLocalEvent<ApcPowerReceiverComponent, ComponentInit>(ApcPowerReceiverInit);
             SubscribeLocalEvent<ApcPowerReceiverComponent, ComponentShutdown>(ApcPowerReceiverShutdown);
@@ -310,8 +315,6 @@ namespace Content.Server.Power.EntitySystems
 
         private void UpdateApcPowerReceiver()
         {
-            var appearanceQuery = GetEntityQuery<AppearanceComponent>();
-            var metaQuery = GetEntityQuery<MetaDataComponent>();
             var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
             while (enumerator.MoveNext(out var uid, out var apcReceiver))
             {
@@ -324,7 +327,7 @@ namespace Content.Server.Power.EntitySystems
                 if (!apcReceiver.Recalculate && apcReceiver.Powered == powered)
                     continue;
 
-                var metadata = metaQuery.Comp(uid);
+                var metadata = _metaQuery.Comp(uid);
                 if (metadata.EntityPaused)
                     continue;
 
@@ -335,14 +338,13 @@ namespace Content.Server.Power.EntitySystems
                 var ev = new PowerChangedEvent(powered, apcReceiver.NetworkLoad.ReceivingPower);
                 RaiseLocalEvent(uid, ref ev);
 
-                if (appearanceQuery.TryComp(uid, out var appearance))
+                if (_appearanceQuery.TryComp(uid, out var appearance))
                     _appearance.SetData(uid, PowerDeviceVisuals.Powered, powered, appearance);
             }
         }
 
         private void UpdatePowerConsumer()
         {
-            var metaQuery = GetEntityQuery<MetaDataComponent>();
             var enumerator = AllEntityQuery<PowerConsumerComponent>();
             while (enumerator.MoveNext(out var uid, out var consumer))
             {
@@ -351,7 +353,7 @@ namespace Content.Server.Power.EntitySystems
                 if (MathHelper.CloseToPercent(lastRecv, newRecv))
                     continue;
 
-                if (metaQuery.GetComponent(uid).EntityPaused)
+                if (_metaQuery.GetComponent(uid).EntityPaused)
                     continue;
 
                 lastRecv = newRecv;

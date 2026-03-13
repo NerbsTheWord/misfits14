@@ -4,7 +4,6 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 using Robust.Shared.Random;
 
 namespace Content.Server.Body.Systems
@@ -53,9 +52,9 @@ namespace Content.Server.Body.Systems
 
                 var transferSolution = new Solution();
 
-                var queue = new RemQueue<StomachComponent.ReagentDelta>();
-                foreach (var delta in stomach.ReagentDeltas)
+                for (var i = stomach.ReagentDeltas.Count - 1; i >= 0; i--)
                 {
+                    var delta = stomach.ReagentDeltas[i];
                     delta.Increment(stomach.UpdateInterval);
                     if (delta.Lifetime > stomach.DigestionDelay)
                     {
@@ -68,13 +67,8 @@ namespace Content.Server.Body.Systems
                             transferSolution.AddReagent(reagent);
                         }
 
-                        queue.Add(delta);
+                        stomach.ReagentDeltas.RemoveAt(i);
                     }
-                }
-
-                foreach (var item in queue)
-                {
-                    stomach.ReagentDeltas.Remove(item);
                 }
 
                 _solutionContainerSystem.UpdateChemicals(stomach.Solution.Value);

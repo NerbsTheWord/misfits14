@@ -23,9 +23,12 @@ public sealed partial class AtmosphereSystem
 
     private readonly HashSet<Entity<MovedByPressureComponent>> _activePressures = new(8);
 
+    private readonly RemQueue<Entity<MovedByPressureComponent>> _highPressureRemoveQueue = new();
+
     private void UpdateHighPressure(float frameTime)
     {
-        var toRemove = new RemQueue<Entity<MovedByPressureComponent>>();
+
+        _highPressureRemoveQueue.Clear();
 
         foreach (var ent in _activePressures)
         {
@@ -34,7 +37,7 @@ public sealed partial class AtmosphereSystem
 
             if (Deleted(uid, metadata))
             {
-                toRemove.Add((uid, comp));
+                _highPressureRemoveQueue.Add((uid, comp));
                 continue;
             }
 
@@ -48,7 +51,7 @@ public sealed partial class AtmosphereSystem
 
             // Reset it just for VV reasons even though it doesn't matter
             comp.Accumulator = 0f;
-            toRemove.Add(ent);
+            _highPressureRemoveQueue.Add(ent);
 
             if (TryComp<PhysicsComponent>(uid, out var body))
             {
@@ -64,7 +67,7 @@ public sealed partial class AtmosphereSystem
             }
         }
 
-        foreach (var comp in toRemove)
+        foreach (var comp in _highPressureRemoveQueue)
         {
             _activePressures.Remove(comp);
         }

@@ -314,6 +314,9 @@ namespace Content.Server.Atmos.EntitySystems
 
             _ignitionSourceSystem.SetIgnited(uid, false);
 
+            _alertsSystem.ClearAlert(uid, flammable.FireAlert);
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
+
             UpdateAppearance(uid, flammable);
         }
 
@@ -419,8 +422,8 @@ namespace Content.Server.Atmos.EntitySystems
             _timer -= UpdateTime;
 
             // TODO: This needs cleanup to take off the crust from TemperatureComponent and shit.
-            var query = EntityQueryEnumerator<FlammableComponent, TransformComponent>();
-            while (query.MoveNext(out var uid, out var flammable, out _))
+            var query = EntityQueryEnumerator<FlammableComponent>();
+            while (query.MoveNext(out var uid, out var flammable))
             {
                 // Slowly dry ourselves off if wet.
                 if (flammable.FireStacks < 0)
@@ -429,11 +432,7 @@ namespace Content.Server.Atmos.EntitySystems
                 }
 
                 if (!flammable.OnFire)
-                {
-                    _alertsSystem.ClearAlert(uid, flammable.FireAlert);
-                    RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
                     continue;
-                }
 
                 _alertsSystem.ShowAlert(uid, flammable.FireAlert);
                 RaiseLocalEvent(uid, new MoodEffectEvent("OnFire"));

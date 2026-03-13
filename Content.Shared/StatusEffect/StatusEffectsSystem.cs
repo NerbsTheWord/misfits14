@@ -15,6 +15,11 @@ namespace Content.Shared.StatusEffect
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly AlertsSystem _alertsSystem = default!;
 
+        /// <summary>
+        /// Reusable list to avoid per-frame .ToArray() allocation in Update.
+        /// </summary>
+        private readonly List<KeyValuePair<string, StatusEffectState>> _expiredEffects = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -35,13 +40,16 @@ namespace Content.Shared.StatusEffect
 
             while (enumerator.MoveNext(out var uid, out _, out var status))
             {
-                foreach (var state in status.ActiveEffects.ToArray())
+                _expiredEffects.Clear();
+                foreach (var state in status.ActiveEffects)
                 {
-                    // if we're past the end point of the effect
                     if (curTime > state.Value.Cooldown.Item2)
-                    {
-                        TryRemoveStatusEffect(uid, state.Key, status);
-                    }
+                        _expiredEffects.Add(state);
+                }
+
+                foreach (var state in _expiredEffects)
+                {
+                    TryRemoveStatusEffect(uid, state.Key, status);
                 }
             }
         }

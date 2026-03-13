@@ -73,7 +73,10 @@ log_late_msg = false
 [physics]
 grid_splitting = false
 maxlinvelocity = 72
-target_minimum_tickrate = 120
+target_minimum_tickrate = 60
+
+[npc]
+max_updates = 512
 
 [pointing]
 cooldown_seconds = 1

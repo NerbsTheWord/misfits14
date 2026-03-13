@@ -29,6 +29,11 @@ namespace Content.Server.Body.Systems
         private EntityQuery<OrganComponent> _organQuery;
         private EntityQuery<SolutionContainerManagerComponent> _solutionQuery;
 
+        /// <summary>
+        /// Reusable list to avoid per-entity .ToArray() allocation during metabolism.
+        /// </summary>
+        private readonly List<ReagentQuantity> _reagentBuffer = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -136,11 +141,12 @@ namespace Content.Server.Body.Systems
 
             // randomize the reagent list so we don't have any weird quirks
             // like alphabetical order or insertion order mattering for processing
-            var list = solution.Contents.ToArray();
-            _random.Shuffle(list);
+            _reagentBuffer.Clear();
+            _reagentBuffer.AddRange(solution.Contents);
+            _random.Shuffle(_reagentBuffer);
 
             int reagents = 0;
-            foreach (var (reagent, quantity) in list)
+            foreach (var (reagent, quantity) in _reagentBuffer)
             {
                 if (!_prototypeManager.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto))
                     continue;
