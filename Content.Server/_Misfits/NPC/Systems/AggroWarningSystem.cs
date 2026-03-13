@@ -28,25 +28,27 @@ public sealed class AggroWarningSystem : EntitySystem
     {
         base.Initialize();
 
-        // When the NPC enters melee or ranged combat, attach a warning window.
-        SubscribeLocalEvent<NPCMeleeCombatComponent, ComponentStartup>(OnCombatStartup);
-        SubscribeLocalEvent<NPCRangedCombatComponent, ComponentStartup>(OnCombatStartup);
-
-        // Clean up warning if combat components are removed before the delay expires.
+        // #Misfits Fix: ComponentInit for these components is claimed by AggroSoundSystem, and
+        // ComponentStartup is claimed by upstream NPCCombatSystem — only one system may subscribe to
+        // each (comp, event) pair. We poll for new combat components in Update() instead.
         SubscribeLocalEvent<AggroWarningComponent, ComponentShutdown>(OnWarningShutdown);
     }
 
-    /// <summary>
-    /// Shared handler for both melee and ranged combat component startups.
-    /// Adds the AggroWarningComponent if one doesn't already exist and the NPC is an HTN-driven mob.
-    /// </summary>
-    private void OnCombatStartup<T>(EntityUid uid, T comp, ComponentStartup args) where T : Component
+    private void OnWarningShutdown(EntityUid uid, AggroWarningComponent comp, ComponentShutdown args)
     {
-        // Only apply to actual HTN-controlled NPCs, not players.
+        // Nothing to clean up — the component is self-contained.
+    }
+
+    /// <summary>
+    /// Attaches an AggroWarningComponent to an NPC that just entered combat.
+    /// Called from Update() polling because ComponentInit/ComponentStartup on
+    /// NPCMeleeCombatComponent and NPCRangedCombatComponent are both claimed by other systems.
+    /// </summary>
+    private void AttachWarning(EntityUid uid)
+    {
         if (!HasComp<HTNComponent>(uid))
             return;
 
-        // Don't double-add if already in a warning window (e.g. melee+ranged both started).
         if (HasComp<AggroWarningComponent>(uid))
             return;
 
@@ -55,14 +57,19 @@ public sealed class AggroWarningSystem : EntitySystem
         warning.PingPlayed = false;
     }
 
-    private void OnWarningShutdown(EntityUid uid, AggroWarningComponent comp, ComponentShutdown args)
-    {
-        // Nothing to clean up — the component is self-contained.
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // Poll for HTN NPCs that have just entered melee or ranged combat but don't yet
+        // have an AggroWarningComponent (1-tick latency is negligible vs the 2s window).
+        var meleeQuery = EntityQueryEnumerator<NPCMeleeCombatComponent, HTNComponent>();
+        while (meleeQuery.MoveNext(out var uid, out _, out _))
+            AttachWarning(uid);
+
+        var rangedQuery = EntityQueryEnumerator<NPCRangedCombatComponent, HTNComponent>();
+        while (rangedQuery.MoveNext(out var uid, out _, out _))
+            AttachWarning(uid);
 
         var query = EntityQueryEnumerator<AggroWarningComponent, TransformComponent>();
 

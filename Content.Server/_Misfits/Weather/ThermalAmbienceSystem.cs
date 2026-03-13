@@ -62,6 +62,13 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     private readonly Dictionary<EntityUid, TemperatureTier> _lastOutdoorFlavorTier = new();
     private readonly HashSet<EntityUid> _outdoorExposed = new();
 
+    /// <summary>
+    /// Accumulator for throttling Update to once every ~5 seconds.
+    /// Flavor text and map temp tier changes are not time-critical.
+    /// </summary>
+    private const float UpdateInterval = 5f;
+    private float _updateTimer;
+
     // ──────────────────────────────────────────────────────────────────────────
     // Temperature tier band edges (Kelvin)
     // These map normalized cycle-time windows to outdoor temperatures.
@@ -190,15 +197,14 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        // #Misfits Tweak: Thermal ambience disabled — map temperature updates and player
-        // flavor text (sweating/shivering/outdoor messages) have been turned off to reduce
-        // per-tick CPU cost. All three sub-passes iterated over player entities every tick
-        // for cooldowns measured in minutes, which was disproportionate.
-        // Uncomment to restore day/night map temperature changes and thermal flavor text.
-        //
-        // UpdateMapTemperatures();
-        // UpdatePlayerFlavor();
-        // UpdatePlayerOutdoorFlavor();
+        _updateTimer += frameTime;
+        if (_updateTimer < UpdateInterval)
+            return;
+        _updateTimer -= UpdateInterval;
+
+        UpdateMapTemperatures();
+        UpdatePlayerFlavor();
+        UpdatePlayerOutdoorFlavor();
     }
 
     // ── Part A: Ambient outdoor temperature ───────────────────────────────────
