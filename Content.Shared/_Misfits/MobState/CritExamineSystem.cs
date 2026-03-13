@@ -2,9 +2,9 @@
 // Lets bystanders know someone is down and needs medical attention.
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using MobState = Content.Shared.Mobs.MobState; // #Misfits Fix: alias to avoid namespace collision with this file's own namespace
 
 namespace Content.Shared._Misfits.MobState;
 
