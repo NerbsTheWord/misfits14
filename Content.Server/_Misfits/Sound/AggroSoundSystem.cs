@@ -5,6 +5,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Content.Server.NPC.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
+using Robust.Shared.Collections;
 using Robust.Shared.Random;
 
 namespace Content.Server._Misfits.Sound;
@@ -19,6 +20,9 @@ public sealed class AggroSoundSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    // Misfits Fix: only track entities with an active cooldown so Update is O(active) not O(all_NPCs).
+    private readonly HashSet<EntityUid> _activeCooldowns = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -26,6 +30,13 @@ public sealed class AggroSoundSystem : EntitySystem
         SubscribeLocalEvent<AggroSoundComponent, GunShotEvent>(OnGunShot);
         SubscribeLocalEvent<NPCMeleeCombatComponent, ComponentInit>(OnMeleeCombatStartup);
         SubscribeLocalEvent<NPCRangedCombatComponent, ComponentInit>(OnRangedCombatStartup);
+        // Misfits Fix: clean up when entity is removed so the set doesn't leak stale UIDs.
+        SubscribeLocalEvent<AggroSoundComponent, ComponentShutdown>(OnAggroShutdown);
+    }
+
+    private void OnAggroShutdown(EntityUid uid, AggroSoundComponent _, ComponentShutdown args)
+    {
+        _activeCooldowns.Remove(uid);
     }
 
     private void OnMeleeAttack(Entity<AggroSoundComponent> entity, ref MeleeAttackEvent args)
@@ -62,6 +73,8 @@ public sealed class AggroSoundSystem : EntitySystem
         _audio.PlayPvs(entity.Comp.Sound, entity.Owner);
         // Pick a random cooldown each play so mobs in a group do not vocalize in sync.
         entity.Comp.CooldownRemaining = _random.NextFloat(entity.Comp.CooldownMin, entity.Comp.CooldownMax);
+        // Misfits Fix: register this entity in the active-cooldown set so Update only processes it while hot.
+        _activeCooldowns.Add(entity.Owner);
         // Misfits Change /Fix: Dirty the component so clients see the updated CooldownRemaining
         // and the aggro status icon (ShowAggroIconSystem) appears correctly.
         Dirty(entity.Owner, entity.Comp);
@@ -71,17 +84,29 @@ public sealed class AggroSoundSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<AggroSoundComponent>();
-        while (query.MoveNext(out var uid, out var aggro))
+        // Misfits Fix: iterate only entities with an active cooldown instead of ALL AggroSoundComponent
+        // entities — reduces from O(all_NPCs) to O(currently-attacking_NPCs) every tick.
+        var toRemove = new ValueList<EntityUid>();
+        foreach (var uid in _activeCooldowns)
         {
-            if (aggro.CooldownRemaining <= 0f)
+            if (!TryComp<AggroSoundComponent>(uid, out var aggro))
+            {
+                toRemove.Add(uid);
                 continue;
+            }
 
             aggro.CooldownRemaining -= frameTime;
 
+            if (aggro.CooldownRemaining > 0f)
+                continue;
+
+            aggro.CooldownRemaining = 0f;
+            toRemove.Add(uid);
             // Misfits Change /Fix: Dirty when cooldown expires so clients hide the aggro icon.
-            if (aggro.CooldownRemaining <= 0f)
-                Dirty(uid, aggro);
+            Dirty(uid, aggro);
         }
+
+        foreach (var uid in toRemove)
+            _activeCooldowns.Remove(uid);
     }
 }

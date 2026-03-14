@@ -32,7 +32,12 @@ public sealed class DayNightCycleClientSystem : EntitySystem
 
             var cycleTime = (rawSeconds % cycleDurationSeconds) / cycleDurationSeconds;
 
-            mapLight.AmbientLightColor = DayNightCycleSystem.GetInterpolatedColor(dayNight, cycleTime);
+            var color = DayNightCycleSystem.GetInterpolatedColor(dayNight, cycleTime);
+
+            // Misfits Fix: only write when the color actually changes to avoid redundant
+            // state assignments every tick while the map light hasn't visually shifted.
+            if (color != mapLight.AmbientLightColor)
+                mapLight.AmbientLightColor = color;
         }
     }
 }

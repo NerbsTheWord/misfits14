@@ -67,9 +67,41 @@ public sealed class RadiationWarningSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        // Misfits Change — hook accumulated damage instead of proximity event so
-        // radiation applied via reagents/solutions also triggers flavortext.
-        SubscribeLocalEvent<HumanoidAppearanceComponent, DamageChangedEvent>(OnDamageChanged);
+        // Misfits Fix: split into two subscriptions to reduce hotpath cost.
+        // — Fast path: entity already has RadiationWarningComponent (normal case after first exposure).
+        //   Only fires for entities with both components, which is a much smaller set than "all humanoids".
+        // — First-exposure path: fires for all humanoids but immediately returns if already has component,
+        //   then on first radiation hit adds the component and delegates to ProcessRadiationDamage.
+        SubscribeLocalEvent<RadiationWarningComponent, DamageChangedEvent>(OnRadiationWarningDamageChanged);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, DamageChangedEvent>(OnHumanoidFirstRadiation);
+    }
+
+    /// <summary>
+    /// Fast path: entity already has RadiationWarningComponent — check and send tier messages.
+    /// </summary>
+    private void OnRadiationWarningDamageChanged(EntityUid uid, RadiationWarningComponent comp, DamageChangedEvent args)
+    {
+        ProcessRadiationDamage(uid, comp, args);
+    }
+
+    /// <summary>
+    /// First-exposure path: fires for all humanoids. Skips immediately if already has component
+    /// (handled above). On first radiation hit, adds the component and processes.
+    /// </summary>
+    private void OnHumanoidFirstRadiation(EntityUid uid, HumanoidAppearanceComponent _, DamageChangedEvent args)
+    {
+        // Misfits Fix: skip cheaply if already handled by the narrower RadiationWarningComponent subscription.
+        if (HasComp<RadiationWarningComponent>(uid))
+            return;
+
+        // Only proceed if radiation damage actually increased (first-exposure fast-reject).
+        if (args.DamageDelta == null ||
+            !args.DamageDelta.DamageDict.TryGetValue("Radiation", out var delta) || delta <= 0)
+            return;
+
+        // First radiation hit — lazily add the component and process immediately.
+        var comp = EnsureComp<RadiationWarningComponent>(uid);
+        ProcessRadiationDamage(uid, comp, args);
     }
 
     public override void Update(float frameTime)
@@ -87,7 +119,7 @@ public sealed class RadiationWarningSystem : EntitySystem
         }
     }
 
-    private void OnDamageChanged(EntityUid uid, HumanoidAppearanceComponent _, DamageChangedEvent args)
+    private void ProcessRadiationDamage(EntityUid uid, RadiationWarningComponent comp, DamageChangedEvent args)
     {
         // Only react when radiation damage has actually increased.
         if (args.DamageDelta != null &&
@@ -105,8 +137,6 @@ public sealed class RadiationWarningSystem : EntitySystem
         // Only send to living player-controlled humanoids.
         if (!_actor.TryGetSession(uid, out var session))
             return;
-
-        var comp = EnsureComp<RadiationWarningComponent>(uid);
 
         // Determine highest eligible tier based on accumulated damage.
         var tier = -1;

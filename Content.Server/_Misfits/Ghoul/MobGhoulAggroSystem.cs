@@ -88,6 +88,10 @@ public sealed class MobGhoulAggroSystem : EntitySystem
                 playerGhouls.Add(playerUid);
         }
 
+        // Misfits Fix: hoist snapshot buffer outside the NPC loop so we only allocate once
+        // instead of once-per-NPC — eliminates inner-loop heap allocations at scale.
+        var ignoredBuffer = new ValueList<EntityUid>();
+
         var ghoulQuery = EntityQueryEnumerator<MobGhoulAggroComponent, FactionExceptionComponent>();
         while (ghoulQuery.MoveNext(out var ghoulUid, out var aggro, out var exception))
         {
@@ -97,7 +101,12 @@ public sealed class MobGhoulAggroSystem : EntitySystem
                     _npcFaction.IgnoreEntity((ghoulUid, exception), playerGhoul);
             }
 
-            foreach (var ignored in new ValueList<EntityUid>(exception.Ignored))
+            // Snapshot Ignored into our reused buffer so iteration is safe while UnignoreEntity mutates the set.
+            ignoredBuffer.Clear();
+            foreach (var ignored in exception.Ignored)
+                ignoredBuffer.Add(ignored);
+
+            foreach (var ignored in ignoredBuffer)
             {
                 if (aggro.ProvokedPlayerGhouls.Contains(ignored))
                     continue;

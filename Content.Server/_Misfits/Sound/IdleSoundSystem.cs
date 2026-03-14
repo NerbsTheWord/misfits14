@@ -4,6 +4,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Sound;
 using Content.Shared.Sound.Components;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Collections;
 
 namespace Content.Server._Misfits.Sound;
 
@@ -17,11 +18,22 @@ public sealed class IdleSoundSystem : EntitySystem
     [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
+    // Misfits Fix: only track temporarily-suppressed entities so Update is O(suppressed) not O(all_NPCs).
+    // Dead entities are NOT in this set; they are permanently silenced via OnMobStateChanged.
+    private readonly HashSet<EntityUid> _suppressedEntities = new();
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<IdleSoundComponent, MeleeAttackEvent>(OnMeleeAttack);
         SubscribeLocalEvent<IdleSoundComponent, MobStateChangedEvent>(OnMobStateChanged);
+        // Misfits Fix: clean up tracking when entity is removed.
+        SubscribeLocalEvent<IdleSoundComponent, ComponentShutdown>(OnIdleShutdown);
+    }
+
+    private void OnIdleShutdown(EntityUid uid, IdleSoundComponent _, ComponentShutdown args)
+    {
+        _suppressedEntities.Remove(uid);
     }
 
     private void OnMeleeAttack(Entity<IdleSoundComponent> entity, ref MeleeAttackEvent args)
@@ -33,15 +45,18 @@ public sealed class IdleSoundSystem : EntitySystem
     {
         if (args.NewMobState != MobState.Alive)
         {
-            // Permanently disable idle sounds — the mob is dead or incapacitated.
+            // Permanently disable — mob is dead or incapacitated.
+            // Remove from suppressed-timer tracking; no cooldown needed since it stays silent.
             entity.Comp.Suppressed = true;
             entity.Comp.CooldownRemaining = 0f;
+            _suppressedEntities.Remove(entity.Owner);
             _emitSound.SetEnabled((entity.Owner, (SpamEmitSoundComponent?) null), false);
         }
         else
         {
             // Mob came back to life; let idle sounds resume.
             entity.Comp.Suppressed = false;
+            _suppressedEntities.Remove(entity.Owner);
             _emitSound.SetEnabled((entity.Owner, (SpamEmitSoundComponent?) null), true);
         }
     }
@@ -54,6 +69,8 @@ public sealed class IdleSoundSystem : EntitySystem
             return;
 
         entity.Comp.Suppressed = true;
+        // Misfits Fix: register for per-tick cooldown tracking.
+        _suppressedEntities.Add(entity.Owner);
         _emitSound.SetEnabled((entity.Owner, (SpamEmitSoundComponent?) null), false);
     }
 
@@ -61,23 +78,35 @@ public sealed class IdleSoundSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<IdleSoundComponent>();
-        while (query.MoveNext(out var uid, out var idle))
+        // Misfits Fix: iterate only temporarily-suppressed entities instead of all IdleSoundComponent
+        // entities — reduces from O(all_NPCs) to O(currently-suppressed_NPCs) per tick.
+        var toRemove = new ValueList<EntityUid>();
+        foreach (var uid in _suppressedEntities)
         {
-            if (!idle.Suppressed)
+            if (!TryComp<IdleSoundComponent>(uid, out var idle))
+            {
+                toRemove.Add(uid);
                 continue;
+            }
 
             idle.CooldownRemaining -= frameTime;
 
             if (idle.CooldownRemaining > 0f)
                 continue;
 
-            // Do not re-enable sounds if the mob is no longer alive.
+            // Cooldown expired — do not re-enable if mob is no longer alive.
             if (!_mobState.IsAlive(uid))
+            {
+                toRemove.Add(uid);
                 continue;
+            }
 
             idle.Suppressed = false;
+            toRemove.Add(uid);
             _emitSound.SetEnabled((uid, (SpamEmitSoundComponent?) null), true);
         }
+
+        foreach (var uid in toRemove)
+            _suppressedEntities.Remove(uid);
     }
 }

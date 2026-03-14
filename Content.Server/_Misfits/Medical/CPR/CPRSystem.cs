@@ -36,6 +36,10 @@ public sealed class CPRSystem : EntitySystem
     // How many damage points to heal total across Brute group on CPR success.
     private const float CPRHealAmount = 25f;
 
+    // How many Asphyxiation damage points to heal on CPR success.
+    // CPR simulates restoring oxygen delivery, so it should address airloss too.
+    private const float CPRAsphyxiationHeal = 6f; // #Misfits Add - match upstream CPRTrainingComponent default
+
     // Sound to play when CPR completes (compressions).
     private static readonly SoundPathSpecifier CPRSound =
         new("/Audio/Effects/hit_kick.ogg");
@@ -117,11 +121,12 @@ public sealed class CPRSystem : EntitySystem
         }
 
         // Heal a flat amount of brute-type damage to help pull them from the threshold.
-        // Using DamageSpecifier with a negative value heals; we spread across common Brute types.
+        // Also heals Asphyxiation since CPR restores oxygen delivery. #Misfits Tweak - added Asphyxiation
         var healSpec = new DamageSpecifier();
         healSpec.DamageDict.Add("Blunt", -CPRHealAmount / 3f);
         healSpec.DamageDict.Add("Slash", -CPRHealAmount / 3f);
         healSpec.DamageDict.Add("Piercing", -CPRHealAmount / 3f);
+        healSpec.DamageDict.Add("Asphyxiation", -CPRAsphyxiationHeal);
         _damageable.TryChangeDamage(target, healSpec, true, origin: user);
 
         _popup.PopupEntity(
