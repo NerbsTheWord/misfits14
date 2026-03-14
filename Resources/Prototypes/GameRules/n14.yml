@@ -1,9 +1,9 @@
-# #Misfits Change - renamed gamemode from N14 to M14
+# #Misfits Change - reverted gamemode name back to N14
 - type: gamePreset
-  id: M14
-  name: M14
+  id: N14
+  name: N14
   showInVote: true
-  description: M14
+  description: N14
   rules:
   - N14Rule
 

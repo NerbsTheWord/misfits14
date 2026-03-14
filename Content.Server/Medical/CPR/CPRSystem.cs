@@ -1,3 +1,11 @@
+// #Misfits Change — Entire upstream right-click CPR system commented out.
+// Redundant: the Misfits left-click CPR system (Content.Server/_Misfits/Medical/CPR/CPRSystem.cs)
+// supersedes this. That system works for any player with empty hands, heals brute + asphyxiation,
+// and has a built-in cooldown. This verb-based system only healed 6 Asphyxiation and required
+// CPRTrainingComponent (medical roles only).
+// CPRTrainingComponent and its trait are left intact so YAML prototypes remain valid;
+// without this system subscribing to events the component is simply inert.
+/*
 using Content.Server.Atmos.Rotting;
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
@@ -94,17 +102,13 @@ public sealed class CPRSystem : EntitySystem
 
         // #Misfits Change Add: surface CPR attempts to nearby players in the emote channel.
         var targetName = Identity.Entity(target, EntityManager);
-        var performerName = Identity.Entity(performer, EntityManager);
         _chat.TrySendInGameICMessage(performer,
             Loc.GetString("misfits-chat-cpr-start", ("target", targetName)),
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-        _chat.TrySendInGameICMessage(target,
-            Loc.GetString("misfits-chat-cpr-victim", ("user", performerName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed victim emote — emote system prepends entity name which caused
+        // broken formatting and "you" is wrong for a message visible to everyone.
 
         var playingStream = _audio.PlayPvs(performer.Comp.CPRSound, performer, AudioParams.Default);
         if (!playingStream.HasValue)
@@ -141,3 +145,4 @@ public sealed class CPRSystem : EntitySystem
             performer.Comp.CPRPlayingStream = _audio.Stop(performer.Comp.CPRPlayingStream);
     }
 }
+*/
