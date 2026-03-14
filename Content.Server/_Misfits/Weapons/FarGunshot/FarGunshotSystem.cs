@@ -6,6 +6,7 @@ using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.Weapons.FarGunshot;
 
@@ -19,15 +20,28 @@ public sealed class FarGunshotSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     // Default distant sound: uses the existing "small explosion far" which has the right muffled boom quality.
     private static readonly SoundPathSpecifier DefaultFarSound =
         new("/Audio/Effects/explosionsmallfar.ogg");
 
+    // Misfits Fix: rate-limit per gun so rapid-fire weapons (full-auto, burst) don't iterate all
+    // player sessions on every single bullet. 0.15 s gives one far-sound per ~3 bullets at 1200 RPM.
+    private const double FarSoundMinIntervalSeconds = 0.15;
+    private readonly Dictionary<EntityUid, TimeSpan> _lastFarSoundTime = new();
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<FarGunshotComponent, AmmoShotEvent>(OnAmmoShot);
+        // Misfits Fix: clean up per-gun tracking when the weapon is deleted.
+        SubscribeLocalEvent<FarGunshotComponent, ComponentShutdown>(OnFarGunshotShutdown);
+    }
+
+    private void OnFarGunshotShutdown(EntityUid uid, FarGunshotComponent _, ComponentShutdown args)
+    {
+        _lastFarSoundTime.Remove(uid);
     }
 
     private void OnAmmoShot(EntityUid gunUid, FarGunshotComponent comp, AmmoShotEvent args)
@@ -35,6 +49,14 @@ public sealed class FarGunshotSystem : EntitySystem
         // Suppressed guns (silencers) skip the distant echo entirely.
         if (comp.Suppressed)
             return;
+
+        // Misfits Fix: rate-limit so rapid-fire weapons don't iterate all player sessions every bullet.
+        // One far-sound per gun per FarSoundMinIntervalSeconds is perceptually identical to per-bullet.
+        var now = _timing.CurTime;
+        if (_lastFarSoundTime.TryGetValue(gunUid, out var lastTime) &&
+            (now - lastTime).TotalSeconds < FarSoundMinIntervalSeconds)
+            return;
+        _lastFarSoundTime[gunUid] = now;
 
         var sound = comp.FarSound ?? DefaultFarSound;
 

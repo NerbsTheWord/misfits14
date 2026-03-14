@@ -23,9 +23,22 @@ public sealed class RobotCriticalSparkingSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    // Misfits Fix: sparks fire on CycleDelay intervals (not every tick); run the outer scan
+    // at 10 Hz instead of 20 Hz — halves entity-query overhead with no visible difference.
+    private float _accumTimer;
+    private const float UpdateInterval = 0.1f;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // Misfits Fix: gate outer query to 10 Hz — spark timing already uses AccumulatedFrametime,
+        // so dt is passed through and precision is preserved.
+        _accumTimer += frameTime;
+        if (_accumTimer < UpdateInterval)
+            return;
+        var dt = _accumTimer;
+        _accumTimer = 0f;
 
         var query = EntityQueryEnumerator<RobotCriticalSparkingComponent, MobStateComponent, MobThresholdsComponent, DamageableComponent>();
         while (query.MoveNext(out var uid, out var component, out var mobState, out var thresholds, out var damageable))
@@ -43,7 +56,7 @@ public sealed class RobotCriticalSparkingSystem : EntitySystem
                 continue;
             }
 
-            component.AccumulatedFrametime += frameTime;
+            component.AccumulatedFrametime += dt;
             if (component.AccumulatedFrametime < component.CycleDelay)
                 continue;
 

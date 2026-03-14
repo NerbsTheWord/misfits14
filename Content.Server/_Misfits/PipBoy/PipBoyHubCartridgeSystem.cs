@@ -37,9 +37,20 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         SubscribeLocalEvent<PipBoyHubCartridgeComponent, CartridgeMessageEvent>(OnMessage);
     }
 
+    // Misfits Fix: card-reference sync only needs to run at low frequency;
+    // contained-ID changes are user actions, not per-tick events.
+    private float _cardSyncAccum;
+    private const float CardSyncInterval = 0.5f;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // Misfits Fix: gate to 2 Hz (every 0.5 s) — card swaps are rare user actions.
+        _cardSyncAccum += frameTime;
+        if (_cardSyncAccum < CardSyncInterval)
+            return;
+        _cardSyncAccum -= CardSyncInterval;
 
         // Keep card references in sync (same pattern as NanoChatCartridgeSystem)
         var query = EntityQueryEnumerator<PipBoyHubCartridgeComponent, CartridgeComponent>();

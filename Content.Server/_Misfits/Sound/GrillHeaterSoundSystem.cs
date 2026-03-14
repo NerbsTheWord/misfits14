@@ -18,6 +18,11 @@ public sealed class GrillHeaterSoundSystem : EntitySystem
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
+    // Misfits Fix: polling heater state at 20 Hz is wasteful — state changes are
+    // user-driven and won't be missed at 2 Hz (every 0.5 s).
+    private float _updateAccum;
+    private const float UpdateInterval = 0.5f;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -37,6 +42,12 @@ public sealed class GrillHeaterSoundSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // Misfits Fix: gate to 2 Hz — heater state changes are user-triggered, sub-second precision unneeded.
+        _updateAccum += frameTime;
+        if (_updateAccum < UpdateInterval)
+            return;
+        _updateAccum -= UpdateInterval;
 
         var query = EntityQueryEnumerator<GrillHeaterSoundComponent>();
         while (query.MoveNext(out var uid, out var sound))

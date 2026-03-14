@@ -89,6 +89,10 @@ public sealed class MobRobotAggroSystem : EntitySystem
                 playerRobots.Add(playerUid);
         }
 
+        // Misfits Fix: hoist snapshot buffer outside the NPC loop so we only allocate once
+        // instead of once-per-NPC — eliminates inner-loop heap allocations at scale.
+        var ignoredBuffer = new ValueList<EntityUid>();
+
         var robotQuery = EntityQueryEnumerator<MobRobotAggroComponent, FactionExceptionComponent>();
         while (robotQuery.MoveNext(out var robotUid, out var aggro, out var exception))
         {
@@ -98,7 +102,12 @@ public sealed class MobRobotAggroSystem : EntitySystem
                     _npcFaction.IgnoreEntity((robotUid, exception), playerRobot);
             }
 
-            foreach (var ignored in new ValueList<EntityUid>(exception.Ignored))
+            // Snapshot Ignored into our reused buffer so iteration is safe while UnignoreEntity mutates the set.
+            ignoredBuffer.Clear();
+            foreach (var ignored in exception.Ignored)
+                ignoredBuffer.Add(ignored);
+
+            foreach (var ignored in ignoredBuffer)
             {
                 if (aggro.ProvokedPlayerRobots.Contains(ignored))
                     continue;

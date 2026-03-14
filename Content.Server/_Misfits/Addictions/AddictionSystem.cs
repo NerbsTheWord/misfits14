@@ -72,11 +72,22 @@ public sealed class AddictionSystem : SharedAddictionSystem
         component.WithdrawalNextTick = curTime + TimeSpan.FromSeconds(WithdrawalTickInterval);
     }
 
+    // Misfits Fix: CheckAddictionFading calls _statusEffects.TryGetTime (a dictionary lookup) every tick
+    // for every addicted entity. Gate it to once per 5 s — fading messages are cosmetic only.
+    private float _fadeCheckAccum;
+    private const float FadeCheckInterval = 5f;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
         var curTime = _timing.CurTime;
+
+        _fadeCheckAccum += frameTime;
+        var doFadeCheck = _fadeCheckAccum >= FadeCheckInterval;
+        if (doFadeCheck)
+            _fadeCheckAccum -= FadeCheckInterval;
+
         var query = EntityQueryEnumerator<AddictedComponent>();
 
         while (query.MoveNext(out var uid, out var addicted))
@@ -84,8 +95,9 @@ public sealed class AddictionSystem : SharedAddictionSystem
             // Detect suppression state transitions (fires mood events, speed refresh)
             UpdateSuppressed(uid, addicted, curTime);
 
-            // Fading tier messages (chat notifications when addiction weakens)
-            CheckAddictionFading(uid, addicted, curTime);
+            // Misfits Fix: fading-tier check gated to 5 s to avoid per-tick TryGetTime dictionary lookups.
+            if (doFadeCheck)
+                CheckAddictionFading(uid, addicted, curTime);
 
             if (addicted.Suppressed)
                 continue;

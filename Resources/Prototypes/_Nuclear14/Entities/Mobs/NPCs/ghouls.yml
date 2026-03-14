@@ -25,13 +25,13 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -9
+        volume: -15
         maxDistance: 5
   - type: AggroSound #Misfits Change
     sound:
       collection: N14GhoulAggro
       params:
-        volume: -3
+        volume: -12
         maxDistance: 10
   - type: Sprite
     drawdepth: Mobs
@@ -63,13 +63,13 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -9
+        volume: -15
         maxDistance: 5
   - type: AggroSound #Misfits Change
     sound:
       collection: N14GhoulAggro
       params:
-        volume: -3
+        volume: -12
         maxDistance: 10
   - type: Sprite
     drawdepth: Mobs
@@ -105,13 +105,13 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -9
+        volume: -15
         maxDistance: 5
   - type: AggroSound #Misfits Change
     sound:
       collection: N14GhoulAggro
       params:
-        volume: -3
+        volume: -12
         maxDistance: 10
   - type: Sprite
     drawdepth: Mobs
@@ -195,5 +195,5 @@
     sound:
       collection: N14GhoulAggro
       params:
-        volume: -3
+        volume: -12
         maxDistance: 10
