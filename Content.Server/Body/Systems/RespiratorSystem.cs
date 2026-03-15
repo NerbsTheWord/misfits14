@@ -108,14 +108,12 @@ public sealed class RespiratorSystem : EntitySystem
                     _popupSystem.PopupEntity(Loc.GetString("lung-behavior-gasp"), uid);
                 }
 
-                // #Misfits Tweak: Skip passive asphyxiation damage while incapacitated (Critical/SoftCritical).
-                // Crit entities can die from bleeding, toxin, or brute — but NOT from passive crit airloss alone.
-                // An alive entity in vacuum still suffocates normally since IsIncapacitated is false there.
-                if (!_mobState.IsIncapacitated(uid))
-                {
-                    TakeSuffocationDamage((uid, respirator));
-                    respirator.SuffocationCycles += 1;
-                }
+                // #Misfits Change: Re-enabled asphyxiation damage while in crit — suffocating players will
+                // push toward 200 (dead) without CPR. The earlier guard (commented below) prevented this entirely.
+                // Now players knocked into crit while not breathing have a ~30s window before dying.
+                // #Misfits Old Tweak (commented out): if (!_mobState.IsIncapacitated(uid))
+                TakeSuffocationDamage((uid, respirator));
+                respirator.SuffocationCycles += 1;
                 continue;
             }
 

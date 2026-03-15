@@ -172,6 +172,24 @@ public sealed partial class MentorHelpControl : Control
             }
         };
 
+        // #Misfits Add — unclaim button returns ticket to Open state
+        UnclaimTicket.OnPressed += _ =>
+        {
+            if (_currentPlayer != null && _tickets.TryGetValue(_currentPlayer.SessionId, out var ticket))
+            {
+                mentorSys.UnclaimTicket(ticket.TicketId);
+            }
+        };
+
+        // #Misfits Add — reopen button returns resolved ticket to Open state
+        ReopenTicket.OnPressed += _ =>
+        {
+            if (_currentPlayer != null && _tickets.TryGetValue(_currentPlayer.SessionId, out var ticket))
+            {
+                mentorSys.ReopenTicket(ticket.TicketId);
+            }
+        };
+
         // Request ticket list on load
         mentorSys.RequestTicketList();
 
@@ -252,8 +270,9 @@ public sealed partial class MentorHelpControl : Control
         var statusText = ticket.Status switch
         {
             HelpTicketStatus.Open => Loc.GetString("ticket-system-status-open"),
-            HelpTicketStatus.Claimed => Loc.GetString("ticket-system-status-claimed", ("admin", ticket.ClaimedByName ?? "?")),
-            HelpTicketStatus.Resolved => Loc.GetString("ticket-system-status-resolved"),
+            HelpTicketStatus.Claimed => Loc.GetString("ticket-system-status-claimed", ("role", "Mentor"), ("admin", ticket.ClaimedByName ?? "?")),
+            // #Misfits Change — show which admin resolved the ticket
+            HelpTicketStatus.Resolved => Loc.GetString("ticket-system-status-resolved", ("role", "Mentor"), ("admin", ticket.ResolvedByName ?? "?")),
             _ => "Unknown",
         };
 
@@ -262,7 +281,9 @@ public sealed partial class MentorHelpControl : Control
         TicketStatusLabel.SetMessage(msg);
 
         ClaimTicket.Visible = ticket.Status == HelpTicketStatus.Open;
+        UnclaimTicket.Visible = ticket.Status == HelpTicketStatus.Claimed; // #Misfits Add
         ResolveTicket.Visible = ticket.Status != HelpTicketStatus.Resolved;
+        ReopenTicket.Visible = ticket.Status == HelpTicketStatus.Resolved; // #Misfits Add
     }
 
     private void SwitchToChannel(NetUserId? ch)
@@ -281,9 +302,12 @@ public sealed partial class MentorHelpControl : Control
 
     public void PopulateList()
     {
+        // #Misfits Change — Only show users with mentorhelp tickets
         var pinnedPlayers = ChannelSelector.PlayerInfo.Where(p => p.IsPinned).ToDictionary(p => p.SessionId);
 
-        ChannelSelector.PopulateList();
+        // Filter to only players with tickets
+        var ticketedPlayers = ChannelSelector.PlayerInfo.Where(p => _tickets.ContainsKey(p.SessionId)).ToList();
+        ChannelSelector.PopulateList(ticketedPlayers);
 
         foreach (var player in ChannelSelector.PlayerInfo)
         {

@@ -53,6 +53,9 @@ public sealed class PlayerPanelEui : BaseEui
                 SendMessage(new PlayerPanelGhostFollowMessage());
         };
 
+        // #Misfits Add — respawn/despawn: deletes the character and frees the spawn slot.
+        PlayerPanel.OnRespawn += () => SendMessage(new PlayerPanelRespawnMessage());
+
         PlayerPanel.OnClose += () => SendMessage(new CloseEuiMessage());
     }
 

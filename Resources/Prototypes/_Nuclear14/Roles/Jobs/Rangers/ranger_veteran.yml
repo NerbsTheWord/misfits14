@@ -11,7 +11,7 @@
   requireAdminNotify: true
   canBeAntag: false
   accessGroups:
-  - NCR
+  - NCRRanger #Misfits Fix - was NCR; Elite Rangers must open NCRRanger-tagged doors
   special:
   - !type:AddComponentSpecial
     components:

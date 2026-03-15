@@ -7,6 +7,7 @@ using Content.Shared.Examine;
 using Robust.Shared.Utility;
 using Robust.Shared.Random;
 using Content.Server._Misfits.GhoulReversal; // #Misfits Change
+using Content.Shared._N14.Radiation.Components; // #Misfits Tweak: RadiationHealing immunity check
 
 namespace Content.Server.Ghoul;
 
@@ -109,6 +110,11 @@ public sealed partial class GhoulifySystem : EntitySystem
     private void OnFeralIrradiated(EntityUid uid, FeralGhoulifyComponent comp, OnIrradiatedEvent args)
     {
         if (args.TotalRads <= 0)
+            return;
+
+        // #Misfits Tweak: Ghouls with RadiationHealing are radiation-resistant; radiation heals them
+        // rather than harming them, so it should not push them toward feral state.
+        if (HasComp<RadiationHealingComponent>(uid))
             return;
 
         comp.AccumulatedRads += args.TotalRads;

@@ -15,6 +15,7 @@ using Content.Shared.Pointing;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Speech;
 using Content.Shared.Standing;
+using Content.Shared._Misfits.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Throwing;
 using Robust.Shared.Configuration;
@@ -112,12 +113,26 @@ public partial class MobStateSystem
             case MobState.Critical:
                 if (component.CurrentState is not MobState.Alive)
                     break;
-                _standing.Stand(target);
+                // Misfits Change: don't auto-stand entities with LayingDownComponent — they must get up manually.
+                // If a recovery drug (stimpak/healing powder) is actively metabolizing, use the shorter 2s soft-crit
+                // recovery time instead of the full 8s hard-crit time. This matches Fallout fantasy: stims let you
+                // push through injury and recover faster.
+                if (!HasComp<LayingDownComponent>(target))
+                    _standing.Stand(target);
+                else if (TryComp<LayingDownComponent>(target, out var critLayingDown))
+                    critLayingDown.PostCritRecoveryOverride = HasComp<RecoveryDrugActiveComponent>(target)
+                        ? critLayingDown.SoftCritStandingUpTime
+                        : critLayingDown.CritStandingUpTime;
                 break;
             case MobState.SoftCritical:
                 if (component.CurrentState is not MobState.Alive)
                     break;
-                _standing.Stand(target);
+                // Misfits Change: soft-crit (stim recovery) uses a shorter 2s override — still briefly floored
+                // but back on feet fast, matching the Fallout stim fantasy
+                if (!HasComp<LayingDownComponent>(target))
+                    _standing.Stand(target);
+                else if (TryComp<LayingDownComponent>(target, out var softCritLayingDown))
+                    softCritLayingDown.PostCritRecoveryOverride = softCritLayingDown.SoftCritStandingUpTime;
                 break;
             case MobState.Dead:
                 RemComp<CollisionWakeComponent>(target);
@@ -147,7 +162,10 @@ public partial class MobStateSystem
         switch (state)
         {
             case MobState.Alive:
-                _standing.Stand(target);
+                // Misfits Change: if entity has LayingDownComponent and is already downed (e.g. just exited crit),
+                // leave them on the ground — player must press ToggleStanding to get up manually
+                if (!HasComp<LayingDownComponent>(target) || !_standing.IsDown(target))
+                    _standing.Stand(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
                 break;
             case MobState.Critical:

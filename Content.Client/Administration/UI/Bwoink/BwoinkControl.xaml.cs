@@ -232,6 +232,24 @@ namespace Content.Client.Administration.UI.Bwoink
                 }
             };
 
+            // #Misfits Add — unclaim button returns ticket to Open state
+            UnclaimTicket.OnPressed += _ =>
+            {
+                if (_currentPlayer != null && _tickets.TryGetValue(_currentPlayer.SessionId, out var ticket))
+                {
+                    bwoinkSys.UnclaimTicket(ticket.TicketId);
+                }
+            };
+
+            // #Misfits Add — reopen button returns resolved ticket to Open state
+            ReopenTicket.OnPressed += _ =>
+            {
+                if (_currentPlayer != null && _tickets.TryGetValue(_currentPlayer.SessionId, out var ticket))
+                {
+                    bwoinkSys.ReopenTicket(ticket.TicketId);
+                }
+            };
+
             // Request ticket list on load
             bwoinkSys.RequestTicketList();
 
@@ -282,8 +300,9 @@ namespace Content.Client.Administration.UI.Bwoink
             var statusText = ticket.Status switch
             {
                 HelpTicketStatus.Open => Loc.GetString("ticket-system-status-open"),
-                HelpTicketStatus.Claimed => Loc.GetString("ticket-system-status-claimed", ("admin", ticket.ClaimedByName ?? "?")),
-                HelpTicketStatus.Resolved => Loc.GetString("ticket-system-status-resolved"),
+                HelpTicketStatus.Claimed => Loc.GetString("ticket-system-status-claimed", ("role", "Admin"), ("admin", ticket.ClaimedByName ?? "?")),
+                // #Misfits Change — show which admin resolved the ticket
+                HelpTicketStatus.Resolved => Loc.GetString("ticket-system-status-resolved", ("role", "Admin"), ("admin", ticket.ResolvedByName ?? "?")),
                 _ => "Unknown",
             };
 
@@ -293,17 +312,9 @@ namespace Content.Client.Administration.UI.Bwoink
 
             // Show/hide buttons based on ticket state
             ClaimTicket.Visible = ticket.Status == HelpTicketStatus.Open;
+            UnclaimTicket.Visible = ticket.Status == HelpTicketStatus.Claimed; // #Misfits Add
             ResolveTicket.Visible = ticket.Status != HelpTicketStatus.Resolved;
-
-            // #Misfits Add — disable typing until the ticket is claimed (force claim-before-reply)
-            if (AHelpHelper.TryGetChannel(_currentPlayer.SessionId, out var chatPanel) && chatPanel != null)
-            {
-                var locked = ticket.Status == HelpTicketStatus.Open;
-                chatPanel.SenderLineEdit.Editable = !locked;
-                chatPanel.SenderLineEdit.PlaceHolder = locked // #Misfits Fix: LineEdit uses PlaceHolder, not PlaceholderText
-                    ? Loc.GetString("ticket-system-claim-to-reply")
-                    : string.Empty;
-            }
+            ReopenTicket.Visible = ticket.Status == HelpTicketStatus.Resolved; // #Misfits Add
         }
 
         /// <summary>
@@ -408,10 +419,12 @@ namespace Content.Client.Administration.UI.Bwoink
 
         public void PopulateList()
         {
-            // Maintain existing pin statuses
+            // #Misfits Change — Only show users with adminhelp tickets
             var pinnedPlayers = ChannelSelector.PlayerInfo.Where(p => p.IsPinned).ToDictionary(p => p.SessionId);
 
-            ChannelSelector.PopulateList();
+            // Filter to only players with tickets
+            var ticketedPlayers = ChannelSelector.PlayerInfo.Where(p => _tickets.ContainsKey(p.SessionId)).ToList();
+            ChannelSelector.PopulateList(ticketedPlayers);
 
             // Restore pin statuses
             foreach (var player in ChannelSelector.PlayerInfo)

@@ -1,6 +1,13 @@
 # #Misfits Change - Old split BoS AI factions commented out.
 # Consolidated to BrotherhoodOfSteel.
 
+# #Misfits Add - Separate faction for player-job Raiders so NPC Raiders treat them as hostile
+# rather than friendly (same-faction NPCs skip combat checks against each other).
+- type: npcFaction
+  id: PlayerRaider
+  hostile:
+  - Raider
+
 #- type: npcFaction
 #  id: BrotherhoodMidwest
 #  friendly:

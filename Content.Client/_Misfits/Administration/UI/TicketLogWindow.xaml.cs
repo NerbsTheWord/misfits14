@@ -76,16 +76,24 @@ public sealed partial class TicketLogWindow : DefaultWindow
             var (color, text) = ticket.Status switch
             {
                 HelpTicketStatus.Open => ("red", Loc.GetString("ticket-system-status-open")),
-                HelpTicketStatus.Claimed => ("yellow", Loc.GetString("ticket-system-status-claimed", ("admin", ticket.ClaimedByName ?? "?"))),
-                HelpTicketStatus.Resolved => ("green", Loc.GetString("ticket-system-status-resolved")),
+                HelpTicketStatus.Claimed => ("yellow", Loc.GetString("ticket-system-status-claimed", ("role", ticket.Type == HelpTicketType.AdminHelp ? "Admin" : "Mentor"), ("admin", ticket.ClaimedByName ?? "?"))),
+                // #Misfits Change — show which admin resolved the ticket
+                HelpTicketStatus.Resolved => ("green", Loc.GetString("ticket-system-status-resolved", ("role", ticket.Type == HelpTicketType.AdminHelp ? "Admin" : "Mentor"), ("admin", ticket.ResolvedByName ?? "?"))),
                 _ => ("gray", "Unknown"),
             };
             statusMsg.AddMarkup($"[color={color}]{text}[/color]");
             statusLabel.SetMessage(statusMsg);
             row.AddChild(statusLabel);
 
-            row.AddChild(new Label { Text = ticket.ClaimedByName ?? "—", MinWidth = 140 });
-            row.AddChild(new Label { Text = ticket.CreatedAt.ToString("HH:mm:ss"), MinWidth = 120 });
+            row.AddChild(new Label { Text = ticket.ClaimedByName ?? "—", MinWidth = 120 });
+            // #Misfits Add — resolved-by column
+            row.AddChild(new Label { Text = ticket.ResolvedByName ?? "—", MinWidth = 120 });
+            // #Misfits Add — duration column (time from creation to resolution)
+            var durationText = ticket.ResolvedAt.HasValue
+                ? (ticket.ResolvedAt.Value - ticket.CreatedAt).ToString(@"hh\:mm\:ss")
+                : "—";
+            row.AddChild(new Label { Text = durationText, MinWidth = 80 });
+            row.AddChild(new Label { Text = ticket.CreatedAt.ToString("HH:mm:ss"), MinWidth = 100 });
 
             TicketListContainer.AddChild(row);
         }

@@ -21,4 +21,5 @@ player-panel-logs = Logs
 player-panel-delete = Delete
 player-panel-rejuvenate = Rejuvenate
 player-panel-aghost = AGhost to Player
+player-panel-respawn = Respawn/Despawn
 player-panel-false = False

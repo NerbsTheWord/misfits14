@@ -44,7 +44,10 @@ public sealed class HelpTicketInfo
     public HelpTicketType Type { get; set; }
     public string? ClaimedByName { get; set; }
     public NetUserId? ClaimedById { get; set; }
+    public string? ResolvedByName { get; set; }
+    public NetUserId? ResolvedById { get; set; }
     public DateTime CreatedAt { get; set; }
+    public DateTime? ResolvedAt { get; set; }
 }
 
 // ────────────────────── Network messages ──────────────────────
@@ -103,6 +106,38 @@ public sealed class HelpTicketResolveMessage : EntityEventArgs
     public HelpTicketType Type { get; }
 
     public HelpTicketResolveMessage(int ticketId, HelpTicketType type)
+    {
+        TicketId = ticketId;
+        Type = type;
+    }
+}
+
+/// <summary>
+/// Admin/Mentor → Server: request to unclaim (release) a ticket back to Open.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketUnclaimMessage : EntityEventArgs
+{
+    public int TicketId { get; }
+    public HelpTicketType Type { get; }
+
+    public HelpTicketUnclaimMessage(int ticketId, HelpTicketType type)
+    {
+        TicketId = ticketId;
+        Type = type;
+    }
+}
+
+/// <summary>
+/// Admin/Mentor → Server: request to reopen a resolved ticket.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketReopenMessage : EntityEventArgs
+{
+    public int TicketId { get; }
+    public HelpTicketType Type { get; }
+
+    public HelpTicketReopenMessage(int ticketId, HelpTicketType type)
     {
         TicketId = ticketId;
         Type = type;

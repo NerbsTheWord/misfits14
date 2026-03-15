@@ -9,7 +9,9 @@
                 <BoxContainer Name="TicketStatusBar" Access="Public" Orientation="Horizontal" HorizontalExpand="True" Visible="False">
                     <RichTextLabel Name="TicketStatusLabel" Access="Public" HorizontalExpand="True" />
                     <Button Name="ClaimTicket" Access="Public" Text="{Loc 'ticket-system-claim-button'}" StyleClasses="OpenRight" Visible="True" />
-                    <Button Name="ResolveTicket" Access="Public" Text="{Loc 'ticket-system-resolve-button'}" StyleClasses="OpenLeft" Visible="True" />
+                    <Button Name="UnclaimTicket" Access="Public" Text="{Loc 'ticket-system-unclaim-button'}" StyleClasses="OpenBoth" Visible="False" />
+                    <Button Name="ResolveTicket" Access="Public" Text="{Loc 'ticket-system-resolve-button'}" StyleClasses="OpenBoth" Visible="True" />
+                    <Button Name="ReopenTicket" Access="Public" Text="{Loc 'ticket-system-reopen-button'}" StyleClasses="OpenLeft" Visible="False" />
                 </BoxContainer>
                 <BoxContainer Access="Public" Name="BwoinkArea" VerticalExpand="True" />
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True">

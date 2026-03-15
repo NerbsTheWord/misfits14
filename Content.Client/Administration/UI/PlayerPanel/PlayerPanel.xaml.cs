@@ -29,6 +29,7 @@ public sealed partial class PlayerPanel : FancyWindow
     public event Action? OnRejuvenate;
     public event Action<NetEntity?>? OnFollow; // #Misfits Change
     public event Action<NetEntity?>? OnGhostFollow; // #Misfits Change
+    public event Action? OnRespawn; // #Misfits Add — raised when admin clicks the Respawn/Despawn button
 
     public NetUserId? TargetPlayer;
     public string? TargetUsername;
@@ -58,6 +59,7 @@ public sealed partial class PlayerPanel : FancyWindow
             RejuvenateButton.OnPressed += _ => OnRejuvenate?.Invoke();
                 FollowButton.OnPressed += _ => OnFollow?.Invoke(TargetNetEntity); // #Misfits Change
                 GhostFollowButton.OnPressed += _ => OnGhostFollow?.Invoke(TargetNetEntity); // #Misfits Change
+                RespawnButton.OnPressed += _ => OnRespawn?.Invoke(); // #Misfits Add
     }
 
     public void SetUsername(string player)
@@ -136,5 +138,6 @@ public sealed partial class PlayerPanel : FancyWindow
         DeleteButton.Disabled = !_adminManager.HasFlag(AdminFlags.Debug);
         FollowButton.Disabled = !_adminManager.CanCommand("follow") || TargetNetEntity == null; // #Misfits Change
         GhostFollowButton.Disabled = !_adminManager.CanCommand("aghost") || TargetNetEntity == null; // #Misfits Change
+        RespawnButton.Disabled = !_adminManager.CanCommand("respawn"); // #Misfits Add — any admin that can run respawn may use this button
     }
 }

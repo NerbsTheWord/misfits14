@@ -134,7 +134,8 @@ public sealed class MentorHelpUIController : UIController,
 
         EnsureUIHelper();
 
-        if (message.PlaySound && localPlayer.UserId != message.TrueSender && !UIHelper!.IsOpen)
+        // #Misfits Change — mhelp sound only plays for players, not mentors
+        if (message.PlaySound && localPlayer.UserId != message.TrueSender && !UIHelper!.IsOpen && !_adminManager.HasFlag(AdminFlags.ViewNotes))
         {
             _audio.PlayGlobal(MHelpReceiveSound, Filter.Local(), false);
             _clyde.RequestWindowAttention();

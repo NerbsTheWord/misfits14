@@ -12,12 +12,11 @@ namespace Content.Shared._Misfits.Chat;
 /// </summary>
 public static class NameSanitizer
 {
+    // Removed "gay" and "homosexual" from blocked terms; these are not slurs
     private static readonly string[] BlockedTerms =
     [
-        "gay",
         "lesbian",
         "bisexual",
-        "homosexual",
         "queer",
         "trans",
         "transgender",

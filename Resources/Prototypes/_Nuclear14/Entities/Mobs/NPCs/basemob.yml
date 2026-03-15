@@ -250,7 +250,7 @@
   - type: NpcFactionMember
     factions:
     - Feral
-  - type: MobGhoulAggro #Misfits Change
+  #- type: MobGhoulAggro #Misfits Change — removed: NPC feral ghouls should be hostile to player ghouls, not neutral.
   - type: HTN
     rootTask:
       task: N14HostileCompound

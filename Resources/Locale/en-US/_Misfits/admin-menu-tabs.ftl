@@ -52,6 +52,21 @@ loremaster-obj-legion-steal-enclave = Steal Enclave Tech Data Holotape
 misfits-staff-tab-permissions-btn = Admin Permissions
 misfits-staff-tab-permissions-desc = Search staff by name and manage their ranks and permission flags.
 
+# Staff tab — round stats section
+misfits-staff-stats-header = Round Ticket Stats
+misfits-staff-stats-total = Total: {$count}
+misfits-staff-stats-open = Open: {$count}
+misfits-staff-stats-claimed = Claimed: {$count}
+misfits-staff-stats-resolved = Resolved: {$count}
+misfits-staff-stats-avg-time = Avg Resolution: {$time}
+misfits-staff-stats-na = N/A
+misfits-staff-stats-breakdown-header = Staff Activity
+misfits-staff-stats-col-name = Staff
+misfits-staff-stats-col-claimed = Claimed
+misfits-staff-stats-col-resolved = Resolved
+misfits-staff-stats-col-ratio = Share
+misfits-staff-stats-no-activity = No staff activity this round yet.
+
 # Staff tab — ticket history section
 misfits-staff-tab-ticket-history-title = Ticket Log
 misfits-staff-tab-ticket-refresh = Refresh
@@ -59,6 +74,8 @@ misfits-staff-tab-ticket-col-id = #
 misfits-staff-tab-ticket-col-player = Player
 misfits-staff-tab-ticket-col-status = Status
 misfits-staff-tab-ticket-col-claimed = Claimed By
+misfits-staff-tab-ticket-col-resolved = Resolved By
+misfits-staff-tab-ticket-col-duration = Duration
 misfits-staff-tab-ticket-col-time = Time
 misfits-staff-tab-ticket-log-btn = Ticket Log
 misfits-staff-tab-ticket-log-desc = View all current-round tickets (open, claimed, resolved).

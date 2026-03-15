@@ -109,11 +109,18 @@ public abstract class SharedLayingDownSystem : EntitySystem
 
     private void OnStandingUpDoAfter(EntityUid uid, StandingStateComponent component, StandingUpDoAfterEvent args)
     {
+        // Misfits Change: clear the post-crit recovery override regardless of outcome
+        if (TryComp<LayingDownComponent>(uid, out var layingDownComp))
+            layingDownComp.PostCritRecoveryOverride = null;
+
         if (args.Handled || args.Cancelled
             || HasComp<KnockedDownComponent>(uid)
             || _mobState.IsIncapacitated(uid)
             || !_standing.Stand(uid))
+        {
             component.CurrentState = StandingState.Lying;
+            return; // Misfits Fix: missing return caused StandingState.Standing to always overwrite Lying on cancelled/failed stand-up
+        }
 
         component.CurrentState = StandingState.Standing;
     }
@@ -150,7 +157,9 @@ public abstract class SharedLayingDownSystem : EntitySystem
             || HasComp<DebrainedComponent>(uid))
             return false;
 
-        var args = new DoAfterArgs(EntityManager, uid, layingDown.StandingUpTime, new StandingUpDoAfterEvent(), uid)
+        // Misfits Change: use the crit recovery override if set (hard crit = 8s, soft crit = 2s), otherwise normal 1s
+        var standTime = layingDown.PostCritRecoveryOverride ?? layingDown.StandingUpTime;
+        var args = new DoAfterArgs(EntityManager, uid, standTime, new StandingUpDoAfterEvent(), uid)
         {
             BreakOnHandChange = false,
             RequireCanInteract = false

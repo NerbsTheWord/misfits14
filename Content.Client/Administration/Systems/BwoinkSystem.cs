@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System.Linq; // #Misfits Add — for LINQ ticket filtering
+using Content.Client._Misfits.Administration.UI; // #Misfits Add — for TicketToastPopup
 using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system types
 using Content.Shared.Administration;
@@ -25,6 +26,9 @@ namespace Content.Client.Administration.Systems
         public event Action<HelpTicketInfo>? OnTicketUpdated;
         public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
 
+        // #Misfits Add — track known tickets to only toast on new or significant state changes
+        private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -39,21 +43,71 @@ namespace Content.Client.Administration.Systems
             OnBwoinkTextMessageRecieved?.Invoke(this, message);
         }
 
-        // #Misfits Add — relay ticket updates to the UI
+        // #Misfits Add — relay ticket updates to the UI and show toast notifications
         private void OnTicketUpdatedMsg(HelpTicketUpdatedMessage msg)
         {
             if (msg.Ticket.Type == HelpTicketType.AdminHelp)
+            {
+                ShowTicketToast(msg.Ticket);
                 OnTicketUpdated?.Invoke(msg.Ticket);
+            }
         }
 
         private void OnTicketListMsg(HelpTicketListMessage msg)
         {
             var ahelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.AdminHelp).ToList();
+            // #Misfits Add — seed known tickets from the initial list (no toast for bulk load)
+            foreach (var t in ahelpTickets)
+                _knownTickets[t.TicketId] = t.Status;
+
             if (ahelpTickets.Count > 0)
                 OnTicketListReceived?.Invoke(ahelpTickets);
         }
 
-        // #Misfits Add — send ticket claim/resolve requests
+        // #Misfits Add — show a toast popup for notable ticket events
+        private void ShowTicketToast(HelpTicketInfo ticket)
+        {
+            var previouslyKnown = _knownTickets.TryGetValue(ticket.TicketId, out var prevStatus);
+            _knownTickets[ticket.TicketId] = ticket.Status;
+
+            // Only toast for meaningful events, not every redundant update
+            string? title = null;
+            string? body = null;
+
+            if (!previouslyKnown && ticket.Status == HelpTicketStatus.Open)
+            {
+                // Brand-new ticket
+                title = Loc.GetString("ticket-system-toast-new-title");
+                body = Loc.GetString("ticket-system-toast-new-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+            }
+            else if (previouslyKnown && prevStatus != ticket.Status)
+            {
+                // Status changed
+                switch (ticket.Status)
+                {
+                    case HelpTicketStatus.Claimed:
+                        title = Loc.GetString("ticket-system-toast-claimed-title");
+                        body = Loc.GetString("ticket-system-toast-claimed-body", ("id", ticket.TicketId), ("role", "Admin"), ("admin", ticket.ClaimedByName ?? "?"));
+                        break;
+                    case HelpTicketStatus.Resolved:
+                        title = Loc.GetString("ticket-system-toast-resolved-title");
+                        body = Loc.GetString("ticket-system-toast-resolved-body", ("id", ticket.TicketId), ("role", "Admin"), ("admin", ticket.ResolvedByName ?? "?"));
+                        break;
+                    case HelpTicketStatus.Open when prevStatus == HelpTicketStatus.Resolved:
+                        title = Loc.GetString("ticket-system-toast-reopened-title");
+                        body = Loc.GetString("ticket-system-toast-reopened-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+                        break;
+                }
+            }
+
+            if (title != null && body != null)
+            {
+                var toast = new TicketToastPopup();
+                toast.Show(title, body);
+            }
+        }
+
+        // #Misfits Add — send ticket claim/resolve/unclaim/reopen requests
         public void ClaimTicket(int ticketId)
         {
             RaiseNetworkEvent(new HelpTicketClaimMessage(ticketId, HelpTicketType.AdminHelp));
@@ -62,6 +116,16 @@ namespace Content.Client.Administration.Systems
         public void ResolveTicket(int ticketId)
         {
             RaiseNetworkEvent(new HelpTicketResolveMessage(ticketId, HelpTicketType.AdminHelp));
+        }
+
+        public void UnclaimTicket(int ticketId)
+        {
+            RaiseNetworkEvent(new HelpTicketUnclaimMessage(ticketId, HelpTicketType.AdminHelp));
+        }
+
+        public void ReopenTicket(int ticketId)
+        {
+            RaiseNetworkEvent(new HelpTicketReopenMessage(ticketId, HelpTicketType.AdminHelp));
         }
 
         public void RequestTicketList()

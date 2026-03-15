@@ -97,8 +97,9 @@ Handcrafted tribal weapons and armor, usually traded by tribal groups or found i
 <Box>
 <GuideEntityEmbed Entity="N14WeaponRevolver45-70HandcannonBlueprint" Caption="Handcannon"/>
 <GuideEntityEmbed Entity="N14WeaponRevolver44TribalBlueprint" Caption="Tribal Handgun"/>
-<GuideEntityEmbed Entity="N14ModificationkitRevolver44TribalBlueprint" Caption="Revolver Upgrade Kit"/>
-<GuideEntityEmbed Entity="N14ModificationkitRevolver44TribalUpgradedBlueprint" Caption="Revolver Upgrade Extra Kit"/>
+<!-- #Misfits Remove: Corvax modification kit blueprints removed -->
+<!-- <GuideEntityEmbed Entity="N14ModificationkitRevolver44TribalBlueprint" Caption="Revolver Upgrade Kit"/> -->
+<!-- <GuideEntityEmbed Entity="N14ModificationkitRevolver44TribalUpgradedBlueprint" Caption="Revolver Upgrade Extra Kit"/> -->
 </Box>
 <Box>
 <GuideEntityEmbed Entity="N14WeaponSniper556TribalBlueprint" Caption="Tribal Rifle"/>

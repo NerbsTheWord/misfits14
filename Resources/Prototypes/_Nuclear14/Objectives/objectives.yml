@@ -10,69 +10,76 @@
 #   XObjectives (used as GetRandomObjective arg) → XRealObjectives (sole level-1 entry)
 #   XRealObjectives                              → KillXHeadObjective, XStealY, ... (entity IDs)
 
+# #Misfits Tweak - Faction kill/steal objective pools disabled.
+#                  N14RuleSystem now gives every player only the SurviveObjective.
+#                  Kill/steal objectives were removed for being low-RP and encouraging griefing.
+
 # ── Master fallback pool (non-faction players) ──────────────────────────────────────
 # N14Objectives is the top-level arg, so it maps to the three "Real" pools which
 # are themselves WeightedRandomPrototypes containing entity IDs. ✓
-- type: weightedRandom
-  id: N14Objectives
-  weights:
-    NCRRealObjectives: 1
-    BOSWRealObjectives: 1
-    LegionRealObjectives: 1
+#- type: weightedRandom
+#  id: N14Objectives
+#  weights:
+#    NCRRealObjectives: 1
+#    BOSWRealObjectives: 1
+#    LegionRealObjectives: 1
 
 # ── Per-faction wrapper pools (passed directly as GetRandomObjective arg from N14RuleSystem) ──
 # Each wrapper has ONE entry pointing to its RealObjectives pool, satisfying the two-level contract.
 
 # NCR wrapper → NCRRealObjectives
-- type: weightedRandom
-  id: NCRObjectives
-  weights:
-    NCRRealObjectives: 1
+#- type: weightedRandom
+#  id: NCRObjectives
+#  weights:
+#    NCRRealObjectives: 1
 
 # NCR actual entity-prototype pool (level 2)
-- type: weightedRandom
-  id: NCRRealObjectives
-  weights:
-    KillNCRHeadObjective: 1
-    NCRStealObjective: 1
-    NCRStealBOSWObjective: 1
-    NCRStealLegionObjective: 1 # #Misfits Change - steal Legion orders holotape
+#- type: weightedRandom
+#  id: NCRRealObjectives
+#  weights:
+#    KillNCRHeadObjective: 1
+#    NCRStealObjective: 1
+#    NCRStealBOSWObjective: 1
+#    NCRStealLegionObjective: 1 # #Misfits Change - steal Legion orders holotape
 
 # Brotherhood of Steel wrapper → BOSWRealObjectives
-- type: weightedRandom
-  id: BOSWObjectives
-  weights:
-    BOSWRealObjectives: 1
+#- type: weightedRandom
+#  id: BOSWObjectives
+#  weights:
+#    BOSWRealObjectives: 1
 
 # BOSW actual entity-prototype pool (level 2)
-- type: weightedRandom
-  id: BOSWRealObjectives
-  weights:
-    KillBOSWHeadObjective: 1
-    BOSWStealObjective: 1
-    BOSWStealNCRObjective: 1
-    BOSWStealLegionObjective: 1 # #Misfits Change - steal Legion battle orders holotape
+#- type: weightedRandom
+#  id: BOSWRealObjectives
+#  weights:
+#    KillBOSWHeadObjective: 1
+#    BOSWStealObjective: 1
+#    BOSWStealNCRObjective: 1
+#    BOSWStealLegionObjective: 1 # #Misfits Change - steal Legion battle orders holotape
 
 # Caesar's Legion wrapper → LegionRealObjectives
 # #Misfits Change - New Legion objective pool
-- type: weightedRandom
-  id: LegionObjectives
-  weights:
-    LegionRealObjectives: 1
+#- type: weightedRandom
+#  id: LegionObjectives
+#  weights:
+#    LegionRealObjectives: 1
 
 # Legion actual entity-prototype pool (level 2)
-- type: weightedRandom
-  id: LegionRealObjectives
-  weights:
-    KillLegionHeadObjective: 1
-    LegionStealNCRObjective: 1
-    LegionStealBOSWObjective: 1
-    LegionStealEnclaveObjective: 1 # #Misfits Change - steal Enclave technological data
+#- type: weightedRandom
+#  id: LegionRealObjectives
+#  weights:
+#    KillLegionHeadObjective: 1
+#    LegionStealNCRObjective: 1
+#    LegionStealBOSWObjective: 1
+#    LegionStealEnclaveObjective: 1 # #Misfits Change - steal Enclave technological data
 
 
 # ----------------------------------------
 # NCR
 # ----------------------------------------
+# #Misfits Tweak - All faction kill/steal entity prototypes below are preserved for history
+#                  but are unreachable: their hosting pools are commented out above and
+#                  N14RuleSystem no longer routes any player to these objectives.
 - type: entity
   abstract: true
   parent: BaseObjective

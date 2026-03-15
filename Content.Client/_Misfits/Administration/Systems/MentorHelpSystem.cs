@@ -1,5 +1,6 @@
 // #Misfits Change - Client-side mentor help system
 using System.Linq; // #Misfits Add — for LINQ ticket filtering
+using Content.Client._Misfits.Administration.UI; // #Misfits Add — for TicketToastPopup
 using Content.Client._Misfits.UserInterface.Systems.MentorHelp;
 using Content.Shared._Misfits.Administration;
 using JetBrains.Annotations;
@@ -23,6 +24,9 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     public event Action<HelpTicketInfo>? OnTicketUpdated;
     public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
 
+    // #Misfits Add — track known tickets to only toast on new or significant state changes
+    private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -37,18 +41,65 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
         OnMentorHelpTextMessageReceived?.Invoke(this, message);
     }
 
-    // #Misfits Add — relay ticket updates to the UI
+    // #Misfits Add — relay ticket updates to the UI and show toast notifications
     private void OnTicketUpdatedMsg(HelpTicketUpdatedMessage msg)
     {
         if (msg.Ticket.Type == HelpTicketType.MentorHelp)
+        {
+            ShowTicketToast(msg.Ticket);
             OnTicketUpdated?.Invoke(msg.Ticket);
+        }
     }
 
     private void OnTicketListMsg(HelpTicketListMessage msg)
     {
         var mhelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.MentorHelp).ToList();
+        // #Misfits Add — seed known tickets from the initial list (no toast for bulk load)
+        foreach (var t in mhelpTickets)
+            _knownTickets[t.TicketId] = t.Status;
+
         if (mhelpTickets.Count > 0)
             OnTicketListReceived?.Invoke(mhelpTickets);
+    }
+
+    // #Misfits Add — show a toast popup for notable ticket events
+    private void ShowTicketToast(HelpTicketInfo ticket)
+    {
+        var previouslyKnown = _knownTickets.TryGetValue(ticket.TicketId, out var prevStatus);
+        _knownTickets[ticket.TicketId] = ticket.Status;
+
+        string? title = null;
+        string? body = null;
+
+        if (!previouslyKnown && ticket.Status == HelpTicketStatus.Open)
+        {
+            title = Loc.GetString("ticket-system-toast-new-title");
+            body = Loc.GetString("ticket-system-toast-new-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+        }
+        else if (previouslyKnown && prevStatus != ticket.Status)
+        {
+            switch (ticket.Status)
+            {
+                case HelpTicketStatus.Claimed:
+                    title = Loc.GetString("ticket-system-toast-claimed-title");
+                    body = Loc.GetString("ticket-system-toast-claimed-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ClaimedByName ?? "?"));
+                    break;
+                case HelpTicketStatus.Resolved:
+                    title = Loc.GetString("ticket-system-toast-resolved-title");
+                    body = Loc.GetString("ticket-system-toast-resolved-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ResolvedByName ?? "?"));
+                    break;
+                case HelpTicketStatus.Open when prevStatus == HelpTicketStatus.Resolved:
+                    title = Loc.GetString("ticket-system-toast-reopened-title");
+                    body = Loc.GetString("ticket-system-toast-reopened-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+                    break;
+            }
+        }
+
+        if (title != null && body != null)
+        {
+            var toast = new TicketToastPopup();
+            toast.Show(title, body);
+        }
     }
 
     // #Misfits Add — send ticket claim/resolve requests
@@ -60,6 +111,17 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     public void ResolveTicket(int ticketId)
     {
         RaiseNetworkEvent(new HelpTicketResolveMessage(ticketId, HelpTicketType.MentorHelp));
+    }
+
+    // #Misfits Add — unclaim and reopen ticket requests
+    public void UnclaimTicket(int ticketId)
+    {
+        RaiseNetworkEvent(new HelpTicketUnclaimMessage(ticketId, HelpTicketType.MentorHelp));
+    }
+
+    public void ReopenTicket(int ticketId)
+    {
+        RaiseNetworkEvent(new HelpTicketReopenMessage(ticketId, HelpTicketType.MentorHelp));
     }
 
     public void RequestTicketList()

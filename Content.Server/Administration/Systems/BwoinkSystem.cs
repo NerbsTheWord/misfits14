@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs; // #Misfits Add — needed for admin ghost-follow logging
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
+using Content.Server.Chat.Managers; // #Misfits Add — for IChatManager (ticket admin chat push)
 using Content.Server.Database;
 using Content.Server.Discord;
 using Content.Server.GameTicking;
@@ -54,6 +55,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IPlayerLocator _locator = default!;
         [Dependency] private readonly IServerConsoleHost _consoleHost = default!; // #Misfits Add — execute aghost command for ghost-follow
         [Dependency] private readonly IAdminLogManager _adminLog = default!; // #Misfits Add — log ghost-follow actions
+        [Dependency] private readonly IChatManager _chatManager = default!; // #Misfits Add — push ticket events to admin chat
 
         [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -134,6 +136,8 @@ namespace Content.Server.Administration.Systems
             // #Misfits Add — ticket system handlers
             SubscribeNetworkEvent<HelpTicketClaimMessage>(OnTicketClaim);
             SubscribeNetworkEvent<HelpTicketResolveMessage>(OnTicketResolve);
+            SubscribeNetworkEvent<HelpTicketUnclaimMessage>(OnTicketUnclaim);
+            SubscribeNetworkEvent<HelpTicketReopenMessage>(OnTicketReopen);
             SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
 
         	_rateLimit.Register(
@@ -207,6 +211,19 @@ namespace Content.Server.Administration.Systems
                     _activeConversations.Remove(e.Session.UserId);
                     return;
                 }
+            }
+
+            // #Misfits Add — auto-resolve open/claimed tickets when player disconnects
+            if (e.NewStatus == SessionStatus.Disconnected
+                && _tickets.TryGetValue(e.Session.UserId, out var dcTicket)
+                && dcTicket.Status != HelpTicketStatus.Resolved)
+            {
+                dcTicket.Status = HelpTicketStatus.Resolved;
+                dcTicket.ResolvedByName = "System";
+                dcTicket.ResolvedById = null;
+                dcTicket.ResolvedAt = DateTime.UtcNow;
+                BroadcastTicketUpdate(dcTicket);
+                SendTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId)));
             }
 
             // Notify all admins if a player disconnects or reconnects
@@ -441,10 +458,12 @@ namespace Content.Server.Administration.Systems
         // #Misfits Add — send a system chat message into the ticket conversation visible to admins
         private void SendTicketSystemMessage(NetUserId playerId, string text)
         {
+            // #Misfits Fix — Escape text for markup to prevent parse errors in client
+            var safeText = Robust.Shared.Utility.FormattedMessage.EscapeText(text);
             var sysMsg = new BwoinkTextMessage(
                 userId: playerId,
                 trueSender: SystemUserId,
-                text: $"[color=cyan]{text}[/color]",
+                text: $"[color=cyan]{safeText}[/color]",
                 sentAt: DateTime.Now,
                 playSound: false
             );
@@ -453,6 +472,9 @@ namespace Content.Server.Administration.Systems
             {
                 RaiseNetworkEvent(sysMsg, admin);
             }
+
+            // #Misfits Add — push ticket events into admin chat so all admins see them
+            _chatManager.SendAdminAnnouncement(text);
         }
 
         // #Misfits Add — admin claims a ticket
@@ -473,7 +495,7 @@ namespace Content.Server.Administration.Systems
             ticket.ClaimedByName = args.SenderSession.Name;
             ticket.ClaimedById = args.SenderSession.UserId;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
         }
 
         // #Misfits Add — admin resolves a ticket
@@ -490,8 +512,54 @@ namespace Content.Server.Administration.Systems
                 return;
 
             ticket.Status = HelpTicketStatus.Resolved;
+            ticket.ResolvedByName = args.SenderSession.Name;
+            ticket.ResolvedById = args.SenderSession.UserId;
+            ticket.ResolvedAt = DateTime.Now;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+        }
+
+        // #Misfits Add — admin unclaims (releases) a ticket back to Open
+        private void OnTicketUnclaim(HelpTicketUnclaimMessage msg, EntitySessionEventArgs args)
+        {
+            if (msg.Type != HelpTicketType.AdminHelp)
+                return;
+
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var ticket = _tickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+            if (ticket == null || ticket.Status != HelpTicketStatus.Claimed)
+                return;
+
+            ticket.Status = HelpTicketStatus.Open;
+            ticket.ClaimedByName = null;
+            ticket.ClaimedById = null;
+            BroadcastTicketUpdate(ticket);
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+        }
+
+        // #Misfits Add — admin reopens a resolved ticket
+        private void OnTicketReopen(HelpTicketReopenMessage msg, EntitySessionEventArgs args)
+        {
+            if (msg.Type != HelpTicketType.AdminHelp)
+                return;
+
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var ticket = _tickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+            if (ticket == null || ticket.Status != HelpTicketStatus.Resolved)
+                return;
+
+            ticket.Status = HelpTicketStatus.Open;
+            ticket.ClaimedByName = null;
+            ticket.ClaimedById = null;
+            ticket.ResolvedByName = null;
+            ticket.ResolvedById = null;
+            ticket.ResolvedAt = null;
+            BroadcastTicketUpdate(ticket);
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
         }
 
         // #Misfits Add — admin requests full ticket list (e.g. on connect or UI open)
@@ -786,6 +854,10 @@ namespace Content.Server.Administration.Systems
             };
         }
 
+        // #Misfits Add — periodic reminder interval for unclaimed tickets
+        private const float TicketReminderInterval = 60f; // seconds between reminders
+        private float _ticketReminderTimer;
+
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
@@ -803,6 +875,18 @@ namespace Content.Server.Administration.Systems
                 _processingChannels.Add(userId);
 
                 ProcessQueue(userId, queue);
+            }
+
+            // #Misfits Add — periodically remind admins about unclaimed tickets
+            _ticketReminderTimer += frameTime;
+            if (_ticketReminderTimer >= TicketReminderInterval)
+            {
+                _ticketReminderTimer = 0f;
+                var openCount = _tickets.Values.Count(t => t.Status == HelpTicketStatus.Open);
+                if (openCount > 0)
+                {
+                    _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder", ("count", openCount)));
+                }
             }
         }
 
@@ -872,25 +956,18 @@ namespace Content.Server.Administration.Systems
                 EnsureTicket(bwoinkParams.Message.UserId, bwoinkParams.SenderName);
             }
 
-            // #Misfits Add — force admins to claim a ticket before replying
+            // #Misfits Change — auto-claim ticket on first admin reply instead of rejecting
             if (bwoinkParams.SenderAdmin != null
                 && bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp)
                 && !bwoinkParams.FromWebhook
                 && _tickets.TryGetValue(bwoinkParams.Message.UserId, out var openTicket)
                 && openTicket.Status == HelpTicketStatus.Open)
             {
-                // Reject the message and tell the admin to claim first
-                if (bwoinkParams.SenderChannel != null)
-                {
-                    var rejectText = Loc.GetString("ticket-system-must-claim-first");
-                    var rejectMsg = new BwoinkTextMessage(
-                        bwoinkParams.Message.UserId,
-                        SystemUserId,
-                        $"[color=red]{rejectText}[/color]",
-                        playSound: false);
-                    RaiseNetworkEvent(rejectMsg, bwoinkParams.SenderChannel);
-                }
-                return;
+                openTicket.Status = HelpTicketStatus.Claimed;
+                openTicket.ClaimedByName = bwoinkParams.SenderName;
+                openTicket.ClaimedById = bwoinkParams.SenderId;
+                BroadcastTicketUpdate(openTicket);
+                SendTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("role", "Admin"), ("admin", bwoinkParams.SenderName)));
             }
 
             var escapedText = FormattedMessage.EscapeText(bwoinkParams.Message.Text);

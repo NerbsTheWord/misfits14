@@ -5,11 +5,14 @@ using Content.Server.Administration.Notes;
 using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Server.EUI;
+using Content.Server.GameTicking; // #Misfits Add — GameTicker.Respawn for online players
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.Eui;
 using Content.Shared.Follower; // #Misfits Change
 using Content.Shared.Ghost; // #Misfits Change
+using Content.Shared.Mind; // #Misfits Add — MindComponent for offline entity lookup
+using Content.Shared.Players; // #Misfits Add — ContentData() extension for offline mind lookup
 using Robust.Server.Console; // #Misfits Change
 using Robust.Server.Player;
 using Robust.Shared.Player;
@@ -59,6 +62,8 @@ public sealed class PlayerPanelEui : BaseEui
     public override EuiStateBase GetNewState()
     {
         _player.TryGetSessionById(_targetPlayer.UserId, out var session);
+        // #Misfits Add — pass whether the player is currently online so the client can reflect it.
+        var connected = session != null;
 
         return new PlayerPanelEuiState(_targetPlayer.UserId,
             _targetPlayer.Username,
@@ -71,7 +76,8 @@ public sealed class PlayerPanelEui : BaseEui
             _whitelisted,
             _canFreeze,
             _frozen,
-            _canAhelp);
+            _canAhelp,
+            connected); // #Misfits Add
     }
 
     private void OnPermsChanged(AdminPermsChangedEventArgs args)
@@ -172,6 +178,45 @@ public sealed class PlayerPanelEui : BaseEui
                 {
                     _adminLog.Add(LogType.Action,$"{Player:actor} deleted {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     _entity.DeleteEntity(session.AttachedEntity);
+                }
+                break;
+
+            // #Misfits Add — Respawn/Despawn: deletes the lingering entity and frees the spawn slot.
+            case PlayerPanelRespawnMessage:
+                if (!_admins.HasAdminFlag(Player, AdminFlags.Admin))
+                    return;
+
+                if (!_entity.TrySystem<GameTicker>(out var gameTicker) ||
+                    !_entity.TrySystem<SharedMindSystem>(out var mindSystem))
+                    return;
+
+                if (_player.TryGetSessionById(_targetPlayer.UserId, out session))
+                {
+                    // Online player: standard respawn kicks them to lobby and cleans up their entity.
+                    _adminLog.Add(LogType.Action,
+                        $"{Player:actor} respawned online player {_targetPlayer.Username} via Player Panel");
+                    gameTicker.Respawn(session);
+                }
+                else
+                {
+                    // Offline player: delete their lingering entity (if any) and wipe their mind so
+                    // the spawn slot is freed when they reconnect.
+                    if (!_player.TryGetPlayerData(_targetPlayer.UserId, out var pData))
+                        return;
+
+                    var mindEnt = pData.ContentData()?.Mind;
+                    if (mindEnt != null &&
+                        _entity.TryGetComponent<MindComponent>(mindEnt.Value, out var mindComp) &&
+                        mindComp.CurrentEntity is { } bodyEnt)
+                    {
+                        _adminLog.Add(LogType.Action,
+                            $"{Player:actor} despawned entity of offline player {_targetPlayer.Username}");
+                        _entity.DeleteEntity(bodyEnt);
+                    }
+
+                    mindSystem.WipeMind(mindEnt);
+                    _adminLog.Add(LogType.Action,
+                        $"{Player:actor} wiped mind of offline player {_targetPlayer.Username} via Player Panel");
                 }
                 break;
         }

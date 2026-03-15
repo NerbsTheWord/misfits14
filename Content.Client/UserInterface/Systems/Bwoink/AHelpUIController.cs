@@ -135,7 +135,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         EnsureUIHelper();
 
-        if (message.PlaySound && localPlayer.UserId != message.TrueSender && !UIHelper!.IsOpen)
+        // #Misfits Change — bwoink sound only plays for players, not admins
+        if (message.PlaySound && localPlayer.UserId != message.TrueSender && !UIHelper!.IsOpen && !_adminManager.HasFlag(AdminFlags.Adminhelp))
         {
             _audio.PlayGlobal(AHelpReceiveSound, Filter.Local(), false);
             _clyde.RequestWindowAttention();

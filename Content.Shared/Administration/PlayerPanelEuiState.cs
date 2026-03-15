@@ -18,7 +18,8 @@ public sealed class PlayerPanelEuiState(NetUserId guid,
     bool? whitelisted,
     bool canFreeze,
     bool frozen,
-    bool canAhelp)
+    bool canAhelp,
+    bool connected) // #Misfits Add — track whether player is currently online
     : EuiStateBase
 {
     public readonly NetUserId Guid = guid;
@@ -33,6 +34,7 @@ public sealed class PlayerPanelEuiState(NetUserId guid,
     public readonly bool CanFreeze = canFreeze;
     public readonly bool Frozen = frozen;
     public readonly bool CanAhelp = canAhelp;
+    public readonly bool Connected = connected; // #Misfits Add
 }
 
 
@@ -59,3 +61,7 @@ public sealed class PlayerPanelRejuvenationMessage: EuiMessageBase;
 // #Misfits Change — message sent when the admin clicks "Ghost Follow" in the player panel.
 [Serializable, NetSerializable]
 public sealed class PlayerPanelGhostFollowMessage : EuiMessageBase;
+
+// #Misfits Add — message sent when admin clicks Respawn: deletes the entity and frees the spawn slot.
+[Serializable, NetSerializable]
+public sealed class PlayerPanelRespawnMessage : EuiMessageBase;

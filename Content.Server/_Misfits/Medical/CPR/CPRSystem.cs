@@ -116,7 +116,8 @@ public sealed class CPRSystem : EntitySystem
         // Re-validate: target must still be critical.
         if (!_mobState.IsCritical(target))
         {
-            _popup.PopupEntity(Loc.GetString("cpr-target-no-longer-critical"), user, user, PopupType.Small);
+            // Misfits Fix: pass target argument to match FTL string "{ $target } no longer needs CPR."
+            _popup.PopupEntity(Loc.GetString("cpr-target-no-longer-critical", ("target", target)), user, user, PopupType.Small);
             return;
         }
 

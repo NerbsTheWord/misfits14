@@ -26,6 +26,10 @@
         conditions:
         - !type:OrganType
           type: Plant
+      - !type:Oxygenate #Misfits Change - super mutant lungs use a separate metabolizer type; must be listed explicitly here or they suffocate
+        conditions:
+        - !type:OrganType
+          type: SuperMutant
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:

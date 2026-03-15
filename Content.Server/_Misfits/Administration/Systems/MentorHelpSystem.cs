@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
+using Content.Server.Chat.Managers; // #Misfits Add — for IChatManager (ticket admin chat push)
 using Content.Server.Discord;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
@@ -44,6 +45,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
     [Dependency] private readonly SharedMindSystem _minds = default!;
     [Dependency] private readonly IAfkManager _afkManager = default!;
     [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!; // #Misfits Add — push ticket events to admin chat
 
     [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
     private static partial Regex DiscordRegex();
@@ -112,6 +114,8 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         // #Misfits Add — mentor ticket system handlers
         SubscribeNetworkEvent<HelpTicketClaimMessage>(OnTicketClaim);
         SubscribeNetworkEvent<HelpTicketResolveMessage>(OnTicketResolve);
+        SubscribeNetworkEvent<HelpTicketUnclaimMessage>(OnTicketUnclaim); // #Misfits Add
+        SubscribeNetworkEvent<HelpTicketReopenMessage>(OnTicketReopen); // #Misfits Add
         SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
 
         _rateLimit.Register(
@@ -137,6 +141,19 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
         if (!_activeConversations.ContainsKey(e.Session.UserId))
             return;
+
+        // #Misfits Add — auto-resolve open/claimed tickets when player disconnects
+        if (e.NewStatus == SessionStatus.Disconnected
+            && _mhelpTickets.TryGetValue(e.Session.UserId, out var dcTicket)
+            && dcTicket.Status != HelpTicketStatus.Resolved)
+        {
+            dcTicket.Status = HelpTicketStatus.Resolved;
+            dcTicket.ResolvedByName = "System";
+            dcTicket.ResolvedById = null;
+            dcTicket.ResolvedAt = DateTime.UtcNow;
+            BroadcastMentorTicketUpdate(dcTicket);
+            SendMentorTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId)));
+        }
 
         var statusText = e.NewStatus switch
         {
@@ -315,10 +332,12 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
     private void SendMentorTicketSystemMessage(NetUserId playerId, string text)
     {
+        // #Misfits Fix — Escape text for markup to prevent parse errors in client
+        var safeText = Robust.Shared.Utility.FormattedMessage.EscapeText(text);
         var sysMsg = new MentorHelpTextMessage(
             userId: playerId,
             trueSender: SystemUserId,
-            text: $"[color=cyan]{text}[/color]",
+            text: $"[color=cyan]{safeText}[/color]",
             sentAt: DateTime.Now,
             playSound: false
         );
@@ -327,6 +346,9 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         {
             RaiseNetworkEvent(sysMsg, mentor);
         }
+
+        // #Misfits Add — push ticket events into admin chat so all admins see them
+        _chatManager.SendAdminAnnouncement(text);
     }
 
     private void OnTicketClaim(HelpTicketClaimMessage msg, EntitySessionEventArgs args)
@@ -345,7 +367,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         ticket.ClaimedByName = args.SenderSession.Name;
         ticket.ClaimedById = args.SenderSession.UserId;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
     }
 
     private void OnTicketResolve(HelpTicketResolveMessage msg, EntitySessionEventArgs args)
@@ -361,8 +383,55 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             return;
 
         ticket.Status = HelpTicketStatus.Resolved;
+        // #Misfits Add — track which admin resolved the ticket and when
+        ticket.ResolvedByName = args.SenderSession.Name;
+        ticket.ResolvedById = args.SenderSession.UserId;
+        ticket.ResolvedAt = DateTime.UtcNow;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+    }
+
+    // #Misfits Add — unclaim handler returns a claimed ticket to Open
+    private void OnTicketUnclaim(HelpTicketUnclaimMessage msg, EntitySessionEventArgs args)
+    {
+        if (msg.Type != HelpTicketType.MentorHelp)
+            return;
+
+        if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+            return;
+
+        var ticket = _mhelpTickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+        if (ticket == null || ticket.Status != HelpTicketStatus.Claimed)
+            return;
+
+        ticket.Status = HelpTicketStatus.Open;
+        ticket.ClaimedByName = null;
+        ticket.ClaimedById = null;
+        BroadcastMentorTicketUpdate(ticket);
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+    }
+
+    // #Misfits Add — reopen handler returns a resolved ticket to Open
+    private void OnTicketReopen(HelpTicketReopenMessage msg, EntitySessionEventArgs args)
+    {
+        if (msg.Type != HelpTicketType.MentorHelp)
+            return;
+
+        if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+            return;
+
+        var ticket = _mhelpTickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+        if (ticket == null || ticket.Status != HelpTicketStatus.Resolved)
+            return;
+
+        ticket.Status = HelpTicketStatus.Open;
+        ticket.ClaimedByName = null;
+        ticket.ClaimedById = null;
+        ticket.ResolvedByName = null;
+        ticket.ResolvedById = null;
+        ticket.ResolvedAt = null;
+        BroadcastMentorTicketUpdate(ticket);
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
     }
 
     private void OnTicketRequestList(HelpTicketRequestListMessage msg, EntitySessionEventArgs args)
@@ -403,6 +472,18 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         if (!senderMentor)
         {
             EnsureMentorTicket(message.UserId, senderSession.Name);
+        }
+
+        // #Misfits Add — auto-claim ticket on first mentor reply
+        if (senderMentor
+            && _mhelpTickets.TryGetValue(message.UserId, out var openTicket)
+            && openTicket.Status == HelpTicketStatus.Open)
+        {
+            openTicket.Status = HelpTicketStatus.Claimed;
+            openTicket.ClaimedByName = senderSession.Name;
+            openTicket.ClaimedById = senderSession.UserId;
+            BroadcastMentorTicketUpdate(openTicket);
+            SendMentorTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("role", "Mentor"), ("admin", senderSession.Name)));
         }
 
         var escapedText = FormattedMessage.EscapeText(message.Text);
@@ -473,6 +554,10 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         }
     }
 
+    // #Misfits Add — periodic reminder interval for unclaimed mentor tickets
+    private const float TicketReminderInterval = 60f; // seconds between reminders
+    private float _ticketReminderTimer;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -489,6 +574,18 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
             _processingChannels.Add(userId);
             ProcessQueue(userId, queue);
+        }
+
+        // #Misfits Add — periodically remind mentors about unclaimed tickets
+        _ticketReminderTimer += frameTime;
+        if (_ticketReminderTimer >= TicketReminderInterval)
+        {
+            _ticketReminderTimer = 0f;
+            var openCount = _mhelpTickets.Values.Count(t => t.Status == HelpTicketStatus.Open);
+            if (openCount > 0)
+            {
+                _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder", ("count", openCount)));
+            }
         }
     }
 

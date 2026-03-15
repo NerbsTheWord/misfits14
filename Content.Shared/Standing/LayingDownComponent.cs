@@ -9,6 +9,21 @@ public sealed partial class LayingDownComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan StandingUpTime = TimeSpan.FromSeconds(1);
 
+    // Misfits Add: recovery time used when getting up after exiting hard crit (collapsed from injuries)
+    [DataField, AutoNetworkedField]
+    public TimeSpan CritStandingUpTime = TimeSpan.FromSeconds(8);
+
+    // Misfits Add: recovery time used when getting up after exiting soft crit (stim recovery)
+    [DataField, AutoNetworkedField]
+    public TimeSpan SoftCritStandingUpTime = TimeSpan.FromSeconds(2);
+
+    /// <summary>
+    /// Misfits Add: set to the appropriate recovery duration when the entity exits crit/soft-crit.
+    /// Null means normal stand-up time applies. Cleared once the DoAfter resolves.
+    /// </summary>
+    [AutoNetworkedField]
+    public TimeSpan? PostCritRecoveryOverride = null;
+
     [DataField, AutoNetworkedField]
     public float LyingSpeedModifier = 0.10f, // Corvax-Change
                  CrawlingUnderSpeedModifier = 0.5f;

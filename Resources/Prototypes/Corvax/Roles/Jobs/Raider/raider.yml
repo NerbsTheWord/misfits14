@@ -9,7 +9,7 @@
   - !type:MinPlayersRequirement
     min: 0
   - !type:CharacterOverallTimeRequirement
-    min: 0 # 25 hours
+    min: 144000 # 40 hours
   startingGear: RaiderGear
   alwaysUseSpawner: true
   icon: "JobIconRaider"
@@ -20,7 +20,7 @@
     components:
       - type: NpcFactionMember
         factions:
-          - Raider
+          - PlayerRaider #Misfits Change - Use PlayerRaider so NPC Raiders are hostile to job Raiders
 
 - type: startingGear
   id: RaiderGear

@@ -1,10 +1,34 @@
-<!-- #Misfits Change - Staff Panel tab for admin menu (permissions + ticket log) -->
+<!-- #Misfits Change - Staff Panel tab for admin menu (permissions + ticket log + round stats) -->
 <Control
     xmlns="https://spacestation14.io"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     Margin="4"
     MinSize="50 50">
-    <BoxContainer Orientation="Vertical" SeparationOverride="6">
+    <BoxContainer Orientation="Vertical" SeparationOverride="10">
+
+        <!-- Round Stats Summary -->
+        <PanelContainer Name="StatsPanel">
+            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+                <Label Name="StatsHeader" Text="{Loc misfits-staff-stats-header}" StyleClasses="LabelHeading" />
+
+                <!-- Top-level counters row -->
+                <BoxContainer Orientation="Horizontal" SeparationOverride="16">
+                    <Label Name="TotalTicketsLabel" StyleClasses="LabelSubText" />
+                    <Label Name="OpenTicketsLabel" StyleClasses="LabelSubText" />
+                    <Label Name="ClaimedTicketsLabel" StyleClasses="LabelSubText" />
+                    <Label Name="ResolvedTicketsLabel" StyleClasses="LabelSubText" />
+                    <Label Name="AvgResolutionLabel" StyleClasses="LabelSubText" />
+                </BoxContainer>
+
+                <!-- Per-staff breakdown header -->
+                <Label Text="{Loc misfits-staff-stats-breakdown-header}" StyleClasses="LabelSubText" Margin="0 4 0 0" />
+
+                <!-- Staff leaderboard grid (populated in code-behind) -->
+                <GridContainer Name="StaffGrid" Columns="4" HSeparationOverride="12" VSeparationOverride="2" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <!-- Existing action buttons -->
         <BoxContainer Orientation="Horizontal" SeparationOverride="8">
             <cc:CommandButton Command="permissions" Text="{Loc misfits-staff-tab-permissions-btn}" MinWidth="180" />
             <Label Text="{Loc misfits-staff-tab-permissions-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />

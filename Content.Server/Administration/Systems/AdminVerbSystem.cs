@@ -57,7 +57,6 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly AdminSystem _adminSystem = default!;
         [Dependency] private readonly DisposalTubeSystem _disposalTubes = default!;
-        [Dependency] private readonly EuiManager _euiManager = default!;
         [Dependency] private readonly GameTicker _ticker = default!;
         [Dependency] private readonly GhostRoleSystem _ghostRoleSystem = default!;
         [Dependency] private readonly ArtifactSystem _artifactSystem = default!;
@@ -272,7 +271,7 @@ namespace Content.Server.Administration.Systems
                     args.Verbs.Add(new Verb
                     {
                         Text = Loc.GetString("admin-player-actions-player-panel"),
-                        Category = VerbCategory.Admin,
+                        // #Misfits Change: Move to top-level for admin convenience
                         Act = () => _console.ExecuteCommand(player, $"playerpanel \"{targetActor.PlayerSession.UserId}\""),
                         Impact = LogImpact.Low
                     });
@@ -356,7 +355,7 @@ namespace Content.Server.Administration.Systems
                             {
                                 return;
                             }
-                            _euiManager.OpenEui(ui, session);
+                            _eui.OpenEui(ui, session);
                             ui.UpdateLaws(lawBoundComponent, args.Target);
                         },
                         Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_borg.rsi"), "state-laws"),
@@ -467,7 +466,7 @@ namespace Content.Server.Administration.Systems
                     Text = Loc.GetString("set-outfit-verb-get-data-text"),
                     Category = VerbCategory.Debug,
                     Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/outfit.svg.192dpi.png")),
-                    Act = () => _euiManager.OpenEui(new SetOutfitEui(GetNetEntity(args.Target)), player),
+                    Act = () => _eui.OpenEui(new SetOutfitEui(GetNetEntity(args.Target)), player),
                     Impact = LogImpact.Medium
                 };
                 args.Verbs.Add(verb);
@@ -570,7 +569,7 @@ namespace Content.Server.Administration.Systems
                 return;
 
             var eui = new EditSolutionsEui(uid);
-            _euiManager.OpenEui(eui, session);
+            _eui.OpenEui(eui, session);
             eui.StateDirty();
 
             if (!_openSolutionUis.ContainsKey(session)) {

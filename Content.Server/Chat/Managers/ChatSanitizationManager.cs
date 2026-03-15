@@ -21,12 +21,11 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
     private const string HiFallback = "Hi.";
     private const string UnintelligibleAction = "attempted to say something unintelligible.";
 
+    // #Misfits Tweak - Removed "gay" and "homosexual" from blocked terms; these are not slurs
     private static readonly string[] BlockedTerms =
     [
-        "gay",
         "lesbian",
         "bisexual",
-        "homosexual",
         "queer",
         "trans",
         "transgender",

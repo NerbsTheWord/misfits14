@@ -12,7 +12,7 @@
   - type: NpcFactionMember
     factions:
     - HostileRobot
-  - type: MobRobotAggro #Misfits Change
+  #- type: MobRobotAggro #Misfits Change — removed: NPC hostile robots should be hostile to player robots, not neutral.
   - type: HTN
     rootTask:
       task: N14HostileCompound
