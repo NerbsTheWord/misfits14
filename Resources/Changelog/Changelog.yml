@@ -1724,3 +1724,10 @@ Entries:
   id: 5650
   time: '2026-03-15T13:21:27.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/130
+- author: Cythisiax
+  changes:
+    - type: Fix
+      message: Ticket system throwing client error upon depress.
+  id: 5651
+  time: '2026-03-15T15:44:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/133
