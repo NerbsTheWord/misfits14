@@ -4,8 +4,8 @@
   name: job-name-raider #Misfits Change
   description: job-description-raider
   playTimeTracker: Raider
+  whitelisted: true # #Misfits Change - Use per-job whitelist so admins must manually approve players via JobWhitelistManager; CharacterWhitelistRequirement only checks the server connection whitelist (disabled by default) and would let everyone through
   requirements:
-  - !type:CharacterWhitelistRequirement
   - !type:MinPlayersRequirement
     min: 0
   startingGear: RaiderGear

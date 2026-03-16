@@ -80,6 +80,7 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: PowerArmorProficiency # #Misfits Add: Paladins start in T-45; grant proficiency automatically so they can equip their starting gear.
 
 - type: startingGear
   id: BoSPaladinGear

@@ -58,9 +58,7 @@
     - caravan_sell2
     contractPresets:
     - PresetBazar
-  - type: AccessReader
-    access:
-    - [ "TownieShopkeeper" ]
+  # #Misfits Change — removed TownieShopkeeper access restriction so any player can use the city terminal
 
 - type: entity
   id: TrademachineTickets

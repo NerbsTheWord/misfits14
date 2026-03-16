@@ -169,6 +169,7 @@
     size: Large
   - type: EarthDigging
   - type: Shovel
+  - type: GraveCreator # #Misfits Add: create a new grave on empty ground
 
 - type: entity
   name: zappy shovel
@@ -216,6 +217,7 @@
     size: Large
   - type: EarthDigging
   - type: Shovel
+  - type: GraveCreator # #Misfits Add: create a new grave on empty ground
 
 
 #MARK: Saws
