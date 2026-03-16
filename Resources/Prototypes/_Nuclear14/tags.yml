@@ -121,8 +121,8 @@
 - type: Tag
   id: GearSmall
 
-# - type: Tag
-#   id: RifleScope
+- type: Tag
+  id: RifleScope # #Misfits Fix: uncommented — used by N14JunkGunpartsRifleScope
 
 - type: Tag
   id: RifleStock1
