@@ -5,7 +5,7 @@
 - type: species
   id: SuperMutant
   name: species-name-supermutant
-  roundStart: true
+  roundStart: false
   order: 3 # #Misfits Change: sort after Glowing Ghoul
   whitelistRequired: true # #Misfits Change
   restrictedCustomization: true # #Misfits Change
