@@ -6,7 +6,7 @@
 - type: species
   id: C27
   name: species-name-c27
-  roundStart: true
+  roundStart: false
   order: 4 # #Misfits Add - sort just after Super Mutant, before Robot variants
   whitelistRequired: true # #Misfits Add - administrative whitelist gate
   restrictedCustomization: true # #Misfits Add - keep marking choices controlled per faction skin
