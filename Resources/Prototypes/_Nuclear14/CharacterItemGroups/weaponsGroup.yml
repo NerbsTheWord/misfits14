@@ -147,14 +147,12 @@
     - type: loadout
       id: N14TrenchClub
     - type: loadout
-      id: N14LongSwordBoS
-    - type: loadout
       id: N14GladiusLegion
     - type: loadout
       id: N14LongSword
     - type: loadout
       id: N14Gladius
     - type: loadout
-      id: N14ChineseSword    
+      id: N14ChineseSword
     - type: loadout
       id: N14CeremonialSwordCent

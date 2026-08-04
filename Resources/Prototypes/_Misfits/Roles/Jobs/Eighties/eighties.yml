@@ -19,8 +19,6 @@
   - 80s
   - 80sSlave
   requirements:
-  - !type:MinPlayersRequirement
-    min: 0
   - !type:CharacterSpeciesRequirement
     species:
     - Human
@@ -39,6 +37,7 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Eighties
           - PlayerRaider
           - Wastelander
   - !type:AddTraitSpecial
@@ -59,6 +58,7 @@
     ears: MisfitsClothingHeadsetEighties
     back: N14ClothingBackpackMilitary
     pocket1: EightiesTheBlockloadoutkits
+    pocket2: VehicleKeyMotorbike
     belt: ClothingBeltMilitary
   storage:
     back:
@@ -81,9 +81,8 @@
   whitelisted: false
   access:
   - 80s
+  - 80sSlave
   requirements:
-  - !type:MinPlayersRequirement
-    min: 0
   - !type:CharacterSpeciesRequirement
     species:
     - Human
@@ -102,6 +101,7 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Eighties
           - PlayerRaider
           - Wastelander
   - !type:AddTraitSpecial
@@ -121,6 +121,7 @@
     head: N14ClothingHeadHatBeanie
     back: N14ClothingBackpackMilitary
     pocket1: EightiesCylindersloadoutkits
+    pocket2: VehicleKeyMotorbike
     belt: ClothingBeltMilitary
   storage:
     back:
@@ -142,9 +143,8 @@
   whitelisted: false
   access:
   - 80s
+  - 80sSlave
   requirements:
-  - !type:MinPlayersRequirement
-    min: 0
   - !type:CharacterSpeciesRequirement
     species:
     - Human
@@ -163,6 +163,7 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Eighties
           - PlayerRaider
           - Wastelander
   - !type:AddTraitSpecial
@@ -182,6 +183,7 @@
     ears: MisfitsClothingHeadsetEighties
     back: N14ClothingBackpackMilitary
     pocket1: EightiesPistonsloadoutkits
+    pocket2: VehicleKeyMotorbike
     belt: ClothingBeltMilitary
   storage:
     back:
@@ -203,9 +205,8 @@
   whitelisted: false
   access:
   - 80s
+  - 80sSlave
   requirements:
-  - !type:MinPlayersRequirement
-    min: 0
   - !type:CharacterSpeciesRequirement
     species:
     - Human
@@ -224,6 +225,7 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Eighties
           - PlayerRaider
           - Wastelander
   - !type:AddTraitSpecial
@@ -243,6 +245,7 @@
     ears: MisfitsClothingHeadsetEighties
     back: N14ClothingBackpackMilitary
     pocket1: EightiesOilersloadoutkits
+    pocket2: VehicleKeyMotorbike
     belt: ClothingBeltMilitary
   storage:
     back:
@@ -266,8 +269,6 @@
   - 80s
   - 80sSlave
   requirements:
-  - !type:MinPlayersRequirement
-    min: 0
   - !type:CharacterSpeciesRequirement
     species:
     - Human
@@ -286,9 +287,11 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Eighties
           - PlayerRaider
           - Wastelander
-
+  - !type:AddTraitSpecial
+    traits: [ N14RidingPerk ]
 - type: startingGear
   id: EightiesRoadRashGear
   equipment:
@@ -303,6 +306,7 @@
     ears: MisfitsClothingHeadsetEighties
     back: N14ClothingBackpackMilitary
     pocket1: EightiesRoadRashloadoutkits
+    pocket2: VehicleKeyMotorbike
     belt: ClothingBeltMilitary
   storage:
     back:
